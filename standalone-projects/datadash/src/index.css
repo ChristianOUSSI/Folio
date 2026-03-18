@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #60A5FA 100%);
+}
+
+body {
+  margin: 0;
+  background: var(--primary-gradient);
+  min-height: 100vh;
+}

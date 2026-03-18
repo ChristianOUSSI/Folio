@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blade Quest: Anime Adventure</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      background: linear-gradient(135deg, #0f0f23, #1a1a2e, #16213e); 
+      font-family: 'Arial', sans-serif; 
+      color: white; 
+      overflow: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3), transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3), transparent 50%),
+                  radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.3), transparent 50%);
+      pointer-events: none;
+    }
+    canvas { 
+      display: block; 
+      background: linear-gradient(to bottom, #2d1b69 0%, #11998e 50%, #38ef7d 100%);
+      border: 4px solid #ff6b6b;
+      border-radius: 20px;
+      box-shadow: 0 0 50px rgba(255, 107, 107, 0.5), inset 0 0 50px rgba(0,0,0,0.3);
+      max-width: 100%;
+      height: auto;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+    .ui { 
+      position: absolute; 
+      top: 20px; 
+      left: 20px; 
+      z-index: 100; 
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(20px);
+      padding: 20px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    /* Dashboard (stats) only appears briefly on hit */
+    .stats {
+      display: none;
+    }
+    .stats.visible {
+      display: block;
+    }
+    .score { 
+      font-size: 24px; 
+      font-weight: bold; 
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #ff6b6b;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .health { display: flex; gap: 8px; margin-bottom: 10px; }
+    .heart { 
+      width: 24px; 
+      height: 24px; 
+      background: linear-gradient(45deg, #ff4757, #ff3838);
+      border-radius: 50%; 
+      display: inline-block; 
+      box-shadow: 0 0 15px rgba(255, 71, 87, 0.8);
+      transition: all 0.3s;
+      position: relative;
+    }
+    .heart::before {
+      content: '♥';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 14px;
+    }
+    .heart.empty { 
+      background: #2d3436; 
+      box-shadow: none;
+      opacity: 0.3;
+    }
+    .powerup { 
+      font-size: 14px; 
+      margin-top: 8px; 
+      padding: 6px 12px; 
+      background: linear-gradient(45deg, #a55eea, #6c5ce7);
+      border-radius: 8px; 
+      display: inline-block;
+      box-shadow: 0 0 15px rgba(165, 94, 234, 0.5);
+    }
+    button { 
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4); 
+      border: none; 
+      padding: 12px 24px; 
+      border-radius: 50px; 
+      color: white; 
+      font-weight: bold; 
+      cursor: pointer; 
+      transition: all 0.3s;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    }
+    button:hover { 
+      transform: scale(1.05); 
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+    }
+    .pause-overlay {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      backdrop-filter: blur(10px);
+      color: white;
+      font-size: 32px;
+      letter-spacing: 2px;
+      text-align: center;
+      padding: 20px;
+    }
+    .pause-overlay span {
+      display: block;
+      margin-top: 8px;
+      font-size: 16px;
+      opacity: 0.9;
+    }
+    .shop-overlay {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.75);
+      z-index: 210;
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 20px;
+    }
+    .shop-panel {
+      background: rgba(10, 10, 20, 0.9);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      padding: 28px;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.85);
+    }
+    .shop-panel h2 {
+      margin: 0 0 14px;
+      font-size: 26px;
+      letter-spacing: 1px;
+    }
+    .shop-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.05);
+    }
+    .shop-item button {
+      background: rgba(78, 205, 196, 0.2);
+      border: 1px solid rgba(78, 205, 196, 0.4);
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .shop-item button:hover {
+      transform: translateY(-1px);
+      background: rgba(78, 205, 196, 0.35);
+    }
+    .shop-close {
+      margin-top: 14px;
+      background: rgba(255, 107, 107, 0.3);
+      border: 1px solid rgba(255, 107, 107, 0.5);
+    }
+    .footer { 
+      position: absolute; 
+      bottom: 20px; 
+      right: 20px; 
+      opacity: 0.8;
+      z-index: 100;
+    }
+    a { 
+      color: #4ecdc4; 
+      text-decoration: none;
+      text-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+    }
+
+    /* Mobile controls */
+    .mobile-controls { 
+      display: none; 
+      position: absolute; 
+      bottom: 20px; 
+      left: 20px; 
+      z-index: 100;
+    }
+    .control-pad { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 10px; 
+      width: 120px;
+    }
+    .control-btn { 
+      width: 40px; 
+      height: 40px; 
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 12px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: none;
+      backdrop-filter: blur(10px);
+      transition: all 0.2s;
+    }
+    .control-btn:active { 
+      background: rgba(255,255,255,0.3);
+      transform: scale(0.95);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+    .attack-btn { 
+      position: absolute; 
+      bottom: 20px; 
+      right: 20px; 
+      width: 70px; 
+      height: 70px; 
+      background: linear-gradient(45deg, #ff4757, #ff3838);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+      touch-action: none;
+      box-shadow: 0 0 30px rgba(255, 71, 87, 0.6);
+      transition: all 0.2s;
+    }
+    .attack-btn:active { 
+      transform: scale(0.9);
+      box-shadow: 0 0 40px rgba(255, 71, 87, 0.8);
+    }
+
+    @media (max-width: 768px) {
+      .ui { 
+        top: 5px; 
+        left: 5px; 
+        right: 5px;
+        padding: 8px; 
+        font-size: 11px;
+        max-width: none;
+        width: auto;
+        transform: scale(0.85);
+        transform-origin: top left;
+      }
+      .ui > div:first-child {
+        margin-bottom: 5px !important;
+      }
+      .ui h1 {
+        font-size: 18px !important;
+      }
+      .ui p {
+        font-size: 9px !important;
+        margin: 2px 0 !important;
+      }
+      .score {
+        font-size: 12px !important;
+        margin: 3px 0 !important;
+      }
+      .health {
+        margin: 3px 0 !important;
+      }
+      .heart {
+        width: 12px !important;
+        height: 12px !important;
+      }
+      .ui button {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+        margin-top: 6px !important;
+        width: 100%;
+        max-width: 280px;
+      }
+      .ui div:last-child {
+        font-size: 11px !important;
+        margin-top: 6px !important;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .ui div:last-child span {
+        font-size: 10px !important;
+      }
+      .mobile-controls { display: block; left: 50%; transform: translateX(-50%); }
+      canvas { 
+        width: 100vw; 
+        height: 60vh; 
+        border-radius: 0;
+        border: none;
+      }
+      .footer { 
+        display: none;
+      }
+      .control-pad { width: 110px; bottom: 10px; }
+      .control-btn { width: 32px; height: 32px; font-size: 14px; }
+      .attack-btn { width: 55px; height: 55px; font-size: 22px; bottom: 20px; }
+    }
+
+    @media (min-width: 769px) {
+      .ui { 
+        transform: scale(0.9);
+        transform-origin: top left;
+      }
+      canvas { width: 75vw; height: 70vh; max-width: 1000px; max-height: 600px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ui">
+    <div style="text-align: center; margin-bottom: 15px;">
+      <h1 style="font-size: 28px; margin: 0; background: linear-gradient(45deg, #ff6b6b, #4ecdc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);">Blade Quest</h1>
+      <p style="font-size: 12px; margin: 5px 0; opacity: 0.8;">Aventure Anime</p>
+    </div>
+    <div id="statsPanel" class="stats">
+      <div class="score" style="display: flex; gap: 16px; align-items: baseline; flex-wrap: wrap;">
+        <span>Score: <span id="score">0</span></span>
+        <span>Niveau: <span id="level">1</span></span>
+        <span>Coins: <span id="coins">0</span> 💰</span>
+        <span style="opacity:0.85; font-size:14px;">Meilleur: <span id="highScore">0</span></span>
+      </div>
+      <div class="health">
+        <span class="heart" id="heart1"></span>
+        <span class="heart" id="heart2"></span>
+        <span class="heart" id="heart3"></span>
+      </div>
+      <div id="powerupStatus" class="powerup" style="display:none;"></div>
+    </div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 10px;">
+      <button id="muteBtn" type="button" style="font-size: 12px; padding: 6px 12px;">🔊</button>
+      <button id="shopBtn" type="button" style="font-size: 12px; padding: 6px 12px;">🛍️ Boutique</button>
+      <span style="font-size:14px; opacity:0.8;">WASD / Flèches / Boutons: Bouger | ESPACE / Bouton ⚔️: Attaquer</span>
+    </div>
+    <button onclick="resetGame()">↻ Recommencer</button>
+  </div>
+
+  <!-- Mobile Controls -->
+  <div class="mobile-controls">
+    <div class="control-pad">
+      <div></div>
+      <button class="control-btn" id="up-btn">↑</button>
+      <div></div>
+      <button class="control-btn" id="left-btn">←</button>
+      <div></div>
+      <button class="control-btn" id="right-btn">→</button>
+      <div></div>
+      <button class="control-btn" id="down-btn">↓</button>
+      <div></div>
+    </div>
+  </div>
+  <button class="attack-btn" id="attack-btn">⚔️</button>
+
+  <canvas id="gameCanvas" width="1200" height="700"></canvas>
+
+  <div id="pauseOverlay" class="pause-overlay">
+    PAUSE
+    <span>Appuyez sur Échap pour reprendre</span>
+  </div>
+
+  <div id="shopOverlay" class="shop-overlay">
+    <div class="shop-panel">
+      <h2>Boutique d'améliorations</h2>
+      <div class="shop-item">
+        <div>
+          <strong>+1 Vie</strong>
+          <div style="font-size:12px; opacity:0.8;">Coût: 20 pièces</div>
+        </div>
+        <button id="buyHealthBtn">Acheter</button>
+      </div>
+      <div class="shop-item">
+        <div>
+          <strong>+1 Vitesse</strong>
+          <div style="font-size:12px; opacity:0.8;">Coût: 25 pièces</div>
+        </div>
+        <button id="buySpeedBtn">Acheter</button>
+      </div>
+      <div class="shop-item">
+        <div>
+          <strong>+5 Puissance</strong>
+          <div style="font-size:12px; opacity:0.8;">Coût: 30 pièces</div>
+        </div>
+        <button id="buyPowerBtn">Acheter</button>
+      </div>
+      <button id="closeShopBtn" class="shop-close">Fermer</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="https://oussidev.vercel.app" target="_blank" rel="noopener noreferrer" title="Retour au portfolio">← Portfolio</a>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas')
+    const ctx = canvas.getContext('2d')
+    const scoreEl = document.getElementById('score')
+    const levelEl = document.getElementById('level')
+    const highScoreEl = document.getElementById('highScore')
+    const coinsEl = document.getElementById('coins')
+    const powerupStatus = document.getElementById('powerupStatus')
+    const pauseOverlay = document.getElementById('pauseOverlay')
+    const shopOverlay = document.getElementById('shopOverlay')
+    const muteBtn = document.getElementById('muteBtn')
+    const shopBtn = document.getElementById('shopBtn')
+    const buyHealthBtn = document.getElementById('buyHealthBtn')
+    const buySpeedBtn = document.getElementById('buySpeedBtn')
+    const buyPowerBtn = document.getElementById('buyPowerBtn')
+    const closeShopBtn = document.getElementById('closeShopBtn')
+
+    // Game state with health system
+    let score = 0
+    let coins = Number(localStorage.getItem('bladeQuestCoins') || '0')
+    let gameOver = false
+    let paused = false
+    let shopOpen = false
+    let level = 1
+    let highScore = Number(localStorage.getItem('bladeQuestHighScore') || '0')
+    let soundOn = localStorage.getItem('bladeQuestSoundOn') !== 'false'
+    let attackPower = 10
+    const player = { 
+      x: 100, y: 350, width: 40, height: 40, 
+      speed: 5, baseSpeed: 5, attacking: false,
+      health: 3, maxHealth: 3, invincible: false, speedBoost: false 
+    }
+    let enemies = []
+    const items = []
+    const powerups = []
+    let particles = []
+    let powerupTimer = null
+
+    // Audio helpers
+    let audioCtx = null
+    function getAudioContext() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+      return audioCtx
+    }
+    function playTone(freq, duration = 0.08, type = 'triangle') {
+      if (!soundOn) return
+      const ctx = getAudioContext()
+      const osc = ctx.createOscillator()
+      const gain = ctx.createGain()
+      osc.type = type
+      osc.frequency.value = freq
+      gain.gain.value = 0.12
+      osc.connect(gain)
+      gain.connect(ctx.destination)
+      osc.start()
+      osc.stop(ctx.currentTime + duration)
+    }
+
+    // Save high score
+    function saveHighScore() {
+      if (score > highScore) {
+        highScore = score
+        localStorage.setItem('bladeQuestHighScore', String(highScore))
+      }
+      updateHUD()
+    }
+
+    function saveCoins() {
+      localStorage.setItem('bladeQuestCoins', String(coins))
+    }
+
+    function updateHUD() {
+      scoreEl.textContent = score.toString()
+      levelEl.textContent = level.toString()
+      highScoreEl.textContent = highScore.toString()
+      coinsEl.textContent = coins.toString()
+    }
+
+    // Show the dashboard briefly (e.g., on taking damage)
+    const statsPanel = document.getElementById('statsPanel')
+    let statsTimeout = null
+    function showStatsPanel(duration = 1500) {
+      if (!statsPanel) return
+      statsPanel.classList.add('visible')
+      if (statsTimeout) clearTimeout(statsTimeout)
+      statsTimeout = setTimeout(() => {
+        statsPanel.classList.remove('visible')
+      }, duration)
+    }
+
+    updateHUD()
+
+    function updateSoundButton() {
+      muteBtn.textContent = soundOn ? '🔊' : '🔇'
+    }
+
+    function toggleShop(open) {
+      shopOpen = open
+      paused = open
+      pauseOverlay.style.display = open ? 'none' : (paused ? 'flex' : 'none')
+      shopOverlay.style.display = open ? 'flex' : 'none'
+    }
+
+    muteBtn.addEventListener('click', () => {
+      soundOn = !soundOn
+      localStorage.setItem('bladeQuestSoundOn', soundOn ? 'true' : 'false')
+      updateSoundButton()
+    })
+
+    shopBtn.addEventListener('click', () => toggleShop(true))
+    closeShopBtn.addEventListener('click', () => toggleShop(false))
+
+    updateSoundButton()
+
+    function buyUpgrade(cost, onSuccess) {
+      if (coins < cost) {
+        playTone(220, 0.15, 'sawtooth')
+        return
+      }
+      coins -= cost
+      saveCoins()
+      updateHUD()
+      onSuccess()
+      playTone(880, 0.12, 'triangle')
+    }
+
+    buyHealthBtn.addEventListener('click', () => {
+      buyUpgrade(20, () => {
+        player.maxHealth += 1
+        player.health = Math.min(player.health + 1, player.maxHealth)
+        updateHearts()
+      })
+    })
+
+    buySpeedBtn.addEventListener('click', () => {
+      buyUpgrade(25, () => {
+        player.baseSpeed += 0.5
+        player.speed = player.baseSpeed
+      })
+    })
+
+    buyPowerBtn.addEventListener('click', () => {
+      buyUpgrade(30, () => {
+        attackPower += 5
+      })
+    })
+
+    // Add particles for attack effect
+    function addParticles(x, y, color) {
+      playTone(520, 0.08, 'triangle')
+      for (let i = 0; i < 5; i++) {
+        particles.push({
+          x: x + Math.random() * 20,
+          y: y + Math.random() * 20,
+          vx: (Math.random() - 0.5) * 4,
+          vy: (Math.random() - 0.5) * 4,
+          life: 30,
+          color: color
+        })
+      }
+    }
+
+    // Keys
+    const keys = {}
+
+    // PC controls
+    window.addEventListener('keydown', (e) => {
+      keys[e.code] = true
+      if (e.code === 'Space') {
+        e.preventDefault()
+        keys['Space'] = true
+      }
+      if (e.code === 'Escape') {
+        if (shopOpen) {
+          toggleShop(false)
+        } else {
+          paused = !paused
+          pauseOverlay.style.display = paused ? 'flex' : 'none'
+        }
+      }
+    })
+    window.addEventListener('keyup', (e) => {
+      keys[e.code] = false
+      if (e.code === 'Space') {
+        keys['Space'] = false
+      }
+    })
+
+    // Mobile controls
+    const upBtn = document.getElementById('up-btn')
+    const downBtn = document.getElementById('down-btn')
+    const leftBtn = document.getElementById('left-btn')
+    const rightBtn = document.getElementById('right-btn')
+    const attackBtn = document.getElementById('attack-btn')
+
+    // Touch events for mobile controls
+    function addTouchEvents(btn, key) {
+      btn.addEventListener('touchstart', (e) => {
+        e.preventDefault()
+        keys[key] = true
+      })
+      btn.addEventListener('touchend', (e) => {
+        e.preventDefault()
+        keys[key] = false
+      })
+      btn.addEventListener('mousedown', (e) => {
+        e.preventDefault()
+        keys[key] = true
+      })
+      btn.addEventListener('mouseup', (e) => {
+        e.preventDefault()
+        keys[key] = false
+      })
+      btn.addEventListener('mouseleave', (e) => {
+        keys[key] = false
+      })
+    }
+
+    addTouchEvents(upBtn, 'ArrowUp')
+    addTouchEvents(downBtn, 'ArrowDown')
+    addTouchEvents(leftBtn, 'ArrowLeft')
+    addTouchEvents(rightBtn, 'ArrowRight')
+    addTouchEvents(attackBtn, 'Space')
+
+    // Make canvas responsive (CSS only, keep internal dimensions)
+    function resizeCanvas() {
+      const container = document.body;
+      const aspectRatio = 1200 / 700;
+      let newWidth = container.clientWidth * 0.8;
+      let newHeight = newWidth / aspectRatio;
+
+      if (window.innerWidth <= 768) {
+        newWidth = container.clientWidth;
+        newHeight = container.clientHeight * 0.7;
+      } else {
+        if (newHeight > container.clientHeight * 0.8) {
+          newHeight = container.clientHeight * 0.8;
+          newWidth = newHeight * aspectRatio;
+        }
+      }
+
+      canvas.style.width = newWidth + 'px';
+      canvas.style.height = newHeight + 'px';
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Update hearts display
+    function updateHearts() {
+      for (let i = 1; i <= 3; i++) {
+        const heart = document.getElementById('heart' + i)
+        if (i <= player.health) {
+          heart.classList.remove('empty')
+        } else {
+          heart.classList.add('empty')
+        }
+      }
+    }
+
+    // Activate power-up effects
+    function activatePowerup(type) {
+      if (type === 'speed') {
+        player.speedBoost = true
+        player.speed = player.baseSpeed * 2
+        powerupStatus.textContent = '⚡ Vitesse x2!'
+        powerupStatus.style.display = 'inline-block'
+        powerupStatus.style.background = 'rgba(234,179,8,0.3)'
+      } else if (type === 'shield') {
+        player.invincible = true
+        powerupStatus.textContent = '🛡️ Bouclier actif!'
+        powerupStatus.style.display = 'inline-block'
+        powerupStatus.style.background = 'rgba(147,51,234,0.3)'
+      }
+      
+      if (powerupTimer) clearTimeout(powerupTimer)
+      powerupTimer = setTimeout(() => {
+        player.speedBoost = false
+        player.speed = player.baseSpeed
+        player.invincible = false
+        powerupStatus.style.display = 'none'
+      }, 5000)
+    }
+
+    // Initialize game
+    function init() {
+      enemies.length = 0
+      items.length = 0
+      powerups.length = 0
+      particles.length = 0
+      score = 0
+      level = 1
+      player.x = 100
+      player.y = 350
+      player.attacking = false
+      player.health = 3
+      player.invincible = false
+      player.speedBoost = false
+      player.speed = player.baseSpeed
+      gameOver = false
+      if (powerupTimer) clearTimeout(powerupTimer)
+      powerupStatus.style.display = 'none'
+      
+      updateHearts()
+      
+      // Spawn enemies based on level
+      if (level % 5 === 0) {
+        // Boss wave
+        enemies.push({
+          x: Math.random() * (canvas.width - 120) + 60,
+          y: Math.random() * (canvas.height - 120) + 60,
+          width: 60, height: 60,
+          speed: 1 + level * 0.1,
+          health: 10 + level * 2,
+          isBoss: true
+        })
+      }
+
+      const enemyCount = 3 + level
+      for (let i = 0; i < enemyCount; i++) {
+        enemies.push({
+          x: Math.random() * (canvas.width - 60) + 30,
+          y: Math.random() * (canvas.height - 60) + 30,
+          width: 40, height: 40,
+          speed: 1 + Math.random() * 2 + level * 0.5,
+          health: 1,
+          isBoss: false
+        })
+      }
+      
+      // Spawn collectible items
+      const itemCount = 5 + level
+      for (let i = 0; i < itemCount; i++) {
+        items.push({
+          x: Math.random() * (canvas.width - 30),
+          y: Math.random() * (canvas.height - 30),
+          width: 20, height: 20,
+          collected: false
+        })
+      }
+
+      // Spawn power-ups (new feature)
+      const powerupCount = 2 + Math.floor(level / 2)
+      for (let i = 0; i < powerupCount; i++) {
+        powerups.push({
+          x: Math.random() * (canvas.width - 30),
+          y: Math.random() * (canvas.height - 30),
+          width: 25, height: 25,
+          type: Math.random() > 0.5 ? 'speed' : 'shield',
+          collected: false,
+          pulse: 0
+        })
+      }
+      
+      updateHUD()
+    }
+
+    // Handle player taking damage
+    function takeDamage() {
+      if (player.invincible) return false
+      
+      player.health--
+      playTone(220, 0.2, 'sawtooth')
+      updateHearts()
+      // Show the HUD briefly after taking damage
+      showStatsPanel(1800)
+      
+      if (player.health <= 0) {
+        gameOver = true
+        saveHighScore()
+        playTone(120, 0.5, 'sine')
+        ctx.fillStyle = 'rgba(0,0,0,0.8)'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.fillStyle = '#EF4444'
+        ctx.font = '48px Arial'
+        ctx.textAlign = 'center'
+        ctx.fillText('Game Over!', canvas.width/2, canvas.height/2)
+        ctx.fillStyle = 'white'
+        ctx.font = '24px Arial'
+        ctx.fillText('Tu as perdu toute ta vie', canvas.width/2, canvas.height/2 + 50)
+        ctx.fillText(`Score final: ${score}`, canvas.width/2, canvas.height/2 + 90)
+        return true
+      }
+      
+      // Brief invincibility after hit
+      player.invincible = true
+      setTimeout(() => player.invincible = false, 1500)
+      return false
+    }
+
+    function update() {
+      if (paused) return requestAnimationFrame(update)
+      if (gameOver) return requestAnimationFrame(update)
+
+      // Player movement
+      if (keys['KeyW'] || keys['ArrowUp']) player.y = Math.max(0, player.y - player.speed)
+      if (keys['KeyS'] || keys['ArrowDown']) player.y = Math.min(canvas.height - player.height, player.y + player.speed)
+      if (keys['KeyA'] || keys['ArrowLeft']) player.x = Math.max(0, player.x - player.speed)
+      if (keys['KeyD'] || keys['ArrowRight']) player.x = Math.min(canvas.width - player.width, player.x + player.speed)
+      if (keys['Space'] && !player.attacking) {
+        player.attacking = true
+        addParticles(player.x + player.width, player.y + 10, '#ffd93d')
+        setTimeout(() => player.attacking = false, 200)
+      }
+
+      // Enemies AI - chase player
+      enemies.forEach(enemy => {
+        const dx = player.x - enemy.x
+        const dy = player.y - enemy.y
+        const dist = Math.sqrt(dx*dx + dy*dy)
+        if (dist > 0) {
+          enemy.x += (dx / dist) * enemy.speed
+          enemy.y += (dy / dist) * enemy.speed
+        }
+      })
+
+      // Attack enemies
+      enemies = enemies.filter(function(enemy) {
+        const dx = player.x - enemy.x
+        const dy = player.y - enemy.y
+        const points = player.speedBoost ? 20 : 10
+        if (player.attacking && Math.abs(dx) < 60 && Math.abs(dy) < 60) {
+          if (enemy.isBoss) {
+            enemy.health -= attackPower
+            playTone(520, 0.1, 'square')
+            addParticles(enemy.x, enemy.y, '#ff6b6b')
+            if (enemy.health <= 0) {
+              score += points * 2
+            coins += 5
+            updateHUD()
+            saveCoins()
+            return false
+          }
+          return true
+        } else {
+          score += points
+          coins += 2
+          updateHUD()
+          saveCoins()
+          return false
+        }
+        }
+        // Collision with damage
+        if (Math.abs(dx) < 40 && Math.abs(dy) < 40) {
+          if (takeDamage()) return false
+        }
+        return true
+      })
+
+      // Collect items
+      items.forEach(item => {
+        if (!item.collected && Math.abs(player.x - item.x) < 30 && Math.abs(player.y - item.y) < 30) {
+          item.collected = true
+          score += 5
+          coins += 1
+          updateHUD()
+          saveCoins()
+          playTone(660, 0.08, 'triangle')
+        }
+      })
+
+      // Collect power-ups
+      powerups.forEach(p => {
+        if (!p.collected && Math.abs(player.x - p.x) < 35 && Math.abs(player.y - p.y) < 35) {
+          p.collected = true
+          activatePowerup(p.type)
+          playTone(880, 0.12, 'square')
+        }
+      })
+
+      // Update particles
+      particles = particles.filter(p => {
+        p.x += p.vx
+        p.y += p.vy
+        p.life--
+        return p.life > 0
+      })
+      const allItemsCollected = items.every(item => item.collected)
+      const allPowerupsCollected = powerups.every(p => p.collected)
+      if (allItemsCollected && allPowerupsCollected && enemies.length === 0) {
+        level++
+        updateHUD()
+        // Respawn for next level
+        setTimeout(() => {
+          // Spawn enemies based on level
+          if (level % 5 === 0) {
+            enemies.push({
+              x: Math.random() * (canvas.width - 120) + 60,
+              y: Math.random() * (canvas.height - 120) + 60,
+              width: 60, height: 60,
+              speed: 1 + level * 0.1,
+              health: 10 + level * 2,
+              isBoss: true
+            })
+          }
+          const enemyCount = 3 + level
+          for (let i = 0; i < enemyCount; i++) {
+            enemies.push({
+              x: Math.random() * (canvas.width - 60) + 30,
+              y: Math.random() * (canvas.height - 60) + 30,
+              width: 40, height: 40,
+              speed: 1 + Math.random() * 2 + level * 0.5,
+              health: 1,
+              isBoss: false
+            })
+          }
+          // Spawn items
+          const itemCount = 5 + level
+          for (let i = 0; i < itemCount; i++) {
+            items.push({
+              x: Math.random() * (canvas.width - 30),
+              y: Math.random() * (canvas.height - 30),
+              width: 20, height: 20,
+              collected: false
+            })
+          }
+          // Spawn power-ups
+          const powerupCount = 2 + Math.floor(level / 2)
+          for (let i = 0; i < powerupCount; i++) {
+            powerups.push({
+              x: Math.random() * (canvas.width - 30),
+              y: Math.random() * (canvas.height - 30),
+              width: 25, height: 25,
+              type: Math.random() > 0.5 ? 'speed' : 'shield',
+              collected: false,
+              pulse: 0
+            })
+          }
+        }, 1000)
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Draw power-ups with pulsing effect
+      powerups.forEach(p => {
+        if (!p.collected) {
+          p.pulse += 0.1
+          const pulseSize = Math.sin(p.pulse) * 5
+          ctx.save()
+          ctx.shadowColor = p.type === 'speed' ? '#ffd93d' : '#a55eea'
+          ctx.shadowBlur = 20 + pulseSize * 2
+          ctx.fillStyle = p.type === 'speed' ? '#ffd93d' : '#a55eea'
+          
+          // Draw different shapes for each power-up type
+          if (p.type === 'speed') {
+            // Lightning bolt with glow
+            ctx.beginPath()
+            ctx.moveTo(p.x + p.width/2, p.y)
+            ctx.lineTo(p.x + p.width, p.y + p.height/2)
+            ctx.lineTo(p.x + p.width/2, p.y + p.height/2)
+            ctx.lineTo(p.x, p.y + p.height)
+            ctx.lineTo(p.x + p.width/2, p.y + p.height/2)
+            ctx.lineTo(p.x, p.y)
+            ctx.fill()
+            ctx.strokeStyle = '#ffd93d'
+            ctx.lineWidth = 2
+            ctx.stroke()
+          } else {
+            // Shield circle with glow
+            ctx.beginPath()
+            ctx.arc(p.x + p.width/2, p.y + p.height/2, p.width/2 + pulseSize, 0, Math.PI * 2)
+            ctx.fill()
+            ctx.strokeStyle = '#a55eea'
+            ctx.lineWidth = 2
+            ctx.stroke()
+          }
+          ctx.restore()
+        }
+      })
+
+      // Draw items (glowing crystals)
+      ctx.fillStyle = '#4ecdc4'
+      items.forEach(item => {
+        if (!item.collected) {
+          ctx.save()
+          ctx.shadowColor = '#4ecdc4'
+          ctx.shadowBlur = 20
+          // Draw crystal shape
+          ctx.beginPath()
+          ctx.moveTo(item.x + item.width/2, item.y)
+          ctx.lineTo(item.x + item.width, item.y + item.height/3)
+          ctx.lineTo(item.x + item.width, item.y + item.height)
+          ctx.lineTo(item.x, item.y + item.height)
+          ctx.lineTo(item.x, item.y + item.height/3)
+          ctx.closePath()
+          ctx.fill()
+          ctx.strokeStyle = '#26d0ce'
+          ctx.lineWidth = 2
+          ctx.stroke()
+          ctx.restore()
+        }
+      })
+
+      // Draw enemies (anime-style monsters)
+      enemies.forEach(enemy => {
+        ctx.save()
+        if (enemy.isBoss) {
+          ctx.shadowColor = '#ffda00'
+          ctx.shadowBlur = 25
+          // Body
+          ctx.fillStyle = '#ff3b3b'
+          ctx.fillRect(enemy.x, enemy.y + 12, enemy.width, enemy.height - 12)
+          // Face
+          ctx.fillStyle = '#ff6b6b'
+          ctx.fillRect(enemy.x + 8, enemy.y + 4, enemy.width - 16, 10)
+          // Eyes
+          ctx.fillStyle = 'white'
+          ctx.fillRect(enemy.x + 12, enemy.y + 6, 8, 8)
+          ctx.fillRect(enemy.x + enemy.width - 20, enemy.y + 6, 8, 8)
+          ctx.fillStyle = '#000'
+          ctx.fillRect(enemy.x + 16, enemy.y + 10, 4, 4)
+          ctx.fillRect(enemy.x + enemy.width - 24, enemy.y + 10, 4, 4)
+          // Boss health bar
+          ctx.fillStyle = 'rgba(0,0,0,0.6)'
+          ctx.fillRect(enemy.x, enemy.y - 12, enemy.width, 6)
+          ctx.fillStyle = '#22c55e'
+          const bossMaxHealth = 10 + level * 2
+          ctx.fillRect(enemy.x, enemy.y - 12, Math.max(0, enemy.health / bossMaxHealth) * enemy.width, 6)
+        } else {
+          ctx.shadowColor = '#ff6b6b'
+          ctx.shadowBlur = 15
+          // Body
+          ctx.fillStyle = '#ff6b6b'
+          ctx.fillRect(enemy.x, enemy.y + 10, enemy.width, enemy.height - 10)
+          // Head
+          ctx.fillStyle = '#ff3838'
+          ctx.fillRect(enemy.x + 5, enemy.y, enemy.width - 10, 15)
+          // Eyes
+          ctx.fillStyle = 'white'
+          ctx.fillRect(enemy.x + 8, enemy.y + 3, 6, 6)
+          ctx.fillRect(enemy.x + enemy.width - 14, enemy.y + 3, 6, 6)
+          ctx.fillStyle = '#ff0000'
+          ctx.fillRect(enemy.x + 10, enemy.y + 5, 2, 2)
+          ctx.fillRect(enemy.x + enemy.width - 12, enemy.y + 5, 2, 2)
+          // Mouth
+          ctx.fillStyle = '#000'
+          ctx.fillRect(enemy.x + 12, enemy.y + 10, 6, 2)
+          // Spikes
+          ctx.fillStyle = '#ff4757'
+          ctx.fillRect(enemy.x - 2, enemy.y + 5, 4, 8)
+          ctx.fillRect(enemy.x + enemy.width - 2, enemy.y + 5, 4, 8)
+        }
+        ctx.restore()
+      })
+
+      // Boss warning
+      if (enemies.some(e => e.isBoss)) {
+        ctx.fillStyle = 'rgba(255,255,255,0.85)'
+        ctx.font = '28px Arial'
+        ctx.textAlign = 'center'
+        ctx.fillText('⚔️ BOSS EN COURS ⚔️', canvas.width / 2, 50)
+      }
+
+      // Draw player (anime-style hero)
+      let playerColor = player.attacking ? '#ffd93d' : '#4ecdc4'
+      if (player.invincible) {
+        playerColor = Math.sin(Date.now() / 100) > 0 ? '#ffd93d' : playerColor
+      }
+      if (player.speedBoost) {
+        ctx.strokeStyle = '#ffd93d'
+        ctx.lineWidth = 3
+        ctx.strokeRect(player.x - 3, player.y - 3, player.width + 6, player.height + 6)
+      }
+      ctx.fillStyle = playerColor
+      ctx.save()
+      ctx.shadowColor = ctx.fillStyle
+      ctx.shadowBlur = 25
+      // Body
+      ctx.fillRect(player.x, player.y + 10, player.width, player.height - 10)
+      // Head
+      ctx.fillStyle = '#ffeaa7'
+      ctx.fillRect(player.x + 5, player.y, player.width - 10, 15)
+      // Eyes
+      ctx.fillStyle = 'white'
+      ctx.fillRect(player.x + 8, player.y + 3, 6, 6)
+      ctx.fillRect(player.x + player.width - 14, player.y + 3, 6, 6)
+      ctx.fillStyle = '#000'
+      ctx.fillRect(player.x + 10, player.y + 5, 2, 2)
+      ctx.fillRect(player.x + player.width - 12, player.y + 5, 2, 2)
+      // Hair
+      ctx.fillStyle = '#2d3436'
+      ctx.fillRect(player.x + 2, player.y - 2, player.width - 4, 5)
+      ctx.restore()
+      
+      // Sword attack
+      if (player.attacking) {
+        ctx.save()
+        ctx.fillStyle = '#ffd93d'
+        ctx.shadowColor = '#ffd93d'
+        ctx.shadowBlur = 15
+        ctx.fillRect(player.x + player.width, player.y + 10, 35, 20)
+        // Sword glow
+        ctx.strokeStyle = '#ffd93d'
+        ctx.lineWidth = 2
+        ctx.strokeRect(player.x + player.width, player.y + 10, 35, 20)
+        ctx.restore()
+      }
+
+      // Draw particles
+      particles.forEach(p => {
+        ctx.save()
+        ctx.globalAlpha = p.life / 30
+        ctx.fillStyle = p.color
+        ctx.shadowColor = p.color
+        ctx.shadowBlur = 10
+        ctx.fillRect(p.x, p.y, 3, 3)
+        ctx.restore()
+      })
+
+      if (gameOver) return
+
+      requestAnimationFrame(() => {
+        update()
+        draw()
+      })
+    }
+
+    function resetGame() {
+      paused = false
+      shopOpen = false
+      pauseOverlay.style.display = 'none'
+      shopOverlay.style.display = 'none'
+      init()
+      updateHUD()
+      draw()
+    }
+
+    init()
+    draw()
+  </script>
+</body>
+</html>
