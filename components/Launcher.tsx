@@ -78,140 +78,87 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               />
               
-              {/* Portal center - Yugo's silhouette */}
+              {/* Portal center - Ouroboros from Fullmetal Alchemist Brotherhood */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div
-                  className="w-40 h-40 md:w-48 md:h-48 rounded-full"
-                  style={{
-                    background: 'radial-gradient(circle at 30% 30%, #f0abfc 0%, #a855f7 30%, #4c1d95 70%, #1e1b4b 100%)',
-                    boxShadow: '0 0 80px rgba(168, 85, 247, 0.9), inset 0 0 40px rgba(59, 130, 246, 0.6)',
-                  }}
-                  animate={{
-                    boxShadow: [
-                      '0 0 80px rgba(168, 85, 247, 0.9), inset 0 0 40px rgba(59, 130, 246, 0.6)',
-                      '0 0 100px rgba(139, 92, 246, 1), inset 0 0 50px rgba(6, 182, 212, 0.8)',
-                      '0 0 80px rgba(168, 85, 247, 0.9), inset 0 0 40px rgba(59, 130, 246, 0.6)',
-                    ],
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                  className="w-40 h-40 md:w-48 md:h-48"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
                 >
-                  {/* Yugo l'Eliatrophe - detailed figure with Eliacub creating portal */}
-                  <div className="w-full h-full flex items-center justify-center relative">
-                    <svg viewBox="0 0 100 100" className="w-full h-full">
-                      <defs>
-                        <linearGradient id="yugoHair" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#ff6b35" />
-                          <stop offset="100%" stopColor="#f7931e" />
-                        </linearGradient>
-                        <linearGradient id="yugoCloak" x1="0%" y1="0%" x2="0%" y2="100%">
-                          <stop offset="0%" stopColor="#4a154b" />
-                          <stop offset="100%" stopColor="#1e1b4b" />
-                        </linearGradient>
-                        <linearGradient id="portalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#a855f7" />
-                          <stop offset="50%" stopColor="#3b82f6" />
-                          <stop offset="100%" stopColor="#06b6d4" />
-                        </linearGradient>
-                      </defs>
+                  <svg viewBox="0 0 100 100" className="w-full h-full">
+                    <defs>
+                      <linearGradient id="ouroborosBody" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#1e3a8a" />
+                        <stop offset="50%" stopColor="#3b82f6" />
+                        <stop offset="100%" stopColor="#06b6d4" />
+                      </linearGradient>
+                      <linearGradient id="ouroborosWings" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#6366f1" />
+                        <stop offset="100%" stopColor="#8b5cf6" />
+                      </linearGradient>
+                      <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stopColor="#fbbf24" />
+                        <stop offset="100%" stopColor="#f59e0b" />
+                      </linearGradient>
+                    </defs>
+                    
+                    {/* Ouroboros - Snake/Dragon eating its tail */}
+                    <g>
+                      {/* Dragon body forming circle */}
+                      <path 
+                        d="M50 10 
+                           C30 10, 15 25, 15 45 
+                           C15 55, 20 62, 25 68 
+                           L20 75 L30 70 L35 65
+                           C30 70, 28 78, 30 85
+                           C35 95, 45 98, 50 98
+                           C55 98, 65 95, 70 85
+                           C72 78, 70 70, 65 65
+                           L70 70 L80 75 L75 68
+                           C80 62, 85 55, 85 45
+                           C85 25, 70 10, 50 10 Z"
+                        fill="url(#ouroborosBody)"
+                        stroke="#1e40af"
+                        strokeWidth="1"
+                      />
                       
-                      {/* Yugo's body - realistic Wakfu style */}
-                      <g>
-                        {/* Hair - Yugo's spiky orange hair */}
-                        <path d="M35 18 L38 8 L42 15 L45 5 L50 14 L55 5 L58 15 L62 8 L65 18 Q68 22 65 26 L62 22 L58 25 L55 20 L50 24 L45 20 L42 25 L38 22 L35 26 Q32 22 35 18" fill="url(#yugoHair)" />
-                        {/* Face */}
-                        <ellipse cx="50" cy="32" rx="14" ry="16" fill="#ffd5b4" />
-                        {/* Eyes - Yugo's blue eyes */}
-                        <ellipse cx="44" cy="30" rx="3" ry="4" fill="#1e40af" />
-                        <ellipse cx="56" cy="30" rx="3" ry="4" fill="#1e40af" />
-                        <circle cx="45" cy="29" r="1.5" fill="white" />
-                        <circle cx="57" cy="29" r="1.5" fill="white" />
-                        {/* Eyebrows */}
-                        <path d="M40 25 Q44 23 48 25" stroke="#c4875a" strokeWidth="1.5" fill="none" />
-                        <path d="M52 25 Q56 23 60 25" stroke="#c4875a" strokeWidth="1.5" fill="none" />
-                        {/* Nose */}
-                        <path d="M50 32 L48 38 L50 39 L52 38" stroke="#e8b89d" strokeWidth="1" fill="none" />
-                        {/* Mouth - determined expression */}
-                        <path d="M46 42 Q50 44 54 42" stroke="#c97c6a" strokeWidth="1.5" fill="none" />
-                        
-                        {/* White adventurer outfit - Yugo's signature outfit */}
-                        <path d="M35 48 L32 75 L40 78 L50 80 L60 78 L68 75 L65 48 Q50 45 35 48" fill="#f8f8f8" stroke="#ddd" strokeWidth="1" />
-                        {/* Red scarf */}
-                        <path d="M38 48 Q50 52 62 48 L65 55 Q50 60 35 55 Z" fill="#dc2626" />
-                        <path d="M62 48 Q70 50 72 55 L68 58 Q65 52 62 50" fill="#dc2626" />
-                        {/* Belt */}
-                        <rect x="38" y="58" width="24" height="4" rx="1" fill="#92400e" />
-                        <rect x="48" y="57" width="4" height="6" rx="1" fill="#fbbf24" />
-                        
-                        {/* Arms */}
-                        <path d="M32 50 L22 60 L18 58 L28 48 Z" fill="#f8f8f8" stroke="#ddd" />
-                        <path d="M68 50 L78 60 L82 58 L72 48 Z" fill="#f8f8f8" stroke="#ddd" />
-                        {/* Hands */}
-                        <circle cx="20" cy="59" r="4" fill="#ffd5b4" />
-                        <circle cx="80" cy="59" r="4" fill="#ffd5b4" />
-                        
-                        {/* Legs */}
-                        <path d="M40 78 L38 95 L44 95 L46 80" fill="#374151" />
-                        <path d="M60 78 L62 95 L56 95 L54 80" fill="#374151" />
-                        {/* Boots */}
-                        <path d="M36 92 L38 98 L46 98 L44 92" fill="#1f2937" />
-                        <path d="M64 92 L62 98 L54 98 L56 92" fill="#1f2937" />
+                      {/* Scales pattern */}
+                      <path d="M25 45 Q30 40, 35 45" stroke="#60a5fa" strokeWidth="0.5" fill="none" opacity="0.5"/>
+                      <path d="M65 45 Q70 40, 75 45" stroke="#60a5fa" strokeWidth="0.5" fill="none" opacity="0.5"/>
+                      
+                      {/* Wings */}
+                      <g fill="url(#ouroborosWings)" opacity="0.9">
+                        {/* Left wing */}
+                        <path d="M15 35 C5 25, 0 15, 5 10 C10 15, 15 20, 20 25 C18 28, 16 32, 15 35" />
+                        <path d="M18 40 C8 35, 2 28, 5 22 C10 28, 15 32, 20 38 C19 39, 18 40, 18 40" />
+                        {/* Right wing */}
+                        <path d="M85 35 C95 25, 100 15, 95 10 C90 15, 85 20, 80 25 C82 28, 84 32, 85 35" />
+                        <path d="M82 40 C92 35, 98 28, 95 22 C90 28, 85 32, 80 38 C81 39, 82 40, 82 40" />
                       </g>
                       
-                      {/* Eliacub (Yugo's creature) - small fox-like creature on shoulder */}
-                      <g transform="translate(60, 20)">
-                        <ellipse cx="0" cy="0" rx="5" ry="4" fill="#8b5cf6" />
-                        <circle cx="-3" cy="-3" r="2" fill="#a78bfa" />
-                        <circle cx="3" cy="-3" r="2" fill="#a78bfa" />
-                        <ellipse cx="0" cy="2" rx="1.5" ry="1" fill="#c4b5fd" />
-                        {/* Tiny ears */}
-                        <path d="M-4 -3 L-5 -6 L-2 -4 Z" fill="#8b5cf6" />
-                        <path d="M4 -3 L5 -6 L2 -4 Z" fill="#8b5cf6" />
-                        {/* Energy connection to Yugo */}
-                        <path d="M-5 2 Q-10 8 -15 12" stroke="url(#portalGradient)" strokeWidth="1.5" fill="none" opacity="0.8" />
-                      </g>
+                      {/* Head (right side - eating tail */}
+                      <ellipse cx="75" cy="68" rx="6" ry="4" fill="#1e3a8a" />
+                      <circle cx="77" cy="67" r="1.5" fill="#fbbf24" />
                       
-                      {/* Portal energy - flowing from hands */}
-                      <motion.g stroke="url(#portalGradient)" strokeWidth="2" fill="none" opacity="0.9">
-                        <motion.path
-                          d="M18 45 Q10 35 15 20"
-                          animate={{ opacity: [0.4, 1, 0.4], d: ["M18 45 Q10 35 15 20", "M16 43 Q5 28 18 12", "M18 45 Q10 35 15 20"] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                        />
-                        <motion.path
-                          d="M82 45 Q90 35 85 20"
-                          animate={{ opacity: [0.4, 1, 0.4], d: ["M82 45 Q90 35 85 20", "M84 43 Q95 28 82 12", "M82 45 Q90 35 85 20"] }}
-                          transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
-                        />
-                        {/* Additional energy beams */}
-                        <motion.path
-                          d="M20 48 Q12 42 18 30"
-                          animate={{ opacity: [0.2, 0.6, 0.2] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
-                        />
-                        <motion.path
-                          d="M80 48 Q88 42 82 30"
-                          animate={{ opacity: [0.2, 0.6, 0.2] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                        />
-                      </motion.g>
+                      {/* Tail (left side - being eaten */}
+                      <path d="M25 68 Q20 70, 22 75 Q25 78, 30 75" fill="#1e3a8a" />
                       
-                      {/* Small portal particles */}
-                      {[...Array(8)].map((_, i) => (
-                        <motion.circle
-                          key={i}
-                          r="1.5"
-                          fill={i % 2 === 0 ? '#a855f7' : '#06b6d4'}
-                          initial={{ cx: 50, cy: 50, opacity: 0 }}
-                          animate={{
-                            cx: [50, 50 + Math.cos(i * Math.PI / 4) * 15, 50],
-                            cy: [50, 50 + Math.sin(i * Math.PI / 4) * 15, 50],
-                            opacity: [0, 0.8, 0],
-                          }}
-                          transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
-                        />
-                      ))}
-                    </svg>
-                  </div>
+                      {/* Teeth/Details */}
+                      <path d="M72 66 L74 64 L76 66" fill="#f59e0b" />
+                      <path d="M78 66 L80 64 L82 65" fill="#f59e0b" />
+                    </g>
+                    
+                    {/* Center sun/circle */}
+                    <circle cx="50" cy="50" r="12" fill="url(#sunGradient)" />
+                    <circle cx="50" cy="50" r="8" fill="none" stroke="#b45309" strokeWidth="1" />
+                    <circle cx="50" cy="50" r="4" fill="#fef3c7" />
+                    
+                    {/* Alchemical symbols around */}
+                    <text x="50" y="20" textAnchor="middle" fill="#60a5fa" fontSize="6" opacity="0.7">☉</text>
+                    <text x="50" y="85" textAnchor="middle" fill="#60a5fa" fontSize="6" opacity="0.7">☾</text>
+                    <text x="20" y="52" textAnchor="middle" fill="#60a5fa" fontSize="6" opacity="0.7">♀</text>
+                    <text x="80" y="52" textAnchor="middle" fill="#60a5fa" fontSize="6" opacity="0.7">♂</text>
+                  </svg>
                 </motion.div>
               </div>
             </motion.div>
@@ -239,10 +186,10 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <span className="block">Entrez dans un monde</span>
-            <span className="block">Enter a world</span>
-            <span className="block">Betreten Sie eine Welt</span>
-            <span className="block">世界に入ってください</span>
+            <span className="block">Entrez dans un monde de code</span>
+            <span className="block">Enter a world of code</span>
+            <span className="block">Betreten Sie eine Welt des Codes</span>
+            <span className="block">コードの世界に入ってください</span>
           </motion.p>
 
           {/* Découvrir Button - Futuristic Tech Style */}
