@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useEffect, useState } from 'react';
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';

@@ -1,4 +1,5 @@
-e  "use client";
+'use client';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, FormEvent, useEffect } from 'react';
 import { slugify } from '../utils/slugify';

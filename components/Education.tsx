@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { motion } from 'framer-motion';
 import { slugify } from '../utils/slugify';
 import MotionSection from './MotionSection';
