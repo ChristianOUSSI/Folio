@@ -234,12 +234,15 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
           </motion.h1>
           
           <motion.p
-            className="text-purple-300 text-lg mb-8"
+            className="text-purple-300 text-lg mb-8 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Entrez dans un monde de代码
+            <span className="block">Entrez dans un monde</span>
+            <span className="block">Enter a world</span>
+            <span className="block">Betreten Sie eine Welt</span>
+            <span className="block">世界に入ってください</span>
           </motion.p>
 
           {/* Découvrir Button - Futuristic Tech Style */}

@@ -166,7 +166,7 @@ export default function Blog() {
             className="mb-10"
           >
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 opacity-30 group-hover:opacity-60 rounded-2xl blur transition duration-300" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 opacity-30 group-hover:opacity-60 rounded-2xl blur transition duration-300 pointer-events-none" />
               <div className="relative bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-purple-100 dark:border-purple-900/50 p-6 md:p-8">
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="md:w-1/3 flex items-center justify-center">
@@ -222,7 +222,7 @@ export default function Blog() {
               whileHover={{ y: -5 }}
               className="group"
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-200 to-blue-200 dark:from-purple-800 dark:to-blue-800 opacity-0 group-hover:opacity-30 rounded-xl blur transition duration-300" />
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-200 to-blue-200 dark:from-purple-800 dark:to-blue-800 opacity-0 group-hover:opacity-30 rounded-xl blur transition duration-300 pointer-events-none" />
               
               <div className="relative bg-white dark:bg-slate-800/90 rounded-xl overflow-hidden border border-gray-100 dark:border-slate-700 group-hover:border-purple-200 dark:group-hover:border-purple-600 transition-all h-full">
                 <div className="p-6">

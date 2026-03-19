@@ -29,8 +29,9 @@ export default function Hero() {
               src="/img.jpg"
               alt="Portrait de Joseph Christian Josué OUSSI"
               fill
-              className="object-cover grayscale-[30%] contrast-110"
+              className="object-contain grayscale-[30%] contrast-110"
               priority
+              sizes="192px"
             />
           </div>
         </motion.div>
