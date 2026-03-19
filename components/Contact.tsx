@@ -204,13 +204,13 @@ export default function Contact() {
                         <h4 className="font-bold text-gray-800 dark:text-gray-100 text-center mb-3">Téléphones</h4>
                         <div className="space-y-2">
                           <a href="tel:+237690000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
-                            +237 690 000 000
+                            +237 691 223 916
                           </a>
                           <a href="tel:+237650000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
-                            +237 650 000 000
+                            +237 670 008 202
                           </a>
                           <a href="tel:+237670000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
-                            +237 670 000 000
+                            +237 659 845 024
                           </a>
                         </div>
                       </motion.div>
@@ -228,8 +228,8 @@ export default function Contact() {
                           <a href="mailto:christian.oussi01@gmail.com" className="block text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 text-center transition-colors text-sm">
                             christian.oussi01@gmail.com
                           </a>
-                          <a href="mailto:josephchristianjosue.oussi@gmail.com" className="block text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 text-center transition-colors text-sm">
-                            josephchristianjosue.oussi@gmail.com
+                          <a href="mailto:wassatherese@mail.com" className="block text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 text-center transition-colors text-sm">
+                            wassatherese@gmail.com
                           </a>
                         </div>
                       </motion.div>

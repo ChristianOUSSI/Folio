@@ -78,7 +78,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               />
               
-              {/* Portal center - Ouroboros from Fullmetal Alchemist Brotherhood */}
+              {/* Portal center - Ouroboros (Serpent eating its tail) */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <motion.div
                   className="w-40 h-40 md:w-48 md:h-48"
@@ -87,94 +87,116 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
                 >
                   <svg viewBox="0 0 100 100" className="w-full h-full">
                     <defs>
-                      <linearGradient id="ouroborosBody" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#1e3a8a" />
-                        <stop offset="30%" stopColor="#3b82f6" />
-                        <stop offset="70%" stopColor="#6366f1" />
-                        <stop offset="100%" stopColor="#1e3a8a" />
+                      <linearGradient id="snakeBody" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#065f46" />
+                        <stop offset="50%" stopColor="#10b981" />
+                        <stop offset="100%" stopColor="#065f46" />
                       </linearGradient>
-                      <linearGradient id="ouroborosWings" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <linearGradient id="snakeBelly" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#a7f3d0" />
+                        <stop offset="100%" stopColor="#6ee7b7" />
+                      </linearGradient>
+                      <linearGradient id="wingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                         <stop offset="0%" stopColor="#6366f1" />
                         <stop offset="100%" stopColor="#8b5cf6" />
                       </linearGradient>
-                      <linearGradient id="sunGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#fbbf24" />
-                        <stop offset="100%" stopColor="#f59e0b" />
-                      </linearGradient>
                     </defs>
                     
-                    {/* Ouroboros - Dragon/Serpent in a circle */}
+                    {/* Ouroboros - Serpent in a circle */}
                     <g>
-                      {/* Main body - circular snake */}
+                      {/* Main body - circular snake with gap between head and tail */}
+                      {/* Top arc (from right to left) */}
                       <path 
-                        d="M50 8 
-                           C25 8, 8 25, 8 50 
-                           C8 75, 25 92, 50 92 
-                           C75 92, 92 75, 92 50 
-                           C92 25, 75 8, 50 8 Z"
+                        d="M80 50 
+                           C80 25, 70 12, 50 12 
+                           C30 12, 20 25, 20 50"
                         fill="none"
-                        stroke="url(#ouroborosBody)"
-                        strokeWidth="6"
+                        stroke="url(#snakeBody)"
+                        strokeWidth="8"
                         strokeLinecap="round"
                       />
                       
-                      {/* Head (top right, facing left to eat tail) */}
-                      <g transform="translate(85, 50)">
-                        {/* Head base */}
-                        <ellipse cx="0" cy="0" rx="8" ry="6" fill="#1e3a8a" />
+                      {/* Bottom arc (from left to right) */}
+                      <path 
+                        d="M20 50 
+                           C20 75, 30 88, 50 88 
+                           C70 88, 80 75, 80 50"
+                        fill="none"
+                        stroke="url(#snakeBody)"
+                        strokeWidth="8"
+                        strokeLinecap="round"
+                      />
+                      
+                      {/* Belly scales - top */}
+                      <path 
+                        d="M75 45 C70 35, 60 25, 50 25 C40 25, 30 35, 25 45"
+                        fill="none"
+                        stroke="url(#snakeBelly)"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        opacity="0.6"
+                      />
+                      
+                      {/* Belly scales - bottom */}
+                      <path 
+                        d="M25 55 C30 65, 40 75, 50 75 C60 75, 70 65, 75 55"
+                        fill="none"
+                        stroke="url(#snakeBelly)"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        opacity="0.6"
+                      />
+                      
+                      {/* Head (on the right, facing left) */}
+                      <g transform="translate(82, 50)">
+                        {/* Head shape */}
+                        <ellipse cx="0" cy="0" rx="7" ry="5" fill="#065f46" />
                         {/* Snout */}
-                        <ellipse cx="-6" cy="0" rx="4" ry="3" fill="#1e3a8a" />
-                        {/* Eye */}
-                        <circle cx="-2" cy="-2" r="2" fill="#fbbf24" />
-                        <circle cx="-2" cy="-2" r="1" fill="#1e1b4b" />
-                        {/* Horns */}
-                        <path d="M-4 -5 L-6 -9 L-2 -6" fill="#6366f1" />
-                        <path d="M2 -5 L4 -9 L0 -6" fill="#6366f1" />
-                        {/* Teeth */}
-                        <path d="M-8 -1 L-10 -2 L-9 0" fill="#fef3c7" />
-                        <path d="M-8 1 L-10 2 L-9 0" fill="#fef3c7" />
-                        {/* Mouth opening to eat tail */}
-                        <ellipse cx="-10" cy="0" rx="3" ry="4" fill="#1e1b4b" />
+                        <ellipse cx="-5" cy="0" rx="3" ry="2.5" fill="#047857" />
+                        {/* Eye - golden/amber */}
+                        <circle cx="-2" cy="-1.5" r="1.8" fill="#fbbf24" />
+                        <circle cx="-2" cy="-1.5" r="0.9" fill="#1e1b4b" />
+                        {/* Nostril */}
+                        <circle cx="-6" cy="-0.5" r="0.4" fill="#1e293b" />
+                        <circle cx="-6" cy="0.5" r="0.4" fill="#1e293b" />
+                        {/* Tongue */}
+                        <path d="M-8 0 L-12 -2 M-8 0 L-12 2" stroke="#dc2626" strokeWidth="1" strokeLinecap="round" />
                       </g>
                       
-                      {/* Tail (being eaten on the left) */}
-                      <g transform="translate(15, 50)">
-                        <path d="M0 -4 Q8 0, 0 4 Q-2 0, 0 -4" fill="#1e3a8a" />
-                        {/* Tail tip going into mouth */}
-                        <path d="M-2 -2 L-8 0 L-2 2" fill="#3b82f6" />
+                      {/* Tail (on the left, being approached by head) */}
+                      <g transform="translate(18, 50)">
+                        {/* Tail tip */}
+                        <path d="M0 -4 Q-4 0, 0 4 Q2 0, 0 -4" fill="#065f46" />
+                        {/* Tail end detail */}
+                        <ellipse cx="-2" cy="0" rx="2" ry="1.5" fill="#047857" />
                       </g>
                       
                       {/* Wings - left side */}
-                      <g fill="url(#ouroborosWings)" opacity="0.85">
-                        <path d="M8 35 Q2 25, 8 15 Q15 20, 18 28 Q14 32, 8 35" />
-                        <path d="M8 45 Q0 40, 2 30 Q10 35, 15 42 Q12 44, 8 45" />
-                        <path d="M8 55 Q2 60, 8 70 Q15 62, 18 55 Q14 53, 8 55" />
+                      <g fill="url(#wingGradient)" opacity="0.85">
+                        <path d="M22 35 Q10 28, 8 18 Q15 22, 20 28 Q16 32, 22 35" />
+                        <path d="M22 42 Q8 38, 6 28 Q14 34, 20 40 Q17 42, 22 42" />
+                        <path d="M22 50 Q6 48, 8 38 Q15 42, 20 48 Q18 50, 22 50" />
+                        <path d="M22 58 Q8 62, 6 72 Q14 64, 20 58 Q17 56, 22 58" />
+                        <path d="M22 65 Q10 72, 8 82 Q15 74, 20 68 Q16 64, 22 65" />
                       </g>
                       
                       {/* Wings - right side */}
-                      <g fill="url(#ouroborosWings)" opacity="0.85">
-                        <path d="M92 35 Q98 25, 92 15 Q85 20, 82 28 Q86 32, 92 35" />
-                        <path d="M92 45 Q100 40, 98 30 Q90 35, 85 42 Q88 44, 92 45" />
-                        <path d="M92 55 Q98 60, 92 70 Q85 62, 82 55 Q86 53, 92 55" />
+                      <g fill="url(#wingGradient)" opacity="0.85">
+                        <path d="M78 35 Q90 28, 92 18 Q85 22, 80 28 Q84 32, 78 35" />
+                        <path d="M78 42 Q92 38, 94 28 Q86 34, 80 40 Q83 42, 78 42" />
+                        <path d="M78 50 Q94 48, 92 38 Q85 42, 80 48 Q82 50, 78 50" />
+                        <path d="M78 58 Q92 62, 94 72 Q86 64, 80 58 Q83 56, 78 58" />
+                        <path d="M78 65 Q90 72, 92 82 Q85 74, 80 68 Q84 64, 78 65" />
                       </g>
                       
-                      {/* Scales/details on body */}
-                      <path d="M15 35 Q20 30, 25 35" stroke="#60a5fa" strokeWidth="1" fill="none" opacity="0.5"/>
-                      <path d="M75 35 Q80 30, 85 35" stroke="#60a5fa" strokeWidth="1" fill="none" opacity="0.5"/>
-                      <path d="M15 65 Q20 70, 25 65" stroke="#60a5fa" strokeWidth="1" fill="none" opacity="0.5"/>
-                      <path d="M75 65 Q80 70, 85 65" stroke="#60a5fa" strokeWidth="1" fill="none" opacity="0.5"/>
+                      {/* Scale details on body */}
+                      <circle cx="50" cy="18" r="1.5" fill="#047857" opacity="0.5" />
+                      <circle cx="35" cy="25" r="1" fill="#047857" opacity="0.4" />
+                      <circle cx="65" cy="25" r="1" fill="#047857" opacity="0.4" />
+                      <circle cx="50" cy="82" r="1.5" fill="#047857" opacity="0.5" />
+                      <circle cx="35" cy="75" r="1" fill="#047857" opacity="0.4" />
+                      <circle cx="65" cy="75" r="1" fill="#047857" opacity="0.4" />
                     </g>
-                    
-                    {/* Center sun/circle */}
-                    <circle cx="50" cy="50" r="14" fill="url(#sunGradient)" />
-                    <circle cx="50" cy="50" r="10" fill="none" stroke="#b45309" strokeWidth="1.5" />
-                    <circle cx="50" cy="50" r="5" fill="#fef3c7" />
-                    
-                    {/* Alchemical symbols */}
-                    <text x="50" y="18" textAnchor="middle" fill="#60a5fa" fontSize="7" fontWeight="bold">☉</text>
-                    <text x="50" y="88" textAnchor="middle" fill="#60a5fa" fontSize="7" fontWeight="bold">☾</text>
-                    <text x="18" y="52" textAnchor="middle" fill="#60a5fa" fontSize="7" fontWeight="bold">♀</text>
-                    <text x="82" y="52" textAnchor="middle" fill="#60a5fa" fontSize="7" fontWeight="bold">♂</text>
                   </svg>
                 </motion.div>
               </div>
