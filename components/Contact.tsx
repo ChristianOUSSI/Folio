@@ -191,27 +191,63 @@ export default function Contact() {
                   </div>
                   
                   {/* Contact Info - Phones, Emails, Location */}
-                  <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                  <div className="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       {/* Phone Numbers */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-gray-700 dark:text-gray-200">📱 Téléphones</h4>
-                        <p className="text-gray-600 dark:text-gray-300">+237 6XX XXX XXX</p>
-                        <p className="text-gray-600 dark:text-gray-300">+237 6XX XXX XXX</p>
-                        <p className="text-gray-600 dark:text-gray-300">+237 6XX XXX XXX</p>
-                      </div>
+                      <motion.div 
+                        whileHover={{ y: -5 }}
+                        className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 p-6 rounded-2xl border border-blue-200 dark:border-blue-800"
+                      >
+                        <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                          <span className="text-2xl">📱</span>
+                        </div>
+                        <h4 className="font-bold text-gray-800 dark:text-gray-100 text-center mb-3">Téléphones</h4>
+                        <div className="space-y-2">
+                          <a href="tel:+237690000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
+                            +237 690 000 000
+                          </a>
+                          <a href="tel:+237650000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
+                            +237 650 000 000
+                          </a>
+                          <a href="tel:+237670000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
+                            +237 670 000 000
+                          </a>
+                        </div>
+                      </motion.div>
+                      
                       {/* Emails */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-gray-700 dark:text-gray-200">✉️ Emails</h4>
-                        <p className="text-gray-600 dark:text-gray-300">christian.oussi01@gmail.com</p>
-                        <p className="text-gray-600 dark:text-gray-300">josephchristianjosue.oussi@gmail.com</p>
-                      </div>
+                      <motion.div 
+                        whileHover={{ y: -5 }}
+                        className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/20 p-6 rounded-2xl border border-purple-200 dark:border-purple-800"
+                      >
+                        <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                          <span className="text-2xl">✉️</span>
+                        </div>
+                        <h4 className="font-bold text-gray-800 dark:text-gray-100 text-center mb-3">Emails</h4>
+                        <div className="space-y-2">
+                          <a href="mailto:christian.oussi01@gmail.com" className="block text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 text-center transition-colors text-sm">
+                            christian.oussi01@gmail.com
+                          </a>
+                          <a href="mailto:josephchristianjosue.oussi@gmail.com" className="block text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 text-center transition-colors text-sm">
+                            josephchristianjosue.oussi@gmail.com
+                          </a>
+                        </div>
+                      </motion.div>
+                      
                       {/* Location */}
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-gray-700 dark:text-gray-200">📍 Localisation</h4>
-                        <p className="text-gray-600 dark:text-gray-300">Bonaberi, Douala</p>
-                        <p className="text-gray-600 dark:text-gray-300">Cameroun</p>
-                      </div>
+                      <motion.div 
+                        whileHover={{ y: -5 }}
+                        className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/20 p-6 rounded-2xl border border-green-200 dark:border-green-800"
+                      >
+                        <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                          <span className="text-2xl">📍</span>
+                        </div>
+                        <h4 className="font-bold text-gray-800 dark:text-gray-100 text-center mb-3">Localisation</h4>
+                        <div className="text-center">
+                          <p className="text-green-700 dark:text-green-300 font-medium">Bonaberi, Douala</p>
+                          <p className="text-green-700 dark:text-green-300 font-medium">Cameroun</p>
+                        </div>
+                      </motion.div>
                     </div>
                   </div>
                 </motion.form>
