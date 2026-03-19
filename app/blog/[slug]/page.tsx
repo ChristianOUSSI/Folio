@@ -3,6 +3,9 @@ import { motion } from 'framer-motion';
 import { getArticle, getAllArticles } from '@/lib/articles';
 import Link from 'next/link';
 
+// Force static generation at build time
+export const dynamic = 'force-static';
+
 export async function generateStaticParams() {
   const articles = getAllArticles();
   return articles.map((article) => ({
@@ -13,10 +16,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ 
   params 
 }: { 
-  params: Promise<{ slug: string }> 
+  params: { slug: string } 
 }) {
-  const { slug } = await params;
-  const article = getArticle(slug);
+  const article = getArticle(params.slug);
 
   if (!article) {
     return {
@@ -33,10 +35,9 @@ export async function generateMetadata({
 export default async function BlogPost({ 
   params 
 }: { 
-  params: Promise<{ slug: string }> 
+  params: { slug: string } 
 }) {
-  const { slug } = await params;
-  const article = getArticle(slug);
+  const article = getArticle(params.slug);
 
   if (!article) {
     notFound();
