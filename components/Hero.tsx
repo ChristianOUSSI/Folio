@@ -17,18 +17,19 @@ export default function Hero() {
       </div>
 
       <div className="z-10 max-w-2xl">
-        {/* Profile image with soft border */}
+        {/* Profile image - Yugo Eliacman style silhouette */}
         <motion.div 
-          className="mx-auto w-48 h-48 relative mb-8 rounded-full p-1 bg-gradient-to-br from-blue-200 to-blue-100 dark:from-blue-800 dark:to-blue-900"
-          animate={{ boxShadow: ['0 0 30px rgba(37,99,235,0.2)', '0 0 50px rgba(37,99,235,0.3)', '0 0 30px rgba(37,99,235,0.2)'] }}
+          className="mx-auto w-48 h-48 relative mb-8 rounded-full p-1 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 dark:from-amber-600 dark:via-orange-600 dark:to-red-700"
+          animate={{ boxShadow: ['0 0 30px rgba(245,158,11,0.3)', '0 0 50px rgba(249,115,22,0.4)', '0 0 30px rgba(245,158,11,0.3)'] }}
           transition={{ duration: 4, repeat: Infinity }}
         >
-          <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-blue-900 shadow-lg">
+          <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-orange-900 shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 z-10" />
             <Image
               src="/img.jpg"
               alt="Portrait de Joseph Christian Josué OUSSI"
               fill
-              className="object-cover"
+              className="object-cover grayscale-[30%] contrast-110"
               priority
             />
           </div>
@@ -53,9 +54,14 @@ export default function Hero() {
           transition={{ delay: 0.3 }}
           className="mb-8"
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-blue-700 dark:text-blue-300 mb-3">
-            Artisan du Code & des Mondes Virtuels
+          <h2 className="text-2xl md:text-3xl font-bold text-blue-700 dark:text-blue-300 mb-4">
+            Bienvenue dans mon monde
           </h2>
+          <div className="flex flex-col gap-1 mb-4">
+            <p className="text-sm text-gray-600 dark:text-gray-300">Welcome to my world</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">Willkommen in meiner Welt</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">私の世界へようこそ</p>
+          </div>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-4">
             De l'exploration de mondes virtuels à la création d'apps réelles je transforme les idées en code, une ligne à la fois.
           </p>
@@ -95,20 +101,6 @@ export default function Hero() {
           </motion.a>
         </motion.div>
       </div>
-
-      {/* Bottom scroll indicator */}
-      <motion.div 
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-blue-400 dark:text-blue-500 text-sm"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <span className="flex flex-col items-center gap-2">
-          <span>Découvrir</span>
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </span>
-      </motion.div>
     </section>
   );
 }

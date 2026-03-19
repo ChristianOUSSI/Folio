@@ -6,12 +6,8 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Check if user has already clicked the button in this session
-    const hasVisited = sessionStorage.getItem('portfolio_launcher_visited');
-    if (hasVisited) {
-      setIsVisible(false);
-      onComplete?.();
-    }
+    // Always show launcher on every page load - no session storage check
+    // Launcher shows every time the user visits
   }, [onComplete]);
 
   const handleDiscover = () => {
@@ -118,29 +114,47 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
                         </linearGradient>
                       </defs>
                       
-                      {/* Yugo's body - wearing his characteristic cloak */}
+                      {/* Yugo's body - realistic Wakfu style */}
                       <g>
-                        {/* Cloak */}
-                        <path d="M35 45 Q30 55 32 75 Q35 85 50 88 Q65 85 68 75 Q70 55 65 45 Z" fill="url(#yugoCloak)" />
-                        {/* Head */}
-                        <circle cx="50" cy="28" r="10" fill="#ffd5b4" />
-                        {/* Hair - Yugo's characteristic spiky orange hair */}
-                        <path d="M40 22 Q38 15 42 12 Q45 8 50 10 Q55 8 58 12 Q62 15 60 22 Q62 18 60 15 Q55 12 50 14 Q45 12 40 15 Q38 18 40 22" fill="url(#yugoHair)" />
-                        {/* Eyes */}
-                        <ellipse cx="46" cy="27" rx="2" ry="2.5" fill="#2d1b4e" />
-                        <ellipse cx="54" cy="27" rx="2" ry="2.5" fill="#2d1b4e" />
-                        {/* Determined expression */}
-                        <path d="M47 32 Q50 34 53 32" stroke="#c4a77d" strokeWidth="1" fill="none" />
+                        {/* Hair - Yugo's spiky orange hair */}
+                        <path d="M35 18 L38 8 L42 15 L45 5 L50 14 L55 5 L58 15 L62 8 L65 18 Q68 22 65 26 L62 22 L58 25 L55 20 L50 24 L45 20 L42 25 L38 22 L35 26 Q32 22 35 18" fill="url(#yugoHair)" />
+                        {/* Face */}
+                        <ellipse cx="50" cy="32" rx="14" ry="16" fill="#ffd5b4" />
+                        {/* Eyes - Yugo's blue eyes */}
+                        <ellipse cx="44" cy="30" rx="3" ry="4" fill="#1e40af" />
+                        <ellipse cx="56" cy="30" rx="3" ry="4" fill="#1e40af" />
+                        <circle cx="45" cy="29" r="1.5" fill="white" />
+                        <circle cx="57" cy="29" r="1.5" fill="white" />
+                        {/* Eyebrows */}
+                        <path d="M40 25 Q44 23 48 25" stroke="#c4875a" strokeWidth="1.5" fill="none" />
+                        <path d="M52 25 Q56 23 60 25" stroke="#c4875a" strokeWidth="1.5" fill="none" />
+                        {/* Nose */}
+                        <path d="M50 32 L48 38 L50 39 L52 38" stroke="#e8b89d" strokeWidth="1" fill="none" />
+                        {/* Mouth - determined expression */}
+                        <path d="M46 42 Q50 44 54 42" stroke="#c97c6a" strokeWidth="1.5" fill="none" />
                         
-                        {/* Arms raised creating portal - with energy flowing */}
-                        {/* Left arm */}
-                        <path d="M38 38 Q28 32 20 38 Q15 42 18 48 Q22 45 30 42 Q35 40 38 42" fill="#ffd5b4" />
-                        {/* Right arm */}
-                        <path d="M62 38 Q72 32 80 38 Q85 42 82 48 Q78 45 70 42 Q65 40 62 42" fill="#ffd5b4" />
+                        {/* White adventurer outfit - Yugo's signature outfit */}
+                        <path d="M35 48 L32 75 L40 78 L50 80 L60 78 L68 75 L65 48 Q50 45 35 48" fill="#f8f8f8" stroke="#ddd" strokeWidth="1" />
+                        {/* Red scarf */}
+                        <path d="M38 48 Q50 52 62 48 L65 55 Q50 60 35 55 Z" fill="#dc2626" />
+                        <path d="M62 48 Q70 50 72 55 L68 58 Q65 52 62 50" fill="#dc2626" />
+                        {/* Belt */}
+                        <rect x="38" y="58" width="24" height="4" rx="1" fill="#92400e" />
+                        <rect x="48" y="57" width="4" height="6" rx="1" fill="#fbbf24" />
+                        
+                        {/* Arms */}
+                        <path d="M32 50 L22 60 L18 58 L28 48 Z" fill="#f8f8f8" stroke="#ddd" />
+                        <path d="M68 50 L78 60 L82 58 L72 48 Z" fill="#f8f8f8" stroke="#ddd" />
+                        {/* Hands */}
+                        <circle cx="20" cy="59" r="4" fill="#ffd5b4" />
+                        <circle cx="80" cy="59" r="4" fill="#ffd5b4" />
                         
                         {/* Legs */}
-                        <ellipse cx="44" cy="78" rx="4" ry="8" fill="#3d2a5c" />
-                        <ellipse cx="56" cy="78" rx="4" ry="8" fill="#3d2a5c" />
+                        <path d="M40 78 L38 95 L44 95 L46 80" fill="#374151" />
+                        <path d="M60 78 L62 95 L56 95 L54 80" fill="#374151" />
+                        {/* Boots */}
+                        <path d="M36 92 L38 98 L46 98 L44 92" fill="#1f2937" />
+                        <path d="M64 92 L62 98 L54 98 L56 92" fill="#1f2937" />
                       </g>
                       
                       {/* Eliacub (Yugo's creature) - small fox-like creature on shoulder */}
@@ -228,13 +242,14 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
             Entrez dans un monde de代码
           </motion.p>
 
-          {/* Découvrir Button */}
+          {/* Découvrir Button - Futuristic Tech Style */}
           <motion.button
             onClick={handleDiscover}
             className="px-10 py-4 text-xl font-bold rounded-full relative overflow-hidden group"
             style={{
-              background: 'linear-gradient(135deg, #7c3aed 0%, #2563eb 100%)',
-              boxShadow: '0 0 30px rgba(124, 58, 237, 0.5), 0 0 60px rgba(37, 99, 235, 0.3)',
+              background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%)',
+              border: '2px solid #06b6d4',
+              boxShadow: '0 0 30px rgba(6, 182, 212, 0.4), inset 0 0 20px rgba(6, 182, 212, 0.1)',
             }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -242,31 +257,39 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="relative z-10 text-white flex items-center gap-2">
+            <span className="relative z-10 text-white flex items-center gap-3">
+              {/* Tech icons */}
               <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                className="text-cyan-400"
               >
-                ✨
+                ⌬
               </motion.span>
-              <span>Découvrir</span>
+              <span className="tracking-widest">DÉCOUVRIR</span>
               <motion.span
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="text-purple-400"
               >
-                🌌
+                ⚡
               </motion.span>
             </span>
-            {/* Button glow effect */}
+            {/* Scanning line effect */}
             <motion.div
-              className="absolute inset-0 rounded-full"
-              style={{
-                background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(59, 130, 246, 0.5))',
-                filter: 'blur(10px)',
-              }}
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
+              className="absolute inset-0 overflow-hidden rounded-full"
+            >
+              <motion.div
+                className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+                animate={{ y: [0, 100, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </motion.div>
+            {/* Corner accents */}
+            <div className="absolute top-1 left-2 w-2 h-2 border-t-2 border-l-2 border-cyan-400 rounded-tl" />
+            <div className="absolute top-1 right-2 w-2 h-2 border-t-2 border-r-2 border-cyan-400 rounded-tr" />
+            <div className="absolute bottom-1 left-2 w-2 h-2 border-b-2 border-l-2 border-cyan-400 rounded-bl" />
+            <div className="absolute bottom-1 right-2 w-2 h-2 border-b-2 border-r-2 border-cyan-400 rounded-br" />
           </motion.button>
 
           {/* Floating particles */}

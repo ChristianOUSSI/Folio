@@ -7,8 +7,23 @@ import MotionSection from './MotionSection';
 export default function About() {
   return (
     <MotionSection id={slugify('À propos')} className="py-20 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/30 dark:to-slate-900 relative overflow-hidden">
-      {/* Soft background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Tech background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Code brackets */}
+        <span className="absolute top-20 left-10 text-4xl text-blue-200/20 dark:text-blue-700/20 font-mono">{'{ }'}</span>
+        <span className="absolute bottom-32 right-16 text-3xl text-blue-300/15 dark:text-blue-600/15 font-mono">{'</>'}</span>
+        <span className="absolute top-1/3 right-8 text-2xl text-purple-300/20 dark:text-purple-600/20 font-mono">[ ]</span>
+        {/* Binary */}
+        <span className="absolute top-40 right-1/4 text-xs text-blue-400/20 dark:text-blue-500/20 font-mono">01001001</span>
+        <span className="absolute bottom-20 left-1/3 text-xs text-blue-300/15 dark:text-blue-500/15 font-mono">10110</span>
+        {/* Small tech dots */}
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400/30 rounded-full" />
+        <div className="absolute bottom-1/3 right-1/5 w-2 h-2 bg-blue-300/20 rounded-full" />
+        <div className="absolute top-1/2 left-10 w-1 h-1 bg-purple-400/25 rounded-full" />
+        {/* Circuit lines */}
+        <div className="absolute top-10 left-1/3 w-px h-16 bg-gradient-to-b from-blue-400/20 to-transparent" />
+        <div className="absolute bottom-32 right-1/4 w-px h-12 bg-gradient-to-b from-purple-400/15 to-transparent" />
+        {/* Soft blur orbs */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50/50 dark:bg-blue-800/20 rounded-full blur-3xl" />
       </div>

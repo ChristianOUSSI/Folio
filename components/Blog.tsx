@@ -9,66 +9,78 @@ import MotionSection from './MotionSection';
 const articles = [
   {
     id: 1,
-    slug: 'mon-parcours-gamer-dev',
-    title: 'Mon parcours : De gamer à développeur',
-    excerpt: 'Comment mes sessions de jeu nocturnes m\'ont conduit vers le développement web et la passion du code.',
-    date: '2024-03-15',
-    readTime: '5 min',
-    category: 'Parcours',
-    icon: '🎮',
+    slug: 'arretz-dactualiser-pages-vide',
+    title: 'Arrêtez d\'actualiser vos pages dans le vide',
+    excerpt: 'Explications sur ce que signifie chaque code d\'erreur HTTP et comment les résoudre efficacement.',
+    date: '2026-02-15',
+    readTime: '6 min',
+    category: 'Tech',
+    icon: '🔧',
     featured: true
   },
   {
     id: 2,
-    slug: 'pourquoi-nextjs',
-    title: 'Pourquoi j\'ai choisi Next.js pour mes projets',
-    excerpt: 'Un retour d\'expérience sur l\'utilisation de Next.js et ses avantages pour le SEO et les performances.',
-    date: '2024-02-28',
-    readTime: '8 min',
-    category: 'Tech',
-    icon: '⚡'
+    slug: 'cables-ethernet-2026',
+    title: 'Câbles Ethernet : ce qu\'il faut vraiment retenir en 2026',
+    excerpt: 'Explication sur les 3 méthodes de création de câble Ethernet et leurs utilités dans les réseaux modernes.',
+    date: '2026-02-20',
+    readTime: '5 min',
+    category: 'Réseau',
+    icon: '🔌'
   },
   {
     id: 3,
-    slug: 'creer-jeu-2d-canvas',
-    title: 'Créer un jeu 2D avec HTML5 Canvas',
-    excerpt: 'Tutoriel sur la création d\'un prototype de jeu 2D utilisant uniquement HTML, CSS et JavaScript.',
-    date: '2024-02-10',
-    readTime: '12 min',
-    category: 'Tuto',
-    icon: '🎮'
+    slug: 'anatomie-site-mobile-macro',
+    title: 'L\'Anatomie d\'un Site mobile Macro (4G/5G)',
+    excerpt: 'De quoi est constitué un pylône télécom et quel est son système. Comprendre les infrastructures mobiles.',
+    date: '2026-03-01',
+    readTime: '7 min',
+    category: 'Télécom',
+    icon: '📡'
   },
   {
     id: 4,
-    slug: 'inspirations-mangas-jeux-code',
-    title: 'Mes inspirations : Mangas, jeux etコード',
-    excerpt: 'Comment les œuvres qui m\'ont marqué influencent ma façon de coder et de créer des projets.',
-    date: '2024-01-20',
-    readTime: '6 min',
-    category: 'Lifestyle',
-    icon: '📚'
+    slug: 'meilleurs-guides-ia-gratuits-2026',
+    title: 'Liste des meilleurs guides IA gratuits en 2026',
+    excerpt: 'Post qui centralise les meilleures ressources gratuites et accessibles sur les IA pour apprendre et se former.',
+    date: '2026-03-07',
+    readTime: '4 min',
+    category: 'IA',
+    icon: '🤖'
   },
   {
     id: 5,
-    slug: 'firebase-react-combo',
-    title: 'Firebase + React : Le combo parfait ?',
-    excerpt: 'Analyse de l\'utilisation de Firebase avec React pour créer des applications mobiles performantes.',
-    date: '2024-01-05',
-    readTime: '10 min',
-    category: 'Tech',
-    icon: '🔥'
+    slug: 'fullstack-pas-juste-coder',
+    title: 'Le Fullstack ce n\'est pas juste coder',
+    excerpt: 'Explication sur ce qu\'est vraiment le fullstack et ce que cela implique en termes de compétences et de responsabilités.',
+    date: '2026-03-10',
+    readTime: '5 min',
+    category: 'Career',
+    icon: '💻'
   },
   {
     id: 6,
-    slug: 'reve-game-developer',
-    title: 'Mon rêve : Devenir Game Developer',
-    excerpt: 'Réflexions sur mon objectif de devenir développeur de jeux vidéo et les étapes pour y arriver.',
-    date: '2023-12-15',
-    readTime: '7 min',
-    category: 'Parcours',
-    icon: '⭐'
+    slug: 'relation-senior-junior',
+    title: 'Relation between Senior and Junior',
+    excerpt: 'Vidéo repost : Comment chacun gère les problèmes qu\'il rencontre. L\'importance de la collaboration intergénérationnelle.',
+    date: '2026-03-12',
+    readTime: '3 min',
+    category: 'Career',
+    icon: '👥'
+  },
+  {
+    id: 7,
+    slug: 'frontender-greeting-frameworks',
+    title: 'Frontender greeting different frameworks be like',
+    excerpt: 'Vidéo humoristique repost : Les préférences des devs frontend face aux différents frameworks. Un instant comédie !',
+    date: '2026-03-14',
+    readTime: '2 min',
+    category: 'Fun',
+    icon: '😄'
   }
 ];
+
+const LINKEDIN_URL = 'https://www.linkedin.com/in/joseph-christian-josu%C3%A9-oussi-75864630b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app';
 
 export default function Blog() {
   const featuredArticle = articles.find(a => a.featured);
@@ -82,18 +94,42 @@ export default function Blog() {
     
     setNewsletterStatus('loading');
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setNewsletterStatus('success');
-    setNewsletterEmail('');
-    setTimeout(() => setNewsletterStatus('idle'), 3000);
+    // Send email to wassatherese@gmail.com with the subscriber name/LinkedIn
+    try {
+      const subject = encodeURIComponent('Nouvel abonné au blog');
+      const body = encodeURIComponent(`Nom/Profil LinkedIn soumis : ${newsletterEmail}\n\nJe souhaite être informé des nouvelles publications.`);
+      window.location.href = `mailto:wassatherese@gmail.com?subject=${subject}&body=${body}`;
+      
+      setNewsletterStatus('success');
+      setNewsletterEmail('');
+      setTimeout(() => setNewsletterStatus('idle'), 4000);
+    } catch (err) {
+      setNewsletterStatus('error');
+    }
   };
 
   return (
     <MotionSection id={slugify('Blog')} className="py-20 px-4 bg-gradient-to-b from-white via-purple-50/30 to-white dark:from-slate-900 dark:via-purple-950/30 dark:to-slate-900 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 pointer-events-none">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Code symbols */}
+        <span className="absolute top-20 right-16 text-3xl text-purple-200/20 dark:text-purple-700/20 font-mono">{'</>'}</span>
+        <span className="absolute bottom-32 left-10 text-4xl text-blue-300/15 dark:text-blue-600/15 font-mono">[ ]</span>
+        <span className="absolute top-1/2 right-8 text-2xl text-purple-300/20 dark:text-purple-600/20 font-mono">{'{ }'}</span>
+        <span className="absolute bottom-20 right-1/3 text-2xl text-blue-200/15 dark:text-blue-500/15 font-mono">/* */</span>
+        {/* Binary */}
+        <span className="absolute top-1/3 left-1/4 text-xs text-purple-400/20 dark:text-purple-500/20 font-mono">01101001</span>
+        <span className="absolute bottom-1/3 right-20 text-xs text-blue-300/15 dark:text-blue-500/15 font-mono">101101</span>
+        <span className="absolute top-1/2 left-10 text-xs text-purple-300/15 dark:text-purple-500/15 font-mono">001110</span>
+        {/* Tech dots */}
+        <div className="absolute top-1/4 right-1/4 w-2 h-2 bg-purple-400/25 rounded-full" />
+        <div className="absolute bottom-1/4 left-20 w-1 h-1 bg-blue-400/20 rounded-full" />
+        <div className="absolute top-2/3 left-1/3 w-1 h-1 bg-purple-300/20 rounded-full" />
+        <div className="absolute bottom-40 right-1/4 w-2 h-2 bg-blue-300/15 rounded-full" />
+        {/* Circuit lines */}
+        <div className="absolute top-32 left-10 w-px h-16 bg-gradient-to-b from-purple-400/15 to-transparent" />
+        <div className="absolute bottom-1/3 right-1/3 w-px h-20 bg-gradient-to-b from-blue-400/10 to-transparent" />
+        {/* Blur orbs */}
         <div className="absolute top-20 left-10 w-64 h-64 bg-purple-200/20 dark:bg-purple-800/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-64 h-64 bg-blue-200/20 dark:bg-blue-800/10 rounded-full blur-3xl" />
       </div>
@@ -158,12 +194,14 @@ export default function Blog() {
                     <p className="text-gray-600 dark:text-gray-300 mb-4">
                       {featuredArticle.excerpt}
                     </p>
-                    <Link
-                      href={`/blog/${featuredArticle.slug}`}
+                    <a
+                      href={LINKEDIN_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-block px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all"
                     >
                       Lire l'article →
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -215,13 +253,15 @@ export default function Blog() {
                     <span className="text-xs text-gray-500 dark:text-gray-400">
                       {article.date}
                     </span>
-                    <Link
-                      href={`/blog/${article.slug}`}
+                    <a
+                      href={LINKEDIN_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="text-sm text-purple-600 dark:text-purple-400 font-medium flex items-center gap-1 hover:translate-x-1 transition-transform"
                     >
                       Lire 
                       <span>→</span>
-                    </Link>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -241,14 +281,14 @@ export default function Blog() {
               📬 Restez informé !
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
-              Abonnez-vous pour recevoir mes derniers articles et tutoriels.
+              Entrez votre nom complet ou votre profil LinkedIn pour recevoir mes dernières publications.
             </p>
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
               <input
-                type="email"
+                type="text"
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="Votre email..."
+                placeholder="Nom complet ou LinkedIn URL..."
                 disabled={newsletterStatus === 'loading'}
                 className="flex-1 px-4 py-2 rounded-lg bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 focus:border-purple-500 dark:focus:border-purple-400 focus:outline-none focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-800 text-sm"
               />
@@ -263,7 +303,7 @@ export default function Blog() {
               </motion.button>
             </form>
             {newsletterStatus === 'success' && (
-              <p className="mt-2 text-green-600 dark:text-green-400 text-sm">Merci pour votre inscription !</p>
+              <p className="mt-2 text-green-600 dark:text-green-400 text-sm">Merci ! Je vous contacte bientôt.</p>
             )}
           </div>
         </motion.div>

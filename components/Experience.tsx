@@ -28,8 +28,23 @@ const experiences = [
 export default function Experience() {
   return (
     <MotionSection id={slugify('Expériences')} className="py-20 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/30 dark:to-slate-900 relative overflow-hidden">
-      {/* Soft background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Tech background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Code symbols */}
+        <span className="absolute top-20 right-20 text-3xl text-blue-200/20 dark:text-blue-700/20 font-mono">[ ]</span>
+        <span className="absolute bottom-40 left-16 text-4xl text-blue-300/15 dark:text-blue-600/15 font-mono">{'</>'}</span>
+        <span className="absolute top-1/2 left-8 text-2xl text-purple-300/20 dark:text-purple-600/20 font-mono">{'{ }'}</span>
+        {/* Binary */}
+        <span className="absolute top-1/3 right-1/4 text-xs text-blue-400/20 dark:text-blue-500/20 font-mono">11010010</span>
+        <span className="absolute bottom-1/4 left-1/4 text-xs text-blue-300/15 dark:text-blue-500/15 font-mono">001011</span>
+        {/* Tech dots */}
+        <div className="absolute top-1/4 left-1/3 w-2 h-2 bg-blue-400/25 rounded-full" />
+        <div className="absolute bottom-1/3 right-10 w-1 h-1 bg-blue-300/20 rounded-full" />
+        <div className="absolute top-2/3 left-20 w-1 h-1 bg-purple-400/20 rounded-full" />
+        {/* Circuit lines */}
+        <div className="absolute top-20 right-1/3 w-px h-20 bg-gradient-to-b from-blue-400/15 to-transparent" />
+        <div className="absolute bottom-40 left-1/2 w-px h-16 bg-gradient-to-b from-purple-400/10 to-transparent" />
+        {/* Central blur */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl" />
       </div>
 

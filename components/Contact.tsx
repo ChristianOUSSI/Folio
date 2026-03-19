@@ -1,4 +1,4 @@
-"use client";
+e  "use client";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, FormEvent, useEffect } from 'react';
 import { slugify } from '../utils/slugify';
@@ -30,43 +30,44 @@ export default function Contact() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message'),
-      csrfToken: csrfToken,
-    };
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.error || 'Erreur lors de l\'envoi du message');
-      }
-
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 4000);
-      // Reset form
-      (e.target as HTMLFormElement).reset();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Une erreur est survenue');
-    } finally {
-      setIsLoading(false);
-    }
+    // Open email client with pre-filled content
+    const subject = encodeURIComponent(`Message de ${name} - Portfolio`);
+    const body = encodeURIComponent(`Nom: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.location.href = `mailto:christian.oussi01@gmail.com?subject=${subject}&body=${body}`;
+    
+    setSubmitted(true);
+    setIsLoading(false);
+    setTimeout(() => setSubmitted(false), 4000);
+    // Reset form
+    (e.target as HTMLFormElement).reset();
   };
 
   return (
     <MotionSection id={slugify('Contact')} className="py-20 px-4 relative bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/30 dark:to-slate-900 overflow-hidden">
-      {/* Soft background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Tech background elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Code symbols */}
+        <span className="absolute top-20 left-16 text-4xl text-blue-200/20 dark:text-blue-700/20 font-mono">{'{ }'}</span>
+        <span className="absolute bottom-40 right-10 text-3xl text-purple-300/15 dark:text-purple-600/15 font-mono">[ ]</span>
+        <span className="absolute top-1/2 right-16 text-2xl text-blue-300/20 dark:text-blue-600/20 font-mono">{'</>'}</span>
+        <span className="absolute bottom-20 left-1/4 text-2xl text-purple-200/15 dark:text-purple-500/15 font-mono">/* */</span>
+        {/* Binary */}
+        <span className="absolute top-1/3 left-10 text-xs text-blue-400/20 dark:text-blue-500/20 font-mono">01110110</span>
+        <span className="absolute bottom-1/3 right-1/4 text-xs text-purple-300/15 dark:text-purple-500/15 font-mono">100101</span>
+        <span className="absolute top-1/2 left-20 text-xs text-blue-300/15 dark:text-blue-500/15 font-mono">010011</span>
+        {/* Tech dots */}
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-blue-400/25 rounded-full" />
+        <div className="absolute bottom-1/4 right-16 w-1 h-1 bg-purple-400/20 rounded-full" />
+        <div className="absolute top-2/3 left-1/3 w-1 h-1 bg-blue-300/20 rounded-full" />
+        <div className="absolute bottom-1/3 left-16 w-2 h-2 bg-purple-300/15 rounded-full" />
+        {/* Circuit lines */}
+        <div className="absolute top-32 right-1/3 w-px h-16 bg-gradient-to-b from-blue-400/15 to-transparent" />
+        <div className="absolute bottom-40 left-1/2 w-px h-20 bg-gradient-to-b from-purple-400/10 to-transparent" />
+        {/* Blur orbs */}
         <div className="absolute -top-1/2 -left-1/4 w-96 h-96 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-1/2 -right-1/4 w-96 h-96 bg-blue-50/50 dark:bg-blue-800/20 rounded-full blur-3xl" />
       </div>
