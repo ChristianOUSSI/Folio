@@ -55,7 +55,7 @@ export default function Contact() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <span className="absolute top-20 right-10 text-4xl text-blue-200/20 dark:text-blue-700/20 font-mono">{'</>'}</span>
         <span className="absolute bottom-32 left-16 text-3xl text-purple-300/15 dark:text-purple-600/15 font-mono">[ ]</span>
-        <span classNameName="absolute top-1/2 left-8 text-2xl text-purple-300/20 dark:text-purple-600/20 font-mono">{'{ }'}</span>
+        <span className="absolute top-1/2 left-8 text-2xl text-purple-300/20 dark:text-purple-600/20 font-mono">{'{ }'}</span>
         
         {/* Binary numbers */}
         <span className="absolute top-1/4 right-1/4 text-xs text-blue-400/20 dark:text-blue-500/20 font-mono">01001001</span>
