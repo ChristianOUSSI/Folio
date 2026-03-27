@@ -11,73 +11,79 @@ const articles = [
   {
     id: 1,
     slug: 'arretz-dactualiser-pages-vide',
-    title: 'Arrêtez d\'actualiser vos pages dans le vide',
-    excerpt: 'Explications sur ce que signifie chaque code d\'erreur HTTP et comment les résoudre efficacement.',
+    title: "Arrêtez d'actualiser vos pages dans le vide",
+    excerpt: "Explications sur ce que signifie chaque code d'erreur HTTP et comment les résoudre efficacement.",
     date: '2026-02-15',
     readTime: '6 min',
     category: 'Tech',
-    icon: '🔧',
+    icon: '⚙️',
     featured: true
   },
   {
     id: 2,
     slug: 'cables-ethernet-2026',
-    title: 'Câbles Ethernet : ce qu\'il faut vraiment retenir en 2026',
-    excerpt: 'Explication sur les 3 méthodes de création de câble Ethernet et leurs utilités dans les réseaux modernes.',
+    title: "Câbles Ethernet : ce qu'il faut vraiment retenir en 2026",
+    excerpt: "Explication sur les 3 méthodes de création de câble Ethernet et leurs utilités dans les réseaux modernes.",
     date: '2026-02-20',
     readTime: '5 min',
     category: 'Réseau',
-    icon: '🔌'
+    icon: '🔗',
+    featured: false
   },
   {
     id: 3,
     slug: 'anatomie-site-mobile-macro',
-    title: 'L\'Anatomie d\'un Site mobile Macro (4G/5G)',
-    excerpt: 'De quoi est constitué un pylône télécom et quel est son système. Comprendre les infrastructures mobiles.',
+    title: "L'Anatomie d'un Site mobile Macro (4G/5G)",
+    excerpt: "De quoi est constitué un pylône télécom et quel est son système. Comprendre les infrastructures mobiles.",
     date: '2026-03-01',
     readTime: '7 min',
     category: 'Télécom',
-    icon: '📡'
+    icon: '🛰️',
+    featured: false
   },
   {
     id: 4,
     slug: 'meilleurs-guides-ia-gratuits-2026',
     title: 'Liste des meilleurs guides IA gratuits en 2026',
-    excerpt: 'Post qui centralise les meilleures ressources gratuites et accessibles sur les IA pour apprendre et se former.',
+    excerpt: "Post qui centralise les meilleures ressources gratuites et accessibles sur les IA pour apprendre et se former.",
     date: '2026-03-07',
     readTime: '4 min',
     category: 'IA',
-    icon: '🤖'
+    icon: '🧠',
+    featured: false
   },
   {
     id: 5,
     slug: 'fullstack-pas-juste-coder',
-    title: 'Le Fullstack ce n\'est pas juste coder',
-    excerpt: 'Explication sur ce qu\'est vraiment le fullstack et ce que cela implique en termes de compétences et de responsabilités.',
+    title: "Le Fullstack ce n'est pas juste coder",
+    excerpt: "Explication sur ce qu'est vraiment le fullstack et ce que cela implique en termes de compétences et de responsabilités.",
     date: '2026-03-10',
     readTime: '5 min',
     category: 'Career',
-    icon: '💻'
+    icon: '💡',
+    featured: false
   },
   {
     id: 6,
     slug: 'relation-senior-junior',
     title: 'Relation between Senior and Junior',
-    excerpt: 'Vidéo repost : Comment chacun gère les problèmes qu\'il rencontre. L\'importance de la collaboration intergénérationnelle.',
+    excerpt: "Vidéo repost : Comment chacun gère les problèmes qu'il rencontre. L'importance de la collaboration intergénérationnelle.",
     date: '2026-03-12',
     readTime: '3 min',
     category: 'Career',
-    icon: '👥'
+    icon: '🤝',
+    featured: false
   },
   {
     id: 7,
     slug: 'frontender-greeting-frameworks',
     title: 'Frontender greeting different frameworks be like',
-    excerpt: 'Vidéo humoristique repost : Les préférences des devs frontend face aux différents frameworks. Un instant comédie !',
+    excerpt: "Vidéo humoristique repost : Les préférences des devs frontend face aux différents frameworks. Un instant comédie !",
     date: '2026-03-14',
     readTime: '2 min',
     category: 'Fun',
-    icon: '😄'
+    icon: '🎮',
+    featured: false
   }
 ];
 
@@ -279,7 +285,7 @@ export default function Blog() {
         >
           <div className="inline-block p-8 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl border border-purple-200 dark:border-purple-800">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              📬 Restez informé !
+              📧 Restez informé !
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
               Entrez votre nom complet ou votre profil LinkedIn pour recevoir mes dernières publications.
@@ -300,7 +306,7 @@ export default function Blog() {
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all text-sm disabled:opacity-50"
               >
-                {newsletterStatus === 'loading' ? '⏳' : 'S\'abonner'}
+                {newsletterStatus === 'loading' ? '⏳' : "S'abonner"}
               </motion.button>
             </form>
             {newsletterStatus === 'success' && (

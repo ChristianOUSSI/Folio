@@ -7,7 +7,7 @@ import MotionSection from './MotionSection';
 // Cette section, c'est un peu comme raconter mon histoire dans un manga – avec des twists personnels !
 export default function About() {
   return (
-    <MotionSection id={slugify('À propos')} className="py-20 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/30 dark:to-slate-900 relative overflow-hidden">
+    <MotionSection id={slugify('À propos')} className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/30 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900 relative overflow-hidden">
       {/* Tech background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Code brackets */}

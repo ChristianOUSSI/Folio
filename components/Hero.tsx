@@ -6,7 +6,7 @@ import ParticleBackground from './ParticleBackground';
 
 export default function Hero() {
   return (
-    <section id={slugify('Accueil')} className="relative flex flex-col items-center justify-center min-h-screen text-center px-4 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-slate-900 dark:via-blue-950/50 dark:to-slate-900 overflow-hidden">
+    <section id={slugify('Accueil')} className="relative flex flex-col items-center justify-center min-h-screen text-center px-4 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/50 dark:to-slate-900 overflow-hidden">
       {/* Tech particle background */}
       <ParticleBackground />
       
@@ -19,7 +19,7 @@ export default function Hero() {
       <div className="z-10 max-w-2xl">
         {/* Profile image - Yugo Eliacman style silhouette */}
         <motion.div 
-          className="mx-auto w-48 h-48 relative mb-8 rounded-full p-1 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 dark:from-amber-600 dark:via-orange-600 dark:to-red-700"
+          className="mx-auto w-56 h-56 relative mb-8 rounded-full p-1 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 dark:from-amber-600 dark:via-orange-600 dark:to-red-700"
           animate={{ boxShadow: ['0 0 30px rgba(245,158,11,0.3)', '0 0 50px rgba(249,115,22,0.4)', '0 0 30px rgba(245,158,11,0.3)'] }}
           transition={{ duration: 4, repeat: Infinity }}
         >
@@ -29,7 +29,7 @@ export default function Hero() {
               src="/img.jpg"
               alt="Portrait de Joseph Christian Josué OUSSI"
               fill
-              className="object-contain grayscale-[30%] contrast-110"
+              className="object-cover object-center grayscale-[30%] contrast-110"
               priority
               sizes="192px"
             />
@@ -85,7 +85,7 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
           >
             <span className="flex items-center justify-center gap-2">
-              <span>⚡</span>
+              <span>◈</span>
               <span>Voir mes projets</span>
             </span>
           </motion.a>
@@ -96,7 +96,7 @@ export default function Hero() {
             whileTap={{ scale: 0.95 }}
           >
             <span className="flex items-center justify-center gap-2">
-              <span>📡</span>
+              <span>◇</span>
               <span>Me contacter</span>
             </span>
           </motion.a>

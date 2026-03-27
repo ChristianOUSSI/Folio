@@ -79,7 +79,7 @@ export default function Education() {
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">{edu.institution}</p>
                 
                 <p className="text-xs text-blue-600 dark:text-blue-400 flex items-center gap-1">
-                  <span>📅</span>
+                  <span>⏱️</span>
                   <span>{edu.period}</span>
                 </p>
               </div>

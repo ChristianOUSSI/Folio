@@ -18,18 +18,23 @@ interface Skill {
 
 const categories: { title: string; items: Skill[] }[] = [
   {
-    title: 'Langages & Frameworks',
+    title: 'Langages',
     items: [
-      { name: 'Next.js', icon: <Globe className="w-4 h-4" /> },
-      { name: 'TypeScript', icon: <FileCode className="w-4 h-4" /> },
-      { name: 'React Native', icon: <Smartphone className="w-4 h-4" /> },
       { name: 'JavaScript', icon: <Code2 className="w-4 h-4" /> },
+      { name: 'TypeScript', icon: <FileCode className="w-4 h-4" /> },
       { name: 'Python', icon: <Terminal className="w-4 h-4" /> },
       { name: 'Java', icon: <Cpu className="w-4 h-4" /> },
       { name: 'C#', icon: <Box className="w-4 h-4" /> },
       { name: 'C', icon: <Cpu className="w-4 h-4" /> },
       { name: 'HTML', icon: <Globe className="w-4 h-4" /> },
-      { name: 'CSS', icon: <Palette className="w-4 h-4" /> },
+      { name: 'CSS', icon: <Palette className="w-4 h-4" /> }
+    ]
+  },
+  {
+    title: 'Frameworks & Plateformes',
+    items: [
+      { name: 'Next.js', icon: <Globe className="w-4 h-4" /> },
+      { name: 'React Native', icon: <Smartphone className="w-4 h-4" /> },
       { name: 'WordPress', icon: <Globe className="w-4 h-4" /> },
       { name: 'FlutterFlow', icon: <Smartphone className="w-4 h-4" /> },
       { name: 'Webflow', icon: <Layout className="w-4 h-4" /> },
@@ -37,18 +42,28 @@ const categories: { title: string; items: Skill[] }[] = [
     ]
   },
   {
-    title: 'Outils',
+    title: 'Outils de Développement',
     items: [
       { name: 'Visual Studio Code', icon: <Code2 className="w-4 h-4" /> },
       { name: 'Android Studio', icon: <Smartphone className="w-4 h-4" /> },
       { name: 'VMware', icon: <Monitor className="w-4 h-4" /> },
+      { name: 'Visual Basic', icon: <Code2 className="w-4 h-4" /> }
+    ]
+  },
+  {
+    title: 'Outils Créatifs',
+    items: [
       { name: 'Adobe Photoshop', icon: <Image className="w-4 h-4" /> },
       { name: 'Premiere Pro', icon: <Video className="w-4 h-4" /> },
       { name: 'Filmora', icon: <Video className="w-4 h-4" /> },
       { name: 'Canva', icon: <Palette className="w-4 h-4" /> },
-      { name: 'CapCut', icon: <Video className="w-4 h-4" /> },
-      { name: 'Power AMC', icon: <Box className="w-4 h-4" /> },
-      { name: 'Visual Basic', icon: <Code2 className="w-4 h-4" /> }
+      { name: 'CapCut', icon: <Video className="w-4 h-4" /> }
+    ]
+  },
+  {
+    title: 'Outils Métier',
+    items: [
+      { name: 'Power AMC', icon: <Box className="w-4 h-4" /> }
     ]
   },
   {
@@ -67,7 +82,7 @@ const personalNote = "Ces compétences ne sont pas juste des outils elles sont n
 
 export default function Skills() {
   return (
-    <MotionSection id={slugify('Compétences')} className="py-20 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/30 dark:to-slate-900 relative overflow-hidden">
+    <MotionSection id={slugify('Compétences')} className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/30 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900 relative overflow-hidden">
       {/* Tech background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Code symbols */}
@@ -103,7 +118,7 @@ export default function Skills() {
         </span>
       </motion.h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto relative z-10">
         {categories.map((cat, idx) => (
           <motion.div 
             key={cat.title}

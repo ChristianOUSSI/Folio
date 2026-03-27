@@ -28,7 +28,7 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <MotionSection id={slugify('Expériences')} className="py-20 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/30 dark:to-slate-900 relative overflow-hidden">
+    <MotionSection id={slugify('Expériences')} className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/30 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900 relative overflow-hidden">
       {/* Tech background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Code symbols */}
@@ -76,7 +76,7 @@ export default function Experience() {
               <div className="flex items-start gap-4">
                 {/* Icon */}
                 <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-xl shadow-md">
-                  💼
+                  🚀
                 </div>
                 
                 <div className="flex-1">

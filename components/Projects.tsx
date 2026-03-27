@@ -9,18 +9,18 @@ import { PROJECT_URLS, GITHUB_URLS } from '../lib/projectUrls';
 
 // Catégories pour filtrer les projets
 const categories = [
-  { id: 'all', label: 'Tous', icon: '✨' },
-  { id: 'web', label: 'Web App', icon: '🌐' },
-  { id: 'mobile', label: 'Mobile', icon: '📱' },
-  { id: 'game', label: 'Jeux', icon: '🎮' },
-  { id: 'data', label: 'Data', icon: '📊' },
+  { id: 'all', label: 'Tous', icon: '⬡' },
+  { id: 'web', label: 'Web App', icon: '◈' },
+  { id: 'mobile', label: 'Mobile', icon: '◉' },
+  { id: 'game', label: 'Jeux', icon: '⬢' },
+  { id: 'data', label: 'Data', icon: '◇' },
 ];
 
 // Chaque projet ici est une aventure – de mes idées folles à du code réel !
 const projects = [
   {
     title: 'Mobile Hub',
-    icon: '🔧',
+    icon: '◉',
     category: 'mobile',
     description: 'Mon premier pas dans les apps mobiles : gestion de contacts et tâches avec React. Inspiré par mon besoin d\'organiser mes sessions de gaming et d\'écriture.',
     stack: ['React', 'Firebase', 'Tailwind'],
@@ -30,7 +30,7 @@ const projects = [
   },
   {
     title: 'SaaS Admin',
-    icon: '⚙️',
+    icon: '◈',
     category: 'web',
     description: "Dashboard pour gérer des utilisateurs en SaaS. J'ai adoré implémenter le CRUD et la pagination ça m'a rappelé d'organiser mes collections de mangas !",
     stack: ['Next.js 15', 'Python', 'REST API'],
@@ -40,7 +40,7 @@ const projects = [
   },
   {
     title: 'Blade Quest Prototype',
-    icon: '⚔️',
+    icon: '⬢',
     category: 'game',
     description: 'Prototype de jeu 2D né de mes nuits passées sur Zelda et PACMAN. HTML5 Canvas m\'a permis de créer un petit monde où combattre et collecter est le seul but car oui c\'est mon rêve de game dev en action !',
     stack: ['HTML5 Canvas', 'JavaScript'],
@@ -50,7 +50,7 @@ const projects = [
   },
   {
     title: 'DataDash',
-    icon: '📊',
+    icon: '◇',
     category: 'data',
     description: 'Dashboard analytique inspiré de Power AMC. J\'ai appris Python pour l\'API backend et adoré jouer avec les graphiques comme analyser les stats de mes parties de jeu !',
     stack: ['Python', 'React', 'Recharts'],
@@ -68,7 +68,7 @@ export default function Projects() {
     : projects.filter(p => p.category === activeCategory);
 
   return (
-    <MotionSection id={slugify('Projets')} className="py-20 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/30 dark:to-slate-900 relative overflow-hidden">
+    <MotionSection id={slugify('Projets')} className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/30 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900 relative overflow-hidden">
       {/* Tech background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Floating tech dots */}
@@ -218,7 +218,7 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             className="text-center py-12 text-gray-500 dark:text-gray-400"
           >
-            <span className="text-4xl mb-4 block">🔍</span>
+            <span className="text-4xl mb-4 block">⬡</span>
             <p>Aucun projet dans cette catégorie pour le moment.</p>
           </motion.div>
         )}

@@ -50,7 +50,7 @@ export default function Contact() {
   };
 
   return (
-    <MotionSection id={slugify('Contact')} className="py-20 px-4 bg-gradient-to-b from-white via-blue-50/30 to-white dark:from-slate-900 dark:via-blue-950/30 dark:to-slate-900 relative overflow-hidden">
+    <MotionSection id={slugify('Contact')} className="py-20 px-4 bg-gradient-to-b from-white via-slate-50/30 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900 relative overflow-hidden">
       {/* Tech background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <span className="absolute top-20 right-10 text-4xl text-blue-200/20 dark:text-blue-700/20 font-mono">{'</>'}</span>
@@ -103,7 +103,7 @@ export default function Contact() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   className="text-center py-8"
                 >
-                  <div className="text-6xl mb-4">✅</div>
+                  <div className="text-6xl mb-4">🚀</div>
                   <h3 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-2">
                     Message envoyé !
                   </h3>
@@ -199,17 +199,17 @@ export default function Contact() {
                         className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 p-6 rounded-2xl border border-blue-200 dark:border-blue-800"
                       >
                         <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                          <span className="text-2xl">📱</span>
+                          <span className="text-2xl">◈</span>
                         </div>
                         <h4 className="font-bold text-gray-800 dark:text-gray-100 text-center mb-3">Téléphones</h4>
                         <div className="space-y-2">
-                          <a href="tel:+237690000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
+                          <a href="tel:+237691223916" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
                             +237 691 223 916
                           </a>
-                          <a href="tel:+237650000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
+                          <a href="tel:+237670008202" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
                             +237 670 008 202
                           </a>
-                          <a href="tel:+237670000000" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
+                          <a href="tel:+237659845024" className="block text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 text-center transition-colors">
                             +237 659 845 024
                           </a>
                         </div>
@@ -221,7 +221,7 @@ export default function Contact() {
                         className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/20 p-6 rounded-2xl border border-purple-200 dark:border-purple-800"
                       >
                         <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                          <span className="text-2xl">✉️</span>
+                          <span className="text-2xl">◇</span>
                         </div>
                         <h4 className="font-bold text-gray-800 dark:text-gray-100 text-center mb-3">Emails</h4>
                         <div className="space-y-2">
@@ -240,7 +240,7 @@ export default function Contact() {
                         className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/20 p-6 rounded-2xl border border-green-200 dark:border-green-800"
                       >
                         <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                          <span className="text-2xl">📍</span>
+                          <span className="text-2xl">⬡</span>
                         </div>
                         <h4 className="font-bold text-gray-800 dark:text-gray-100 text-center mb-3">Localisation</h4>
                         <div className="text-center">
