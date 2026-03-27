@@ -5,9 +5,11 @@ import { motion } from 'framer-motion';
 import { Menu } from '@headlessui/react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 import { slugify } from '../utils/slugify';
+import { useI18n } from '../lib/i18n';
 
 export default function Navbar() {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const { t } = useI18n();
 
   useEffect(() => {
     // Initialize theme from localStorage or system preference
@@ -55,14 +57,14 @@ export default function Navbar() {
           animate={{ opacity: 1 }}
           whileHover={{ scale: 1.05 }}
         >
-          <Link href="/" className="flex items-center space-x-2 text-blue-700 dark:text-blue-400 font-bold text-lg" aria-label="Home - Chris OUSSI">
-            <span>Chris OUSSI</span>
+          <Link href="/" className="flex items-center space-x-2 text-blue-700 dark:text-blue-400 font-bold text-lg tracking-wider" aria-label="Home - OJCJ">
+            <span style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>OJCJ</span>
           </Link>
         </motion.div>
 
         {/* Desktop navigation */}
         <div className="hidden md:flex space-x-1" role="navigation">
-          {['Accueil', 'À propos', 'Compétences', 'Expériences', 'Formations', 'Projets', 'Certifications', 'Contact'].map((item) => (
+          {[t('nav.home'), t('nav.about'), t('nav.skills'), t('nav.experience'), t('nav.education'), t('nav.projects'), t('nav.certifications'), t('nav.contact')].map((item) => (
             <motion.div key={item} whileHover={{ y: -2 }}>
               <Link 
                 href={`#${slugify(item)}`} 
@@ -117,7 +119,7 @@ export default function Navbar() {
             >
               <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white/90 dark:bg-slate-900/95 border border-blue-100 dark:border-blue-800 backdrop-blur-md">
                 <div className="py-1">
-                  {['Accueil', 'À propos', 'Compétences', 'Expériences', 'Formations', 'Projets', 'Certifications', 'Contact'].map((item) => (
+                  {[t('nav.home'), t('nav.about'), t('nav.skills'), t('nav.experience'), t('nav.education'), t('nav.projects'), t('nav.certifications'), t('nav.contact')].map((item) => (
                     <Menu.Item key={item}>
                       {({ active }) => (
                         <Link

@@ -1,9 +1,11 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useI18n } from '../lib/i18n';
 
 export default function Launcher({ onComplete }: { onComplete?: () => void }) {
   const [isVisible, setIsVisible] = useState(true);
+  const { t } = useI18n();
 
   useEffect(() => {
     // Always show launcher on every page load - no session storage check
@@ -121,7 +123,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
                         textShadow: '0 0 30px rgba(139, 92, 246, 0.5)',
-                        fontFamily: 'monospace',
+                        fontFamily: "'Special Elite', 'Courier Prime', monospace",
                         fontWeight: 'bold',
                       }}
                     >
@@ -146,12 +148,14 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
 
           {/* Title - elegant fade-in */}
           <motion.h1
-            className="text-3xl md:text-5xl font-bold text-center mb-2"
+            className="text-4xl md:text-6xl font-bold text-center mb-2"
             style={{
               background: 'linear-gradient(90deg, #a855f7, #3b82f6, #06b6d4)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
+              fontFamily: "'Special Elite', 'Courier Prime', monospace",
+              letterSpacing: '0.15em',
             }}
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -161,7 +165,8 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
           </motion.h1>
           
           <motion.p
-            className="text-purple-300 text-lg mb-8 text-center"
+            className="text-purple-300 text-lg md:text-xl mb-8 text-center font-light"
+            style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}
           >
             <motion.span
               className="block"
@@ -169,7 +174,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
-              Entrez dans un monde de code
+              {t('launcher.line1')}
             </motion.span>
             <motion.span
               className="block"
@@ -177,7 +182,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              Enter a world of code
+              {t('launcher.line2')}
             </motion.span>
             <motion.span
               className="block"
@@ -185,7 +190,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.6 }}
             >
-              Betreten Sie eine Welt des Codes
+              {t('launcher.line3')}
             </motion.span>
             <motion.span
               className="block"
@@ -193,7 +198,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.6 }}
             >
-              コードの世界に入ってください
+              {t('launcher.line4')}
             </motion.span>
           </motion.p>
 
@@ -221,13 +226,13 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
               >
                 ⌬
               </motion.span>
-              <span className="tracking-widest">DÉCOUVRIR</span>
+              <span className="tracking-widest">{t('launcher.discover')}</span>
               <motion.span
                 animate={{ opacity: [0.3, 0.7, 0.3] }}
                 transition={{ duration: 2, repeat: Infinity }}
                 className="text-purple-400/70"
               >
-                ⚡
+                ◇
               </motion.span>
             </span>
             {/* Scanning line effect - subtle */}

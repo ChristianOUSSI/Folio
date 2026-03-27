@@ -3,10 +3,12 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { slugify } from '../utils/slugify';
 import ParticleBackground from './ParticleBackground';
+import { useI18n } from '../lib/i18n';
 
 export default function Hero() {
+  const { t } = useI18n();
   return (
-    <section id={slugify('Accueil')} className="relative flex flex-col items-center justify-center min-h-screen text-center px-4 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/50 dark:to-slate-900 overflow-hidden">
+    <section id={slugify('home')} className="relative flex flex-col items-center justify-center min-h-screen text-center px-4 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800/50 dark:to-slate-900 overflow-hidden">
       {/* Tech particle background */}
       <ParticleBackground />
       
@@ -43,8 +45,8 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="mb-4"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 dark:from-blue-400 dark:via-blue-300 dark:to-blue-400 bg-clip-text text-transparent leading-tight">
-            Joseph Christian Josué OUSSI
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 dark:from-blue-400 dark:via-blue-300 dark:to-blue-400 bg-clip-text text-transparent leading-tight" style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>
+            OJCJ
           </h1>
         </motion.div>
 
@@ -56,18 +58,18 @@ export default function Hero() {
           className="mb-8"
         >
           <h2 className="text-2xl md:text-3xl font-bold text-blue-700 dark:text-blue-300 mb-4">
-            Bienvenue dans mon monde
+            {t('hero.welcome')}
           </h2>
           <div className="flex flex-col gap-1 mb-4">
-            <p className="text-sm text-gray-600 dark:text-gray-300">Welcome to my world</p>
-            <p className="text-sm text-gray-600 dark:text-gray-300">Willkommen in meiner Welt</p>
-            <p className="text-sm text-gray-600 dark:text-gray-300">私の世界へようこそ</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">{t('hero.welcomeEn')}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">{t('hero.welcomeDe')}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-300">{t('hero.welcomeJp')}</p>
           </div>
           <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-4">
-            De l'exploration de mondes virtuels à la création d'apps réelles je transforme les idées en code, une ligne à la fois.
+            {t('hero.description')}
           </p>
           <p className="text-sm text-blue-600 dark:text-blue-400 mb-6">
-            Code * Jeux * Mangas * Histoires * Innovation * Fun
+            {t('hero.tags')}
           </p>
         </motion.div>
 
@@ -86,7 +88,7 @@ export default function Hero() {
           >
             <span className="flex items-center justify-center gap-2">
               <span>◈</span>
-              <span>Voir mes projets</span>
+              <span>{t('hero.viewProjects')}</span>
             </span>
           </motion.a>
           <motion.a
@@ -97,7 +99,7 @@ export default function Hero() {
           >
             <span className="flex items-center justify-center gap-2">
               <span>◇</span>
-              <span>Me contacter</span>
+              <span>{t('hero.contact')}</span>
             </span>
           </motion.a>
         </motion.div>

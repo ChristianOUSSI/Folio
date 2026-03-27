@@ -60,7 +60,7 @@ const articles = [
     date: '2026-03-10',
     readTime: '5 min',
     category: 'Career',
-    icon: '💡',
+    icon: '◈',
     featured: false
   },
   {
@@ -82,7 +82,7 @@ const articles = [
     date: '2026-03-14',
     readTime: '2 min',
     category: 'Fun',
-    icon: '🎮',
+    icon: '⬡',
     featured: false
   }
 ];
@@ -285,7 +285,7 @@ export default function Blog() {
         >
           <div className="inline-block p-8 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-2xl border border-purple-200 dark:border-purple-800">
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-              📧 Restez informé !
+              ◈ Restez informé !
             </h3>
             <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">
               Entrez votre nom complet ou votre profil LinkedIn pour recevoir mes dernières publications.

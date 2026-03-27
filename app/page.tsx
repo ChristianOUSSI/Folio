@@ -12,6 +12,8 @@ import Blog from '../components/Blog';
 import Contact from '../components/Contact';
 import ScrollTop from '../components/ScrollTop';
 import Launcher from '../components/Launcher';
+import Stats from '../components/Stats';
+import Process from '../components/Process';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 
 export default function Home() {
@@ -36,6 +38,12 @@ export default function Home() {
             </ErrorBoundary>
             <ErrorBoundary>
               <Skills />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Stats />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <Process />
             </ErrorBoundary>
             <ErrorBoundary>
               <Experience />
