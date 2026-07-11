@@ -104,7 +104,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
                 background: 'linear-gradient(90deg, transparent, #d4af37, transparent)',
                 boxShadow: '0 0 15px #d4af37'
               }}
-              animate={{ w: "100%", width: ["0%", "80%", "40%"] }}
+              animate={{ width: ["0%", "80%", "40%"] }}
               transition={{ duration: 3, ease: "easeInOut" }}
             />
           </motion.div>
