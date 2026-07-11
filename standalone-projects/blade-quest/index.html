@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Blade Quest: Anime Adventure</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+      overflow: hidden;
+      touch-action: none;
+      font-family: 'Outfit', sans-serif;
+    }
+    
+    h1, h2, h3, .font-gaming {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    #gameCanvas {
+      image-rendering: pixelated;
+      box-shadow: 0 0 60px rgba(139, 92, 246, 0.2), inset 0 0 30px rgba(0, 0, 0, 0.9);
+      background: linear-gradient(180deg, #1e293b 0%, #020617 100%);
+      border-radius: 24px;
+    }
+
+    /* Advanced Glassmorphism */
+    .glass {
+      background: rgba(15, 23, 42, 0.4);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
+    
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(30px);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(139, 92, 246, 0.05);
+    }
+    
+    .glass-btn {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+      transform: translateY(-2px);
+    }
+    .glass-btn:active {
+      transform: translateY(0) scale(0.95);
+    }
+
+    /* Animated text gradient */
+    .text-gradient {
+      background: linear-gradient(to right, #c084fc, #ec4899, #3b82f6, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 300% auto;
+      animation: shine 4s linear infinite;
+    }
+    @keyframes shine { to { background-position: 300% center; } }
+    
+    /* Animations */
+    @keyframes pulse-heart {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(244,63,94,0.5)); }
+      50% { transform: scale(1.15); filter: drop-shadow(0 0 15px rgba(244,63,94,0.8)); }
+    }
+    .heart-alive { animation: pulse-heart 1.5s infinite ease-in-out; }
+    .heart-empty { opacity: 0.3; filter: grayscale(1); animation: none; }
+    
+    @keyframes fade-in { from { opacity: 0; backdrop-filter: blur(0px); } to { opacity: 1; backdrop-filter: blur(20px); } }
+    @keyframes slide-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .animate-fade-in { animation: fade-in 0.4s ease-out forwards; }
+    .animate-slide-up { animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+    /* D-pad and controls */
+    .d-pad-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.7);
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.1), 0 4px 10px rgba(0,0,0,0.5);
+      transition: all 0.1s;
+    }
+    .d-pad-btn:active {
+      background: linear-gradient(135deg, rgba(139,92,246,0.4), rgba(236,72,153,0.4));
+      color: white;
+      transform: scale(0.92);
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.3), 0 0 20px rgba(139,92,246,0.5);
+      border-color: rgba(139,92,246,0.6);
+    }
+  </style>
+</head>
+<body class="text-slate-200 min-h-screen flex items-center justify-center relative antialiased selection:bg-purple-500/30">
+
+  <!-- HUD -->
+  <div class="absolute top-4 left-4 z-50 glass rounded-3xl p-6 max-w-sm transition-transform duration-300 hover:scale-[1.02] flex flex-col gap-5">
+    <div>
+      <h1 class="text-3xl font-gaming font-black text-gradient uppercase tracking-widest drop-shadow-md">Blade Quest</h1>
+      <p class="text-[11px] text-slate-400 font-bold tracking-[0.3em] uppercase mt-1">Anime Adventure</p>
+    </div>
+    
+    <div id="statsPanel" class="space-y-4 transition-all duration-300">
+      <div class="grid grid-cols-2 gap-3 text-sm">
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-white/5 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-br from-fuchsia-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <span class="text-slate-500 font-bold tracking-wider text-[10px] block mb-1">SCORE</span>
+          <span id="score" class="font-gaming text-fuchsia-400 text-xl drop-shadow-[0_0_8px_rgba(232,121,249,0.5)]">0</span>
+        </div>
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-white/5 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <span class="text-slate-500 font-bold tracking-wider text-[10px] block mb-1">NIVEAU</span>
+          <span id="level" class="font-gaming text-blue-400 text-xl drop-shadow-[0_0_8px_rgba(96,165,250,0.5)]">1</span>
+        </div>
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-white/5 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <span class="text-slate-500 font-bold tracking-wider text-[10px] block mb-1">COINS 💎</span>
+          <span id="coins" class="font-gaming text-yellow-400 text-xl drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]">0</span>
+        </div>
+        <div class="bg-slate-900/60 rounded-xl p-3 border border-white/5 relative overflow-hidden group">
+          <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+          <span class="text-slate-500 font-bold tracking-wider text-[10px] block mb-1">MEILLEUR</span>
+          <span id="highScore" class="font-gaming text-emerald-400 text-xl drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]">0</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 bg-slate-900/40 p-3 rounded-xl border border-white/5" id="healthContainer">
+        <div id="heart1" class="w-7 h-7 rounded-full bg-rose-500 flex items-center justify-center text-sm heart-alive shadow-[0_0_15px_rgba(244,63,94,0.4)]">♥</div>
+        <div id="heart2" class="w-7 h-7 rounded-full bg-rose-500 flex items-center justify-center text-sm heart-alive shadow-[0_0_15px_rgba(244,63,94,0.4)]">♥</div>
+        <div id="heart3" class="w-7 h-7 rounded-full bg-rose-500 flex items-center justify-center text-sm heart-alive shadow-[0_0_15px_rgba(244,63,94,0.4)]">♥</div>
+      </div>
+
+      <div id="powerupStatus" class="hidden text-xs font-bold px-4 py-2 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30 backdrop-blur-md animate-slide-up"></div>
+    </div>
+
+    <div class="flex gap-2">
+      <button id="muteBtn" class="glass-btn rounded-xl w-12 h-12 flex items-center justify-center text-lg">🔊</button>
+      <button id="shopBtn" class="flex-1 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 transition-all rounded-xl px-4 py-2 text-sm font-bold shadow-lg shadow-fuchsia-500/25 border border-fuchsia-400/30 active:scale-95 flex items-center justify-center gap-2">
+        <span>🛍️</span> Boutique
+      </button>
+      <button onclick="resetGame()" class="glass-btn hover:!bg-rose-500/20 hover:!border-rose-500/50 hover:!text-rose-400 rounded-xl w-12 h-12 flex items-center justify-center text-lg group">
+        <span class="group-hover:-rotate-180 transition-transform duration-500">↻</span>
+      </button>
+    </div>
+    
+    <p class="text-[10px] text-slate-500 leading-relaxed font-medium">WASD/Flèches: Mouvement &nbsp;&bull;&nbsp; ESPACE: Attaque</p>
+  </div>
+
+  <!-- Main Game Canvas -->
+  <div class="relative w-full h-full md:w-[80vw] md:h-[80vh] md:rounded-[2rem] overflow-hidden flex items-center justify-center p-0">
+    <canvas id="gameCanvas" width="1200" height="700" class="w-full h-full object-cover md:rounded-[2rem]"></canvas>
+  </div>
+
+  <!-- Mobile Controls (Hidden on Desktop) -->
+  <div class="md:hidden absolute bottom-8 left-8 z-50 pointer-events-none">
+    <div class="grid grid-cols-3 gap-2 w-40 pointer-events-auto opacity-80 hover:opacity-100 transition-opacity">
+      <div></div>
+      <button id="up-btn" class="d-pad-btn w-12 h-12 rounded-t-xl rounded-b-sm flex items-center justify-center text-xl pb-1">▲</button>
+      <div></div>
+      <button id="left-btn" class="d-pad-btn w-12 h-12 rounded-l-xl rounded-r-sm flex items-center justify-center text-xl pr-1">◀</button>
+      <div class="w-12 h-12 rounded-full shadow-[inset_0_0_10px_rgba(0,0,0,0.8)] opacity-50 bg-black/40 border-0 flex items-center justify-center text-slate-600 text-xs">●</div>
+      <button id="right-btn" class="d-pad-btn w-12 h-12 rounded-r-xl rounded-l-sm flex items-center justify-center text-xl pl-1">▶</button>
+      <div></div>
+      <button id="down-btn" class="d-pad-btn w-12 h-12 rounded-b-xl rounded-t-sm flex items-center justify-center text-xl pt-1">▼</button>
+      <div></div>
+    </div>
+  </div>
+  
+  <div class="md:hidden absolute bottom-12 right-8 z-50 pointer-events-auto">
+    <button id="attack-btn" class="w-20 h-20 bg-gradient-to-br from-rose-500 to-rose-700 rounded-full text-3xl flex items-center justify-center shadow-[0_0_30px_rgba(225,29,72,0.4),inset_0_4px_10px_rgba(255,255,255,0.3)] active:scale-90 transition-all border-2 border-rose-400/50">⚔️</button>
+  </div>
+
+  <!-- Overlays -->
+  <div id="pauseOverlay" class="hidden absolute inset-0 z-[100] animate-fade-in flex-col items-center justify-center glass">
+    <div class="animate-slide-up text-center">
+      <h2 class="text-6xl md:text-8xl font-gaming font-black text-white tracking-[0.2em] mb-4 drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">PAUSE</h2>
+      <p class="text-slate-400 font-medium tracking-widest text-sm bg-black/40 px-6 py-2 rounded-full backdrop-blur-md border border-white/5">Appuyez sur Échap pour reprendre</p>
+    </div>
+  </div>
+
+  <div id="shopOverlay" class="hidden absolute inset-0 z-[110] animate-fade-in items-center justify-center p-4 glass">
+    <div class="glass-panel w-full max-w-md rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden animate-slide-up">
+      <!-- Decorative background glow -->
+      <div class="absolute -top-24 -right-24 w-48 h-48 bg-fuchsia-600/30 rounded-full blur-[60px]"></div>
+      <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-violet-600/30 rounded-full blur-[60px]"></div>
+      
+      <div class="relative z-10">
+        <h2 class="text-3xl font-gaming font-black text-white mb-8 flex items-center gap-3">
+          <span class="text-4xl drop-shadow-[0_0_15px_rgba(232,121,249,0.5)]">🛍️</span> BOUTIQUE
+        </h2>
+        
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-black/40 border border-white/10 hover:border-rose-500/50 transition-colors group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center text-xl shadow-[0_0_15px_rgba(244,63,94,0.3)]">♥</div>
+              <div>
+                <h3 class="font-bold text-rose-400 group-hover:text-rose-300 transition-colors">Cœur de Fer</h3>
+                <p class="text-[11px] font-bold text-slate-400 tracking-wider">+1 Vie Maximale</p>
+              </div>
+            </div>
+            <button id="buyHealthBtn" class="flex flex-col items-center justify-center bg-slate-800 hover:bg-rose-600 text-white rounded-xl px-4 py-2 font-bold transition-all border border-slate-700 hover:border-rose-400 shadow-lg active:scale-95">
+              <span class="text-xs">Acheter</span>
+              <span class="text-[10px] text-yellow-400 font-gaming">20 💎</span>
+            </button>
+          </div>
+          
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-black/40 border border-white/10 hover:border-blue-500/50 transition-colors group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-xl shadow-[0_0_15px_rgba(59,130,246,0.3)]">⚡</div>
+              <div>
+                <h3 class="font-bold text-blue-400 group-hover:text-blue-300 transition-colors">Bottes Célestes</h3>
+                <p class="text-[11px] font-bold text-slate-400 tracking-wider">+1 Vitesse de base</p>
+              </div>
+            </div>
+            <button id="buySpeedBtn" class="flex flex-col items-center justify-center bg-slate-800 hover:bg-blue-600 text-white rounded-xl px-4 py-2 font-bold transition-all border border-slate-700 hover:border-blue-400 shadow-lg active:scale-95">
+              <span class="text-xs">Acheter</span>
+              <span class="text-[10px] text-yellow-400 font-gaming">25 💎</span>
+            </button>
+          </div>
+          
+          <div class="flex items-center justify-between p-4 rounded-2xl bg-black/40 border border-white/10 hover:border-fuchsia-500/50 transition-colors group">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-fuchsia-500/20 flex items-center justify-center text-xl shadow-[0_0_15px_rgba(217,70,239,0.3)]">⚔️</div>
+              <div>
+                <h3 class="font-bold text-fuchsia-400 group-hover:text-fuchsia-300 transition-colors">Lame Plasma</h3>
+                <p class="text-[11px] font-bold text-slate-400 tracking-wider">+5 Puissance d'attaque</p>
+              </div>
+            </div>
+            <button id="buyPowerBtn" class="flex flex-col items-center justify-center bg-slate-800 hover:bg-fuchsia-600 text-white rounded-xl px-4 py-2 font-bold transition-all border border-slate-700 hover:border-fuchsia-400 shadow-lg active:scale-95">
+              <span class="text-xs">Acheter</span>
+              <span class="text-[10px] text-yellow-400 font-gaming">30 💎</span>
+            </button>
+          </div>
+        </div>
+        
+        <button id="closeShopBtn" class="w-full mt-8 py-4 glass-btn rounded-2xl font-bold transition-all text-slate-300 tracking-widest uppercase text-sm">Fermer la boutique</button>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://oussidev.vercel.app" target="_blank" rel="noopener noreferrer" class="absolute top-6 right-6 font-gaming text-xs font-bold text-slate-500/50 hover:text-fuchsia-400 transition-colors z-50 tracking-widest bg-black/20 px-4 py-2 rounded-full border border-white/5 backdrop-blur-sm">PORTEFOLIO ↗</a>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas')
+    const ctx = canvas.getContext('2d')
+    const scoreEl = document.getElementById('score')
+    const levelEl = document.getElementById('level')
+    const highScoreEl = document.getElementById('highScore')
+    const coinsEl = document.getElementById('coins')
+    const powerupStatus = document.getElementById('powerupStatus')
+    const pauseOverlay = document.getElementById('pauseOverlay')
+    const shopOverlay = document.getElementById('shopOverlay')
+    const muteBtn = document.getElementById('muteBtn')
+    const shopBtn = document.getElementById('shopBtn')
+    const buyHealthBtn = document.getElementById('buyHealthBtn')
+    const buySpeedBtn = document.getElementById('buySpeedBtn')
+    const buyPowerBtn = document.getElementById('buyPowerBtn')
+    const closeShopBtn = document.getElementById('closeShopBtn')
+
+    // Game state with health system
+    let score = 0
+    let coins = Number(localStorage.getItem('bladeQuestCoins') || '0')
+    let gameOver = false
+    let paused = false
+    let shopOpen = false
+    let level = 1
+    let highScore = Number(localStorage.getItem('bladeQuestHighScore') || '0')
+    let soundOn = localStorage.getItem('bladeQuestSoundOn') !== 'false'
+    let attackPower = 10
+    const player = { 
+      x: 100, y: 350, width: 40, height: 40, 
+      speed: 5, baseSpeed: 5, attacking: false,
+      health: 3, maxHealth: 3, invincible: false, speedBoost: false 
+    }
+    let enemies = []
+    const items = []
+    const powerups = []
+    let particles = []
+    let powerupTimer = null
+
+    // Audio helpers
+    let audioCtx = null
+    function getAudioContext() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+      return audioCtx
+    }
+    function playTone(freq, duration = 0.08, type = 'triangle') {
+      if (!soundOn) return
+      const ctx = getAudioContext()
+      const osc = ctx.createOscillator()
+      const gain = ctx.createGain()
+      osc.type = type
+      osc.frequency.value = freq
+      gain.gain.value = 0.12
+      osc.connect(gain)
+      gain.connect(ctx.destination)
+      osc.start()
+      osc.stop(ctx.currentTime + duration)
+    }
+
+    // Save high score
+    function saveHighScore() {
+      if (score > highScore) {
+        highScore = score
+        localStorage.setItem('bladeQuestHighScore', String(highScore))
+      }
+      updateHUD()
+    }
+
+    function saveCoins() {
+      localStorage.setItem('bladeQuestCoins', String(coins))
+    }
+
+    function updateHUD() {
+      scoreEl.textContent = score.toString()
+      levelEl.textContent = level.toString()
+      highScoreEl.textContent = highScore.toString()
+      coinsEl.textContent = coins.toString()
+    }
+
+    // Show the dashboard briefly (e.g., on taking damage)
+    const statsPanel = document.getElementById('statsPanel')
+    let statsTimeout = null
+    function showStatsPanel(duration = 1500) {
+      if (!statsPanel) return
+      statsPanel.classList.add('visible')
+      if (statsTimeout) clearTimeout(statsTimeout)
+      statsTimeout = setTimeout(() => {
+        statsPanel.classList.remove('visible')
+      }, duration)
+    }
+
+    updateHUD()
+
+    function updateSoundButton() {
+      muteBtn.textContent = soundOn ? '🔊' : '🔇'
+    }
+
+    function toggleShop(open) {
+      shopOpen = open
+      paused = open
+      pauseOverlay.style.display = open ? 'none' : (paused ? 'flex' : 'none')
+      shopOverlay.style.display = open ? 'flex' : 'none'
+    }
+
+    muteBtn.addEventListener('click', () => {
+      soundOn = !soundOn
+      localStorage.setItem('bladeQuestSoundOn', soundOn ? 'true' : 'false')
+      updateSoundButton()
+    })
+
+    shopBtn.addEventListener('click', () => toggleShop(true))
+    closeShopBtn.addEventListener('click', () => toggleShop(false))
+
+    updateSoundButton()
+
+    function buyUpgrade(cost, onSuccess) {
+      if (coins < cost) {
+        playTone(220, 0.15, 'sawtooth')
+        return
+      }
+      coins -= cost
+      saveCoins()
+      updateHUD()
+      onSuccess()
+      playTone(880, 0.12, 'triangle')
+    }
+
+    buyHealthBtn.addEventListener('click', () => {
+      buyUpgrade(20, () => {
+        player.maxHealth += 1
+        player.health = Math.min(player.health + 1, player.maxHealth)
+        updateHearts()
+      })
+    })
+
+    buySpeedBtn.addEventListener('click', () => {
+      buyUpgrade(25, () => {
+        player.baseSpeed += 0.5
+        player.speed = player.baseSpeed
+      })
+    })
+
+    buyPowerBtn.addEventListener('click', () => {
+      buyUpgrade(30, () => {
+        attackPower += 5
+      })
+    })
+
+    // Add particles for attack effect
+    function addParticles(x, y, color) {
+      playTone(520, 0.08, 'triangle')
+      for (let i = 0; i < 5; i++) {
+        particles.push({
+          x: x + Math.random() * 20,
+          y: y + Math.random() * 20,
+          vx: (Math.random() - 0.5) * 4,
+          vy: (Math.random() - 0.5) * 4,
+          life: 30,
+          color: color
+        })
+      }
+    }
+
+    // Keys
+    const keys = {}
+
+    // PC controls
+    window.addEventListener('keydown', (e) => {
+      keys[e.code] = true
+      if (e.code === 'Space') {
+        e.preventDefault()
+        keys['Space'] = true
+      }
+      if (e.code === 'Escape') {
+        if (shopOpen) {
+          toggleShop(false)
+        } else {
+          paused = !paused
+          pauseOverlay.style.display = paused ? 'flex' : 'none'
+        }
+      }
+    })
+    window.addEventListener('keyup', (e) => {
+      keys[e.code] = false
+      if (e.code === 'Space') {
+        keys['Space'] = false
+      }
+    })
+
+    // Mobile controls
+    const upBtn = document.getElementById('up-btn')
+    const downBtn = document.getElementById('down-btn')
+    const leftBtn = document.getElementById('left-btn')
+    const rightBtn = document.getElementById('right-btn')
+    const attackBtn = document.getElementById('attack-btn')
+
+    // Touch events for mobile controls
+    function addTouchEvents(btn, key) {
+      btn.addEventListener('touchstart', (e) => {
+        e.preventDefault()
+        keys[key] = true
+      })
+      btn.addEventListener('touchend', (e) => {
+        e.preventDefault()
+        keys[key] = false
+      })
+      btn.addEventListener('mousedown', (e) => {
+        e.preventDefault()
+        keys[key] = true
+      })
+      btn.addEventListener('mouseup', (e) => {
+        e.preventDefault()
+        keys[key] = false
+      })
+      btn.addEventListener('mouseleave', (e) => {
+        keys[key] = false
+      })
+    }
+
+    addTouchEvents(upBtn, 'ArrowUp')
+    addTouchEvents(downBtn, 'ArrowDown')
+    addTouchEvents(leftBtn, 'ArrowLeft')
+    addTouchEvents(rightBtn, 'ArrowRight')
+    addTouchEvents(attackBtn, 'Space')
+
+    // Make canvas responsive (CSS only, keep internal dimensions)
+    function resizeCanvas() {
+      const container = document.body;
+      const aspectRatio = 1200 / 700;
+      let newWidth = container.clientWidth * 0.8;
+      let newHeight = newWidth / aspectRatio;
+
+      if (window.innerWidth <= 768) {
+        newWidth = container.clientWidth;
+        newHeight = container.clientHeight * 0.7;
+      } else {
+        if (newHeight > container.clientHeight * 0.8) {
+          newHeight = container.clientHeight * 0.8;
+          newWidth = newHeight * aspectRatio;
+        }
+      }
+
+      canvas.style.width = newWidth + 'px';
+      canvas.style.height = newHeight + 'px';
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Update hearts display
+    function updateHearts() {
+      for (let i = 1; i <= 3; i++) {
+        const heart = document.getElementById('heart' + i)
+        if (i <= player.health) {
+          heart.classList.remove('heart-empty')
+          heart.classList.add('heart-alive')
+        } else {
+          heart.classList.add('heart-empty')
+          heart.classList.remove('heart-alive')
+        }
+      }
+    }
+
+    // Activate power-up effects
+    function activatePowerup(type) {
+      if (type === 'speed') {
+        player.speedBoost = true
+        player.speed = player.baseSpeed * 2
+        powerupStatus.textContent = '⚡ Vitesse x2!'
+        powerupStatus.style.display = 'inline-block'
+        powerupStatus.style.background = 'rgba(234,179,8,0.3)'
+      } else if (type === 'shield') {
+        player.invincible = true
+        powerupStatus.textContent = '🛡️ Bouclier actif!'
+        powerupStatus.style.display = 'inline-block'
+        powerupStatus.style.background = 'rgba(147,51,234,0.3)'
+      }
+      
+      if (powerupTimer) clearTimeout(powerupTimer)
+      powerupTimer = setTimeout(() => {
+        player.speedBoost = false
+        player.speed = player.baseSpeed
+        player.invincible = false
+        powerupStatus.style.display = 'none'
+      }, 5000)
+    }
+
+    // Initialize game
+    function init() {
+      enemies.length = 0
+      items.length = 0
+      powerups.length = 0
+      particles.length = 0
+      score = 0
+      level = 1
+      player.x = 100
+      player.y = 350
+      player.attacking = false
+      player.health = 3
+      player.invincible = false
+      player.speedBoost = false
+      player.speed = player.baseSpeed
+      gameOver = false
+      if (powerupTimer) clearTimeout(powerupTimer)
+      powerupStatus.style.display = 'none'
+      
+      updateHearts()
+      
+      // Spawn enemies based on level
+      if (level % 5 === 0) {
+        // Boss wave
+        enemies.push({
+          x: Math.random() * (canvas.width - 120) + 60,
+          y: Math.random() * (canvas.height - 120) + 60,
+          width: 60, height: 60,
+          speed: 1 + level * 0.1,
+          health: 10 + level * 2,
+          isBoss: true
+        })
+      }
+
+      const enemyCount = 3 + level
+      for (let i = 0; i < enemyCount; i++) {
+        enemies.push({
+          x: Math.random() * (canvas.width - 60) + 30,
+          y: Math.random() * (canvas.height - 60) + 30,
+          width: 40, height: 40,
+          speed: 1 + Math.random() * 2 + level * 0.5,
+          health: 1,
+          isBoss: false
+        })
+      }
+      
+      // Spawn collectible items
+      const itemCount = 5 + level
+      for (let i = 0; i < itemCount; i++) {
+        items.push({
+          x: Math.random() * (canvas.width - 30),
+          y: Math.random() * (canvas.height - 30),
+          width: 20, height: 20,
+          collected: false
+        })
+      }
+
+      // Spawn power-ups (new feature)
+      const powerupCount = 2 + Math.floor(level / 2)
+      for (let i = 0; i < powerupCount; i++) {
+        powerups.push({
+          x: Math.random() * (canvas.width - 30),
+          y: Math.random() * (canvas.height - 30),
+          width: 25, height: 25,
+          type: Math.random() > 0.5 ? 'speed' : 'shield',
+          collected: false,
+          pulse: 0
+        })
+      }
+      
+      updateHUD()
+    }
+
+    // Handle player taking damage
+    function takeDamage() {
+      if (player.invincible) return false
+      
+      player.health--
+      playTone(220, 0.2, 'sawtooth')
+      updateHearts()
+      // Show the HUD briefly after taking damage
+      showStatsPanel(1800)
+      
+      if (player.health <= 0) {
+        gameOver = true
+        saveHighScore()
+        playTone(120, 0.5, 'sine')
+        ctx.fillStyle = 'rgba(0,0,0,0.8)'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.fillStyle = '#EF4444'
+        ctx.font = '48px Arial'
+        ctx.textAlign = 'center'
+        ctx.fillText('Game Over!', canvas.width/2, canvas.height/2)
+        ctx.fillStyle = 'white'
+        ctx.font = '24px Arial'
+        ctx.fillText('Tu as perdu toute ta vie', canvas.width/2, canvas.height/2 + 50)
+        ctx.fillText(`Score final: ${score}`, canvas.width/2, canvas.height/2 + 90)
+        return true
+      }
+      
+      // Brief invincibility after hit
+      player.invincible = true
+      setTimeout(() => player.invincible = false, 1500)
+      return false
+    }
+
+    function update() {
+      if (paused) return requestAnimationFrame(update)
+      if (gameOver) return requestAnimationFrame(update)
+
+      // Player movement
+      if (keys['KeyW'] || keys['ArrowUp']) player.y = Math.max(0, player.y - player.speed)
+      if (keys['KeyS'] || keys['ArrowDown']) player.y = Math.min(canvas.height - player.height, player.y + player.speed)
+      if (keys['KeyA'] || keys['ArrowLeft']) player.x = Math.max(0, player.x - player.speed)
+      if (keys['KeyD'] || keys['ArrowRight']) player.x = Math.min(canvas.width - player.width, player.x + player.speed)
+      if (keys['Space'] && !player.attacking) {
+        player.attacking = true
+        addParticles(player.x + player.width, player.y + 10, '#ffd93d')
+        setTimeout(() => player.attacking = false, 200)
+      }
+
+      // Enemies AI - chase player
+      enemies.forEach(enemy => {
+        const dx = player.x - enemy.x
+        const dy = player.y - enemy.y
+        const dist = Math.sqrt(dx*dx + dy*dy)
+        if (dist > 0) {
+          enemy.x += (dx / dist) * enemy.speed
+          enemy.y += (dy / dist) * enemy.speed
+        }
+      })
+
+      // Attack enemies
+      enemies = enemies.filter(function(enemy) {
+        const dx = player.x - enemy.x
+        const dy = player.y - enemy.y
+        const points = player.speedBoost ? 20 : 10
+        if (player.attacking && Math.abs(dx) < 60 && Math.abs(dy) < 60) {
+          if (enemy.isBoss) {
+            enemy.health -= attackPower
+            playTone(520, 0.1, 'square')
+            addParticles(enemy.x, enemy.y, '#ff6b6b')
+            if (enemy.health <= 0) {
+              score += points * 2
+            coins += 5
+            updateHUD()
+            saveCoins()
+            return false
+          }
+          return true
+        } else {
+          score += points
+          coins += 2
+          updateHUD()
+          saveCoins()
+          return false
+        }
+        }
+        // Collision with damage
+        if (Math.abs(dx) < 40 && Math.abs(dy) < 40) {
+          if (takeDamage()) return false
+        }
+        return true
+      })
+
+      // Collect items
+      items.forEach(item => {
+        if (!item.collected && Math.abs(player.x - item.x) < 30 && Math.abs(player.y - item.y) < 30) {
+          item.collected = true
+          score += 5
+          coins += 1
+          updateHUD()
+          saveCoins()
+          playTone(660, 0.08, 'triangle')
+        }
+      })
+
+      // Collect power-ups
+      powerups.forEach(p => {
+        if (!p.collected && Math.abs(player.x - p.x) < 35 && Math.abs(player.y - p.y) < 35) {
+          p.collected = true
+          activatePowerup(p.type)
+          playTone(880, 0.12, 'square')
+        }
+      })
+
+      // Update particles
+      particles = particles.filter(p => {
+        p.x += p.vx
+        p.y += p.vy
+        p.life--
+        return p.life > 0
+      })
+      const allItemsCollected = items.every(item => item.collected)
+      const allPowerupsCollected = powerups.every(p => p.collected)
+      if (allItemsCollected && allPowerupsCollected && enemies.length === 0) {
+        level++
+        updateHUD()
+        // Respawn for next level
+        setTimeout(() => {
+          // Spawn enemies based on level
+          if (level % 5 === 0) {
+            enemies.push({
+              x: Math.random() * (canvas.width - 120) + 60,
+              y: Math.random() * (canvas.height - 120) + 60,
+              width: 60, height: 60,
+              speed: 1 + level * 0.1,
+              health: 10 + level * 2,
+              isBoss: true
+            })
+          }
+          const enemyCount = 3 + level
+          for (let i = 0; i < enemyCount; i++) {
+            enemies.push({
+              x: Math.random() * (canvas.width - 60) + 30,
+              y: Math.random() * (canvas.height - 60) + 30,
+              width: 40, height: 40,
+              speed: 1 + Math.random() * 2 + level * 0.5,
+              health: 1,
+              isBoss: false
+            })
+          }
+          // Spawn items
+          const itemCount = 5 + level
+          for (let i = 0; i < itemCount; i++) {
+            items.push({
+              x: Math.random() * (canvas.width - 30),
+              y: Math.random() * (canvas.height - 30),
+              width: 20, height: 20,
+              collected: false
+            })
+          }
+          // Spawn power-ups
+          const powerupCount = 2 + Math.floor(level / 2)
+          for (let i = 0; i < powerupCount; i++) {
+            powerups.push({
+              x: Math.random() * (canvas.width - 30),
+              y: Math.random() * (canvas.height - 30),
+              width: 25, height: 25,
+              type: Math.random() > 0.5 ? 'speed' : 'shield',
+              collected: false,
+              pulse: 0
+            })
+          }
+        }, 1000)
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Draw power-ups with pulsing effect
+      powerups.forEach(p => {
+        if (!p.collected) {
+          p.pulse += 0.1
+          const pulseSize = Math.sin(p.pulse) * 5
+          ctx.save()
+          ctx.shadowColor = p.type === 'speed' ? '#ffd93d' : '#a55eea'
+          ctx.shadowBlur = 20 + pulseSize * 2
+          ctx.fillStyle = p.type === 'speed' ? '#ffd93d' : '#a55eea'
+          
+          // Draw different shapes for each power-up type
+          if (p.type === 'speed') {
+            // Lightning bolt with glow
+            ctx.beginPath()
+            ctx.moveTo(p.x + p.width/2, p.y)
+            ctx.lineTo(p.x + p.width, p.y + p.height/2)
+            ctx.lineTo(p.x + p.width/2, p.y + p.height/2)
+            ctx.lineTo(p.x, p.y + p.height)
+            ctx.lineTo(p.x + p.width/2, p.y + p.height/2)
+            ctx.lineTo(p.x, p.y)
+            ctx.fill()
+            ctx.strokeStyle = '#ffd93d'
+            ctx.lineWidth = 2
+            ctx.stroke()
+          } else {
+            // Shield circle with glow
+            ctx.beginPath()
+            ctx.arc(p.x + p.width/2, p.y + p.height/2, p.width/2 + pulseSize, 0, Math.PI * 2)
+            ctx.fill()
+            ctx.strokeStyle = '#a55eea'
+            ctx.lineWidth = 2
+            ctx.stroke()
+          }
+          ctx.restore()
+        }
+      })
+
+      // Draw items (glowing crystals)
+      ctx.fillStyle = '#4ecdc4'
+      items.forEach(item => {
+        if (!item.collected) {
+          ctx.save()
+          ctx.shadowColor = '#4ecdc4'
+          ctx.shadowBlur = 20
+          // Draw crystal shape
+          ctx.beginPath()
+          ctx.moveTo(item.x + item.width/2, item.y)
+          ctx.lineTo(item.x + item.width, item.y + item.height/3)
+          ctx.lineTo(item.x + item.width, item.y + item.height)
+          ctx.lineTo(item.x, item.y + item.height)
+          ctx.lineTo(item.x, item.y + item.height/3)
+          ctx.closePath()
+          ctx.fill()
+          ctx.strokeStyle = '#26d0ce'
+          ctx.lineWidth = 2
+          ctx.stroke()
+          ctx.restore()
+        }
+      })
+
+      // Draw enemies (anime-style monsters)
+      enemies.forEach(enemy => {
+        ctx.save()
+        if (enemy.isBoss) {
+          ctx.shadowColor = '#ffda00'
+          ctx.shadowBlur = 25
+          // Body
+          ctx.fillStyle = '#ff3b3b'
+          ctx.fillRect(enemy.x, enemy.y + 12, enemy.width, enemy.height - 12)
+          // Face
+          ctx.fillStyle = '#ff6b6b'
+          ctx.fillRect(enemy.x + 8, enemy.y + 4, enemy.width - 16, 10)
+          // Eyes
+          ctx.fillStyle = 'white'
+          ctx.fillRect(enemy.x + 12, enemy.y + 6, 8, 8)
+          ctx.fillRect(enemy.x + enemy.width - 20, enemy.y + 6, 8, 8)
+          ctx.fillStyle = '#000'
+          ctx.fillRect(enemy.x + 16, enemy.y + 10, 4, 4)
+          ctx.fillRect(enemy.x + enemy.width - 24, enemy.y + 10, 4, 4)
+          // Boss health bar
+          ctx.fillStyle = 'rgba(0,0,0,0.6)'
+          ctx.fillRect(enemy.x, enemy.y - 12, enemy.width, 6)
+          ctx.fillStyle = '#22c55e'
+          const bossMaxHealth = 10 + level * 2
+          ctx.fillRect(enemy.x, enemy.y - 12, Math.max(0, enemy.health / bossMaxHealth) * enemy.width, 6)
+        } else {
+          ctx.shadowColor = '#ff6b6b'
+          ctx.shadowBlur = 15
+          // Body
+          ctx.fillStyle = '#ff6b6b'
+          ctx.fillRect(enemy.x, enemy.y + 10, enemy.width, enemy.height - 10)
+          // Head
+          ctx.fillStyle = '#ff3838'
+          ctx.fillRect(enemy.x + 5, enemy.y, enemy.width - 10, 15)
+          // Eyes
+          ctx.fillStyle = 'white'
+          ctx.fillRect(enemy.x + 8, enemy.y + 3, 6, 6)
+          ctx.fillRect(enemy.x + enemy.width - 14, enemy.y + 3, 6, 6)
+          ctx.fillStyle = '#ff0000'
+          ctx.fillRect(enemy.x + 10, enemy.y + 5, 2, 2)
+          ctx.fillRect(enemy.x + enemy.width - 12, enemy.y + 5, 2, 2)
+          // Mouth
+          ctx.fillStyle = '#000'
+          ctx.fillRect(enemy.x + 12, enemy.y + 10, 6, 2)
+          // Spikes
+          ctx.fillStyle = '#ff4757'
+          ctx.fillRect(enemy.x - 2, enemy.y + 5, 4, 8)
+          ctx.fillRect(enemy.x + enemy.width - 2, enemy.y + 5, 4, 8)
+        }
+        ctx.restore()
+      })
+
+      // Boss warning
+      if (enemies.some(e => e.isBoss)) {
+        ctx.fillStyle = 'rgba(255,255,255,0.85)'
+        ctx.font = '28px Arial'
+        ctx.textAlign = 'center'
+        ctx.fillText('⚔️ BOSS EN COURS ⚔️', canvas.width / 2, 50)
+      }
+
+      // Draw player (anime-style hero)
+      let playerColor = player.attacking ? '#ffd93d' : '#4ecdc4'
+      if (player.invincible) {
+        playerColor = Math.sin(Date.now() / 100) > 0 ? '#ffd93d' : playerColor
+      }
+      if (player.speedBoost) {
+        ctx.strokeStyle = '#ffd93d'
+        ctx.lineWidth = 3
+        ctx.strokeRect(player.x - 3, player.y - 3, player.width + 6, player.height + 6)
+      }
+      ctx.fillStyle = playerColor
+      ctx.save()
+      ctx.shadowColor = ctx.fillStyle
+      ctx.shadowBlur = 25
+      // Body
+      ctx.fillRect(player.x, player.y + 10, player.width, player.height - 10)
+      // Head
+      ctx.fillStyle = '#ffeaa7'
+      ctx.fillRect(player.x + 5, player.y, player.width - 10, 15)
+      // Eyes
+      ctx.fillStyle = 'white'
+      ctx.fillRect(player.x + 8, player.y + 3, 6, 6)
+      ctx.fillRect(player.x + player.width - 14, player.y + 3, 6, 6)
+      ctx.fillStyle = '#000'
+      ctx.fillRect(player.x + 10, player.y + 5, 2, 2)
+      ctx.fillRect(player.x + player.width - 12, player.y + 5, 2, 2)
+      // Hair
+      ctx.fillStyle = '#2d3436'
+      ctx.fillRect(player.x + 2, player.y - 2, player.width - 4, 5)
+      ctx.restore()
+      
+      // Sword attack
+      if (player.attacking) {
+        ctx.save()
+        ctx.fillStyle = '#ffd93d'
+        ctx.shadowColor = '#ffd93d'
+        ctx.shadowBlur = 15
+        ctx.fillRect(player.x + player.width, player.y + 10, 35, 20)
+        // Sword glow
+        ctx.strokeStyle = '#ffd93d'
+        ctx.lineWidth = 2
+        ctx.strokeRect(player.x + player.width, player.y + 10, 35, 20)
+        ctx.restore()
+      }
+
+      // Draw particles
+      particles.forEach(p => {
+        ctx.save()
+        ctx.globalAlpha = p.life / 30
+        ctx.fillStyle = p.color
+        ctx.shadowColor = p.color
+        ctx.shadowBlur = 10
+        ctx.fillRect(p.x, p.y, 3, 3)
+        ctx.restore()
+      })
+
+      if (gameOver) return
+
+      requestAnimationFrame(() => {
+        update()
+        draw()
+      })
+    }
+
+    function resetGame() {
+      paused = false
+      shopOpen = false
+      pauseOverlay.style.display = 'none'
+      shopOverlay.style.display = 'none'
+      init()
+      updateHUD()
+      draw()
+    }
+
+    init()
+    draw()
+  </script>
+</body>
+</html>
