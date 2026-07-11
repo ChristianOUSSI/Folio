@@ -40,7 +40,7 @@ const educationRight = [
 
 export function EducationLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -69,11 +69,11 @@ export function EducationLeft() {
                 <div className="pl-4 flex items-start gap-3">
                   <div className="mt-1 flex-shrink-0">{edu.icon}</div>
                   <div>
-                    <h3 className="font-bold text-sm md:text-base text-slate-800 dark:text-slate-200 mb-1 font-serif group-hover:text-slate-600 dark:group-hover:text-white transition-colors">
+                    <h3 className="font-bold text-sm md:text-base text-slate-950 dark:text-white mb-1 font-serif group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                       {edu.title}
                     </h3>
-                    <p className="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 mb-1">{edu.institution}</p>
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider">
+                    <p className="text-[11px] md:text-xs text-slate-800 dark:text-slate-200 mb-1">{edu.institution}</p>
+                    <p className="text-[10px] text-slate-800 dark:text-slate-200 font-semibold uppercase tracking-wider">
                       {edu.period}
                     </p>
                   </div>
@@ -89,7 +89,7 @@ export function EducationLeft() {
 
 export function EducationRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <div className="space-y-3 w-full">
           {educationRight.map((edu, idx) => (
@@ -107,11 +107,11 @@ export function EducationRight() {
                 <div className="pl-4 flex items-start gap-3">
                   <div className="mt-1 flex-shrink-0">{edu.icon}</div>
                   <div>
-                    <h3 className="font-bold text-sm md:text-base text-slate-800 dark:text-slate-200 mb-1 font-serif group-hover:text-slate-600 dark:group-hover:text-white transition-colors">
+                    <h3 className="font-bold text-sm md:text-base text-slate-950 dark:text-white mb-1 font-serif group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
                       {edu.title}
                     </h3>
-                    <p className="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 mb-1">{edu.institution}</p>
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider">
+                    <p className="text-[11px] md:text-xs text-slate-800 dark:text-slate-200 mb-1">{edu.institution}</p>
+                    <p className="text-[10px] text-slate-800 dark:text-slate-200 font-semibold uppercase tracking-wider">
                       {edu.period}
                     </p>
                   </div>

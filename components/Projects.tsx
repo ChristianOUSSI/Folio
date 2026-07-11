@@ -58,7 +58,7 @@ const projectsRight = [
 
 export function ProjectsLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -143,7 +143,7 @@ export function ProjectsLeft() {
 
 export function ProjectsRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <div className="flex flex-col gap-3 w-full">
           {projectsRight.map((project, index) => (

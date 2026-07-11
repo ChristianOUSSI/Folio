@@ -40,7 +40,7 @@ export function ContactLeft() {
   };
 
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -145,7 +145,7 @@ export function ContactLeft() {
 
 export function ContactRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col gap-4">
         {/* Phone Numbers */}
         <motion.div 

@@ -22,7 +22,7 @@ const certificationsRight = [
 
 export function CertificationsLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export function CertificationsLeft() {
                 >
                   {cert.icon}
                 </motion.div>
-                <p className="text-[10px] md:text-xs font-medium text-center text-slate-700 dark:text-slate-300 group-hover:text-slate-500 dark:group-hover:text-white transition-colors leading-snug font-serif">
+                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900 dark:text-slate-100 group-hover:text-slate-800 dark:group-hover:text-white transition-colors leading-snug font-serif">
                   {cert.name}
                 </p>
               </div>
@@ -68,7 +68,7 @@ export function CertificationsLeft() {
 
 export function CertificationsRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <div className="grid grid-cols-2 gap-3 w-full">
           {certificationsRight.map((cert, idx) => (
@@ -89,7 +89,7 @@ export function CertificationsRight() {
                 >
                   {cert.icon}
                 </motion.div>
-                <p className="text-[10px] md:text-xs font-medium text-center text-slate-700 dark:text-slate-300 group-hover:text-slate-500 dark:group-hover:text-white transition-colors leading-snug font-serif">
+                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900 dark:text-slate-100 group-hover:text-slate-800 dark:group-hover:text-white transition-colors leading-snug font-serif">
                   {cert.name}
                 </p>
               </div>

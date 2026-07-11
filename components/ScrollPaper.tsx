@@ -133,8 +133,8 @@ export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRigh
         </div>
 
         {/* Scroll Content Area */}
-        <div className="flex-1 w-full overflow-y-auto overflow-x-hidden custom-scrollbar pt-12 pb-12 px-1 relative z-0">
-          <div className="w-full min-h-full flex flex-col gap-1 pb-4">
+        <div className="flex-1 w-full overflow-y-auto overflow-x-hidden custom-scrollbar pt-2 pb-2 px-0 relative z-0">
+          <div className="w-full min-h-full flex flex-col gap-0 pb-2">
             {children}
           </div>
         </div>

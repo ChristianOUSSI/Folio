@@ -71,7 +71,7 @@ const personalNote = "Ces compétences ne sont pas juste des outils elles sont n
 
 export function SkillsLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -94,11 +94,11 @@ export function SkillsLeft() {
             className="group relative"
           >
             <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
-              <h3 className="font-semibold text-lg text-slate-800 dark:text-slate-200 mb-2 font-serif">{cat.title}</h3>
+              <h3 className="font-semibold text-lg text-slate-950 dark:text-white mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-slate-700 dark:text-slate-300">
-                    <span className="text-slate-500 dark:text-slate-400">{skill.icon}</span>
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-slate-900 dark:text-slate-100">
+                    <span className="text-slate-800 dark:text-slate-200">{skill.icon}</span>
                     <span className="truncate">{skill.name}</span>
                   </li>
                 ))}
@@ -113,7 +113,7 @@ export function SkillsLeft() {
 
 export function SkillsRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="flex flex-col gap-4 w-full max-w-sm mx-auto relative z-10">
         {categoriesRight.map((cat, idx) => (
           <motion.div 
@@ -125,7 +125,7 @@ export function SkillsRight() {
             className="group relative"
           >
             <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
-              <h3 className="font-semibold text-[15px] md:text-base text-slate-800 dark:text-slate-200 mb-2 font-serif">{cat.title}</h3>
+              <h3 className="font-semibold text-[15px] md:text-base text-slate-950 dark:text-white mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
                   <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-700 dark:text-gray-200">

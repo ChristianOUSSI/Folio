@@ -28,7 +28,7 @@ const experienceRight = [
 
 export function ExperienceLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -58,12 +58,12 @@ export function ExperienceLeft() {
                     <Briefcase className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider font-semibold">
+                    <p className="text-[10px] text-slate-800 dark:text-slate-200 mb-1 uppercase tracking-wider font-semibold">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-slate-800 dark:text-slate-200 mb-1 font-serif group-hover:text-slate-600 dark:group-hover:text-white transition-colors">{exp.role}</h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">{exp.company}</p>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-serif">{exp.description}</p>
+                    <h3 className="font-bold text-base text-slate-950 dark:text-white mb-1 font-serif group-hover:text-slate-900 dark:group-hover:text-white transition-colors">{exp.role}</h3>
+                    <p className="text-xs text-slate-800 dark:text-slate-200 mb-2">{exp.company}</p>
+                    <p className="text-xs text-slate-900 dark:text-slate-200 leading-relaxed font-serif">{exp.description}</p>
                   </div>
                 </div>
               </div>
@@ -77,7 +77,7 @@ export function ExperienceLeft() {
 
 export function ExperienceRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <div className="space-y-4 w-full">
           {experienceRight.map((exp, idx) => (
@@ -96,12 +96,12 @@ export function ExperienceRight() {
                     <Briefcase className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider font-semibold">
+                    <p className="text-[10px] text-slate-800 dark:text-slate-200 mb-1 uppercase tracking-wider font-semibold">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-slate-800 dark:text-slate-200 mb-1 font-serif group-hover:text-slate-600 dark:group-hover:text-white transition-colors">{exp.role}</h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">{exp.company}</p>
-                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-serif">{exp.description}</p>
+                    <h3 className="font-bold text-base text-slate-950 dark:text-white mb-1 font-serif group-hover:text-slate-900 dark:group-hover:text-white transition-colors">{exp.role}</h3>
+                    <p className="text-xs text-slate-800 dark:text-slate-200 mb-2">{exp.company}</p>
+                    <p className="text-xs text-slate-900 dark:text-slate-200 leading-relaxed font-serif">{exp.description}</p>
                   </div>
                 </div>
               </div>

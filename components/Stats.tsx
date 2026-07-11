@@ -62,7 +62,7 @@ export function StatsLeft() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-bold mb-6 font-serif text-slate-800"
+          className="text-4xl md:text-6xl font-bold mb-6 font-serif text-slate-950"
         >
           En <span className="text-[#d4af37]">Chiffres</span>
         </motion.h2>
@@ -80,7 +80,7 @@ export function StatsLeft() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-lg text-slate-600 font-serif leading-relaxed"
+          className="text-lg text-slate-900 font-serif leading-relaxed"
         >
           Un aperçu de mon parcours, mes accomplissements et l'énergie que je mets dans chaque projet. Des résultats concrets qui reflètent mon engagement.
         </motion.p>
@@ -111,10 +111,10 @@ export function StatsRight() {
               <div className="mb-4 text-[#d4af37] group-hover:scale-110 transition-transform duration-300">
                 {stat.icon}
               </div>
-              <div className="text-3xl sm:text-4xl font-bold text-slate-800 mb-2">
+              <div className="text-3xl sm:text-4xl font-bold text-slate-950 mb-2">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-xs sm:text-sm text-slate-600 font-medium font-serif text-center uppercase tracking-wider">
+              <div className="text-xs sm:text-sm text-slate-900 font-medium font-serif text-center uppercase tracking-wider">
                 {stat.label}
               </div>
             </motion.div>
