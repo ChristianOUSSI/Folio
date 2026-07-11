@@ -1,15 +1,13 @@
 'use client';
 import { motion } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
+import { Briefcase, Award, Clock, Heart } from 'lucide-react';
 
-const statsLeft = [
-  { value: 4, suffix: '+', label: 'Projets réalisés', icon: '◈' },
-  { value: 10, suffix: '+', label: 'Certifications', icon: '⬡' },
-];
-
-const statsRight = [
-  { value: 3, suffix: '+', label: 'Années d\'expérience', icon: '◇' },
-  { value: 100, suffix: '%', label: 'Passion', icon: '⬢' },
+const stats = [
+  { value: 10, suffix: '+', label: 'Projets réalisés', icon: <Briefcase className="w-8 h-8" /> },
+  { value: 15, suffix: '+', label: 'Certifications', icon: <Award className="w-8 h-8" /> },
+  { value: 3, suffix: '+', label: 'Années d\'expérience', icon: <Clock className="w-8 h-8" /> },
+  { value: 100, suffix: '%', label: 'Passion', icon: <Heart className="w-8 h-8" /> },
 ];
 
 function AnimatedCounter({ target, suffix }: { target: number; suffix: string }) {
@@ -58,46 +56,34 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 
 export function StatsLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-8 relative">
-      <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col items-center">
+    <section className="w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 py-8 relative">
+      <div className="max-w-md mx-auto w-full relative z-10 flex flex-col items-center text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl font-bold mb-10 text-center font-serif"
+          className="text-4xl md:text-6xl font-bold mb-6 font-serif text-slate-800"
         >
-          <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent dark:from-slate-400 dark:to-slate-300">
-            Statistiques
-          </span>
+          En <span className="text-[#d4af37]">Chiffres</span>
         </motion.h2>
 
         <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="w-24 h-[2px] bg-[#d4af37] mx-auto mb-8"
+        />
+
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full"
+          transition={{ delay: 0.4 }}
+          className="text-lg text-slate-600 font-serif leading-relaxed"
         >
-          {statsLeft.map((stat, idx) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              className="text-center p-6 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-all group"
-            >
-              <div className="text-3xl mb-3 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">
-                {stat.icon}
-              </div>
-              <div className="text-4xl font-bold text-slate-800 dark:text-slate-200 mb-2">
-                <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-              </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400 font-medium font-serif">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          Un aperçu de mon parcours, mes accomplissements et l'énergie que je mets dans chaque projet. Des résultats concrets qui reflètent mon engagement.
+        </motion.p>
       </div>
     </section>
   );
@@ -105,30 +91,30 @@ export function StatsLeft() {
 
 export function StatsRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-8 relative">
-      <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col items-center mt-16 md:mt-24">
+    <section className="w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 py-8 relative">
+      <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full"
+          className="grid grid-cols-2 gap-4 sm:gap-6 w-full"
         >
-          {statsRight.map((stat, idx) => (
+          {stats.map((stat, idx) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="text-center p-6 rounded-2xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 transition-all group"
+              className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/80 shadow-md border border-[#d4af37]/30 hover:border-[#d4af37] transition-all group"
             >
-              <div className="text-3xl mb-3 text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-400 transition-colors">
+              <div className="mb-4 text-[#d4af37] group-hover:scale-110 transition-transform duration-300">
                 {stat.icon}
               </div>
-              <div className="text-4xl font-bold text-slate-800 dark:text-slate-200 mb-2">
+              <div className="text-3xl sm:text-4xl font-bold text-slate-800 mb-2">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-sm text-slate-600 dark:text-slate-400 font-medium font-serif">
+              <div className="text-xs sm:text-sm text-slate-600 font-medium font-serif text-center uppercase tracking-wider">
                 {stat.label}
               </div>
             </motion.div>

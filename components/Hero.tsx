@@ -1,7 +1,6 @@
 'use client';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { slugify } from '../utils/slugify';
 import { useI18n } from '../lib/i18n';
 
 export function HeroLeft() {
@@ -55,12 +54,12 @@ export function HeroRight() {
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="mb-8"
+        className="mb-6 flex flex-col items-center"
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-2 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 dark:from-blue-400 dark:via-blue-300 dark:to-blue-400 bg-clip-text text-transparent leading-tight" style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>
+        <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 dark:from-blue-400 dark:via-blue-300 dark:to-blue-400 bg-clip-text text-transparent leading-tight text-center" style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>
           OJCJ
         </h1>
-        <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full"></div>
+        <div className="w-16 h-1 bg-blue-600 rounded-full"></div>
       </motion.div>
 
       {/* Description */}
@@ -70,11 +69,8 @@ export function HeroRight() {
         transition={{ delay: 0.5 }}
         className="mb-8 text-center max-w-md"
       >
-        <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 mb-6 leading-relaxed font-serif">
+        <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 leading-relaxed font-serif">
           {t('hero.description')}
-        </p>
-        <p className="text-sm text-blue-600 dark:text-blue-400 uppercase tracking-widest font-semibold">
-          {t('hero.tags')}
         </p>
       </motion.div>
 
@@ -83,7 +79,7 @@ export function HeroRight() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7 }}
-        className="flex flex-col w-full max-w-xs gap-4 mt-4"
+        className="flex flex-col w-full max-w-xs gap-4 mt-2"
       >
         <motion.a
           href="#projets"

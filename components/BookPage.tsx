@@ -98,6 +98,7 @@ export default function BookPage({
         className="absolute inset-0 w-full h-full bg-[#f4ecd8] overflow-y-auto overflow-x-hidden custom-scrollbar"
         style={{
           backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
           background: 'linear-gradient(to right, #e8dcb8 0%, #f4ecd8 5%, #f4ecd8 95%, #e8dcb8 100%)',
           boxShadow: 'inset 0 0 30px rgba(0,0,0,0.05)',
         }}
@@ -121,6 +122,7 @@ export default function BookPage({
         className="absolute inset-0 w-full h-full bg-[#f4ecd8] overflow-y-auto overflow-x-hidden custom-scrollbar"
         style={{
           backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
           transform: 'rotateY(180deg)',
           background: 'linear-gradient(to left, #e8dcb8 0%, #f4ecd8 5%, #f4ecd8 95%, #e8dcb8 100%)',
           boxShadow: 'inset 0 0 30px rgba(0,0,0,0.05)',
