@@ -114,7 +114,7 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
             } 
           : {
               // Flap position (sticking out the right side)
-              right: '-40px', // Sticks out to the right
+              right: '-20px', // Closer to the book
               top: '50%',
               y: '-50%',
               width: '40px',
