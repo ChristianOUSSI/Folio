@@ -10,15 +10,65 @@ interface BookContainerProps {
 export default function BookContainer({ children }: BookContainerProps) {
   const [currentSpread, setCurrentSpread] = useState(-1); // -1 is closed, 0 is Spread 0
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Convert flat children to sheets (2 pages per sheet)
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const pages = React.Children.toArray(children);
   const sheets: { front: React.ReactNode, back: React.ReactNode }[] = [];
-  for (let i = 0; i < pages.length; i += 2) {
-    sheets.push({
-      front: pages[i],
-      back: pages[i + 1] || null
-    });
+
+  if (mounted) {
+    if (isMobile) {
+      // On Mobile: 1 page per sheet (Flip left-to-right individually)
+      sheets.push({
+        front: (
+          <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-[#f4ecd8]">
+            <div className="border-[4px] border-double border-[#d4af37] p-8 flex flex-col items-center justify-center text-center">
+              <h1 className="text-3xl font-serif text-[#1e293b] mb-4 font-bold tracking-wider">PORTFOLIO</h1>
+              <div className="w-16 h-[2px] bg-[#d4af37] mx-auto my-4"></div>
+              <p className="text-gray-600 italic text-lg font-serif">Joseph Christian Josué OUSSI</p>
+            </div>
+          </div>
+        ),
+        back: null
+      });
+      for (let i = 0; i < pages.length; i++) {
+        sheets.push({
+          front: pages[i],
+          back: null
+        });
+      }
+    } else {
+      // On Desktop: 2 pages per sheet (Spread format)
+      // Sheet 0 Front is Title. Sheet 0 Back is SommaireLeft (pages[0]).
+      sheets.push({
+        front: (
+          <div className="w-full h-full flex flex-col items-center justify-center p-8 bg-[#f4ecd8]">
+            <div className="border-[4px] border-double border-[#d4af37] p-12 md:p-16 flex flex-col items-center justify-center text-center">
+              <h1 className="text-4xl md:text-6xl font-serif text-[#1e293b] mb-4 font-bold tracking-wider">PORTFOLIO</h1>
+              <div className="w-24 h-[2px] bg-[#d4af37] mx-auto my-6"></div>
+              <p className="text-gray-600 italic text-xl font-serif">Joseph Christian Josué OUSSI</p>
+              <p className="text-gray-500 text-sm mt-4 tracking-widest uppercase">Développeur Web & Mobile</p>
+            </div>
+          </div>
+        ),
+        back: pages[0] || null
+      });
+      // Sheet 1 to N
+      for (let i = 1; i < pages.length; i += 2) {
+        sheets.push({
+          front: pages[i] || null,
+          back: pages[i + 1] || null
+        });
+      }
+    }
   }
 
   const totalSpreads = sheets.length;
@@ -51,13 +101,15 @@ export default function BookContainer({ children }: BookContainerProps) {
     (window as any).playFlipSound = playFlipSound;
 
     const handleNavClick = (e: CustomEvent) => {
-      // index received from Navbar (0 to N).
-      // We want to go to the spread that contains this index.
-      // Index 0 -> Spread 0 (Front of sheet 0)
-      // Index 1 -> Spread 1 (Back of sheet 0)
-      // Index 2 -> Spread 1 (Front of sheet 1)
-      // Index 3 -> Spread 2 (Back of sheet 1)
-      const targetSpread = e.detail.index;
+      const sectionIndex = e.detail.index; // 0 to 11
+      let targetSpread = 0;
+      if (isMobile) {
+        // Mobile: Title is 0. Sommaire (idx 0) is 1,2. We go to Left (1).
+        targetSpread = sectionIndex * 2 + 1;
+      } else {
+        // Desktop: Title is Spread 0. Sommaire is Spread 1.
+        targetSpread = sectionIndex + 1;
+      }
       
       if (targetSpread === currentSpread) return;
       
@@ -74,7 +126,7 @@ export default function BookContainer({ children }: BookContainerProps) {
 
     window.addEventListener('book-navigate' as any, handleNavClick);
     return () => window.removeEventListener('book-navigate' as any, handleNavClick);
-  }, [currentSpread]);
+  }, [currentSpread, isMobile]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -125,7 +177,6 @@ export default function BookContainer({ children }: BookContainerProps) {
   };
 
   return (
-    // We adjust the top padding so the book sits just below the hidden navbar (64px) + ~8px
     <div className="fixed inset-0 pt-[72px] md:pt-[72px] overflow-hidden flex items-center justify-center bg-[#020617]" style={{ perspective: '3000px' }}>
       
       {/* Navigation Buttons for PC */}
@@ -148,10 +199,7 @@ export default function BookContainer({ children }: BookContainerProps) {
         </div>
       )}
 
-      {/* Note: Red close button removed as requested. The bookmark flap on BookCover acts as the close button. */}
-
       <div 
-        // Height on PC: Fill available space minus padding (calc(100vh - 72px - 20px bottom margin))
         className="relative w-full max-w-[1400px] h-[100dvh] md:h-[calc(100vh-100px)] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
         style={{
           transformStyle: 'preserve-3d',
@@ -176,7 +224,6 @@ export default function BookContainer({ children }: BookContainerProps) {
         `}} />
 
         <div className="absolute inset-0 mobile-book-container h-full w-[80%] md:w-[50%] left-0 md:left-0" style={{ transformStyle: 'preserve-3d' }}>
-          {/* The Pages inside (slightly smaller than cover for realism) */}
           <div 
             className="absolute inset-y-2 md:inset-y-6 left-0 w-full origin-left mobile-book-page"
             style={{
@@ -186,7 +233,7 @@ export default function BookContainer({ children }: BookContainerProps) {
               transition: 'opacity 0.3s, z-index 0.3s'
             }}
           >
-            {sheets.map((sheet, index) => (
+            {mounted && sheets.map((sheet, index) => (
               <BookPage 
                 key={index} 
                 frontContent={sheet.front}
@@ -202,7 +249,6 @@ export default function BookContainer({ children }: BookContainerProps) {
             ))}
           </div>
 
-          {/* The Cover */}
           <BookCover 
             isOpen={currentSpread > -1} 
             onOpen={openBook} 
@@ -213,3 +259,4 @@ export default function BookContainer({ children }: BookContainerProps) {
     </div>
   );
 }
+
