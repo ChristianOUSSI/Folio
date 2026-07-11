@@ -24,7 +24,7 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
     <>
       {/* Front Cover */}
       <motion.div
-        className="absolute inset-y-4 md:inset-y-8 left-0 w-full md:w-[70%] origin-left md:rounded-r-2xl mobile-book-page"
+        className="absolute inset-y-0 left-0 w-full origin-left md:rounded-r-2xl mobile-book-page"
         style={{
           transformStyle: 'preserve-3d',
           zIndex: isOpen ? 2 : 10, // Must be above pages when closed
@@ -93,7 +93,7 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
 
       {/* Pages thickness illusion (Tranche dorée) */}
       <motion.div
-        className="absolute inset-y-9 right-[-10px] w-4 bg-[#b5952f]"
+        className="absolute inset-y-2 md:inset-y-6 right-[-10px] w-4 bg-[#b5952f]"
         style={{
           transformOrigin: 'left',
           transform: 'rotateY(90deg)',

@@ -11,6 +11,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
       handleDiscover();
     }, 4000);
     return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDiscover = () => {

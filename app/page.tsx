@@ -1,24 +1,53 @@
 "use client";
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
-import Sommaire from '../components/Sommaire';
-import Hero from '../components/Hero';
-import About from '../components/About';
-import Skills from '../components/Skills';
-import Experience from '../components/Experience';
-import Education from '../components/Education';
-import Certifications from '../components/Certifications';
-import Projects from '../components/Projects';
-import Blog from '../components/Blog';
-import Contact from '../components/Contact';
 import Launcher from '../components/Launcher';
-import Stats from '../components/Stats';
-import Process from '../components/Process';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import BookContainer from '../components/BookContainer';
 
+// Import split components
+import { SommaireLeft, SommaireRight } from '../components/Sommaire';
+import { HeroLeft, HeroRight } from '../components/Hero';
+import { AboutLeft, AboutRight } from '../components/About';
+import { SkillsLeft, SkillsRight } from '../components/Skills';
+import { StatsLeft, StatsRight } from '../components/Stats';
+import { ProcessLeft, ProcessRight } from '../components/Process';
+import { ExperienceLeft, ExperienceRight } from '../components/Experience';
+import { EducationLeft, EducationRight } from '../components/Education';
+import { CertificationsLeft, CertificationsRight } from '../components/Certifications';
+import { ProjectsLeft, ProjectsRight } from '../components/Projects';
+import { BlogLeft, BlogRight } from '../components/Blog';
+import { ContactLeft, ContactRight } from '../components/Contact';
+
 export default function Home() {
   const [showContent, setShowContent] = useState(false);
+
+  const pages = [
+    { id: 'sommaire-left', component: <SommaireLeft /> },
+    { id: 'sommaire-right', component: <SommaireRight /> },
+    { id: 'hero-left', component: <HeroLeft /> },
+    { id: 'hero-right', component: <HeroRight /> },
+    { id: 'about-left', component: <AboutLeft /> },
+    { id: 'about-right', component: <AboutRight /> },
+    { id: 'skills-left', component: <SkillsLeft /> },
+    { id: 'skills-right', component: <SkillsRight /> },
+    { id: 'stats-left', component: <StatsLeft /> },
+    { id: 'stats-right', component: <StatsRight /> },
+    { id: 'process-left', component: <ProcessLeft /> },
+    { id: 'process-right', component: <ProcessRight /> },
+    { id: 'experience-left', component: <ExperienceLeft /> },
+    { id: 'experience-right', component: <ExperienceRight /> },
+    { id: 'education-left', component: <EducationLeft /> },
+    { id: 'education-right', component: <EducationRight /> },
+    { id: 'certifications-left', component: <CertificationsLeft /> },
+    { id: 'certifications-right', component: <CertificationsRight /> },
+    { id: 'projects-left', component: <ProjectsLeft /> },
+    { id: 'projects-right', component: <ProjectsRight /> },
+    { id: 'blog-left', component: <BlogLeft /> },
+    { id: 'blog-right', component: <BlogRight /> },
+    { id: 'contact-left', component: <ContactLeft /> },
+    { id: 'contact-right', component: <ContactRight /> }
+  ];
 
   return (
     <>
@@ -32,55 +61,13 @@ export default function Home() {
             <Navbar />
           </ErrorBoundary>
           
-          <main className="w-full h-full">
+          <main className="w-full h-full flex items-center justify-center">
             <BookContainer>
-              <ErrorBoundary>
-                <Sommaire />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Hero />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <About />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Skills />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Stats />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Process />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Experience />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Education />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Certifications />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Projects />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Blog />
-              </ErrorBoundary>
-              
-              <ErrorBoundary>
-                <Contact />
-              </ErrorBoundary>
+              {pages.map(page => (
+                <div key={page.id} className="w-full h-full">
+                  {page.component}
+                </div>
+              ))}
             </BookContainer>
           </main>
         </div>

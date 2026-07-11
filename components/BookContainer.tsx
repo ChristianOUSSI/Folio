@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import BookCover from './BookCover';
 import BookPage from './BookPage';
 
@@ -8,11 +8,22 @@ interface BookContainerProps {
 }
 
 export default function BookContainer({ children }: BookContainerProps) {
-  const [currentPage, setCurrentPage] = useState(-1); // -1 is closed (cover), 0 is first page (Hero)
+  const [currentSpread, setCurrentSpread] = useState(-1); // -1 is closed, 0 is Spread 0
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // Convert flat children to sheets (2 pages per sheet)
+  const pages = React.Children.toArray(children);
+  const sheets: { front: React.ReactNode, back: React.ReactNode }[] = [];
+  for (let i = 0; i < pages.length; i += 2) {
+    sheets.push({
+      front: pages[i],
+      back: pages[i + 1] || null
+    });
+  }
+
+  const totalSpreads = sheets.length;
+
   useEffect(() => {
-    // We create a tiny synth for the page flip sound to avoid missing assets
     const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
     if (!AudioContext) return;
     
@@ -37,95 +48,99 @@ export default function BookContainer({ children }: BookContainerProps) {
       osc.stop(audioCtx.currentTime + 0.15);
     };
 
-    // Attach to window so we can trigger it
     (window as any).playFlipSound = playFlipSound;
 
-    // Listen for navbar custom event
     const handleNavClick = (e: CustomEvent) => {
-      const targetIndex = e.detail.index;
-      if (targetIndex === currentPage) return;
+      // index received from Navbar (0 to N).
+      // We want to go to the spread that contains this index.
+      // Index 0 -> Spread 0 (Front of sheet 0)
+      // Index 1 -> Spread 1 (Back of sheet 0)
+      // Index 2 -> Spread 1 (Front of sheet 1)
+      // Index 3 -> Spread 2 (Back of sheet 1)
+      const targetSpread = e.detail.index;
+      
+      if (targetSpread === currentSpread) return;
       
       setIsAnimating(true);
-      // Close the book first
-      setCurrentPage(-1);
+      setCurrentSpread(-1);
       playFlipSound();
       
-      // Open to specific page after a longer delay so we can appreciate the cover closing
       setTimeout(() => {
-        setCurrentPage(targetIndex);
+        setCurrentSpread(targetSpread);
         playFlipSound();
         setIsAnimating(false);
-      }, 1500); // Increased from 800ms to 1500ms
+      }, 1500);
     };
 
     window.addEventListener('book-navigate' as any, handleNavClick);
     return () => window.removeEventListener('book-navigate' as any, handleNavClick);
-  }, [currentPage]);
+  }, [currentSpread]);
 
-  // Global keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (currentPage === -1) return;
+      if (currentSpread === -1) return;
       if (e.key === 'ArrowRight') {
-        goToNextPage();
+        goToNextSpread();
       } else if (e.key === 'ArrowLeft') {
-        goToPrevPage();
+        goToPrevSpread();
       } else if (e.key === 'Escape') {
         closeBook();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentPage, isAnimating]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentSpread, isAnimating]);
 
-  const goToNextPage = () => {
-    if (isAnimating || currentPage >= children.length - 1) return;
+  const goToNextSpread = () => {
+    if (isAnimating || currentSpread >= totalSpreads) return;
     setIsAnimating(true);
     (window as any).playFlipSound?.();
-    setCurrentPage(prev => prev + 1);
-    setTimeout(() => setIsAnimating(false), 600);
+    setCurrentSpread(prev => prev + 1);
+    setTimeout(() => setIsAnimating(false), 1200);
   };
 
-  const goToPrevPage = () => {
-    if (isAnimating || currentPage < 0) return;
+  const goToPrevSpread = () => {
+    if (isAnimating || currentSpread < 0) return;
     setIsAnimating(true);
     (window as any).playFlipSound?.();
-    setCurrentPage(prev => prev - 1);
-    setTimeout(() => setIsAnimating(false), 600);
+    setCurrentSpread(prev => prev - 1);
+    setTimeout(() => setIsAnimating(false), 1200);
   };
 
   const openBook = () => {
-    if (currentPage !== -1) return;
+    if (currentSpread !== -1) return;
     setIsAnimating(true);
     (window as any).playFlipSound?.();
-    setCurrentPage(0);
-    setTimeout(() => setIsAnimating(false), 800);
+    setCurrentSpread(0);
+    setTimeout(() => setIsAnimating(false), 1400);
   };
 
   const closeBook = () => {
-    if (currentPage === -1) return;
+    if (currentSpread === -1) return;
     setIsAnimating(true);
     (window as any).playFlipSound?.();
-    setCurrentPage(-1);
-    setTimeout(() => setIsAnimating(false), 800);
+    setCurrentSpread(-1);
+    setTimeout(() => setIsAnimating(false), 1400);
   };
 
   return (
-    <div className="fixed inset-0 md:pt-16 overflow-hidden flex items-center justify-center bg-[#020617]" style={{ perspective: '3000px' }}>
+    // We adjust the top padding so the book sits just below the hidden navbar (64px) + ~8px
+    <div className="fixed inset-0 pt-[72px] md:pt-[72px] overflow-hidden flex items-center justify-center bg-[#020617]" style={{ perspective: '3000px' }}>
       
-      {/* Navigation Buttons for PC (Visible only when open on larger screens) */}
-      {currentPage > -1 && (
+      {/* Navigation Buttons for PC */}
+      {currentSpread > -1 && (
         <div className="hidden md:flex absolute inset-x-0 top-1/2 -translate-y-1/2 justify-between px-4 lg:px-12 z-50 pointer-events-none">
           <button 
-            onClick={goToPrevPage}
-            disabled={currentPage <= 0}
+            onClick={goToPrevSpread}
+            disabled={currentSpread <= 0}
             className="w-12 h-12 rounded-full bg-black/40 border border-[#d4af37]/50 flex items-center justify-center text-[#d4af37] backdrop-blur-md pointer-events-auto hover:bg-black/70 hover:scale-110 transition-all disabled:opacity-0 disabled:pointer-events-none"
           >
             ←
           </button>
           <button 
-            onClick={goToNextPage}
-            disabled={currentPage >= children.length - 1}
+            onClick={goToNextSpread}
+            disabled={currentSpread >= totalSpreads}
             className="w-12 h-12 rounded-full bg-black/40 border border-[#d4af37]/50 flex items-center justify-center text-[#d4af37] backdrop-blur-md pointer-events-auto hover:bg-black/70 hover:scale-110 transition-all disabled:opacity-0 disabled:pointer-events-none"
           >
             →
@@ -133,27 +148,16 @@ export default function BookContainer({ children }: BookContainerProps) {
         </div>
       )}
 
-      {/* Close button */}
-      {currentPage > -1 && (
-        <button 
-          onClick={closeBook}
-          className="absolute top-4 right-4 md:top-24 md:right-12 w-10 h-10 rounded-full bg-black/40 border border-red-500/50 flex items-center justify-center text-red-500 backdrop-blur-md z-50 hover:bg-black/70 hover:scale-110 transition-all"
-        >
-          ✕
-        </button>
-      )}
+      {/* Note: Red close button removed as requested. The bookmark flap on BookCover acts as the close button. */}
 
       <div 
-        className="relative w-full max-w-[1200px] h-[100dvh] md:h-[85vh] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
+        // Height on PC: Fill available space minus padding (calc(100vh - 72px - 20px bottom margin))
+        className="relative w-full max-w-[1400px] h-[100dvh] md:h-[calc(100vh-100px)] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
         style={{
           transformStyle: 'preserve-3d',
-          // On desktop:
-          // Closed: center the cover (shift right 25%)
-          // Open: center the spine (shift right 50% because the book pages are 50% width)
-          transform: `rotateX(2deg) translateX(${currentPage > -1 ? '50%' : '25%'})`,
+          transform: `rotateX(2deg) translateX(${currentSpread > -1 ? '50%' : '25%'})`,
         }}
       >
-        {/* Mobile centering override via CSS class */}
         <style dangerouslySetInnerHTML={{__html: `
           @media (max-width: 768px) {
             .mobile-book-container {
@@ -172,35 +176,35 @@ export default function BookContainer({ children }: BookContainerProps) {
         `}} />
 
         <div className="absolute inset-0 mobile-book-container h-full w-[80%] md:w-[50%] left-0 md:left-0" style={{ transformStyle: 'preserve-3d' }}>
-          {/* The Pages inside */}
+          {/* The Pages inside (slightly smaller than cover for realism) */}
           <div 
-            className="absolute inset-y-4 md:inset-y-8 left-0 w-full origin-left mobile-book-page"
+            className="absolute inset-y-2 md:inset-y-6 left-0 w-full origin-left mobile-book-page"
             style={{
               zIndex: 1,
-              pointerEvents: currentPage > -1 ? 'auto' : 'none',
-              opacity: currentPage > -1 ? 1 : 0,
+              pointerEvents: currentSpread > -1 ? 'auto' : 'none',
+              opacity: currentSpread > -1 ? 1 : 0,
               transition: 'opacity 0.3s, z-index 0.3s'
             }}
           >
-            {children.map((child, index) => (
+            {sheets.map((sheet, index) => (
               <BookPage 
                 key={index} 
-                isActive={currentPage === index}
-                isPast={currentPage > index}
-                isFuture={currentPage < index}
-                onSwipeLeft={goToNextPage}
-                onSwipeRight={goToPrevPage}
+                frontContent={sheet.front}
+                backContent={sheet.back}
+                isActive={currentSpread === index}
+                isPast={currentSpread > index}
+                isFuture={currentSpread < index}
+                onSwipeLeft={goToNextSpread}
+                onSwipeRight={goToPrevSpread}
                 index={index}
-                totalPages={children.length}
-              >
-                {child}
-              </BookPage>
+                totalSheets={sheets.length}
+              />
             ))}
           </div>
 
           {/* The Cover */}
           <BookCover 
-            isOpen={currentPage > -1} 
+            isOpen={currentSpread > -1} 
             onOpen={openBook} 
             onClose={closeBook}
           />
