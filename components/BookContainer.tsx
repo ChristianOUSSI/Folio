@@ -50,12 +50,12 @@ export default function BookContainer({ children }: BookContainerProps) {
       setCurrentPage(-1);
       playFlipSound();
       
-      // Open to specific page after a delay
+      // Open to specific page after a longer delay so we can appreciate the cover closing
       setTimeout(() => {
         setCurrentPage(targetIndex);
         playFlipSound();
         setIsAnimating(false);
-      }, 800);
+      }, 1500); // Increased from 800ms to 1500ms
     };
 
     window.addEventListener('book-navigate' as any, handleNavClick);

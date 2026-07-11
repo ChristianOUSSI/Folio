@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface BookCoverProps {
@@ -36,14 +36,14 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
         }}
         initial={false}
         animate={{
-          rotateY: isMobile ? 0 : (isOpen ? -130 : 0), // Opens like a book on PC
+          rotateY: isMobile ? 0 : (isOpen ? -180 : 0), // Opens flat like a real book on PC
           x: isMobile ? (isOpen ? '-100%' : '0%') : '0%', // Slides left on mobile
         }}
         transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }} // smooth cinematic easing
       >
         {/* Book spine simulation (reliure) */}
-        <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-        <div className="absolute inset-y-0 left-0 w-[4px] bg-[#d4af37] opacity-60" />
+        <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
+        <div className="absolute inset-y-0 left-0 w-[4px] bg-[#d4af37] opacity-60 z-10" />
 
         {/* Cover Content (only visible from the front) */}
         <div 
@@ -74,20 +74,20 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
           </motion.div>
         </div>
 
-        {/* Inside Cover (backface) */}
+        {/* Inside Cover (backface) - Now styled as a paper page with a gold line */}
         <div 
-          className="absolute inset-0 rounded-r-2xl"
+          className="absolute inset-0 w-full h-full bg-[#f4ecd8] md:rounded-l-2xl"
           style={{ 
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
-            background: 'linear-gradient(to left, #0b1021 0%, #1e293b 100%)',
-            border: '4px solid #d4af37',
-            borderRight: 'none',
-            boxShadow: 'inset 5px 0 15px rgba(0,0,0,0.5)',
+            background: 'linear-gradient(to left, #e8dcb8 0%, #f4ecd8 5%, #f4ecd8 95%, #e8dcb8 100%)',
+            boxShadow: 'inset 0 0 30px rgba(0,0,0,0.05)',
           }}
         >
-          {/* Inner paper sheet lining */}
-          <div className="absolute inset-2 bg-[#f4ecd8] opacity-10 rounded-sm" />
+          {/* Thin gold line of separation at the right edge (which is the spine side since it's rotated) */}
+          <div className="absolute inset-y-0 right-0 w-[2px] bg-gradient-to-b from-[#8a6d1c] via-[#d4af37] to-[#8a6d1c] shadow-[0_0_5px_rgba(212,175,55,0.8)]" />
+          {/* Shadow for the fold on the back of the cover */}
+          <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/20 to-transparent pointer-events-none" />
         </div>
       </motion.div>
 

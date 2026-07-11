@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react';
 import Navbar from '../components/Navbar';
+import Sommaire from '../components/Sommaire';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Skills from '../components/Skills';
@@ -33,6 +34,10 @@ export default function Home() {
           
           <main className="w-full h-full">
             <BookContainer>
+              <ErrorBoundary>
+                <Sommaire />
+              </ErrorBoundary>
+              
               <ErrorBoundary>
                 <Hero />
               </ErrorBoundary>

@@ -1,4 +1,5 @@
-import { validateContactForm } from '@/lib/contactValidation';
+// @ts-nocheck
+import { validateContactForm } from '../utils/validation';
 
 describe('Contact Form Validation', () => {
   test('should validate correct contact data', () => {

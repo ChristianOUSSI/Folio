@@ -48,14 +48,15 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { key: 'nav.home', label: t('nav.home'), pageIndex: 0 },
-    { key: 'nav.about', label: t('nav.about'), pageIndex: 1 },
-    { key: 'nav.skills', label: t('nav.skills'), pageIndex: 2 },
-    { key: 'nav.experience', label: t('nav.experience'), pageIndex: 5 },
-    { key: 'nav.education', label: t('nav.education'), pageIndex: 6 },
-    { key: 'nav.projects', label: t('nav.projects'), pageIndex: 8 },
-    { key: 'nav.certifications', label: t('nav.certifications'), pageIndex: 7 },
-    { key: 'nav.contact', label: t('nav.contact'), pageIndex: 10 }
+    { key: 'nav.sommaire', label: 'Sommaire', pageIndex: 0 },
+    { key: 'nav.home', label: t('nav.home'), pageIndex: 1 },
+    { key: 'nav.about', label: t('nav.about'), pageIndex: 2 },
+    { key: 'nav.skills', label: t('nav.skills'), pageIndex: 3 },
+    { key: 'nav.experience', label: t('nav.experience'), pageIndex: 6 },
+    { key: 'nav.education', label: t('nav.education'), pageIndex: 7 },
+    { key: 'nav.projects', label: t('nav.projects'), pageIndex: 9 },
+    { key: 'nav.certifications', label: t('nav.certifications'), pageIndex: 8 },
+    { key: 'nav.contact', label: t('nav.contact'), pageIndex: 11 }
   ];
 
   const handleNavClick = (pageIndex: number, e: React.MouseEvent) => {
@@ -65,13 +66,20 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-full z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)]" aria-label="Main navigation">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          whileHover={{ scale: 1.05 }}
+    <div className="fixed top-0 inset-x-0 z-[100] group">
+      {/* Invisible hover trigger zone at the very top */}
+      <div className="absolute top-0 inset-x-0 h-4 bg-transparent z-[101]" />
+      
+      <nav 
+        className="w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)] -translate-y-full group-hover:translate-y-0 focus-within:translate-y-0 transition-transform duration-500" 
+        aria-label="Main navigation"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            whileHover={{ scale: 1.05 }}
         >
           <a href="/" onClick={(e) => handleNavClick(0, e)} className="flex items-center space-x-2 text-blue-700 dark:text-[#d4af37] font-bold text-lg tracking-wider" aria-label="Home - OJCJ">
             <span style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>OJCJ</span>
@@ -154,5 +162,6 @@ export default function Navbar() {
         </div>
       </div>
     </nav>
+    </div>
   );
 }
