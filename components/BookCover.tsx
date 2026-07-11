@@ -111,7 +111,6 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
               borderTopRightRadius: '0px',
               borderBottomRightRadius: '0px',
               borderBottomLeftRadius: '20px',
-              borderBottomRightRadius2: '20px', // Custom shape via border radius
             } 
           : {
               // Flap position (sticking out the right side)
