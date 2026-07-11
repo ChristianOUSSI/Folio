@@ -4,6 +4,7 @@ import ScrollCover from './ScrollCover';
 import ScrollPaper from './ScrollPaper';
 import { Menu, Transition } from '@headlessui/react';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
+import { useI18n } from '../lib/i18n';
 
 interface ScrollContainerProps {
   children: React.ReactNode[];
@@ -34,7 +35,7 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
   };
 
   const navigateToSection = (index: number) => {
-    if (isTransitioning || index === currentSectionIndex) return;
+    if (isTransitioning || index === currentSectionIndex || index < 0 || index >= sections.length) return;
     
     setIsTransitioning(true);
     setIsOpen(false); // Roll up
@@ -45,9 +46,22 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
       
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 800);
-    }, 800);
+      }, 1200);
+    }, 1200);
   };
+
+  useEffect(() => {
+    const handleNavClick = (e: any) => {
+      const sectionIndex = e.detail;
+      if (sectionIndex === -1) {
+        handleTitleClick();
+      } else {
+        navigateToSection(sectionIndex);
+      }
+    };
+    window.addEventListener('book-navigate' as any, handleNavClick);
+    return () => window.removeEventListener('book-navigate' as any, handleNavClick);
+  }, [currentSectionIndex, isTransitioning]);
 
   const handleTitleClick = () => {
     if (isTransitioning) return;
@@ -56,8 +70,10 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
     setTimeout(() => {
       setCurrentSectionIndex(0);
       setIsTransitioning(false);
-    }, 800);
+    }, 1200);
   }
+
+  const { locale, setLocale } = useI18n();
 
   return (
     <div className="fixed inset-0 overflow-hidden bg-[#020617] flex items-center justify-center font-sans touch-none">
@@ -66,18 +82,48 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
       <ScrollCover isOpen={isOpen} onOpen={handleOpen} />
 
       {/* Open Scroll View */}
-      <ScrollPaper isOpen={isOpen}>
+      <ScrollPaper 
+        isOpen={isOpen}
+        onSwipeLeft={() => navigateToSection(currentSectionIndex + 1)}
+        onSwipeRight={() => navigateToSection(currentSectionIndex - 1)}
+      >
         {/* Render the current section (Left and Right parts stacked) */}
         {sections[currentSectionIndex]}
       </ScrollPaper>
+
+      {/* Top Left Language Toggle (Imperial Style) */}
+      <div 
+        className={`absolute top-4 left-4 z-[60] flex items-center gap-1 bg-[#8a6d1c]/20 backdrop-blur-sm rounded-full p-1 border border-[#d4af37]/40 transition-opacity duration-300 ${isOpen && !isTransitioning ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      >
+        <button
+          onClick={() => setLocale('fr')}
+          className={`px-3 py-1 rounded-full text-xs font-serif font-bold transition-all duration-300 ${
+            locale === 'fr'
+              ? 'bg-[#d4af37]/30 text-[#f9e596] border border-[#d4af37]'
+              : 'text-[#8a6d1c] hover:text-[#d4af37]'
+          }`}
+        >
+          FR
+        </button>
+        <button
+          onClick={() => setLocale('en')}
+          className={`px-3 py-1 rounded-full text-xs font-serif font-bold transition-all duration-300 ${
+            locale === 'en'
+              ? 'bg-[#d4af37]/30 text-[#f9e596] border border-[#d4af37]'
+              : 'text-[#8a6d1c] hover:text-[#d4af37]'
+          }`}
+        >
+          EN
+        </button>
+      </div>
 
       {/* Top Right Controls (Visible only when open) */}
       <div 
         className={`absolute top-4 right-4 z-[60] flex items-center gap-2 transition-opacity duration-300 ${isOpen && !isTransitioning ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
       >
         <Menu as="div" className="relative">
-          <Menu.Button className="p-2 bg-[#f4ecd8] border border-[#d4af37] rounded-full text-[#8a6d1c] shadow-md focus:outline-none">
-            <Bars3Icon className="w-6 h-6" />
+          <Menu.Button className="p-2 bg-[#f4ecd8]/90 backdrop-blur-sm border border-[#d4af37] rounded-full text-[#8a6d1c] shadow-lg focus:outline-none hover:bg-[#e8dcb8]">
+            <Bars3Icon className="w-5 h-5" />
           </Menu.Button>
           <Transition
             enter="transition ease-out duration-100"
@@ -87,7 +133,7 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-[#f4ecd8] border border-[#d4af37] rounded-md shadow-lg outline-none overflow-hidden max-h-[60vh] overflow-y-auto">
+            <Menu.Items className="absolute right-0 mt-2 w-48 origin-top-right bg-[#f4ecd8] border border-[#d4af37] rounded-md shadow-[0_10px_25px_rgba(0,0,0,0.5)] outline-none overflow-hidden max-h-[60vh] overflow-y-auto">
               <div className="py-1">
                 <Menu.Item>
                   {({ active }) => (
@@ -118,9 +164,9 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
 
         <button 
           onClick={handleClose}
-          className="p-2 bg-red-900/10 border border-red-800/30 text-red-700 rounded-full shadow-md hover:bg-red-900/20 transition-colors"
+          className="p-2 bg-red-900/20 backdrop-blur-sm border border-red-800/40 text-red-700 rounded-full shadow-lg hover:bg-red-900/40 transition-colors"
         >
-          <XMarkIcon className="w-6 h-6" />
+          <XMarkIcon className="w-5 h-5" />
         </button>
       </div>
     </div>
