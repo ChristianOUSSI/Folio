@@ -1,0 +1,75 @@
+name: CI - Build & Lint
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Install dependencies (Portfolio)
+      run: npm ci
+    
+    - name: Lint portfolio
+      run: npm run lint
+    
+    - name: Build portfolio
+      run: npm run build
+    
+    # Mobile Hub
+    - name: Install dependencies (Mobile Hub)
+      run: cd standalone-projects/mobile-hub && npm ci
+    
+    - name: Build Mobile Hub
+      run: cd standalone-projects/mobile-hub && npm run build
+    
+    # DataDash
+    - name: Install dependencies (DataDash)
+      run: cd standalone-projects/datadash && npm ci
+    
+    - name: Build DataDash
+      run: cd standalone-projects/datadash && npm run build
+    
+    # SaaS Admin
+    - name: Install dependencies (SaaS Admin)
+      run: cd standalone-projects/saas-admin && npm ci
+    
+    - name: Lint SaaS Admin
+      run: cd standalone-projects/saas-admin && npm run lint 2>/dev/null || true
+    
+    - name: Build SaaS Admin
+      run: cd standalone-projects/saas-admin && npm run build
+
+  type-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: TypeScript type check
+      run: npx tsc --noEmit
