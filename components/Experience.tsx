@@ -52,18 +52,18 @@ export function ExperienceLeft() {
               whileHover={{ scale: 1.02, y: -3 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm hover:shadow-lg transition-all">
+              <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
                     <Briefcase className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] text-blue-600 dark:text-blue-400 mb-1 uppercase tracking-wider font-semibold">
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider font-semibold">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-gray-900 dark:text-blue-300 mb-1 font-serif group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">{exp.role}</h3>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{exp.company}</p>
-                    <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-serif">{exp.description}</p>
+                    <h3 className="font-bold text-base text-slate-800 dark:text-slate-200 mb-1 font-serif group-hover:text-slate-600 dark:group-hover:text-white transition-colors">{exp.role}</h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">{exp.company}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-serif">{exp.description}</p>
                   </div>
                 </div>
               </div>
@@ -90,18 +90,18 @@ export function ExperienceRight() {
               whileHover={{ scale: 1.02, y: -3 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm hover:shadow-lg transition-all">
+              <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
                     <Briefcase className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] text-blue-600 dark:text-blue-400 mb-1 uppercase tracking-wider font-semibold">
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 mb-1 uppercase tracking-wider font-semibold">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-gray-900 dark:text-blue-300 mb-1 font-serif group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">{exp.role}</h3>
-                    <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{exp.company}</p>
-                    <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-serif">{exp.description}</p>
+                    <h3 className="font-bold text-base text-slate-800 dark:text-slate-200 mb-1 font-serif group-hover:text-slate-600 dark:group-hover:text-white transition-colors">{exp.role}</h3>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mb-2">{exp.company}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed font-serif">{exp.description}</p>
                   </div>
                 </div>
               </div>

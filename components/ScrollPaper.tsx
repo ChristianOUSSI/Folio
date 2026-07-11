@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DragonMotif from './DragonMotif';
 
@@ -28,6 +28,37 @@ const TouchRipple = ({ x, y, id, onComplete }: { x: number, y: number, id: numbe
 
 export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRight }: ScrollPaperProps) {
   const [ripples, setRipples] = useState<{id: number, x: number, y: number}[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef(0);
+  const touchStartY = useRef(0);
+
+  // Prevent browser back/forward gesture by intercepting horizontal touch moves
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX.current = e.touches[0].clientX;
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX.current);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY.current);
+      // If horizontal movement is dominant, prevent default to block browser navigation
+      if (dx > dy && dx > 10) {
+        e.preventDefault();
+      }
+    };
+
+    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+    el.addEventListener('touchmove', handleTouchMove, { passive: false });
+
+    return () => {
+      el.removeEventListener('touchstart', handleTouchStart);
+      el.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, []);
 
   const handleTouch = (e: React.TouchEvent | React.MouseEvent) => {
     let clientX = 0;
@@ -50,8 +81,9 @@ export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRigh
 
   return (
     <div 
+      ref={containerRef}
       className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden w-full h-[100dvh]"
-      onTouchStart={handleTouch}
+      style={{ touchAction: 'pan-y' }}
       onMouseDown={handleTouch}
     >
       <AnimatePresence>
@@ -101,8 +133,8 @@ export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRigh
         </div>
 
         {/* Scroll Content Area */}
-        <div className="flex-1 w-full overflow-y-auto overflow-x-hidden custom-scrollbar pt-16 pb-16 px-2 relative z-0">
-          <div className="w-full min-h-full flex flex-col gap-2 pb-8">
+        <div className="flex-1 w-full overflow-y-auto overflow-x-hidden custom-scrollbar pt-12 pb-12 px-1 relative z-0">
+          <div className="w-full min-h-full flex flex-col gap-1 pb-4">
             {children}
           </div>
         </div>

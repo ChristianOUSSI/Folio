@@ -93,12 +93,12 @@ export function SkillsLeft() {
             transition={{ delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
-              <h3 className="font-semibold text-lg text-blue-800 dark:text-blue-300 mb-2 font-serif">{cat.title}</h3>
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-lg text-slate-800 dark:text-slate-200 mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-700 dark:text-gray-200">
-                    <span className="text-blue-500">{skill.icon}</span>
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-slate-700 dark:text-slate-300">
+                    <span className="text-slate-500 dark:text-slate-400">{skill.icon}</span>
                     <span className="truncate">{skill.name}</span>
                   </li>
                 ))}
@@ -124,8 +124,8 @@ export function SkillsRight() {
             transition={{ delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
-              <h3 className="font-semibold text-[15px] md:text-base text-blue-800 dark:text-blue-300 mb-2 font-serif">{cat.title}</h3>
+            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-[15px] md:text-base text-slate-800 dark:text-slate-200 mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
                   <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-700 dark:text-gray-200">

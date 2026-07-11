@@ -11,7 +11,7 @@ export default function LanguageSwitcher() {
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.5 }}
-      className="fixed top-4 right-4 z-[10000] flex items-center gap-1 bg-slate-900/80 backdrop-blur-md rounded-full p-1 border border-slate-700/50"
+      className="fixed top-4 right-4 z-[10000] hidden md:flex items-center gap-1 bg-slate-900/80 backdrop-blur-md rounded-full p-1 border border-slate-700/50"
     >
       <button
         onClick={() => setLocale('fr')}

@@ -64,16 +64,16 @@ export function EducationLeft() {
               whileHover={{ scale: 1.02, y: -3 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-lg border border-blue-100 dark:border-blue-800 shadow-md hover:shadow-lg overflow-hidden transition-all">
+              <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-lg border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg overflow-hidden transition-all">
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-600" />
                 <div className="pl-4 flex items-start gap-3">
                   <div className="mt-1 flex-shrink-0">{edu.icon}</div>
                   <div>
-                    <h3 className="font-bold text-sm md:text-base text-gray-900 dark:text-blue-300 mb-1 font-serif group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">
+                    <h3 className="font-bold text-sm md:text-base text-slate-800 dark:text-slate-200 mb-1 font-serif group-hover:text-slate-600 dark:group-hover:text-white transition-colors">
                       {edu.title}
                     </h3>
-                    <p className="text-[11px] md:text-xs text-gray-600 dark:text-gray-400 mb-1">{edu.institution}</p>
-                    <p className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold uppercase tracking-wider">
+                    <p className="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 mb-1">{edu.institution}</p>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider">
                       {edu.period}
                     </p>
                   </div>
@@ -102,16 +102,16 @@ export function EducationRight() {
               whileHover={{ scale: 1.02, y: -3 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-lg border border-blue-100 dark:border-blue-800 shadow-md hover:shadow-lg overflow-hidden transition-all">
+              <div className="relative bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-lg border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg overflow-hidden transition-all">
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-600" />
                 <div className="pl-4 flex items-start gap-3">
                   <div className="mt-1 flex-shrink-0">{edu.icon}</div>
                   <div>
-                    <h3 className="font-bold text-sm md:text-base text-gray-900 dark:text-blue-300 mb-1 font-serif group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">
+                    <h3 className="font-bold text-sm md:text-base text-slate-800 dark:text-slate-200 mb-1 font-serif group-hover:text-slate-600 dark:group-hover:text-white transition-colors">
                       {edu.title}
                     </h3>
-                    <p className="text-[11px] md:text-xs text-gray-600 dark:text-gray-400 mb-1">{edu.institution}</p>
-                    <p className="text-[10px] text-blue-600 dark:text-blue-400 font-semibold uppercase tracking-wider">
+                    <p className="text-[11px] md:text-xs text-slate-500 dark:text-slate-400 mb-1">{edu.institution}</p>
+                    <p className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wider">
                       {edu.period}
                     </p>
                   </div>
