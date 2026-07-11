@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Launcher from '../components/Launcher';
 import { ErrorBoundary } from '../components/ErrorBoundary';
