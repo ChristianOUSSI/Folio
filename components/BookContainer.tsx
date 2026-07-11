@@ -249,6 +249,27 @@ export default function BookContainer({ children }: BookContainerProps) {
             ))}
           </div>
 
+          {/* Static Back Cover to frame the right pages */}
+          <div 
+            className="absolute inset-y-0 left-0 w-full hidden md:block rounded-r-2xl"
+            style={{
+              zIndex: 0,
+              background: 'linear-gradient(to right, #0b1021 0%, #172554 100%)',
+              border: '4px solid #d4af37',
+              borderLeft: 'none',
+              boxShadow: 'inset -5px 0 15px rgba(0,0,0,0.5), 10px 10px 30px rgba(0,0,0,0.7)',
+              opacity: currentSpread > -1 ? 1 : 0,
+              transition: 'opacity 0.8s'
+            }}
+          >
+            <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
+            <div className="absolute inset-y-0 left-0 w-[4px] bg-[#d4af37] opacity-60 z-10" />
+            
+            {/* Inner frame on the back cover */}
+            <div className="absolute inset-6 left-12 border border-[#d4af37] opacity-30 pointer-events-none" />
+            <div className="absolute inset-8 left-14 border border-[#d4af37] opacity-20 pointer-events-none" />
+          </div>
+
           <BookCover 
             isOpen={currentSpread > -1} 
             onOpen={openBook} 
