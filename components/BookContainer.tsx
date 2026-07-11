@@ -185,20 +185,20 @@ export default function BookContainer({ children }: BookContainerProps) {
   return (
     <div className="fixed inset-0 pt-[72px] md:pt-[72px] overflow-hidden flex items-center justify-center bg-[#020617]" style={{ perspective: '3000px' }}>
       
-      {/* Navigation Buttons for PC */}
+      {/* Navigation Buttons */}
       {currentSpread > -1 && (
-        <div className="hidden md:flex absolute inset-x-0 top-1/2 -translate-y-1/2 justify-between px-4 lg:px-12 z-50 pointer-events-none">
+        <div className="flex absolute inset-x-0 top-1/2 -translate-y-1/2 justify-between px-2 md:px-4 lg:px-12 z-[60] pointer-events-none">
           <button 
             onClick={goToPrevSpread}
             disabled={currentSpread <= 0}
-            className="w-12 h-12 rounded-full bg-black/40 border border-[#d4af37]/50 flex items-center justify-center text-[#d4af37] backdrop-blur-md pointer-events-auto hover:bg-black/70 hover:scale-110 transition-all disabled:opacity-0 disabled:pointer-events-none"
+            className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/40 border border-[#d4af37]/50 flex items-center justify-center text-[#d4af37] backdrop-blur-md pointer-events-auto hover:bg-black/70 hover:scale-110 transition-all disabled:opacity-0 disabled:pointer-events-none shadow-lg"
           >
             ←
           </button>
           <button 
             onClick={goToNextSpread}
             disabled={currentSpread >= totalSpreads}
-            className="w-12 h-12 rounded-full bg-black/40 border border-[#d4af37]/50 flex items-center justify-center text-[#d4af37] backdrop-blur-md pointer-events-auto hover:bg-black/70 hover:scale-110 transition-all disabled:opacity-0 disabled:pointer-events-none"
+            className="w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/40 border border-[#d4af37]/50 flex items-center justify-center text-[#d4af37] backdrop-blur-md pointer-events-auto hover:bg-black/70 hover:scale-110 transition-all disabled:opacity-0 disabled:pointer-events-none shadow-lg"
           >
             →
           </button>
@@ -206,14 +206,17 @@ export default function BookContainer({ children }: BookContainerProps) {
       )}
 
       <div 
-        className="relative w-full max-w-[1400px] h-[100dvh] md:h-[calc(100vh-100px)] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
+        className="book-main-wrapper relative w-full max-w-[1400px] h-[100dvh] md:h-[calc(100vh-100px)] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
         style={{
           transformStyle: 'preserve-3d',
-          transform: `rotateX(2deg) translateX(${currentSpread > -1 ? '50%' : '25%'})`,
+          transform: isMobile ? 'none' : `rotateX(2deg) translateX(${currentSpread > -1 ? '50%' : '25%'})`,
         }}
       >
         <style dangerouslySetInnerHTML={{__html: `
           @media (max-width: 768px) {
+            .book-main-wrapper {
+              transform: none !important;
+            }
             .mobile-book-container {
               transform: rotateX(0deg) translateX(0%) !important;
               width: 100% !important;

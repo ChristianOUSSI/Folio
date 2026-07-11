@@ -66,8 +66,8 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
         onClick={isOpen ? onClose : onOpen}
         initial={false}
         animate={{
-          rotateY: isMobile ? 0 : (isOpen ? -180 : 0),
-          x: isMobile ? (isOpen ? '-100%' : '0%') : '0%',
+          rotateY: isOpen ? -180 : 0,
+          x: '0%',
         }}
         transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
       >

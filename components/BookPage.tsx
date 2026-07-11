@@ -80,14 +80,14 @@ export default function BookPage({
       }}
       initial={false}
       animate={{
-        rotateY: isMobile ? 0 : (isPast ? -180 : 0),
-        x: isMobile ? (isPast ? '-100%' : (isFuture ? '100%' : '0%')) : '0%',
-        opacity: isMobile ? (isActive ? 1 : (isPast && index === totalSheets - 1 ? 1 : 0)) : 1, 
+        rotateY: isPast ? -180 : 0,
+        x: '0%',
+        opacity: 1,
         zIndex: isPast ? index + 1 : 100 - index,
       }}
       transition={{ 
-        duration: isMobile ? 0.6 : 1.2,
-        ease: isMobile ? "easeInOut" : [0.25, 1, 0.5, 1],
+        duration: 1.2,
+        ease: [0.25, 1, 0.5, 1],
       }}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
