@@ -9,6 +9,17 @@ interface BookCoverProps {
 }
 
 export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <>
       {/* Front Cover */}
@@ -25,7 +36,8 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
         }}
         initial={false}
         animate={{
-          rotateY: isOpen ? -130 : 0, // Opens like a book
+          rotateY: isMobile ? 0 : (isOpen ? -130 : 0), // Opens like a book on PC
+          x: isMobile ? (isOpen ? '-100%' : '0%') : '0%', // Slides left on mobile
         }}
         transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }} // smooth cinematic easing
       >

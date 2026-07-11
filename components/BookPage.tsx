@@ -51,7 +51,18 @@ export default function BookPage({
     }
   };
 
-  // Click on the left/right 20% of the page to turn
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Click on the left/right 25% of the page to turn
   const handlePageClick = (e: React.MouseEvent) => {
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -71,17 +82,19 @@ export default function BookPage({
       onClick={handlePageClick}
       style={{
         transformStyle: 'preserve-3d',
-        transformOrigin: 'left', // Anchored to the spine
+        transformOrigin: 'left', // Anchored to the spine for desktop
       }}
       initial={false}
       animate={{
-        rotateY: isPast ? -180 : 0,
-        opacity: 1, // We don't fade out, it just flips!
+        // On mobile: swipe left/right. On desktop: 3D rotate.
+        rotateY: isMobile ? 0 : (isPast ? -180 : 0),
+        x: isMobile ? (isPast ? '-100%' : (isFuture ? '100%' : '0%')) : '0%',
+        opacity: isMobile ? (isActive ? 1 : 0) : 1, // Fade out non-active pages on mobile to avoid overlapping
         zIndex: isActive ? 10 : (isPast ? index + 1 : 100 - index), // Stack correctly
       }}
       transition={{ 
-        duration: 0.8, 
-        ease: [0.25, 1, 0.5, 1], // Very smooth book flip curve
+        duration: isMobile ? 0.4 : 0.8, // Faster swipe on mobile
+        ease: isMobile ? "easeInOut" : [0.25, 1, 0.5, 1], // Smooth book flip curve on PC
       }}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
