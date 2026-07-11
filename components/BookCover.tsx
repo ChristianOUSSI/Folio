@@ -13,7 +13,7 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
     <>
       {/* Front Cover */}
       <motion.div
-        className="absolute inset-y-8 left-0 w-full md:w-[70%] origin-left rounded-r-2xl"
+        className="absolute inset-y-4 md:inset-y-8 left-0 w-full md:w-[70%] origin-left md:rounded-r-2xl mobile-book-page"
         style={{
           transformStyle: 'preserve-3d',
           zIndex: isOpen ? 2 : 10, // Must be above pages when closed
@@ -27,7 +27,7 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
         animate={{
           rotateY: isOpen ? -130 : 0, // Opens like a book
         }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} // smooth cinematic easing
+        transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }} // smooth cinematic easing
       >
         {/* Book spine simulation (reliure) */}
         <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />

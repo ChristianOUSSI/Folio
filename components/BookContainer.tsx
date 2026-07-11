@@ -111,11 +111,11 @@ export default function BookContainer({ children }: BookContainerProps) {
   };
 
   return (
-    <div className="fixed inset-0 pt-16 overflow-hidden flex items-center justify-center" style={{ perspective: '2500px', backgroundColor: '#020617' }}>
+    <div className="fixed inset-0 md:pt-16 overflow-hidden flex items-center justify-center bg-[#020617]" style={{ perspective: '3000px' }}>
       
       {/* Navigation Buttons for PC (Visible only when open on larger screens) */}
       {currentPage > -1 && (
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-12 z-50 pointer-events-none">
+        <div className="hidden md:flex absolute inset-x-0 top-1/2 -translate-y-1/2 justify-between px-4 lg:px-12 z-50 pointer-events-none">
           <button 
             onClick={goToPrevPage}
             disabled={currentPage <= 0}
@@ -137,31 +137,36 @@ export default function BookContainer({ children }: BookContainerProps) {
       {currentPage > -1 && (
         <button 
           onClick={closeBook}
-          className="absolute top-24 right-4 md:right-12 w-10 h-10 rounded-full bg-black/40 border border-red-500/50 flex items-center justify-center text-red-500 backdrop-blur-md z-50 hover:bg-black/70 hover:scale-110 transition-all"
+          className="absolute top-4 right-4 md:top-24 md:right-12 w-10 h-10 rounded-full bg-black/40 border border-red-500/50 flex items-center justify-center text-red-500 backdrop-blur-md z-50 hover:bg-black/70 hover:scale-110 transition-all"
         >
           ✕
         </button>
       )}
 
       <div 
-        className="relative w-full max-w-[1000px] h-[85vh] md:h-[80vh] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        className="relative w-full max-w-[1200px] h-[100dvh] md:h-[85vh] mx-auto transition-transform duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)]"
         style={{
           transformStyle: 'preserve-3d',
-          // On mobile, the book takes full width. On desktop, we shift it to center the open book.
-          // When closed: shift slightly right so the cover is centered.
-          // When open: shift right so the spine is in the center.
-          transform: `rotateX(2deg) translateX(${currentPage > -1 ? '25%' : '15%'})`,
+          // On desktop:
+          // Closed: center the cover (shift right 25%)
+          // Open: center the spine (shift right 50% because the book pages are 50% width)
+          transform: `rotateX(2deg) translateX(${currentPage > -1 ? '50%' : '25%'})`,
         }}
       >
         {/* Mobile centering override via CSS class */}
         <style dangerouslySetInnerHTML={{__html: `
           @media (max-width: 768px) {
             .mobile-book-container {
-              transform: rotateX(2deg) translateX(0%) !important;
+              transform: rotateX(0deg) translateX(0%) !important;
               width: 100% !important;
+              height: 100dvh !important;
             }
             .mobile-book-page {
               width: 100% !important;
+              inset: 0 !important;
+            }
+            .fixed.inset-0 {
+              padding-top: 0 !important;
             }
           }
         `}} />
