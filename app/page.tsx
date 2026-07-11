@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Launcher from '../components/Launcher';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import BookContainer from '../components/BookContainer';
+import ScrollContainer from '../components/ScrollContainer';
 
 // Import split components
 import { SommaireLeft, SommaireRight } from '../components/Sommaire';
@@ -21,6 +22,16 @@ import { ContactLeft, ContactRight } from '../components/Contact';
 
 export default function Home() {
   const [showContent, setShowContent] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const pages = [
     { id: 'sommaire-left', component: <SommaireLeft /> },
@@ -62,13 +73,38 @@ export default function Home() {
           </ErrorBoundary>
           
           <main className="w-full h-full flex items-center justify-center">
-            <BookContainer>
-              {pages.map(page => (
-                <div key={page.id} className="w-full h-full">
-                  {page.component}
-                </div>
-              ))}
-            </BookContainer>
+            {mounted && isMobile ? (
+              <ScrollContainer 
+                navItems={[
+                  { label: "Sommaire", index: 0 },
+                  { label: "Accueil", index: 1 },
+                  { label: "À propos", index: 2 },
+                  { label: "Compétences", index: 3 },
+                  { label: "Statistiques", index: 4 },
+                  { label: "Processus", index: 5 },
+                  { label: "Expériences", index: 6 },
+                  { label: "Formations", index: 7 },
+                  { label: "Certifications", index: 8 },
+                  { label: "Projets", index: 9 },
+                  { label: "Blog", index: 10 },
+                  { label: "Contact", index: 11 }
+                ]}
+              >
+                {pages.map(page => (
+                  <div key={page.id} className="w-full h-auto min-h-screen">
+                    {page.component}
+                  </div>
+                ))}
+              </ScrollContainer>
+            ) : (
+              <BookContainer>
+                {pages.map(page => (
+                  <div key={page.id} className="w-full h-full">
+                    {page.component}
+                  </div>
+                ))}
+              </BookContainer>
+            )}
           </main>
         </div>
       )}

@@ -66,12 +66,12 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed top-0 inset-x-0 z-[100] group">
+    <div className="fixed top-0 left-0 right-0 z-[100] group hidden md:block">
       {/* Invisible hover trigger zone at the very top */}
       <div className="absolute top-0 inset-x-0 h-4 bg-transparent z-[101]" />
       
       <nav 
-        className="w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)] -translate-y-full group-hover:translate-y-0 focus-within:translate-y-0 transition-transform duration-500" 
+        className="w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)] -translate-y-full group-hover:translate-y-0 focus-within:translate-y-0 transition-transform duration-500 hidden md:block" 
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
