@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECT_URLS, GITHUB_URLS } from '../lib/projectUrls';
 import { Globe, Smartphone, Gamepad2, Database } from 'lucide-react';
+import InkText from './InkText';
 
 const categories = [
   { id: 'web', label: 'Web App', icon: <Globe className="w-5 h-5" /> },
@@ -66,9 +67,9 @@ export function ProjectsLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-3 text-center font-serif"
         >
-          <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
+          <InkText className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
             Mes Projets
-          </span>
+          </InkText>
         </motion.h2>
 
         <motion.p
@@ -93,8 +94,8 @@ export function ProjectsLeft() {
               className="group relative cursor-default"
             >
               <div className="relative bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col">
-                <div className="p-3 md:p-4 flex flex-col h-full">
-                  <div className="flex items-center gap-2 mb-1">
+                <div className="p-3 md:p-4 flex flex-col h-full items-center text-center">
+                  <div className="flex items-center gap-2 mb-1 justify-center">
                     <span className="text-2xl md:text-3xl text-blue-500">{project.icon}</span>
                     <h3 className="text-sm md:text-base font-bold text-gray-900 dark:text-white font-serif">
                       {project.title}
@@ -103,7 +104,7 @@ export function ProjectsLeft() {
                   <p className="text-gray-600 dark:text-gray-300 text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
                     {project.description}
                   </p>
-                  <div className="flex flex-wrap gap-1.5 mb-2">
+                  <div className="flex flex-wrap gap-1.5 mb-2 justify-center">
                     {project.stack.map((tech) => (
                       <span 
                         key={tech}
@@ -113,7 +114,7 @@ export function ProjectsLeft() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-2 mt-auto">
+                  <div className="flex gap-2 mt-auto w-full justify-center">
                     <a
                       href={project.link}
                       target="_blank"

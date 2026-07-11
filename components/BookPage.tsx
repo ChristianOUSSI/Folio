@@ -52,19 +52,32 @@ export default function BookPage({
   const onTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
     const distance = touchStart - touchEnd;
-    if (distance > minSwipeDistance) onSwipeLeft();
-    else if (distance < -minSwipeDistance) onSwipeRight();
+    if (distance > minSwipeDistance) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(40);
+      onSwipeLeft();
+    }
+    else if (distance < -minSwipeDistance) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(40);
+      onSwipeRight();
+    }
   };
 
   const handlePageClick = (e: React.MouseEvent) => {
+    // Prevent page turn if clicking on an interactive element
+    if ((e.target as HTMLElement).closest('button, input, textarea, a, form')) {
+      return;
+    }
+
     const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
     const x = e.clientX - rect.left;
     const width = rect.width;
     
     if (x < width * 0.25) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(40);
       if (isPast) onSwipeLeft();
       else onSwipeRight();
     } else if (x > width * 0.75) {
+      if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(40);
       if (isPast) onSwipeRight();
       else onSwipeLeft();
     }

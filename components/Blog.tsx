@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState, FormEvent } from 'react';
 import { Newspaper, BellRing } from 'lucide-react';
+import InkText from './InkText';
 
 const articlesLeft = [
   {
@@ -88,9 +89,9 @@ export function BlogLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-3 text-center font-serif"
         >
-          <span className="bg-gradient-to-r from-purple-700 to-blue-500 bg-clip-text text-transparent dark:from-purple-400 dark:to-blue-300">
+          <InkText className="bg-gradient-to-r from-purple-700 to-blue-500 bg-clip-text text-transparent dark:from-purple-400 dark:to-blue-300">
             Blog
-          </span>
+          </InkText>
         </motion.h2>
 
         <div className="flex flex-col gap-3 w-full">
@@ -105,8 +106,8 @@ export function BlogLeft() {
               className="group cursor-default"
             >
               <div className={`relative bg-white dark:bg-slate-800/90 rounded-xl border border-gray-100 dark:border-slate-700 hover:shadow-lg transition-all ${article.featured ? 'border-purple-200 dark:border-purple-600 shadow-md' : 'shadow-sm'}`}>
-                <div className="p-3 md:p-4 flex flex-col">
-                  <div className="flex items-center justify-between mb-1.5">
+                <div className="p-3 md:p-4 flex flex-col items-center text-center">
+                  <div className="flex items-center justify-center mb-1.5 w-full gap-2">
                     <span className="px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
                       {article.category} {article.featured && '★'}
                     </span>
@@ -114,7 +115,7 @@ export function BlogLeft() {
                       {article.readTime}
                     </span>
                   </div>
-                  <div className="flex items-start gap-2">
+                  <div className="flex flex-col items-center gap-2 w-full">
                     <div className="w-7 h-7 rounded-md bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 flex items-center justify-center text-sm flex-shrink-0">
                       {article.icon}
                     </div>
@@ -127,7 +128,7 @@ export function BlogLeft() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-gray-50 dark:border-slate-700">
+                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-gray-50 dark:border-slate-700 w-full">
                     <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold">{article.date}</span>
                     <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider hover:underline">
                       Lire →

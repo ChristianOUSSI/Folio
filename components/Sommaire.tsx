@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useI18n } from '../lib/i18n';
+import InkText from './InkText';
 
 export function SommaireLeft() {
   return (
@@ -12,7 +13,9 @@ export function SommaireLeft() {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <h2 className="text-4xl md:text-6xl font-serif text-[#1e293b] mb-6">Sommaire</h2>
+        <h2 className="text-4xl md:text-6xl font-serif text-[#1e293b] mb-6">
+          <InkText>Sommaire</InkText>
+        </h2>
         <div className="w-32 h-[3px] bg-[#d4af37] mx-auto mb-8"></div>
         <p className="text-gray-500 font-serif italic max-w-sm mx-auto">
           "Un voyage à travers mes expériences, compétences et réalisations en développement web."
@@ -33,11 +36,10 @@ export function SommaireRight() {
     { title: "Statistiques", page: 4 },
     { title: "Processus", page: 5 },
     { title: t('nav.experience'), page: 6 },
-    { title: t('nav.education'), page: 7 },
-    { title: t('nav.certifications'), page: 8 },
-    { title: t('nav.projects'), page: 9 },
-    { title: "Blog", page: 10 },
-    { title: t('nav.contact'), page: 11 },
+    { title: t('nav.certifications'), page: 7 },
+    { title: t('nav.projects'), page: 8 },
+    { title: "Blog", page: 9 },
+    { title: t('nav.contact'), page: 10 },
   ];
 
   const handleNavClick = (pageIndex: number, e: React.MouseEvent) => {

@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, FormEvent } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import InkText from './InkText';
 
 export function ContactLeft() {
   const [formData, setFormData] = useState({
@@ -49,9 +50,9 @@ export function ContactLeft() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 font-serif">
-            <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
+            <InkText className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
               Me Contacter
-            </span>
+            </InkText>
           </h2>
           <p className="text-center text-gray-600 dark:text-gray-300 mb-4 text-xs font-serif">
             Une question, un projet ? N'hésitez pas !
@@ -128,9 +129,9 @@ export function ContactLeft() {
                       disabled={isSubmitting}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full py-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all disabled:opacity-50 text-xs uppercase tracking-wider"
+                      className="w-full py-2 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-[#b8860b] hover:to-[#d4af37] hover:shadow-[0_0_20px_rgba(212,175,55,0.7)] border border-transparent hover:border-[#f9e596] text-white font-bold rounded-lg shadow-md transition-all duration-300 disabled:opacity-50 text-xs uppercase tracking-wider relative"
                     >
-                      {isSubmitting ? 'Envoi...' : 'Envoyer'}
+                      {isSubmitting ? 'Envoi...' : 'Envoyer ✉'}
                     </motion.button>
                   </div>
                 </motion.form>

@@ -53,10 +53,9 @@ export default function Navbar() {
     { key: 'nav.about', label: t('nav.about'), pageIndex: 2 },
     { key: 'nav.skills', label: t('nav.skills'), pageIndex: 3 },
     { key: 'nav.experience', label: t('nav.experience'), pageIndex: 6 },
-    { key: 'nav.education', label: t('nav.education'), pageIndex: 7 },
-    { key: 'nav.projects', label: t('nav.projects'), pageIndex: 9 },
-    { key: 'nav.certifications', label: t('nav.certifications'), pageIndex: 8 },
-    { key: 'nav.contact', label: t('nav.contact'), pageIndex: 11 }
+    { key: 'nav.certifications', label: t('nav.certifications'), pageIndex: 7 },
+    { key: 'nav.projects', label: t('nav.projects'), pageIndex: 8 },
+    { key: 'nav.contact', label: t('nav.contact'), pageIndex: 10 }
   ];
 
   const handleNavClick = (pageIndex: number, e: React.MouseEvent) => {

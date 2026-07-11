@@ -14,7 +14,6 @@ import { SkillsLeft, SkillsRight } from '../components/Skills';
 import { StatsLeft, StatsRight } from '../components/Stats';
 import { ProcessLeft, ProcessRight } from '../components/Process';
 import { ExperienceLeft, ExperienceRight } from '../components/Experience';
-import { EducationLeft, EducationRight } from '../components/Education';
 import { CertificationsLeft, CertificationsRight } from '../components/Certifications';
 import { ProjectsLeft, ProjectsRight } from '../components/Projects';
 import { BlogLeft, BlogRight } from '../components/Blog';
@@ -48,8 +47,6 @@ export default function Home() {
     { id: 'process-right', component: <ProcessRight /> },
     { id: 'experience-left', component: <ExperienceLeft /> },
     { id: 'experience-right', component: <ExperienceRight /> },
-    { id: 'education-left', component: <EducationLeft /> },
-    { id: 'education-right', component: <EducationRight /> },
     { id: 'certifications-left', component: <CertificationsLeft /> },
     { id: 'certifications-right', component: <CertificationsRight /> },
     { id: 'projects-left', component: <ProjectsLeft /> },
@@ -83,16 +80,20 @@ export default function Home() {
                   { label: "Statistiques", index: 4 },
                   { label: "Processus", index: 5 },
                   { label: "Expériences", index: 6 },
-                  { label: "Formations", index: 7 },
-                  { label: "Certifications", index: 8 },
-                  { label: "Projets", index: 9 },
-                  { label: "Blog", index: 10 },
-                  { label: "Contact", index: 11 }
+                  { label: "Certifications", index: 7 },
+                  { label: "Projets", index: 8 },
+                  { label: "Blog", index: 9 },
+                  { label: "Contact", index: 10 }
                 ]}
               >
-                {pages.map(page => (
-                  <div key={page.id} className="w-full h-auto min-h-screen">
-                    {page.component}
+                {Array.from({ length: pages.length / 2 }).map((_, i) => (
+                  <div key={`section-${i}`} className="w-full flex flex-col h-auto">
+                    <div className="w-full h-auto flex flex-col justify-center min-h-[50vh] sm:min-h-[auto] sm:py-4">
+                      {pages[i * 2].component}
+                    </div>
+                    <div className="w-full h-auto flex flex-col justify-start">
+                      {pages[i * 2 + 1].component}
+                    </div>
                   </div>
                 ))}
               </ScrollContainer>

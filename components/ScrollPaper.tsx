@@ -113,8 +113,8 @@ export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRigh
         whileTap={{ scale: 0.995 }}
         transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
         style={{
-          boxShadow: 'inset 0 0 40px rgba(0,0,0,0.15), 0 0 50px rgba(0,0,0,0.5)',
-          background: 'linear-gradient(to right, #e8dcb8 0%, #f4ecd8 8%, #fbf8f1 50%, #f4ecd8 92%, #e8dcb8 100%)'
+          boxShadow: 'inset 0 0 60px rgba(139,69,19,0.15), inset 0 0 20px rgba(0,0,0,0.2), 0 0 50px rgba(0,0,0,0.6)',
+          background: 'linear-gradient(to right, #d4b88a 0%, #f4ecd8 8%, #fffaf0 50%, #f4ecd8 92%, #d4b88a 100%)'
         }}
       >
         {/* Top Roller */}
