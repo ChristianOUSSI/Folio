@@ -71,19 +71,19 @@ const personalNote = "Ces compétences ne sont pas juste des outils elles sont n
 
 export function SkillsLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-start px-4 sm:px-8 py-8 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-3xl md:text-5xl font-bold mb-8 text-center font-serif relative z-10"
+        className="text-3xl md:text-5xl font-bold mb-6 text-center font-serif relative z-10"
       >
         <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
           Compétences
         </span>
       </motion.h2>
       
-      <div className="flex flex-col gap-6 w-full max-w-sm mx-auto relative z-10">
+      <div className="flex flex-col gap-4 w-full max-w-sm mx-auto relative z-10">
         {categoriesLeft.map((cat, idx) => (
           <motion.div 
             key={cat.title}
@@ -93,11 +93,11 @@ export function SkillsLeft() {
             transition={{ delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-5 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
-              <h3 className="font-semibold text-lg text-blue-800 dark:text-blue-300 mb-3 font-serif">{cat.title}</h3>
+            <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
+              <h3 className="font-semibold text-lg text-blue-800 dark:text-blue-300 mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-200">
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-700 dark:text-gray-200">
                     <span className="text-blue-500">{skill.icon}</span>
                     <span className="truncate">{skill.name}</span>
                   </li>
@@ -113,8 +113,8 @@ export function SkillsLeft() {
 
 export function SkillsRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-start px-4 sm:px-8 py-8 relative">
-      <div className="flex flex-col gap-6 w-full max-w-sm mx-auto relative z-10 mt-4 md:mt-12">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+      <div className="flex flex-col gap-4 w-full max-w-sm mx-auto relative z-10">
         {categoriesRight.map((cat, idx) => (
           <motion.div 
             key={cat.title}
@@ -124,11 +124,11 @@ export function SkillsRight() {
             transition={{ delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-5 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
-              <h3 className="font-semibold text-lg text-blue-800 dark:text-blue-300 mb-3 font-serif">{cat.title}</h3>
+            <div className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
+              <h3 className="font-semibold text-[15px] md:text-base text-blue-800 dark:text-blue-300 mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-200">
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-700 dark:text-gray-200">
                     <span className="text-blue-500">{skill.icon}</span>
                     <span className="truncate">{skill.name}</span>
                   </li>
@@ -143,9 +143,9 @@ export function SkillsRight() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-4 p-4 bg-blue-50/50 dark:bg-blue-950/30 rounded-xl border border-blue-200 dark:border-blue-800 text-center"
+          className="mt-2 p-3 bg-blue-50/50 dark:bg-blue-950/30 rounded-xl border border-blue-200 dark:border-blue-800 text-center"
         >
-          <p className="text-gray-700 dark:text-gray-200 italic font-serif text-sm">{personalNote}</p>
+          <p className="text-gray-700 dark:text-gray-200 italic font-serif text-[13px]">{personalNote}</p>
         </motion.div>
       </div>
     </section>

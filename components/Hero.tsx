@@ -33,12 +33,12 @@ export function HeroLeft() {
         className="text-center"
       >
         <h2 className="text-xl md:text-2xl font-bold text-blue-700 dark:text-blue-300 mb-4 font-serif">
-          {t('hero.welcome')}
+          Bienvenue
         </h2>
         <div className="flex flex-col gap-1 italic text-gray-500 text-sm">
-          <p>{t('hero.welcomeEn')}</p>
-          <p>{t('hero.welcomeDe')}</p>
-          <p>{t('hero.welcomeJp')}</p>
+          <p>Welcome</p>
+          <p>ようこそ</p>
+          <p>Willkommen</p>
         </div>
       </motion.div>
     </section>

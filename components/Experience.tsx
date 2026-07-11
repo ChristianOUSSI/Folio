@@ -27,20 +27,20 @@ const experienceRight = [
 
 export function ExperienceLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-start px-4 sm:px-8 py-8 relative">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold mb-8 text-center font-serif"
+          className="text-3xl md:text-5xl font-bold mb-4 text-center font-serif"
         >
           <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
             Expériences
           </span>
         </motion.h2>
 
-        <div className="space-y-6 w-full">
+        <div className="space-y-4 w-full">
           {experienceLeft.map((exp, idx) => (
             <motion.div
               key={idx}
@@ -50,7 +50,7 @@ export function ExperienceLeft() {
               transition={{ delay: idx * 0.2 }}
               className="group relative"
             >
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-5 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
+              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-lg shadow-md">
                     🚀
@@ -75,9 +75,9 @@ export function ExperienceLeft() {
 
 export function ExperienceRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-start px-4 sm:px-8 py-8 relative">
-      <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col mt-4 md:mt-16">
-        <div className="space-y-6 w-full">
+    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-4 relative">
+      <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
+        <div className="space-y-4 w-full">
           {experienceRight.map((exp, idx) => (
             <motion.div
               key={idx}
@@ -87,7 +87,7 @@ export function ExperienceRight() {
               transition={{ delay: idx * 0.2 }}
               className="group relative"
             >
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-5 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
+              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-lg shadow-md">
                     🚀
