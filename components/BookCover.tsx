@@ -57,7 +57,7 @@ export default function BookCover({ isOpen, onOpen, onClose }: BookCoverProps) {
         className="absolute inset-y-0 left-0 w-full origin-left md:rounded-r-2xl mobile-book-page cursor-pointer"
         style={{
           transformStyle: 'preserve-3d',
-          zIndex: isOpen ? 2 : 10,
+          zIndex: isOpen ? 0 : 50,
           background: 'linear-gradient(to right, #0b1021 0%, #172554 100%)',
           border: '4px solid #d4af37',
           borderLeft: 'none',
