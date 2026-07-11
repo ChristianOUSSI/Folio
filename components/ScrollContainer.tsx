@@ -16,12 +16,19 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Group pages into sections (2 pages = 1 section)
+  // Group pages into sections (2 pages = 1 section = 1 parchment)
   const pages = React.Children.toArray(children);
-  const sections: React.ReactNode[][] = [];
+  const sections: React.ReactNode[] = [];
   
   for (let i = 0; i < pages.length; i += 2) {
-    sections.push([pages[i] || null, pages[i + 1] || null]);
+    const left = pages[i] || null;
+    const right = pages[i + 1] || null;
+    sections.push(
+      <div key={`section-content-${i}`} className="w-full flex flex-col">
+        <div className="w-full">{left}</div>
+        {right && <div className="w-full">{right}</div>}
+      </div>
+    );
   }
 
   const handleOpen = () => {
@@ -38,21 +45,23 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
     if (isTransitioning || index === currentSectionIndex || index < 0 || index >= sections.length) return;
     
     setIsTransitioning(true);
-    setIsOpen(false); // Roll up
+    setIsOpen(false); // Roll up current parchment
     
     setTimeout(() => {
       setCurrentSectionIndex(index);
-      setIsOpen(true); // Unroll new section
+      setIsOpen(true); // Unroll new section's parchment
       
       setTimeout(() => {
         setIsTransitioning(false);
       }, 1200);
-    }, 1200);
+    }, 1000);
   };
 
   useEffect(() => {
     const handleNavClick = (e: any) => {
-      const sectionIndex = e.detail;
+      const detail = e.detail;
+      // Support both { index } object and raw number
+      const sectionIndex = typeof detail === 'object' ? detail.index : detail;
       if (sectionIndex === -1) {
         handleTitleClick();
       } else {
@@ -71,7 +80,7 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
       setCurrentSectionIndex(0);
       setIsTransitioning(false);
     }, 1200);
-  }
+  };
 
   const { locale, setLocale } = useI18n();
 
@@ -81,13 +90,18 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
       {/* Closed Cover View */}
       <ScrollCover isOpen={isOpen} onOpen={handleOpen} />
 
-      {/* Open Scroll View */}
-      <ScrollPaper 
+      {/* One parchment per section — only current one mounts */}
+      <ScrollPaper
+        key={`parchment-${currentSectionIndex}`}
         isOpen={isOpen}
         onSwipeLeft={() => navigateToSection(currentSectionIndex + 1)}
         onSwipeRight={() => navigateToSection(currentSectionIndex - 1)}
+        sectionTitle={navItems[currentSectionIndex]?.label}
+        hasPrev={currentSectionIndex > 0}
+        hasNext={currentSectionIndex < sections.length - 1}
+        onPrev={() => navigateToSection(currentSectionIndex - 1)}
+        onNext={() => navigateToSection(currentSectionIndex + 1)}
       >
-        {/* Render the current section (Left and Right parts stacked) */}
         {sections[currentSectionIndex]}
       </ScrollPaper>
 

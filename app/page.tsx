@@ -86,14 +86,9 @@ export default function Home() {
                   { label: "Contact", index: 10 }
                 ]}
               >
-                {Array.from({ length: pages.length / 2 }).map((_, i) => (
-                  <div key={`section-${i}`} className="w-full flex flex-col h-auto">
-                    <div className="w-full h-auto flex flex-col justify-center min-h-[50vh] sm:min-h-[auto] sm:py-4">
-                      {pages[i * 2].component}
-                    </div>
-                    <div className="w-full h-auto flex flex-col justify-start">
-                      {pages[i * 2 + 1].component}
-                    </div>
+                {pages.map(page => (
+                  <div key={page.id} className="w-full">
+                    {page.component}
                   </div>
                 ))}
               </ScrollContainer>

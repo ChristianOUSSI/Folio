@@ -2,12 +2,18 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import DragonMotif from './DragonMotif';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ScrollPaperProps {
   children: React.ReactNode;
   isOpen: boolean;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
+  sectionTitle?: string;
+  hasPrev?: boolean;
+  hasNext?: boolean;
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
 // Ripple effect for paper touch
@@ -26,7 +32,17 @@ const TouchRipple = ({ x, y, id, onComplete }: { x: number, y: number, id: numbe
   );
 };
 
-export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRight }: ScrollPaperProps) {
+export default function ScrollPaper({
+  children,
+  isOpen,
+  onSwipeLeft,
+  onSwipeRight,
+  sectionTitle,
+  hasPrev,
+  hasNext,
+  onPrev,
+  onNext,
+}: ScrollPaperProps) {
   const [ripples, setRipples] = useState<{id: number, x: number, y: number}[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
@@ -99,8 +115,10 @@ export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRigh
         onDragEnd={(e, { offset, velocity }) => {
           const swipeThreshold = 50;
           if (offset.x < -swipeThreshold && onSwipeLeft) {
+            if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(40);
             onSwipeLeft();
           } else if (offset.x > swipeThreshold && onSwipeRight) {
+            if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(40);
             onSwipeRight();
           }
         }}
@@ -122,6 +140,12 @@ export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRigh
            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#5c3a21] to-[#1a0a02] border-[4px] border-[#8b5a2b] shadow-[0_2px_5px_rgba(0,0,0,0.5)] -ml-5 flex items-center justify-center">
              <div className="w-4 h-4 rounded-full bg-[#1a0a02]/50 shadow-inner" />
            </div>
+           {/* Section Title on the roller */}
+           {sectionTitle && (
+             <span className="text-[#f9e596]/80 font-serif text-xs tracking-widest uppercase select-none">
+               {sectionTitle}
+             </span>
+           )}
            <div className="w-10 h-10 rounded-full bg-gradient-to-bl from-[#5c3a21] to-[#1a0a02] border-[4px] border-[#8b5a2b] shadow-[0_2px_5px_rgba(0,0,0,0.5)] -mr-5 flex items-center justify-center">
              <div className="w-4 h-4 rounded-full bg-[#1a0a02]/50 shadow-inner" />
            </div>
@@ -133,8 +157,8 @@ export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRigh
         </div>
 
         {/* Scroll Content Area */}
-        <div className="flex-1 w-full overflow-y-auto overflow-x-hidden custom-scrollbar pt-2 pb-2 px-0 relative z-0">
-          <div className="w-full min-h-full flex flex-col gap-0 pb-2">
+        <div className="flex-1 w-full overflow-y-auto overflow-x-hidden custom-scrollbar pt-24 pb-24 px-0 relative z-0">
+          <div className="w-full min-h-full flex flex-col gap-0">
             {children}
           </div>
         </div>
@@ -142,6 +166,26 @@ export default function ScrollPaper({ children, isOpen, onSwipeLeft, onSwipeRigh
         {/* Bottom Dragon Motif */}
         <div className="w-full h-16 sm:h-20 absolute bottom-8 left-0 right-0 z-10 pointer-events-none text-[#d4af37]/60 rotate-180">
           <DragonMotif />
+        </div>
+
+        {/* Navigation Arrows — inside the parchment at the bottom */}
+        <div className="absolute bottom-10 inset-x-0 z-30 flex items-center justify-between px-6 pointer-events-none">
+          <button
+            onClick={onPrev}
+            disabled={!hasPrev}
+            className={`pointer-events-auto flex items-center gap-1 px-3 py-1.5 rounded-full font-serif text-xs font-bold border transition-all duration-300 ${hasPrev ? 'bg-[#d4af37]/20 border-[#d4af37]/60 text-[#8a6d1c] hover:bg-[#d4af37]/40 hover:shadow-[0_0_10px_rgba(212,175,55,0.4)]' : 'opacity-0'}`}
+          >
+            <ChevronLeft className="w-4 h-4" />
+            Préc.
+          </button>
+          <button
+            onClick={onNext}
+            disabled={!hasNext}
+            className={`pointer-events-auto flex items-center gap-1 px-3 py-1.5 rounded-full font-serif text-xs font-bold border transition-all duration-300 ${hasNext ? 'bg-[#d4af37]/20 border-[#d4af37]/60 text-[#8a6d1c] hover:bg-[#d4af37]/40 hover:shadow-[0_0_10px_rgba(212,175,55,0.4)]' : 'opacity-0'}`}
+          >
+            Suiv.
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
 
         {/* Bottom Roller */}
