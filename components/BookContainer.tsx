@@ -102,6 +102,12 @@ export default function BookContainer({ children }: BookContainerProps) {
 
     const handleNavClick = (e: CustomEvent) => {
       const sectionIndex = e.detail.index; // 0 to 11
+      
+      if (sectionIndex === -1) {
+        closeBook();
+        return;
+      }
+
       let targetSpread = 0;
       if (isMobile) {
         // Mobile: Title is 0. Sommaire (idx 0) is 1,2. We go to Left (1).

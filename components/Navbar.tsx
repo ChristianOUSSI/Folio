@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu } from '@headlessui/react';
-import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
+import { SunIcon, MoonIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import { slugify } from '../utils/slugify';
 import { useI18n } from '../lib/i18n';
 
@@ -103,7 +103,19 @@ export default function Navbar() {
         </div>
 
         {/* Right side controls */}
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-3 md:space-x-4">
+          {/* Close book button */}
+          <motion.button
+            onClick={(e) => handleNavClick(-1, e as any)}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            className="p-2 rounded-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/30 hover:border-red-400 dark:hover:border-red-500 hover:bg-red-100 dark:hover:bg-red-900/40 transition-all text-red-600 dark:text-red-400"
+            aria-label="Close Book"
+            title="Fermer le livre"
+          >
+            <XMarkIcon className="w-5 h-5" />
+          </motion.button>
+
           <motion.button
             onClick={toggleTheme}
             whileHover={{ scale: 1.1 }}

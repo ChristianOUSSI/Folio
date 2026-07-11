@@ -93,7 +93,7 @@ export function ContactLeft() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
+                        className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white hover:border-blue-300 dark:hover:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
                         placeholder="Votre nom"
                       />
                     </div>
@@ -104,7 +104,7 @@ export function ContactLeft() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
+                        className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white hover:border-blue-300 dark:hover:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
                         placeholder="votre@email.com"
                       />
                     </div>
@@ -117,7 +117,7 @@ export function ContactLeft() {
                       onChange={handleChange}
                       required
                       rows={3}
-                      className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-xs"
+                      className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white hover:border-blue-300 dark:hover:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-xs"
                       placeholder="Votre message..."
                     />
                   </div>

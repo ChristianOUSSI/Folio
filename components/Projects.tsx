@@ -89,7 +89,8 @@ export function ProjectsLeft() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="group relative"
+              whileHover={{ scale: 1.02, y: -3 }}
+              className="group relative cursor-default"
             >
               <div className="relative bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col">
                 <div className="p-3 md:p-4 flex flex-col h-full">
@@ -152,7 +153,8 @@ export function ProjectsRight() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="group relative"
+              whileHover={{ scale: 1.02, y: -3 }}
+              className="group relative cursor-default"
             >
               <div className="relative bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col">
                 <div className="p-3 md:p-4 flex flex-col h-full">

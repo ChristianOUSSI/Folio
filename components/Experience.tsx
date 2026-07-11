@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import { Briefcase } from 'lucide-react';
 
 const experienceLeft = [
   {
@@ -48,18 +49,19 @@ export function ExperienceLeft() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.2 }}
-              className="group relative"
+              whileHover={{ scale: 1.02, y: -3 }}
+              className="group relative cursor-default"
             >
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
+              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-lg shadow-md">
-                    🚀
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
+                    <Briefcase className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
                     <p className="text-[10px] text-blue-600 dark:text-blue-400 mb-1 uppercase tracking-wider font-semibold">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-gray-900 dark:text-blue-300 mb-1 font-serif">{exp.role}</h3>
+                    <h3 className="font-bold text-base text-gray-900 dark:text-blue-300 mb-1 font-serif group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">{exp.role}</h3>
                     <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{exp.company}</p>
                     <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-serif">{exp.description}</p>
                   </div>
@@ -85,18 +87,19 @@ export function ExperienceRight() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.2 }}
-              className="group relative"
+              whileHover={{ scale: 1.02, y: -3 }}
+              className="group relative cursor-default"
             >
-              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm">
+              <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 rounded-xl border border-blue-100 dark:border-blue-800 shadow-sm hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-lg shadow-md">
-                    🚀
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
+                    <Briefcase className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
                     <p className="text-[10px] text-blue-600 dark:text-blue-400 mb-1 uppercase tracking-wider font-semibold">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-gray-900 dark:text-blue-300 mb-1 font-serif">{exp.role}</h3>
+                    <h3 className="font-bold text-base text-gray-900 dark:text-blue-300 mb-1 font-serif group-hover:text-blue-700 dark:group-hover:text-blue-200 transition-colors">{exp.role}</h3>
                     <p className="text-xs text-gray-600 dark:text-gray-400 mb-2">{exp.company}</p>
                     <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-serif">{exp.description}</p>
                   </div>
