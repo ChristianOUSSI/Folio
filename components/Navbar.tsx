@@ -155,9 +155,9 @@ export default function Navbar() {
                       const isActive = pathname === item.href;
                       return (
                         <Menu.Item key={item.key}>
-                          {({ isSelected }) => (
+                          {({ active }) => (
                             <Link href={item.href}
-                              className={`block w-full text-left font-serif px-4 py-2 text-sm transition-all ${isActive || isSelected ? 'font-medium' : ''}`}
+                              className={`block w-full text-left font-serif px-4 py-2 text-sm transition-all ${isActive || active ? 'font-medium' : ''}`}
                             >
                               {item.label}
                             </Link>
