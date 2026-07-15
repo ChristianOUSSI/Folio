@@ -112,6 +112,7 @@ export default function BookPage({
         style={{
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
+          pointerEvents: isPast ? 'none' : 'auto',
           background: 'linear-gradient(to right, #e8dcb8 0%, #f4ecd8 5%, #f4ecd8 95%, #e8dcb8 100%)',
           boxShadow: 'inset 0 0 30px rgba(0,0,0,0.05)',
         }}
@@ -119,8 +120,8 @@ export default function BookPage({
         <div className="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-b from-[#8a6d1c] via-[#d4af37] to-[#8a6d1c] shadow-[0_0_5px_rgba(212,175,55,0.8)] z-[60]" />
         <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-50" />
         
-        <div className="w-full min-h-full p-4 sm:p-6 md:p-12 relative z-10 flex flex-col justify-start pb-16">
-          <div className="w-full h-full max-w-4xl mx-auto flex flex-col">
+        <div className="w-full min-h-full px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12 relative z-10 flex flex-col justify-start pb-16">
+          <div className="w-full flex-1 max-w-4xl mx-auto flex flex-col">
             {frontContent}
           </div>
         </div>
@@ -137,6 +138,7 @@ export default function BookPage({
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
           transform: 'rotateY(180deg)',
+          pointerEvents: isPast ? 'auto' : 'none',
           background: 'linear-gradient(to left, #e8dcb8 0%, #f4ecd8 5%, #f4ecd8 95%, #e8dcb8 100%)',
           boxShadow: 'inset 0 0 30px rgba(0,0,0,0.05)',
         }}
@@ -144,8 +146,8 @@ export default function BookPage({
         <div className="absolute inset-y-0 right-0 w-[2px] bg-gradient-to-b from-[#8a6d1c] via-[#d4af37] to-[#8a6d1c] shadow-[0_0_5px_rgba(212,175,55,0.8)] z-[60]" />
         <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/20 to-transparent pointer-events-none z-50" />
         
-        <div className="w-full min-h-full p-4 sm:p-6 md:p-12 relative z-10 flex flex-col justify-start pb-16">
-          <div className="w-full h-full max-w-4xl mx-auto flex flex-col">
+        <div className="w-full min-h-full px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12 relative z-10 flex flex-col justify-start pb-16">
+          <div className="w-full flex-1 max-w-4xl mx-auto flex flex-col">
             {backContent}
           </div>
         </div>

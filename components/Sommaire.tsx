@@ -51,7 +51,7 @@ export function SommaireRight() {
   };
 
   return (
-    <div className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-12">
+    <div className="w-full my-auto flex flex-col px-4 sm:px-8 py-12">
       <div className="flex flex-col gap-5 max-w-lg mx-auto w-full">
         {chapters.map((chapter, idx) => (
           <motion.div 

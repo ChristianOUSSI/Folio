@@ -56,7 +56,7 @@ function AnimatedCounter({ target, suffix }: { target: number; suffix: string })
 
 export function StatsLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 py-8 relative">
+    <section className="w-full my-auto flex flex-col items-center px-4 sm:px-8 py-8 relative">
       <div className="max-w-md mx-auto w-full relative z-10 flex flex-col items-center text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -91,7 +91,7 @@ export function StatsLeft() {
 
 export function StatsRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center items-center px-4 sm:px-8 py-8 relative">
+    <section className="w-full my-auto flex flex-col items-center px-4 sm:px-8 py-8 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

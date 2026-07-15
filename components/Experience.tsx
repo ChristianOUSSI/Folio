@@ -28,7 +28,7 @@ const experienceRight = [
 
 export function ExperienceLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
+    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -77,7 +77,7 @@ export function ExperienceLeft() {
 
 export function ExperienceRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
+    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <div className="space-y-4 w-full">
           {experienceRight.map((exp, idx) => (

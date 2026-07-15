@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export function AboutLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
+    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +40,7 @@ export function AboutLeft() {
 
 export function AboutRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
+    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 space-y-4 md:space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 10 }}

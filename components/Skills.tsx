@@ -2,7 +2,8 @@
 import { motion } from 'framer-motion';
 import { 
   Code2, FileCode, Terminal, Cpu, Box, Globe, Palette, 
-  Smartphone, Layout, Monitor, Image as ImageIcon, Video, Languages 
+  Smartphone, Layout, Monitor, Image as ImageIcon, Video, Languages,
+  Database, Server, Cloud, Activity, Github, GitPullRequest, Workflow, PenTool
 } from 'lucide-react';
 
 interface Skill {
@@ -20,6 +21,8 @@ const categoriesLeft: { title: string; items: Skill[] }[] = [
       { name: 'Java', icon: <Cpu className="w-4 h-4" /> },
       { name: 'C#', icon: <Box className="w-4 h-4" /> },
       { name: 'C', icon: <Cpu className="w-4 h-4" /> },
+      { name: 'SQL', icon: <Database className="w-4 h-4" /> },
+      { name: 'Perl', icon: <Terminal className="w-4 h-4" /> },
       { name: 'HTML', icon: <Globe className="w-4 h-4" /> },
       { name: 'CSS', icon: <Palette className="w-4 h-4" /> }
     ]
@@ -28,6 +31,8 @@ const categoriesLeft: { title: string; items: Skill[] }[] = [
     title: 'Frameworks & Plateformes',
     items: [
       { name: 'Next.js', icon: <Globe className="w-4 h-4" /> },
+      { name: 'Laravel', icon: <Code2 className="w-4 h-4" /> },
+      { name: 'Node.js', icon: <Server className="w-4 h-4" /> },
       { name: 'React Native', icon: <Smartphone className="w-4 h-4" /> },
       { name: 'WordPress', icon: <Globe className="w-4 h-4" /> },
       { name: 'FlutterFlow', icon: <Smartphone className="w-4 h-4" /> },
@@ -39,21 +44,27 @@ const categoriesLeft: { title: string; items: Skill[] }[] = [
 
 const categoriesRight: { title: string; items: Skill[] }[] = [
   {
-    title: 'Outils de Développement',
+    title: 'DevOps & BDD',
     items: [
-      { name: 'Visual Studio Code', icon: <Code2 className="w-4 h-4" /> },
-      { name: 'Android Studio', icon: <Smartphone className="w-4 h-4" /> },
-      { name: 'VMware', icon: <Monitor className="w-4 h-4" /> },
-      { name: 'Visual Basic', icon: <Code2 className="w-4 h-4" /> }
+      { name: 'PostgreSQL', icon: <Database className="w-4 h-4" /> },
+      { name: 'SQLAlchemy', icon: <Database className="w-4 h-4" /> },
+      { name: 'Docker', icon: <Box className="w-4 h-4" /> },
+      { name: 'DevOps', icon: <Cloud className="w-4 h-4" /> },
+      { name: 'Monitoring', icon: <Activity className="w-4 h-4" /> },
     ]
   },
   {
-    title: 'Outils Créatifs & Métier',
+    title: 'Outils & Création',
     items: [
-      { name: 'Adobe Photoshop', icon: <ImageIcon className="w-4 h-4" /> },
-      { name: 'Premiere Pro', icon: <Video className="w-4 h-4" /> },
-      { name: 'Canva', icon: <Palette className="w-4 h-4" /> },
-      { name: 'Power AMC', icon: <Box className="w-4 h-4" /> }
+      { name: 'VS Code', icon: <Code2 className="w-4 h-4" /> },
+      { name: 'Cursor', icon: <Terminal className="w-4 h-4" /> },
+      { name: 'Antigravity IDE', icon: <Terminal className="w-4 h-4" /> },
+      { name: 'GitHub', icon: <Github className="w-4 h-4" /> },
+      { name: 'GitLab', icon: <GitPullRequest className="w-4 h-4" /> },
+      { name: 'Figma', icon: <PenTool className="w-4 h-4" /> },
+      { name: 'Canvas', icon: <Palette className="w-4 h-4" /> },
+      { name: 'n8n', icon: <Workflow className="w-4 h-4" /> },
+      { name: 'Photoshop', icon: <ImageIcon className="w-4 h-4" /> }
     ]
   },
   {
@@ -71,7 +82,7 @@ const personalNote = "Ces compétences ne sont pas juste des outils elles sont n
 
 export function SkillsLeft() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
+    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -113,7 +124,7 @@ export function SkillsLeft() {
 
 export function SkillsRight() {
   return (
-    <section className="w-full h-full flex flex-col justify-center px-4 sm:px-8 py-0 sm:py-4 relative">
+    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="flex flex-col gap-4 w-full max-w-sm mx-auto relative z-10">
         {categoriesRight.map((cat, idx) => (
           <motion.div 
