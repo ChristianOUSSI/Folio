@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import React, { useState, useEffect } from 'react';
 import ScrollCover from './ScrollCover';
 import ScrollPaper from './ScrollPaper';
@@ -178,7 +178,7 @@ export default function ScrollContainer({ children, navItems, pairSections = tru
                     {({ active }) => (
                       <button
                         onClick={() => navigateToSection(idx)}
-                        className={`${active ? 'bg-[#e8dcb8] text-[#8a6d1c]' : 'text-[#8a6d1c]'} group flex w-full items-center px-4 py-2 text-sm font-serif ${idx === currentSessionIndex ? 'font-bold bg-[#e8dcb8]/50' : ''}`}
+                        className={`${active ? 'bg-[#e8dcb8] text-[#8a6d1c]' : 'text-[#8a6d1c]'} group flex w-full items-center px-4 py-2 text-sm font-serif ${idx === currentSectionIndex ? 'font-bold bg-[#e8dcb8]/50' : ''}`}
                       >
                         {item.label}
                       </button>
