@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import React, { useState, useEffect } from 'react';
 import ScrollCover from './ScrollCover';
 import ScrollPaper from './ScrollPaper';
@@ -9,26 +9,40 @@ import { useI18n } from '../lib/i18n';
 interface ScrollContainerProps {
   children: React.ReactNode[];
   navItems: { label: string, index: number }[];
+  pairSections?: boolean;
 }
 
-export default function ScrollContainer({ children, navItems }: ScrollContainerProps) {
+export default function ScrollContainer({ children, navItems, pairSections = true }: ScrollContainerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Group pages into sections (2 pages = 1 section = 1 parchment)
+  // Group pages into sections (2 pages = 1 section = 1 parchment) or treat each child as a section
   const pages = React.Children.toArray(children);
   const sections: React.ReactNode[] = [];
   
-  for (let i = 0; i < pages.length; i += 2) {
-    const left = pages[i] || null;
-    const right = pages[i + 1] || null;
-    sections.push(
-      <div key={`section-content-${i}`} className="w-full flex flex-col">
-        <div className="w-full">{left}</div>
-        {right && <div className="w-full">{right}</div>}
-      </div>
-    );
+  if (pairSections) {
+    // Original behavior: pair children into sections (left/right)
+    for (let i = 0; i < pages.length; i += 2) {
+      const left = pages[i] || null;
+      const right = pages[i + 1] || null;
+      sections.push(
+        <div key={`section-content-${i}`} className="w-full flex flex-col">
+          <div className="w-full">{left}</div>
+          {right && <div className="w-full">{right}</div>}
+        </div>
+      );
+    }
+  } else {
+    // Each child is its own section
+    for (let i = 0; i < pages.length; i++) {
+      const child = pages[i];
+      sections.push(
+        <div key={`section-content-${i}`} className="w-full flex flex-col">
+          <div className="w-full">{child}</div>
+        </div>
+      );
+    }
   }
 
   const handleOpen = () => {
@@ -164,7 +178,7 @@ export default function ScrollContainer({ children, navItems }: ScrollContainerP
                     {({ active }) => (
                       <button
                         onClick={() => navigateToSection(idx)}
-                        className={`${active ? 'bg-[#e8dcb8] text-[#8a6d1c]' : 'text-[#8a6d1c]'} group flex w-full items-center px-4 py-2 text-sm font-serif ${idx === currentSectionIndex ? 'font-bold bg-[#e8dcb8]/50' : ''}`}
+                        className={`${active ? 'bg-[#e8dcb8] text-[#8a6d1c]' : 'text-[#8a6d1c]'} group flex w-full items-center px-4 py-2 text-sm font-serif ${idx === currentSessionIndex ? 'font-bold bg-[#e8dcb8]/50' : ''}`}
                       >
                         {item.label}
                       </button>
