@@ -1,5 +1,4 @@
-import SkillsLeft from "@/components/SkillsLeft";
-import SkillsRight from "@/components/SkillsRight";
+import { SkillsLeft, SkillsRight } from "@/components/Skills";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";

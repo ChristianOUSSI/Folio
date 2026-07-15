@@ -76,7 +76,6 @@ const translations = {
     'projects.game': 'Jeux',
     'projects.data': 'Data',
     'projects.viewProject': 'Voir le projet ?',
-    ',
     'projects.github': 'GitHub',
     'projects.noResults': 'Aucun projet dans cette catégorie pour le moment.',
     

@@ -1,5 +1,4 @@
-import AboutLeft from "@/components/AboutLeft";
-import AboutRight from "@/components/AboutRight";
+import { AboutLeft, AboutRight } from "@/components/About";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";

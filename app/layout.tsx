@@ -5,12 +5,12 @@ import { I18nProvider } from '../lib/i18n';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import Cursor from '../components/Cursor';
 import { useI18n } from '../lib/i18n';
-import { JetBrains_Mono, Space_Grotesk, Special_Elite, Courier_Prime } from '@next/font/local';
+import { JetBrains_Mono, Space_Grotesk, Special_Elite, Courier_Prime } from 'next/font/google';
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] });
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
-const specialElite = Special_Elite({ subsets: ['latin'] });
-const courierPrime = Courier_Prime({ subsets: ['latin'] });
+const specialElite = Special_Elite({ weight: '400', subsets: ['latin'] });
+const courierPrime = Courier_Prime({ weight: ['400', '700'], subsets: ['latin'] });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
 
