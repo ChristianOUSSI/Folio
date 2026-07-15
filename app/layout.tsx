@@ -4,7 +4,6 @@ import ThemeScript from './ThemeScript';
 import { I18nProvider } from '../lib/i18n';
 import LanguageSwitcher from '../components/LanguageSwitcher';
 import Cursor from '../components/Cursor';
-import { useI18n } from '../lib/i18n';
 import { JetBrains_Mono, Space_Grotesk, Special_Elite, Courier_Prime } from 'next/font/google';
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] });
@@ -42,7 +41,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const { locale } = useI18n();
   const siteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -66,7 +64,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     ]
   };
   return (
-    <html lang={locale} suppressHydrationWarning className={`${jetBrainsMono.className} ${spaceGrotesk.className} ${specialElite.className} ${courierPrime.className}`}>
+    <html lang="fr" suppressHydrationWarning className={`${jetBrainsMono.className} ${spaceGrotesk.className} ${specialElite.className} ${courierPrime.className}`}>
       <head>
         <ThemeScript />
         <link rel="manifest" href="/manifest.json" />
