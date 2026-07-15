@@ -3,6 +3,13 @@ import { ReactNode } from 'react';
 import ThemeScript from './ThemeScript';
 import { I18nProvider } from '../lib/i18n';
 import LanguageSwitcher from '../components/LanguageSwitcher';
+import Cursor from '../components/Cursor';
+import { JetBrains_Mono, Space_Grotesk, Special_Elite, Courier_Prime } from '@next/font/local';
+
+const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] });
+const specialElite = Special_Elite({ subsets: ['latin'] });
+const courierPrime = Courier_Prime({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'OJCJ Portfolio',
@@ -33,14 +40,13 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${jetBrainsMono.className} ${spaceGrotesk.className} ${specialElite.className} ${courierPrime.className}`}>
       <head>
         <ThemeScript />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
       </head>
-      <body className="bg-white dark:bg-darkbg text-gray-900 dark:text-white transition-colors duration-300 antialiased font-mono">
+      <body className="bg-white dark:bg-darkbg text-gray-900 dark:text-white transition-colors duration-300 antialiased">
+        <div className="fixed inset-0 -z-10 bg-gradient-animation" aria-hidden="true"></div>
+        <Cursor />
         <I18nProvider>
           <a href="#accueil" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 p-4 bg-primary text-darkbg z-50">
             Skip to content

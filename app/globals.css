@@ -283,3 +283,22 @@ a {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(212, 175, 55, 0.7);
 }
+
+/* Gradient animation background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-gradient-animation {
+  background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #0f172a);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
