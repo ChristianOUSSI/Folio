@@ -1,12 +1,9 @@
+'use client';
+
 import { ProjectsLeft, ProjectsRight } from "@/components/Projects";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
-
-export const metadata = {
-  title: "Projets | OJCJ Portfolio",
-  description: "Découvrez mes réalisations et projets en développement.",
-};
 
 export default function ProjectsPage() {
   const { t } = useI18n();

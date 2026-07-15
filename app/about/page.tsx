@@ -1,17 +1,9 @@
+'use client';
+
 import { AboutLeft, AboutRight } from "@/components/About";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
-
-export const metadata = {
-  title: "À propos | OJCJ Portfolio",
-  description: "Découvrez mon parcours, mes passions et mon expertise en développement fullstack.",
-  openGraph: {
-    title: "À propos | OJCJ Portfolio",
-    description: "Découvrez mon parcours, mes passions et mon expertise en développement fullstack.",
-    images: [{ url: "${process.env.NEXT_PUBLIC_SITE_URL}/og-image.png" }],
-  },
-};
 
 export default function AboutPage() {
   const { t } = useI18n();
