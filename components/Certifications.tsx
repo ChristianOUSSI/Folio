@@ -30,7 +30,7 @@ export function CertificationsLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-4 text-center font-serif"
         >
-          <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
+          <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent  ">
             Certifications
           </span>
         </motion.h2>
@@ -46,7 +46,7 @@ export function CertificationsLeft() {
               whileHover={{ scale: 1.05, y: -3 }}
               className="group relative h-full cursor-default"
             >
-              <div className="relative h-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
+              <div className="relative h-full bg-white/80  backdrop-blur-sm rounded-lg border border-slate-200  shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
                 <motion.div 
                   className="mb-1.5 group-hover:scale-110 transition-transform"
                   animate={{ y: [0, -2, 0] }}
@@ -54,7 +54,7 @@ export function CertificationsLeft() {
                 >
                   {cert.icon}
                 </motion.div>
-                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900 dark:text-slate-100 group-hover:text-slate-800 dark:group-hover:text-white transition-colors leading-snug font-serif">
+                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800 :text-white transition-colors leading-snug font-serif">
                   {cert.name}
                 </p>
               </div>
@@ -81,7 +81,7 @@ export function CertificationsRight() {
               whileHover={{ scale: 1.05, y: -3 }}
               className="group relative h-full cursor-default"
             >
-              <div className="relative h-full bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-lg border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
+              <div className="relative h-full bg-white/80  backdrop-blur-sm rounded-lg border border-slate-200  shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
                 <motion.div 
                   className="mb-1.5 group-hover:scale-110 transition-transform"
                   animate={{ y: [0, -2, 0] }}
@@ -89,7 +89,7 @@ export function CertificationsRight() {
                 >
                   {cert.icon}
                 </motion.div>
-                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900 dark:text-slate-100 group-hover:text-slate-800 dark:group-hover:text-white transition-colors leading-snug font-serif">
+                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800 :text-white transition-colors leading-snug font-serif">
                   {cert.name}
                 </p>
               </div>

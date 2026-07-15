@@ -89,7 +89,7 @@ export function SkillsLeft() {
         viewport={{ once: true }}
         className="text-3xl md:text-5xl font-bold mb-6 text-center font-serif relative z-10"
       >
-        <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
+        <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent  ">
           Compétences
         </span>
       </motion.h2>
@@ -104,12 +104,12 @@ export function SkillsLeft() {
             transition={{ delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
-              <h3 className="font-semibold text-lg text-slate-950 dark:text-white mb-2 font-serif">{cat.title}</h3>
+            <div className="bg-white/80  backdrop-blur-sm p-4 rounded-xl border border-slate-200  shadow-sm hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-lg text-slate-950  mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-slate-900 dark:text-slate-100">
-                    <span className="text-slate-800 dark:text-slate-200">{skill.icon}</span>
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-slate-900 ">
+                    <span className="text-slate-800 ">{skill.icon}</span>
                     <span className="truncate">{skill.name}</span>
                   </li>
                 ))}
@@ -135,11 +135,11 @@ export function SkillsRight() {
             transition={{ delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
-              <h3 className="font-semibold text-[15px] md:text-base text-slate-950 dark:text-white mb-2 font-serif">{cat.title}</h3>
+            <div className="bg-white/80  backdrop-blur-sm p-4 rounded-xl border border-slate-200  shadow-sm hover:shadow-lg transition-all">
+              <h3 className="font-semibold text-[15px] md:text-base text-slate-950  mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-700 dark:text-gray-200">
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-700 ">
                     <span className="text-blue-500">{skill.icon}</span>
                     <span className="truncate">{skill.name}</span>
                   </li>
@@ -154,9 +154,9 @@ export function SkillsRight() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-2 p-3 bg-blue-50/50 dark:bg-blue-950/30 rounded-xl border border-blue-200 dark:border-blue-800 text-center"
+          className="mt-2 p-3 bg-blue-50/50  rounded-xl border border-blue-200  text-center"
         >
-          <p className="text-gray-700 dark:text-gray-200 italic font-serif text-[13px]">{personalNote}</p>
+          <p className="text-gray-700  italic font-serif text-[13px]">{personalNote}</p>
         </motion.div>
       </div>
     </section>

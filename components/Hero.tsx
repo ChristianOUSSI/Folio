@@ -9,11 +9,11 @@ export function HeroLeft() {
     <section className="w-full h-full flex flex-col items-center justify-center p-8">
       {/* Profile image - Yugo Eliacman style silhouette */}
       <motion.div 
-        className="mx-auto w-48 h-48 sm:w-56 sm:h-56 relative mb-8 rounded-full p-1 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500 dark:from-amber-600 dark:via-orange-600 dark:to-red-700"
+        className="mx-auto w-48 h-48 sm:w-56 sm:h-56 relative mb-8 rounded-full p-1 bg-gradient-to-br from-amber-400 via-orange-500 to-red-500   "
         animate={{ boxShadow: ['0 0 30px rgba(245,158,11,0.3)', '0 0 50px rgba(249,115,22,0.4)', '0 0 30px rgba(245,158,11,0.3)'] }}
         transition={{ duration: 4, repeat: Infinity }}
       >
-        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-orange-900 shadow-lg">
+        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white  shadow-lg">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 z-10" />
           <Image
             src="/img.jpg"
@@ -32,7 +32,7 @@ export function HeroLeft() {
         transition={{ delay: 0.3 }}
         className="text-center"
       >
-        <h2 className="text-xl md:text-2xl font-bold text-blue-700 dark:text-blue-300 mb-4 font-serif">
+        <h2 className="text-xl md:text-2xl font-bold text-blue-700  mb-4 font-serif">
           Bienvenue
         </h2>
         <div className="flex flex-col gap-1 italic text-gray-500 text-sm">
@@ -56,7 +56,7 @@ export function HeroRight() {
         transition={{ duration: 0.8 }}
         className="mb-6 flex flex-col items-center"
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700 dark:from-blue-400 dark:via-blue-300 dark:to-blue-400 bg-clip-text text-transparent leading-tight text-center" style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>
+        <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-blue-700 via-blue-500 to-blue-700    bg-clip-text text-transparent leading-tight text-center" style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>
           OJCJ
         </h1>
         <div className="w-16 h-1 bg-blue-600 rounded-full"></div>
@@ -69,7 +69,7 @@ export function HeroRight() {
         transition={{ delay: 0.5 }}
         className="mb-8 text-center max-w-md"
       >
-        <p className="text-base md:text-lg text-gray-700 dark:text-gray-200 leading-relaxed font-serif">
+        <p className="text-base md:text-lg text-gray-700  leading-relaxed font-serif">
           {t('hero.description')}
         </p>
       </motion.div>

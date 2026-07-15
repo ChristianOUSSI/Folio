@@ -108,7 +108,7 @@ export default function BookPage({
     >
       {/* FRONT FACE */}
       <div 
-        className="absolute inset-0 w-full h-full bg-[#f4ecd8] overflow-y-auto overflow-x-hidden custom-scrollbar"
+        className="absolute inset-0 w-full h-full bg-[#f4ecd8] overflow-hidden"
         style={{
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
@@ -118,22 +118,25 @@ export default function BookPage({
         }}
       >
         <div className="absolute inset-y-0 left-0 w-[2px] bg-gradient-to-b from-[#8a6d1c] via-[#d4af37] to-[#8a6d1c] shadow-[0_0_5px_rgba(212,175,55,0.8)] z-[60]" />
-        <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-50" />
+        <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black/20 to-transparent pointer-events-none z-[50]" />
         
-        <div className="w-full min-h-full px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12 relative z-10 flex flex-col justify-start pb-16">
-          <div className="w-full flex-1 max-w-4xl mx-auto flex flex-col">
-            {frontContent}
+        {/* Scrollable Content Container */}
+        <div className="absolute inset-0 z-20 overflow-y-auto overflow-x-hidden custom-scrollbar">
+          <div className="w-full min-h-full px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12 relative flex flex-col justify-start pb-16">
+            <div className="w-full flex-1 max-w-4xl mx-auto flex flex-col">
+              {frontContent}
+            </div>
           </div>
         </div>
 
-        <div className="absolute bottom-4 right-6 text-gray-500/50 font-serif text-sm pointer-events-none select-none">
+        <div className="absolute bottom-4 right-6 text-gray-500/50 font-serif text-sm pointer-events-none select-none z-30">
           {index * 2 + 1}
         </div>
       </div>
 
       {/* BACK FACE */}
       <div 
-        className="absolute inset-0 w-full h-full bg-[#f4ecd8] overflow-y-auto overflow-x-hidden custom-scrollbar"
+        className="absolute inset-0 w-full h-full bg-[#f4ecd8] overflow-hidden"
         style={{
           backfaceVisibility: 'hidden',
           WebkitBackfaceVisibility: 'hidden',
@@ -144,15 +147,18 @@ export default function BookPage({
         }}
       >
         <div className="absolute inset-y-0 right-0 w-[2px] bg-gradient-to-b from-[#8a6d1c] via-[#d4af37] to-[#8a6d1c] shadow-[0_0_5px_rgba(212,175,55,0.8)] z-[60]" />
-        <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/20 to-transparent pointer-events-none z-50" />
+        <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black/20 to-transparent pointer-events-none z-[50]" />
         
-        <div className="w-full min-h-full px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12 relative z-10 flex flex-col justify-start pb-16">
-          <div className="w-full flex-1 max-w-4xl mx-auto flex flex-col">
-            {backContent}
+        {/* Scrollable Content Container */}
+        <div className="absolute inset-0 z-20 overflow-y-auto overflow-x-hidden custom-scrollbar">
+          <div className="w-full min-h-full px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12 relative flex flex-col justify-start pb-16">
+            <div className="w-full flex-1 max-w-4xl mx-auto flex flex-col">
+              {backContent}
+            </div>
           </div>
         </div>
 
-        <div className="absolute bottom-4 left-6 text-gray-500/50 font-serif text-sm pointer-events-none select-none">
+        <div className="absolute bottom-4 left-6 text-gray-500/50 font-serif text-sm pointer-events-none select-none z-30">
           {index * 2 + 2}
         </div>
       </div>

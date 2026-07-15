@@ -50,18 +50,18 @@ export function ContactLeft() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl md:text-5xl font-bold text-center mb-2 font-serif">
-            <InkText className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
+            <InkText className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent  ">
               Me Contacter
             </InkText>
           </h2>
-          <p className="text-center text-gray-600 dark:text-gray-300 mb-4 text-xs font-serif">
+          <p className="text-center text-gray-600  mb-4 text-xs font-serif">
             Une question, un projet ? N'hésitez pas !
           </p>
         </motion.div>
 
         <div className="relative group w-full">
-          <div className="absolute -inset-1 bg-gradient-to-r from-blue-200 to-blue-100 dark:from-blue-800 dark:to-blue-900 opacity-30 group-hover:opacity-50 rounded-2xl blur transition duration-300" />
-          <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm p-4 md:p-5 rounded-2xl border border-blue-100 dark:border-blue-800 shadow-sm">
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-200 to-blue-100   opacity-30 group-hover:opacity-50 rounded-2xl blur transition duration-300" />
+          <div className="relative bg-white/90  backdrop-blur-sm p-4 md:p-5 rounded-2xl border border-blue-100  shadow-sm">
             <AnimatePresence mode="wait">
               {submitStatus === 'success' ? (
                 <motion.div
@@ -71,10 +71,10 @@ export function ContactLeft() {
                   className="text-center py-4"
                 >
                   <div className="text-4xl mb-2">🚀</div>
-                  <h3 className="text-lg font-bold text-green-600 dark:text-green-400 mb-1 font-serif">
+                  <h3 className="text-lg font-bold text-green-600  mb-1 font-serif">
                     Message envoyé !
                   </h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-300 font-serif">
+                  <p className="text-xs text-gray-600  font-serif">
                     Je vous répondrai rapidement.
                   </p>
                 </motion.div>
@@ -94,7 +94,7 @@ export function ContactLeft() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white hover:border-blue-300 dark:hover:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
+                        className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300 :border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
                         placeholder="Votre nom"
                       />
                     </div>
@@ -105,7 +105,7 @@ export function ContactLeft() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white hover:border-blue-300 dark:hover:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
+                        className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300 :border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
                         placeholder="votre@email.com"
                       />
                     </div>
@@ -118,7 +118,7 @@ export function ContactLeft() {
                       onChange={handleChange}
                       required
                       rows={3}
-                      className="w-full px-3 py-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-slate-600 text-gray-900 dark:text-white hover:border-blue-300 dark:hover:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-xs"
+                      className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300 :border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-xs"
                       placeholder="Votre message..."
                     />
                   </div>
@@ -151,21 +151,21 @@ export function ContactRight() {
         {/* Phone Numbers */}
         <motion.div 
           whileHover={{ y: -5 }}
-          className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/30 dark:to-blue-800/20 p-4 md:p-5 rounded-2xl border border-blue-200 dark:border-blue-800 shadow-sm flex items-center gap-4"
+          className="bg-gradient-to-br from-blue-50 to-blue-100   p-4 md:p-5 rounded-2xl border border-blue-200  shadow-sm flex items-center gap-4"
         >
           <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
             <Phone className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-1 font-serif text-sm md:text-base">Téléphones</h4>
+            <h4 className="font-bold text-gray-800  mb-1 font-serif text-sm md:text-base">Téléphones</h4>
             <div className="flex flex-col">
-              <a href="tel:+237691223916" className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-[11px] md:text-xs">
+              <a href="tel:+237691223916" className="text-blue-600  font-medium hover:text-blue-700 :text-blue-300 transition-colors text-[11px] md:text-xs">
                 +237 691 223 916
               </a>
-              <a href="tel:+237670008202" className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-[11px] md:text-xs">
+              <a href="tel:+237670008202" className="text-blue-600  font-medium hover:text-blue-700 :text-blue-300 transition-colors text-[11px] md:text-xs">
                 +237 670 008 202
               </a>
-              <a href="tel:+237659845024" className="text-blue-600 dark:text-blue-400 font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors text-[11px] md:text-xs">
+              <a href="tel:+237659845024" className="text-blue-600  font-medium hover:text-blue-700 :text-blue-300 transition-colors text-[11px] md:text-xs">
                 +237 659 845 024
               </a>
             </div>
@@ -175,18 +175,18 @@ export function ContactRight() {
         {/* Emails */}
         <motion.div 
           whileHover={{ y: -5 }}
-          className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/30 dark:to-purple-800/20 p-4 md:p-5 rounded-2xl border border-purple-200 dark:border-purple-800 shadow-sm flex items-center gap-4"
+          className="bg-gradient-to-br from-purple-50 to-purple-100   p-4 md:p-5 rounded-2xl border border-purple-200  shadow-sm flex items-center gap-4"
         >
           <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-500 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
             <Mail className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-1 font-serif text-sm md:text-base">Emails</h4>
+            <h4 className="font-bold text-gray-800  mb-1 font-serif text-sm md:text-base">Emails</h4>
             <div className="flex flex-col">
-              <a href="mailto:christian.oussi01@gmail.com" className="text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 transition-colors text-[11px] md:text-xs truncate max-w-[200px] md:max-w-[250px]">
+              <a href="mailto:christian.oussi01@gmail.com" className="text-purple-600  font-medium hover:text-purple-700 :text-purple-300 transition-colors text-[11px] md:text-xs truncate max-w-[200px] md:max-w-[250px]">
                 christian.oussi01@gmail.com
               </a>
-              <a href="mailto:wassatherese@gmail.com" className="text-purple-600 dark:text-purple-400 font-medium hover:text-purple-700 dark:hover:text-purple-300 transition-colors text-[11px] md:text-xs truncate max-w-[200px] md:max-w-[250px]">
+              <a href="mailto:wassatherese@gmail.com" className="text-purple-600  font-medium hover:text-purple-700 :text-purple-300 transition-colors text-[11px] md:text-xs truncate max-w-[200px] md:max-w-[250px]">
                 wassatherese@gmail.com
               </a>
             </div>
@@ -196,16 +196,16 @@ export function ContactRight() {
         {/* Location */}
         <motion.div 
           whileHover={{ y: -5 }}
-          className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/30 dark:to-green-800/20 p-4 md:p-5 rounded-2xl border border-green-200 dark:border-green-800 shadow-sm flex items-center gap-4"
+          className="bg-gradient-to-br from-green-50 to-green-100   p-4 md:p-5 rounded-2xl border border-green-200  shadow-sm flex items-center gap-4"
         >
           <div className="w-10 h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
             <MapPin className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h4 className="font-bold text-gray-800 dark:text-gray-100 mb-1 font-serif text-sm md:text-base">Localisation</h4>
+            <h4 className="font-bold text-gray-800  mb-1 font-serif text-sm md:text-base">Localisation</h4>
             <div className="flex flex-col">
-              <p className="text-green-700 dark:text-green-300 font-medium text-[11px] md:text-xs">Bonaberi, Douala</p>
-              <p className="text-green-700 dark:text-green-300 font-medium text-[11px] md:text-xs">Cameroun</p>
+              <p className="text-green-700  font-medium text-[11px] md:text-xs">Bonaberi, Douala</p>
+              <p className="text-green-700  font-medium text-[11px] md:text-xs">Cameroun</p>
             </div>
           </div>
         </motion.div>

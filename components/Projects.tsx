@@ -67,7 +67,7 @@ export function ProjectsLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-3 text-center font-serif"
         >
-          <InkText className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-blue-300">
+          <InkText className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent  ">
             Mes Projets
           </InkText>
         </motion.h2>
@@ -77,7 +77,7 @@ export function ProjectsLeft() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-center text-gray-600 dark:text-gray-300 mb-4 max-w-sm mx-auto text-[11px] md:text-xs font-serif"
+          className="text-center text-gray-600  mb-4 max-w-sm mx-auto text-[11px] md:text-xs font-serif"
         >
           Des idées folles transformées en code concret. Chaque projet est une aventure !
         </motion.p>
@@ -93,22 +93,22 @@ export function ProjectsLeft() {
               whileHover={{ scale: 1.02, y: -3 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col">
+              <div className="relative bg-white  rounded-2xl overflow-hidden border border-gray-100  shadow-sm flex flex-col">
                 <div className="p-3 md:p-4 flex flex-col h-full items-center text-center">
                   <div className="flex items-center gap-2 mb-1 justify-center">
                     <span className="text-2xl md:text-3xl text-blue-500">{project.icon}</span>
-                    <h3 className="text-sm md:text-base font-bold text-gray-900 dark:text-white font-serif">
+                    <h3 className="text-sm md:text-base font-bold text-gray-900  font-serif">
                       {project.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
+                  <p className="text-gray-600  text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-2 justify-center">
                     {project.stack.map((tech) => (
                       <span 
                         key={tech}
-                        className="px-1.5 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[9px] md:text-[10px] rounded-md font-medium"
+                        className="px-1.5 py-0.5 bg-blue-50  text-blue-700  text-[9px] md:text-[10px] rounded-md font-medium"
                       >
                         {tech}
                       </span>
@@ -127,7 +127,7 @@ export function ProjectsLeft() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-200 text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-all uppercase tracking-wider"
+                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100  text-gray-700  text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200 :bg-slate-600 transition-all uppercase tracking-wider"
                     >
                       GitHub
                     </a>
@@ -157,22 +157,22 @@ export function ProjectsRight() {
               whileHover={{ scale: 1.02, y: -3 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white dark:bg-slate-800/90 rounded-2xl overflow-hidden border border-gray-100 dark:border-slate-700 shadow-sm flex flex-col">
+              <div className="relative bg-white  rounded-2xl overflow-hidden border border-gray-100  shadow-sm flex flex-col">
                 <div className="p-3 md:p-4 flex flex-col h-full">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-2xl md:text-3xl text-blue-500">{project.icon}</span>
-                    <h3 className="text-sm md:text-base font-bold text-gray-900 dark:text-white font-serif">
+                    <h3 className="text-sm md:text-base font-bold text-gray-900  font-serif">
                       {project.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600 dark:text-gray-300 text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
+                  <p className="text-gray-600  text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-2">
                     {project.stack.map((tech) => (
                       <span 
                         key={tech}
-                        className="px-1.5 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[9px] md:text-[10px] rounded-md font-medium"
+                        className="px-1.5 py-0.5 bg-blue-50  text-blue-700  text-[9px] md:text-[10px] rounded-md font-medium"
                       >
                         {tech}
                       </span>
@@ -191,7 +191,7 @@ export function ProjectsRight() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-200 text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200 dark:hover:bg-slate-600 transition-all uppercase tracking-wider"
+                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100  text-gray-700  text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200 :bg-slate-600 transition-all uppercase tracking-wider"
                     >
                       GitHub
                     </a>

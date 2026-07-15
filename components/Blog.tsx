@@ -81,7 +81,7 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/joseph-christian-josu%C3%A9-ou
 
 export function BlogLeft() {
   return (
-    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
+    <section className="w-full flex flex-col px-4 sm:px-8 pt-4 md:pt-12 pb-4 relative mt-0 mb-auto">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -89,7 +89,7 @@ export function BlogLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-3 text-center font-serif"
         >
-          <InkText className="bg-gradient-to-r from-purple-700 to-blue-500 bg-clip-text text-transparent dark:from-purple-400 dark:to-blue-300">
+          <InkText className="bg-gradient-to-r from-purple-700 to-blue-500 bg-clip-text text-transparent  ">
             Blog
           </InkText>
         </motion.h2>
@@ -105,10 +105,10 @@ export function BlogLeft() {
               whileHover={{ scale: 1.02, y: -3 }}
               className="group cursor-default"
             >
-              <div className={`relative bg-white dark:bg-slate-800/90 rounded-xl border border-gray-100 dark:border-slate-700 hover:shadow-lg transition-all ${article.featured ? 'border-purple-200 dark:border-purple-600 shadow-md' : 'shadow-sm'}`}>
+              <div className={`relative bg-white  rounded-xl border border-gray-100  hover:shadow-lg transition-all ${article.featured ? 'border-purple-200  shadow-md' : 'shadow-sm'}`}>
                 <div className="p-3 md:p-4 flex flex-col items-center text-center">
                   <div className="flex items-center justify-center mb-1.5 w-full gap-2">
-                    <span className="px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
+                    <span className="px-2 py-0.5 bg-blue-50  text-blue-700  text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
                       {article.category} {article.featured && '★'}
                     </span>
                     <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold uppercase tracking-wider">
@@ -116,21 +116,21 @@ export function BlogLeft() {
                     </span>
                   </div>
                   <div className="flex flex-col items-center gap-2 w-full">
-                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 flex items-center justify-center text-sm flex-shrink-0">
+                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-purple-100 to-blue-100  flex items-center justify-center text-sm flex-shrink-0">
                       {article.icon}
                     </div>
                     <div>
-                      <h3 className="text-xs md:text-sm font-bold text-gray-900 dark:text-white mb-0.5 font-serif line-clamp-1">
+                      <h3 className="text-xs md:text-sm font-bold text-gray-900  mb-0.5 font-serif line-clamp-1">
                         {article.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-[9px] md:text-[10px] mb-1.5 line-clamp-2 font-serif">
+                      <p className="text-gray-600  text-[9px] md:text-[10px] mb-1.5 line-clamp-2 font-serif">
                         {article.excerpt}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-gray-50 dark:border-slate-700 w-full">
+                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-gray-50  w-full">
                     <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold">{article.date}</span>
-                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider hover:underline">
+                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-purple-600  font-bold uppercase tracking-wider hover:underline">
                       Lire →
                     </a>
                   </div>
@@ -178,10 +178,10 @@ export function BlogRight() {
               whileHover={{ scale: 1.02, y: -3 }}
               className="group cursor-default"
             >
-              <div className="relative bg-white dark:bg-slate-800/90 rounded-xl border border-gray-100 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all">
+              <div className="relative bg-white  rounded-xl border border-gray-100  shadow-sm hover:shadow-lg transition-all">
                 <div className="p-3 md:p-4 flex flex-col">
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="px-2 py-0.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
+                    <span className="px-2 py-0.5 bg-blue-50  text-blue-700  text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
                       {article.category}
                     </span>
                     <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold uppercase tracking-wider">
@@ -189,21 +189,21 @@ export function BlogRight() {
                     </span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/30 flex items-center justify-center text-sm flex-shrink-0">
+                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-purple-100 to-blue-100  flex items-center justify-center text-sm flex-shrink-0">
                       {article.icon}
                     </div>
                     <div>
-                      <h3 className="text-xs md:text-sm font-bold text-gray-900 dark:text-white mb-0.5 font-serif line-clamp-1">
+                      <h3 className="text-xs md:text-sm font-bold text-gray-900  mb-0.5 font-serif line-clamp-1">
                         {article.title}
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 text-[9px] md:text-[10px] mb-1.5 line-clamp-2 font-serif">
+                      <p className="text-gray-600  text-[9px] md:text-[10px] mb-1.5 line-clamp-2 font-serif">
                         {article.excerpt}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-gray-50 dark:border-slate-700">
+                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-gray-50 ">
                     <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold">{article.date}</span>
-                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-purple-600 dark:text-purple-400 font-bold uppercase tracking-wider hover:underline">
+                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-purple-600  font-bold uppercase tracking-wider hover:underline">
                       Lire →
                     </a>
                   </div>
@@ -220,10 +220,10 @@ export function BlogRight() {
           whileHover={{ scale: 1.02 }}
           className="text-center w-full cursor-default"
         >
-          <div className="p-3 md:p-4 bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/20 dark:to-blue-900/20 rounded-xl border border-purple-200 dark:border-purple-800">
+          <div className="p-3 md:p-4 bg-gradient-to-r from-purple-50 to-blue-50   rounded-xl border border-purple-200 ">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <BellRing className="w-4 h-4 text-purple-600 dark:text-purple-400" />
-              <h3 className="text-xs md:text-sm font-bold text-gray-900 dark:text-white font-serif">
+              <BellRing className="w-4 h-4 text-purple-600 " />
+              <h3 className="text-xs md:text-sm font-bold text-gray-900  font-serif">
                 Restez informé !
               </h3>
             </div>
@@ -234,7 +234,7 @@ export function BlogRight() {
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Nom complet ou LinkedIn..."
                 disabled={newsletterStatus === 'loading'}
-                className="w-full px-3 py-1.5 rounded-md bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 focus:border-purple-500 focus:outline-none text-[10px]"
+                className="w-full px-3 py-1.5 rounded-md bg-white  border border-gray-200  focus:border-purple-500 focus:outline-none text-[10px]"
               />
               <motion.button
                 type="submit"
