@@ -13,17 +13,17 @@ interface I18nContextType {
 const translations = {
   fr: {
     // Launcher
-    'launcher.line1': '> Initialisation du syst√®me..._',
+    'launcher.line1': '> Initialisation du systËme..._',
     'launcher.line2': '> Chargement des projets..._',
-    'launcher.line3': '> Connexion au r√©seau..._',
-    'launcher.line4': '> Pr√™t √† explorer_',
+    'launcher.line3': '> Connexion au rÈseau..._',
+    'launcher.line4': '> PrÍt ‡ explorer_',
     'launcher.discover': 'EXPLORER',
     
     // Navigation
     'nav.home': 'Accueil',
-    'nav.about': '√Ä propos',
-    'nav.skills': 'Comp√©tences',
-    'nav.experience': 'Exp√©riences',
+    'nav.about': '¿ propos',
+    'nav.skills': 'CompÈtences',
+    'nav.experience': 'ExpÈriences',
     'nav.education': 'Formations',
     'nav.certifications': 'Certifications',
     'nav.projects': 'Projets',
@@ -34,65 +34,66 @@ const translations = {
     'hero.welcome': 'Bienvenue dans mon monde',
     'hero.welcome.en': 'Welcome to my world',
     'hero.welcome.de': 'Willkommen in meiner Welt',
-    'hero.welcome.jp': 'ÁßÅ„ÅÆ‰∏ñÁïå„Å∏„Çà„ÅÜ„Åì„Åù',
-    'hero.description': "De l'exploration de mondes virtuels √† la cr√©ation d'apps r√©elles je transforme les id√©es en code, une ligne √† la fois.",
+    'hero.welcome.jp': '?????????',
+    'hero.description': "De l'exploration de mondes virtuels ‡ la crÈation d'apps rÈelles je transforme les idÈes en code, une ligne ‡ la fois.",
     'hero.viewProjects': 'Voir mes projets',
     'hero.contact': 'Me contacter',
     
     // About
-    'about.title': '√Ä propos de moi',
-    'about.subtitle': 'D√©veloppeur Fullstack passionn√© par les r√©cits interactifs',
-    'about.description1': "√âtudiant en cours d'obtention de ma Licence en Gestion des Syst√®mes d'Informations √† l'Universit√© The Brains, je suis motiv√©, cr√©atif, innovant, passionn√© par la technologie et dynamique. Je mets mon expertise et mes comp√©tences en constante √©volution au service de vos projets et entreprises.",
-    'about.passions': 'Passions & Centres d\'int√©r√™t',
-    'about.passionsDesc': "Lecteur passionn√© de mangas comme Dragon Ball, HxH et Naruto, j'√©cris des histoires sur Wattpad pour explorer des mondes imaginaires. Gamer inv√©t√©r√©, j'ai pass√© des nuits blanches sur NEOGEO, ZUMA et les GTA, ce qui m'a appris la pers√©v√©rance et la r√©solution de probl√®mes complexes.",
+    'about.title': '¿ propos de moi',
+    'about.subtitle': 'DÈveloppeur Fullstack passionnÈ par les rÈcits interactifs',
+    'about.description1': "…tudiant en cours d'obtention de ma Licence en Gestion des SystËmes d'Informations ‡ l'UniversitÈ The Brains, je suis motivÈ, crÈatif, innovant, passionnÈ par la technologie et dynamique. Je mets mon expertise et mes compÈtences en constante Èvolution au service de vos projets et entreprises.",
+    'about.passions': 'Passions & Centres d\'intÈrÍt',
+    'about.passionsDesc': "Lecteur passionnÈ de mangas comme Dragon Ball, HxH et Naruto, j'Ècris des histoires sur Wattpad pour explorer des mondes imaginaires. Gamer invÈtÈrÈ, j'ai passÈ des nuits blanches sur NEOGEO, ZUMA et les GTA, ce qui m'a appris la persÈvÈrance et la rÈsolution de problËmes complexes.",
     'about.journey': 'Mon parcours personnel',
-    'about.journeyDesc': "Tout a commenc√© avec un vieux Laptop HP sous Windows 7, o√π j'ai d√©couvert les jeux vid√©o. J'ai essay√© de \"cracker\" un jeu PPSSPP en y ajoutant des savedatas pour avoir tous les personnages, (oui, c'√©tait ill√©gal et de la triche, mais √©ducatif !) et √ßa m'a fascin√©. J'ai commenc√© √† apprendre le HTML/CSS en allant sur youtube et en modifiant des sites web, puis le JavaScript pour cr√©er des petits scripts. Cette curiosit√© m'a pouss√© vers l'universit√© au Cameroun, o√π j'ai plong√© dans le d√©veloppement fullstack. Chaque projet, comme ce portfolio, est une aventure inspir√© par les mangas que je d√©vore et les mondes virtuels que j'explore. Et oui, j'ai encore ce vieux PC et je l'utilise toujours au lieu de virtualiser, comme un rappel de mes d√©buts !",
+    'about.journeyDesc': "Tout a commencÈ avec un vieux Laptop HP sous Windows 7, o˘ j'ai dÈcouvert les jeux vidÈo. J'ai essayÈ de \"cracker\" un jeu PPSSPP en y ajoutant des savedatas pour avoir tous les personnages, (oui, c'Ètait illÈgal et de la triche, mais Èducatif !) et Áa m'a fascinÈ. J'ai commencÈ ‡ apprendre le HTML/CSS en allant sur youtube et en modifiant des sites web, puis le JavaScript pour crÈer des petits scripts. Cette curiositÈ m'a poussÈ vers l'universitÈ au Cameroun, o˘ j'ai plongÈ dans le dÈveloppement fullstack. Chaque projet, comme ce portfolio, est une aventure inspirÈ par les mangas que je dÈvore et les mondes virtuels que j'explore. Et oui, j'ai encore ce vieux PC et je l'utilise toujours au lieu de virtualiser, comme un rappel de mes dÈbuts !",
     
     // Skills
-    'skills.title': 'Comp√©tences',
+    'skills.title': 'CompÈtences',
     'skills.languages': 'Langages',
     'skills.frameworks': 'Frameworks & Plateformes',
-    'skills.devTools': 'Outils de D√©veloppement',
-    'skills.creativeTools': 'Outils Cr√©atifs',
-    'skills.businessTools': 'Outils M√©tier',
+    'skills.devTools': 'Outils de DÈveloppement',
+    'skills.creativeTools': 'Outils CrÈatifs',
+    'skills.businessTools': 'Outils MÈtier',
     'skills.languages2': 'Langues',
-    'skills.note': "Ces comp√©tences ne sont pas juste des outils elles sont n√©es de mes passions. Par exemple, j'ai plong√© dans React apr√®s avoir vu des sites web 'magiques' comme ceux des mangas en ligne √† l'instar de ANIME-SAMA",
+    'skills.note': "Ces compÈtences ne sont pas juste des outils elles sont nÈes de mes passions. Par exemple, j'ai plongÈ dans React aprËs avoir vu des sites web 'magiques' comme ceux des mangas en ligne ‡ l'instar de ANIME-SAMA",
     
     // Experience
-    'experience.title': 'Exp√©riences Professionnelles',
+    'experience.title': 'ExpÈriences Professionnelles',
     
     // Education
-    'education.title': 'Formations & √âtudes',
+    'education.title': 'Formations & …tudes',
     
     // Certifications
     'certifications.title': 'Certifications',
     
     // Projects
     'projects.title': 'Mes Projets',
-    'projects.description': "Des id√©es folles transform√©es en code concret. Chaque projet est une aventure !",
+    'projects.description': "Des idÈes folles transformÈes en code concret. Chaque projet est une aventure !",
     'projects.all': 'Tous',
     'projects.web': 'Web App',
     'projects.mobile': 'Mobile',
     'projects.game': 'Jeux',
     'projects.data': 'Data',
-    'projects.viewProject': 'Voir le projet ‚Üí',
+    'projects.viewProject': 'Voir le projet ?',
+    ',
     'projects.github': 'GitHub',
-    'projects.noResults': 'Aucun projet dans cette cat√©gorie pour le moment.',
+    'projects.noResults': 'Aucun projet dans cette catÈgorie pour le moment.',
     
     // Blog
     'blog.title': 'Blog & Articles',
-    'blog.description': "Mes r√©flexions, tutoriels et partagent sur mon parcours dans le d√©veloppement.",
+    'blog.description': "Mes rÈflexions, tutoriels et partagent sur mon parcours dans le dÈveloppement.",
     'blog.featured': 'Article en vedette',
     'blog.read': 'Lire',
-    'blog.readArticle': "Lire l'article ‚Üí",
-    'blog.newsletter': 'Restez inform√© !',
-    'blog.newsletterDesc': "Entrez votre nom complet ou votre profil LinkedIn pour recevoir mes derni√®res publications.",
+    'blog.readArticle': "Lire l'article ?",
+    'blog.newsletter': 'Restez informÈ !',
+    'blog.newsletterDesc': "Entrez votre nom complet ou votre profil LinkedIn pour recevoir mes derniËres publications.",
     'blog.subscribe': "S'abonner",
-    'blog.subscribeSuccess': 'Merci ! Je vous contacte bient√¥t.',
+    'blog.subscribeSuccess': 'Merci ! Je vous contacte bientÙt.',
     
     // Contact
     'contact.title': 'Me Contacter',
-    'contact.description': 'Une question, un projet, ou simplement envie de discuter ? N\'h√©sitez pas √† me laisser un message !',
+    'contact.description': 'Une question, un projet, ou simplement envie de discuter ? N\'hÈsitez pas ‡ me laisser un message !',
     'contact.name': 'Nom',
     'contact.namePlaceholder': 'Votre nom',
     'contact.email': 'Email',
@@ -101,27 +102,27 @@ const translations = {
     'contact.messagePlaceholder': 'Votre message...',
     'contact.send': 'Envoyer le message',
     'contact.sending': 'Envoi...',
-    'contact.success': 'Message envoy√© !',
-    'contact.successDesc': 'Merci pour votre message. Je vous r√©pondrai rapidement.',
-    'contact.phones': 'T√©l√©phones',
+    'contact.success': 'Message envoyÈ !',
+    'contact.successDesc': 'Merci pour votre message. Je vous rÈpondrai rapidement.',
+    'contact.phones': 'TÈlÈphones',
     'contact.emails': 'Emails',
     'contact.location': 'Localisation',
     
     // Stats
-    'stats.projects': 'Projets r√©alis√©s',
+    'stats.projects': 'Projets rÈalisÈs',
     'stats.certifications': 'Certifications',
-    'stats.experience': "Ann√©es d'exp√©rience",
+    'stats.experience': "AnnÈes d'expÈrience",
     'stats.passion': 'Passion',
     
     // Process
     'process.title': 'Mon Processus',
-    'process.description': 'De votre id√©e √† la livraison, une m√©thode claire et transparente',
-    'process.discovery': 'D√©couverte',
-    'process.discoveryDesc': 'Discussion sur votre vision, vos objectifs et votre audience pour d√©finir la direction du projet.',
+    'process.description': 'De votre idÈe ‡ la livraison, une mÈthode claire et transparente',
+    'process.discovery': 'DÈcouverte',
+    'process.discoveryDesc': 'Discussion sur votre vision, vos objectifs et votre audience pour dÈfinir la direction du projet.',
     'process.design': 'Conception',
-    'process.designDesc': 'Cr√©ation de maquettes et prototypes que vous validez avant le d√©veloppement.',
-    'process.development': 'D√©veloppement',
-    'process.developmentDesc': "Code propre, performant et responsive avec des d√©mos r√©guli√®res pour suivre l'avancement.",
+    'process.designDesc': 'CrÈation de maquettes et prototypes que vous validez avant le dÈveloppement.',
+    'process.development': 'DÈveloppement',
+    'process.developmentDesc': "Code propre, performant et responsive avec des dÈmos rÈguliËres pour suivre l'avancement.",
     'process.delivery': 'Livraison',
     'process.deliveryDesc': 'Mise en ligne, tests finaux et formation. Support disponible pour le suivi post-lancement.',
     
@@ -151,7 +152,7 @@ const translations = {
     'hero.welcome': 'Welcome to my world',
     'hero.welcome.en': 'Welcome to my world',
     'hero.welcome.de': 'Willkommen in meiner Welt',
-    'hero.welcome.jp': 'ÁßÅ„ÅÆ‰∏ñÁïå„Å∏„Çà„ÅÜ„Åì„Åù',
+    'hero.welcome.jp': '?????????',
     'hero.description': 'From exploring virtual worlds to creating real apps, I transform ideas into code, one line at a time.',
     'hero.viewProjects': 'View my projects',
     'hero.contact': 'Contact me',
@@ -172,7 +173,7 @@ const translations = {
     'skills.devTools': 'Development Tools',
     'skills.creativeTools': 'Creative Tools',
     'skills.businessTools': 'Business Tools',
-    'skills.languages2': 'Languages',
+    'skills.languages2': 'Langues',
     'skills.note': "These skills are not just tools they were born from my passions. For example, I dove into React after seeing 'magical' websites like online manga sites like ANIME-SAMA",
     
     // Experience
@@ -192,7 +193,7 @@ const translations = {
     'projects.mobile': 'Mobile',
     'projects.game': 'Games',
     'projects.data': 'Data',
-    'projects.viewProject': 'View project ‚Üí',
+    'projects.viewProject': 'View project ?',
     'projects.github': 'GitHub',
     'projects.noResults': 'No projects in this category at the moment.',
     
@@ -201,7 +202,7 @@ const translations = {
     'blog.description': 'My thoughts, tutorials and sharing about my journey in development.',
     'blog.featured': 'Featured article',
     'blog.read': 'Read',
-    'blog.readArticle': 'Read article ‚Üí',
+    'blog.readArticle': 'Read article ?',
     'blog.newsletter': 'Stay informed!',
     'blog.newsletterDesc': 'Enter your full name or LinkedIn profile to receive my latest publications.',
     'blog.subscribe': 'Subscribe',
@@ -265,7 +266,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
 export function useI18n() {
   const context = useContext(I18nContext);
-  if (!context) {
+  if (!context`?context) {
     throw new Error('useI18n must be used within an I18nProvider');
   }
   return context;

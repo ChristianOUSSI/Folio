@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Launcher from '../components/Launcher';
@@ -32,6 +32,7 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Original pages array for desktop (BookContainer) - each left/right separate
   const pages = [
     { id: 'sommaire-left', component: <SommaireLeft /> },
     { id: 'sommaire-right', component: <SommaireRight /> },
@@ -57,6 +58,23 @@ export default function Home() {
     { id: 'contact-right', component: <ContactRight /> }
   ];
 
+  // For mobile: combine left+right into single sections
+  const sections = [
+    { id: 'sommaire', component: (<><SommaireLeft /><SommaireRight /></>) },
+    { id: 'hero', component: (<><HeroLeft /><HeroRight /></>) },
+    { id: 'about', component: (<><AboutLeft /><AboutRight /></>) },
+    { id: 'skills', component: (<><SkillsLeft /><SkillsRight /></>) },
+    { id: 'stats', component: (<><StatsLeft /><StatsRight /></>) },
+    { id: 'process', component: (<><ProcessLeft /><ProcessRight /></>) },
+    { id: 'experience', component: (<><ExperienceLeft /><ExperienceRight /></>) },
+    { id: 'certifications', component: (<><CertificationsLeft /><CertificationsRight /></>) },
+    { id: 'projects', component: (<><ProjectsLeft /><ProjectsRight /></>) },
+    { id: 'blog', component: (<><BlogLeft /><BlogRight /></>) },
+    { id: 'contact', component: (<><ContactLeft /><ContactRight /></>) }
+  ];
+
+  const mainClass = `w-full h-full flex items-center justify-center ${isMobile ? 'text-white' : ''}`;
+
   return (
     <>
       <ErrorBoundary>
@@ -69,26 +87,27 @@ export default function Home() {
             <Navbar />
           </ErrorBoundary>
           
-          <main className="w-full h-full flex items-center justify-center">
+          <main className={mainClass}>
             {mounted && isMobile ? (
               <ScrollContainer 
-                navItems={[
-                  { label: "Sommaire", index: 0 },
-                  { label: "Accueil", index: 1 },
-                  { label: "À propos", index: 2 },
-                  { label: "Compétences", index: 3 },
-                  { label: "Statistiques", index: 4 },
-                  { label: "Processus", index: 5 },
-                  { label: "Expériences", index: 6 },
-                  { label: "Certifications", index: 7 },
-                  { label: "Projets", index: 8 },
-                  { label: "Blog", index: 9 },
-                  { label: "Contact", index: 10 }
-                ]}
+                navItems=[
+                  { label: 'Sommaire', index: 0 },
+                  { label: 'Accueil', index: 1 },
+                  { label: 'À propos', index: 2 },
+                  { label: 'Compétences', index: 3 },
+                  { label: 'Statistiques', index: 4 },
+                  { label: 'Processus', index: 5 },
+                  { label: 'Expériences', index: 6 },
+                  { label: 'Certifications', index: 7 },
+                  { label: 'Projets', index: 8 },
+                  { label: 'Blog', index: 9 },
+                  { label: 'Contact', index: 10 }
+                ]
+                pairSections={false}
               >
-                {pages.map(page => (
-                  <div key={page.id} className="w-full">
-                    {page.component}
+                {sections.map(section => (
+                  <div key={section.id} className="w-full">
+                    {section.component}
                   </div>
                 ))}
               </ScrollContainer>
@@ -107,3 +126,4 @@ export default function Home() {
     </>
   );
 }
+
