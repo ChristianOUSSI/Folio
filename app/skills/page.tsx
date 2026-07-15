@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 
 export const metadata = {
-  title: "Compétences | OJCJ Portfolio",
-  description: "Mes compétences techniques, linguistiques et outils maîtrisés.",
+  title: "CompÃ©tences | OJCJ Portfolio",
+  description: "Mes compÃ©tences techniques, linguistiques et outils maÃ®trisÃ©s.",
   openGraph: {
-    title: "Compétences | OJCJ Portfolio",
-    description: "Mes compétences techniques, linguistiques et outils maîtrisés.",
+    title: "CompÃ©tences | OJCJ Portfolio",
+    description: "Mes compÃ©tences techniques, linguistiques et outils maÃ®trisÃ©s.",
     images: [{ url: "${process.env.NEXT_PUBLIC_SITE_URL}/og-image.png" }],
   },
 };

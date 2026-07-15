@@ -90,7 +90,7 @@ export default function Home() {
           <main className={mainClass}>
             {mounted && isMobile ? (
               <ScrollContainer 
-                navItems=[
+                navItems={[
                   { label: 'Sommaire', index: 0 },
                   { label: 'Accueil', index: 1 },
                   { label: 'À propos', index: 2 },
@@ -102,7 +102,7 @@ export default function Home() {
                   { label: 'Projets', index: 8 },
                   { label: 'Blog', index: 9 },
                   { label: 'Contact', index: 10 }
-                ]
+                ]}
                 pairSections={false}
               >
                 {sections.map(section => (

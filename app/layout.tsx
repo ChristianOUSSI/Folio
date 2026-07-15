@@ -16,10 +16,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
 
 export const metadata = {
   title: 'OJCJ Portfolio',
-  description: 'Joseph Christian Josué OUSSI - Fullstack Developer',
+  description: 'Joseph Christian JosuÃ© OUSSI - Fullstack Developer',
   openGraph: {
     title: 'OJCJ Portfolio',
-    description: "Portfolio of Joseph Christian Josué OUSSI, fullstack developer",
+    description: "Portfolio of Joseph Christian JosuÃ© OUSSI, fullstack developer",
     url: siteUrl,
     siteName: 'OJCJ',
     images: [
@@ -36,7 +36,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'OJCJ Portfolio',
-    description: "Portfolio of Joseph Christian Josué OUSSI, fullstack developer",
+    description: "Portfolio of Joseph Christian JosuÃ© OUSSI, fullstack developer",
     images: [`${siteUrl}/og-image.png`]
   }
 };
@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Joseph Christian Josu� OUSSI",
+    "name": "Joseph Christian Josué OUSSI",
     "url": siteUrl,
     "logo": `${siteUrl}/logo.png`,
     "sameAs": [

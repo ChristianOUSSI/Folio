@@ -13,17 +13,17 @@ interface I18nContextType {
 const translations = {
   fr: {
     // Launcher
-    'launcher.line1': '> Initialisation du système..._',
+    'launcher.line1': '> Initialisation du systÃ¨me..._',
     'launcher.line2': '> Chargement des projets..._',
-    'launcher.line3': '> Connexion au réseau..._',
-    'launcher.line4': '> Prêt à explorer_',
+    'launcher.line3': '> Connexion au rÃ©seau..._',
+    'launcher.line4': '> PrÃªt Ã  explorer_',
     'launcher.discover': 'EXPLORER',
     
     // Navigation
     'nav.home': 'Accueil',
-    'nav.about': 'À propos',
-    'nav.skills': 'Compétences',
-    'nav.experience': 'Expériences',
+    'nav.about': 'Ã€ propos',
+    'nav.skills': 'CompÃ©tences',
+    'nav.experience': 'ExpÃ©riences',
     'nav.education': 'Formations',
     'nav.certifications': 'Certifications',
     'nav.projects': 'Projets',
@@ -35,41 +35,41 @@ const translations = {
     'hero.welcome.en': 'Welcome to my world',
     'hero.welcome.de': 'Willkommen in meiner Welt',
     'hero.welcome.jp': '?????????',
-    'hero.description': "De l'exploration de mondes virtuels à la création d'apps réelles je transforme les idées en code, une ligne à la fois.",
+    'hero.description': "De l'exploration de mondes virtuels Ã  la crÃ©ation d'apps rÃ©elles je transforme les idÃ©es en code, une ligne Ã  la fois.",
     'hero.viewProjects': 'Voir mes projets',
     'hero.contact': 'Me contacter',
     
     // About
-    'about.title': 'À propos de moi',
-    'about.subtitle': 'Développeur Fullstack passionné par les récits interactifs',
-    'about.description1': "Étudiant en cours d'obtention de ma Licence en Gestion des Systèmes d'Informations à l'Université The Brains, je suis motivé, créatif, innovant, passionné par la technologie et dynamique. Je mets mon expertise et mes compétences en constante évolution au service de vos projets et entreprises.",
-    'about.passions': 'Passions & Centres d\'intérêt',
-    'about.passionsDesc': "Lecteur passionné de mangas comme Dragon Ball, HxH et Naruto, j'écris des histoires sur Wattpad pour explorer des mondes imaginaires. Gamer invétéré, j'ai passé des nuits blanches sur NEOGEO, ZUMA et les GTA, ce qui m'a appris la persévérance et la résolution de problèmes complexes.",
+    'about.title': 'Ã€ propos de moi',
+    'about.subtitle': 'DÃ©veloppeur Fullstack passionnÃ© par les rÃ©cits interactifs',
+    'about.description1': "Ã‰tudiant en cours d'obtention de ma Licence en Gestion des SystÃ¨mes d'Informations Ã  l'UniversitÃ© The Brains, je suis motivÃ©, crÃ©atif, innovant, passionnÃ© par la technologie et dynamique. Je mets mon expertise et mes compÃ©tences en constante Ã©volution au service de vos projets et entreprises.",
+    'about.passions': 'Passions & Centres d\'intÃ©rÃªt',
+    'about.passionsDesc': "Lecteur passionnÃ© de mangas comme Dragon Ball, HxH et Naruto, j'Ã©cris des histoires sur Wattpad pour explorer des mondes imaginaires. Gamer invÃ©tÃ©rÃ©, j'ai passÃ© des nuits blanches sur NEOGEO, ZUMA et les GTA, ce qui m'a appris la persÃ©vÃ©rance et la rÃ©solution de problÃ¨mes complexes.",
     'about.journey': 'Mon parcours personnel',
-    'about.journeyDesc': "Tout a commencé avec un vieux Laptop HP sous Windows 7, où j'ai découvert les jeux vidéo. J'ai essayé de \"cracker\" un jeu PPSSPP en y ajoutant des savedatas pour avoir tous les personnages, (oui, c'était illégal et de la triche, mais éducatif !) et ça m'a fasciné. J'ai commencé à apprendre le HTML/CSS en allant sur youtube et en modifiant des sites web, puis le JavaScript pour créer des petits scripts. Cette curiosité m'a poussé vers l'université au Cameroun, où j'ai plongé dans le développement fullstack. Chaque projet, comme ce portfolio, est une aventure inspiré par les mangas que je dévore et les mondes virtuels que j'explore. Et oui, j'ai encore ce vieux PC et je l'utilise toujours au lieu de virtualiser, comme un rappel de mes débuts !",
+    'about.journeyDesc': "Tout a commencÃ© avec un vieux Laptop HP sous Windows 7, oÃ¹ j'ai dÃ©couvert les jeux vidÃ©o. J'ai essayÃ© de \"cracker\" un jeu PPSSPP en y ajoutant des savedatas pour avoir tous les personnages, (oui, c'Ã©tait illÃ©gal et de la triche, mais Ã©ducatif !) et Ã§a m'a fascinÃ©. J'ai commencÃ© Ã  apprendre le HTML/CSS en allant sur youtube et en modifiant des sites web, puis le JavaScript pour crÃ©er des petits scripts. Cette curiositÃ© m'a poussÃ© vers l'universitÃ© au Cameroun, oÃ¹ j'ai plongÃ© dans le dÃ©veloppement fullstack. Chaque projet, comme ce portfolio, est une aventure inspirÃ© par les mangas que je dÃ©vore et les mondes virtuels que j'explore. Et oui, j'ai encore ce vieux PC et je l'utilise toujours au lieu de virtualiser, comme un rappel de mes dÃ©buts !",
     
     // Skills
-    'skills.title': 'Compétences',
+    'skills.title': 'CompÃ©tences',
     'skills.languages': 'Langages',
     'skills.frameworks': 'Frameworks & Plateformes',
-    'skills.devTools': 'Outils de Développement',
-    'skills.creativeTools': 'Outils Créatifs',
-    'skills.businessTools': 'Outils Métier',
+    'skills.devTools': 'Outils de DÃ©veloppement',
+    'skills.creativeTools': 'Outils CrÃ©atifs',
+    'skills.businessTools': 'Outils MÃ©tier',
     'skills.languages2': 'Langues',
-    'skills.note': "Ces compétences ne sont pas juste des outils elles sont nées de mes passions. Par exemple, j'ai plongé dans React après avoir vu des sites web 'magiques' comme ceux des mangas en ligne à l'instar de ANIME-SAMA",
+    'skills.note': "Ces compÃ©tences ne sont pas juste des outils elles sont nÃ©es de mes passions. Par exemple, j'ai plongÃ© dans React aprÃ¨s avoir vu des sites web 'magiques' comme ceux des mangas en ligne Ã  l'instar de ANIME-SAMA",
     
     // Experience
-    'experience.title': 'Expériences Professionnelles',
+    'experience.title': 'ExpÃ©riences Professionnelles',
     
     // Education
-    'education.title': 'Formations & Études',
+    'education.title': 'Formations & Ã‰tudes',
     
     // Certifications
     'certifications.title': 'Certifications',
     
     // Projects
     'projects.title': 'Mes Projets',
-    'projects.description': "Des idées folles transformées en code concret. Chaque projet est une aventure !",
+    'projects.description': "Des idÃ©es folles transformÃ©es en code concret. Chaque projet est une aventure !",
     'projects.all': 'Tous',
     'projects.web': 'Web App',
     'projects.mobile': 'Mobile',
@@ -78,22 +78,22 @@ const translations = {
     'projects.viewProject': 'Voir le projet ?',
     ',
     'projects.github': 'GitHub',
-    'projects.noResults': 'Aucun projet dans cette catégorie pour le moment.',
+    'projects.noResults': 'Aucun projet dans cette catÃ©gorie pour le moment.',
     
     // Blog
     'blog.title': 'Blog & Articles',
-    'blog.description': "Mes réflexions, tutoriels et partagent sur mon parcours dans le développement.",
+    'blog.description': "Mes rÃ©flexions, tutoriels et partagent sur mon parcours dans le dÃ©veloppement.",
     'blog.featured': 'Article en vedette',
     'blog.read': 'Lire',
     'blog.readArticle': "Lire l'article ?",
-    'blog.newsletter': 'Restez informé !',
-    'blog.newsletterDesc': "Entrez votre nom complet ou votre profil LinkedIn pour recevoir mes dernières publications.",
+    'blog.newsletter': 'Restez informÃ© !',
+    'blog.newsletterDesc': "Entrez votre nom complet ou votre profil LinkedIn pour recevoir mes derniÃ¨res publications.",
     'blog.subscribe': "S'abonner",
-    'blog.subscribeSuccess': 'Merci ! Je vous contacte bientôt.',
+    'blog.subscribeSuccess': 'Merci ! Je vous contacte bientÃ´t.',
     
     // Contact
     'contact.title': 'Me Contacter',
-    'contact.description': 'Une question, un projet, ou simplement envie de discuter ? N\'hésitez pas à me laisser un message !',
+    'contact.description': 'Une question, un projet, ou simplement envie de discuter ? N\'hÃ©sitez pas Ã  me laisser un message !',
     'contact.name': 'Nom',
     'contact.namePlaceholder': 'Votre nom',
     'contact.email': 'Email',
@@ -102,27 +102,27 @@ const translations = {
     'contact.messagePlaceholder': 'Votre message...',
     'contact.send': 'Envoyer le message',
     'contact.sending': 'Envoi...',
-    'contact.success': 'Message envoyé !',
-    'contact.successDesc': 'Merci pour votre message. Je vous répondrai rapidement.',
-    'contact.phones': 'Téléphones',
+    'contact.success': 'Message envoyÃ© !',
+    'contact.successDesc': 'Merci pour votre message. Je vous rÃ©pondrai rapidement.',
+    'contact.phones': 'TÃ©lÃ©phones',
     'contact.emails': 'Emails',
     'contact.location': 'Localisation',
     
     // Stats
-    'stats.projects': 'Projets réalisés',
+    'stats.projects': 'Projets rÃ©alisÃ©s',
     'stats.certifications': 'Certifications',
-    'stats.experience': "Années d'expérience",
+    'stats.experience': "AnnÃ©es d'expÃ©rience",
     'stats.passion': 'Passion',
     
     // Process
     'process.title': 'Mon Processus',
-    'process.description': 'De votre idée à la livraison, une méthode claire et transparente',
-    'process.discovery': 'Découverte',
-    'process.discoveryDesc': 'Discussion sur votre vision, vos objectifs et votre audience pour définir la direction du projet.',
+    'process.description': 'De votre idÃ©e Ã  la livraison, une mÃ©thode claire et transparente',
+    'process.discovery': 'DÃ©couverte',
+    'process.discoveryDesc': 'Discussion sur votre vision, vos objectifs et votre audience pour dÃ©finir la direction du projet.',
     'process.design': 'Conception',
-    'process.designDesc': 'Création de maquettes et prototypes que vous validez avant le développement.',
-    'process.development': 'Développement',
-    'process.developmentDesc': "Code propre, performant et responsive avec des démos régulières pour suivre l'avancement.",
+    'process.designDesc': 'CrÃ©ation de maquettes et prototypes que vous validez avant le dÃ©veloppement.',
+    'process.development': 'DÃ©veloppement',
+    'process.developmentDesc': "Code propre, performant et responsive avec des dÃ©mos rÃ©guliÃ¨res pour suivre l'avancement.",
     'process.delivery': 'Livraison',
     'process.deliveryDesc': 'Mise en ligne, tests finaux et formation. Support disponible pour le suivi post-lancement.',
     

@@ -5,11 +5,11 @@ import Link from "next/link";
 import { useI18n } from "@/lib/i18n";
 
 export const metadata = {
-  title: "À propos | OJCJ Portfolio",
-  description: "Découvrez mon parcours, mes passions et mon expertise en développement fullstack.",
+  title: "Ã€ propos | OJCJ Portfolio",
+  description: "DÃ©couvrez mon parcours, mes passions et mon expertise en dÃ©veloppement fullstack.",
   openGraph: {
-    title: "À propos | OJCJ Portfolio",
-    description: "Découvrez mon parcours, mes passions et mon expertise en développement fullstack.",
+    title: "Ã€ propos | OJCJ Portfolio",
+    description: "DÃ©couvrez mon parcours, mes passions et mon expertise en dÃ©veloppement fullstack.",
     images: [{ url: "${process.env.NEXT_PUBLIC_SITE_URL}/og-image.png" }],
   },
 };
