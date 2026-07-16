@@ -64,7 +64,7 @@ export function StatsLeft() {
           viewport={{ once: true }}
           className="text-4xl md:text-6xl font-bold mb-6 font-serif text-slate-950"
         >
-          En <span className="text-[#d4af37]">Chiffres</span>
+          En <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">Chiffres</span>
         </motion.h2>
 
         <motion.div
@@ -72,7 +72,7 @@ export function StatsLeft() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="w-24 h-[2px] bg-[#d4af37] mx-auto mb-8"
+          className="w-24 h-[2px] bg-slate-700 mx-auto mb-8"
         />
 
         <motion.p
@@ -102,13 +102,13 @@ export function StatsRight() {
           {stats.map((stat, idx) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/80 shadow-md border border-[#d4af37]/30 hover:border-[#d4af37] transition-all group"
+              className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/80 shadow-md border border-slate-300 hover:border-slate-500 transition-all group"
             >
-              <div className="mb-4 text-[#d4af37] group-hover:scale-110 transition-transform duration-300">
+              <div className="mb-4 text-slate-800 group-hover:scale-110 transition-transform duration-300">
                 {stat.icon}
               </div>
               <div className="text-3xl sm:text-4xl font-bold text-slate-950 mb-2">

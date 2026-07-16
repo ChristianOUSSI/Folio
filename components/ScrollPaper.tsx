@@ -47,6 +47,19 @@ export default function ScrollPaper({
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartX = useRef(0);
   const touchStartY = useRef(0);
+  const [showArrows, setShowArrows] = useState(true);
+  const arrowTimer = useRef<NodeJS.Timeout | null>(null);
+
+  const resetArrowTimer = () => {
+    setShowArrows(true);
+    if (arrowTimer.current) clearTimeout(arrowTimer.current);
+    arrowTimer.current = setTimeout(() => setShowArrows(false), 2500);
+  };
+
+  useEffect(() => {
+    if (isOpen) resetArrowTimer();
+    return () => { if (arrowTimer.current) clearTimeout(arrowTimer.current); };
+  }, [isOpen]);
 
   // Prevent browser back/forward gesture by intercepting horizontal touch moves
   useEffect(() => {
@@ -88,6 +101,7 @@ export default function ScrollPaper({
       clientY = (e as React.MouseEvent).clientY;
     }
 
+    resetArrowTimer();
     setRipples(prev => [...prev, { id: Date.now(), x: clientX, y: clientY }]);
   };
 
@@ -168,23 +182,21 @@ export default function ScrollPaper({
           <DragonMotif />
         </div>
 
-        {/* Navigation Arrows — inside the parchment at the bottom */}
-        <div className="absolute bottom-10 inset-x-0 z-30 flex items-center justify-between px-6 pointer-events-none">
+        {/* Navigation Arrows — Floating left and right */}
+        <div className={`absolute top-1/2 -translate-y-1/2 inset-x-0 z-30 flex items-center justify-between px-2 sm:px-4 pointer-events-none transition-opacity duration-500 ${showArrows ? 'opacity-100' : 'opacity-0'}`}>
           <button
             onClick={onPrev}
             disabled={!hasPrev}
-            className={`pointer-events-auto flex items-center gap-1 px-3 py-1.5 rounded-full font-serif text-xs font-bold border transition-all duration-300 ${hasPrev ? 'bg-[#d4af37]/20 border-[#d4af37]/60 text-[#8a6d1c] hover:bg-[#d4af37]/40 hover:shadow-[0_0_10px_rgba(212,175,55,0.4)]' : 'opacity-0'}`}
+            className={`pointer-events-auto flex items-center justify-center p-3 rounded-full border transition-all duration-300 ${hasPrev ? 'bg-[#d4af37]/20 border-[#d4af37]/60 text-[#8a6d1c] hover:bg-[#d4af37]/40 hover:shadow-[0_0_10px_rgba(212,175,55,0.4)] backdrop-blur-md' : 'opacity-0'}`}
           >
-            <ChevronLeft className="w-4 h-4" />
-            Préc.
+            <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={onNext}
             disabled={!hasNext}
-            className={`pointer-events-auto flex items-center gap-1 px-3 py-1.5 rounded-full font-serif text-xs font-bold border transition-all duration-300 ${hasNext ? 'bg-[#d4af37]/20 border-[#d4af37]/60 text-[#8a6d1c] hover:bg-[#d4af37]/40 hover:shadow-[0_0_10px_rgba(212,175,55,0.4)]' : 'opacity-0'}`}
+            className={`pointer-events-auto flex items-center justify-center p-3 rounded-full border transition-all duration-300 ${hasNext ? 'bg-[#d4af37]/20 border-[#d4af37]/60 text-[#8a6d1c] hover:bg-[#d4af37]/40 hover:shadow-[0_0_10px_rgba(212,175,55,0.4)] backdrop-blur-md' : 'opacity-0'}`}
           >
-            Suiv.
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-6 h-6" />
           </button>
         </div>
 

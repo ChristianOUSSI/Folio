@@ -13,11 +13,11 @@ export function SommaireLeft() {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <h2 className="text-4xl md:text-6xl font-serif text-[#1e293b] mb-6">
+        <h2 className="text-4xl md:text-6xl font-serif text-slate-900 mb-6">
           <InkText>Sommaire</InkText>
         </h2>
-        <div className="w-32 h-[3px] bg-[#d4af37] mx-auto mb-8"></div>
-        <p className="text-gray-500 font-serif italic max-w-sm mx-auto">
+        <div className="w-32 h-[3px] bg-slate-700 mx-auto mb-8"></div>
+        <p className="text-slate-800 font-serif italic max-w-sm mx-auto">
           "Un voyage à travers mes expériences, compétences et réalisations en développement web."
         </p>
       </motion.div>
@@ -62,11 +62,11 @@ export function SommaireRight() {
             className="flex items-end justify-between cursor-pointer group"
             onClick={(e) => handleNavClick(chapter.page, e)}
           >
-            <span className="text-lg md:text-xl font-serif text-[#334155] group-hover:text-[#d4af37] transition-colors bg-[#f4ecd8] pr-4 relative z-10">
+            <span className="text-lg md:text-xl font-serif text-slate-900 group-hover:text-slate-600 transition-colors bg-[#f4ecd8] pr-4 relative z-10">
               {chapter.title}
             </span>
-            <div className="flex-1 border-b-2 border-dotted border-gray-400 mb-2 mx-2 group-hover:border-[#d4af37] transition-colors relative z-0"></div>
-            <span className="text-lg md:text-xl font-serif text-gray-500 bg-[#f4ecd8] pl-4 relative z-10 group-hover:text-[#d4af37] transition-colors">
+            <div className="flex-1 border-b-2 border-dotted border-slate-400 mb-2 mx-2 group-hover:border-slate-600 transition-colors relative z-0"></div>
+            <span className="text-lg md:text-xl font-serif text-slate-800 bg-[#f4ecd8] pl-4 relative z-10 group-hover:text-slate-600 transition-colors">
               {chapter.page}
             </span>
           </motion.div>

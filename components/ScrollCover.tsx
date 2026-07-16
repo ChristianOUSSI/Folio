@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 interface ScrollCoverProps {
@@ -8,6 +8,8 @@ interface ScrollCoverProps {
 }
 
 export default function ScrollCover({ isOpen, onOpen }: ScrollCoverProps) {
+  const [showRing, setShowRing] = useState(false);
+
   return (
     <motion.div
       className="absolute inset-0 flex flex-col items-center justify-center bg-[#020617] z-50"
@@ -32,6 +34,10 @@ export default function ScrollCover({ isOpen, onOpen }: ScrollCoverProps) {
           className="relative w-28 h-[55vh] bg-gradient-to-r from-[#cbb576] via-[#f4ecd8] to-[#cbb576] rounded-full shadow-[inset_-5px_0_15px_rgba(0,0,0,0.1),_10px_10px_40px_rgba(0,0,0,0.8)] border-x-4 border-[#8a6d1c]/40 flex items-center justify-center overflow-hidden flex-shrink-0"
           animate={{ scaleY: isOpen ? 0.9 : 1, opacity: isOpen ? 0 : 1 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
+          onMouseEnter={() => setShowRing(true)}
+          onMouseLeave={() => setShowRing(false)}
+          onTouchStart={() => setShowRing(true)}
+          onTouchEnd={() => setShowRing(false)}
         >
           {/* Wooden Roller Ends (Top & Bottom) */}
           <div className="absolute top-[-5px] w-32 h-8 bg-gradient-to-b from-[#2a1305] via-[#5c3a21] to-[#1a0a02] rounded-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.6)] border-y-2 border-[#1a0a02] z-20" />
@@ -45,7 +51,7 @@ export default function ScrollCover({ isOpen, onOpen }: ScrollCoverProps) {
           </div>
 
           {/* Blue/Gold Ribbon Wrapping the Scroll */}
-          <div className="absolute top-1/2 -translate-y-1/2 w-[115%] h-14 bg-gradient-to-r from-[#071330] via-[#102a6c] to-[#071330] shadow-[0_10px_20px_rgba(0,0,0,0.5)] border-y-[3px] border-[#d4af37] flex items-center justify-center z-30 -ml-[7.5%] rotate-[-2deg]">
+          <div className={`absolute top-1/2 -translate-y-1/2 w-[115%] h-14 bg-gradient-to-r from-[#071330] via-[#102a6c] to-[#071330] shadow-[0_10px_20px_rgba(0,0,0,0.5)] border-y-[3px] border-[#d4af37] flex items-center justify-center z-30 -ml-[7.5%] rotate-[-2deg] transition-opacity duration-500 ${showRing ? 'opacity-100' : 'opacity-0'}`}>
             <div className="w-10 h-10 border-[3px] border-[#d4af37] bg-[#071330] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.6),_inset_0_0_5px_rgba(0,0,0,0.8)]">
               <span className="text-[#d4af37] font-serif font-bold text-lg" style={{ textShadow: '0 0 5px rgba(212,175,55,0.5)' }}>C</span>
             </div>

@@ -3,21 +3,21 @@ import { motion } from 'framer-motion';
 import { Award, ShieldCheck, Cpu, Code, Globe, BrainCircuit, TrendingUp, Shield, Wallet, UserCheck, Gamepad2, Database } from 'lucide-react';
 
 const certificationsLeft = [
-  { name: 'Architecting Scalable Python Apps', icon: <Cpu className="w-4 h-4 text-blue-500" /> },
-  { name: 'Mobile Software Basics', icon: <Globe className="w-4 h-4 text-blue-500" /> },
-  { name: 'PyQt Python', icon: <Code className="w-4 h-4 text-blue-500" /> },
-  { name: 'Python Programming', icon: <Code className="w-4 h-4 text-blue-500" /> },
-  { name: 'Social Network SaaS', icon: <Globe className="w-4 h-4 text-blue-500" /> },
-  { name: 'Web Design', icon: <TrendingUp className="w-4 h-4 text-blue-500" /> },
+  { name: 'Architecting Scalable Python Apps', icon: <Cpu className="w-4 h-4 text-slate-800" /> },
+  { name: 'Mobile Software Basics', icon: <Globe className="w-4 h-4 text-slate-800" /> },
+  { name: 'PyQt Python', icon: <Code className="w-4 h-4 text-slate-800" /> },
+  { name: 'Python Programming', icon: <Code className="w-4 h-4 text-slate-800" /> },
+  { name: 'Social Network SaaS', icon: <Globe className="w-4 h-4 text-slate-800" /> },
+  { name: 'Web Design', icon: <TrendingUp className="w-4 h-4 text-slate-800" /> },
 ];
 
 const certificationsRight = [
-  { name: 'Unreal Engine 5', icon: <Gamepad2 className="w-4 h-4 text-blue-500" /> },
-  { name: 'Data Acquisition with Python', icon: <Database className="w-4 h-4 text-blue-500" /> },
-  { name: 'Cyber Security (Edureka)', icon: <ShieldCheck className="w-4 h-4 text-blue-500" /> },
-  { name: 'MOOC SecNumacadémie', icon: <Shield className="w-4 h-4 text-blue-500" /> },
-  { name: 'Paypal Account Setup', icon: <Wallet className="w-4 h-4 text-blue-500" /> },
-  { name: 'Personal Brand 2025', icon: <UserCheck className="w-4 h-4 text-blue-500" /> },
+  { name: 'Unreal Engine 5', icon: <Gamepad2 className="w-4 h-4 text-slate-800" /> },
+  { name: 'Data Acquisition with Python', icon: <Database className="w-4 h-4 text-slate-800" /> },
+  { name: 'Cyber Security (Edureka)', icon: <ShieldCheck className="w-4 h-4 text-slate-800" /> },
+  { name: 'MOOC SecNumacadémie', icon: <Shield className="w-4 h-4 text-slate-800" /> },
+  { name: 'Paypal Account Setup', icon: <Wallet className="w-4 h-4 text-slate-800" /> },
+  { name: 'Personal Brand 2025', icon: <UserCheck className="w-4 h-4 text-slate-800" /> },
 ];
 
 export function CertificationsLeft() {
@@ -30,7 +30,7 @@ export function CertificationsLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-4 text-center font-serif"
         >
-          <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent  ">
+          <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
             Certifications
           </span>
         </motion.h2>
@@ -39,19 +39,15 @@ export function CertificationsLeft() {
           {certificationsLeft.map((cert, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: (idx % 3) * 0.1 }}
-              whileHover={{ scale: 1.05, y: -3 }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ scale: 1.02 }}
               className="group relative h-full cursor-default"
             >
-              <div className="relative h-full bg-white/80  backdrop-blur-sm rounded-lg border border-slate-200  shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
-                <motion.div 
-                  className="mb-1.5 group-hover:scale-110 transition-transform"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: idx * 0.1 }}
-                >
+              <div className="relative h-full bg-white/80 backdrop-blur-sm rounded-lg border border-slate-200 shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
+                <div className="mb-1.5 group-hover:scale-110 transition-transform">
                   {cert.icon}
                 </motion.div>
                 <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800  transition-colors leading-snug font-serif">
@@ -74,19 +70,15 @@ export function CertificationsRight() {
           {certificationsRight.map((cert, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: (idx % 3) * 0.1 }}
-              whileHover={{ scale: 1.05, y: -3 }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ scale: 1.02 }}
               className="group relative h-full cursor-default"
             >
-              <div className="relative h-full bg-white/80  backdrop-blur-sm rounded-lg border border-slate-200  shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
-                <motion.div 
-                  className="mb-1.5 group-hover:scale-110 transition-transform"
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, delay: idx * 0.1 }}
-                >
+              <div className="relative h-full bg-white/80 backdrop-blur-sm rounded-lg border border-slate-200 shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
+                <div className="mb-1.5 group-hover:scale-110 transition-transform">
                   {cert.icon}
                 </motion.div>
                 <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800  transition-colors leading-snug font-serif">

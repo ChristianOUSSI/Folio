@@ -36,7 +36,7 @@ export function ExperienceLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-4 text-center font-serif"
         >
-          <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent  ">
+          <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
             Expériences
           </span>
         </motion.h2>
@@ -45,16 +45,16 @@ export function ExperienceLeft() {
           {experienceLeft.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.2 }}
-              whileHover={{ scale: 1.02, y: -3 }}
+              transition={{ delay: idx * 0.1 }}
+              whileHover={{ scale: 1.01 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white/80  backdrop-blur-sm p-4 rounded-xl border border-slate-200  shadow-sm hover:shadow-lg transition-all">
+              <div className="relative bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center shadow-md">
                     <Briefcase className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">
@@ -83,16 +83,16 @@ export function ExperienceRight() {
           {experienceRight.map((exp, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.2 }}
-              whileHover={{ scale: 1.02, y: -3 }}
+              transition={{ delay: idx * 0.1 }}
+              whileHover={{ scale: 1.01 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white/80  backdrop-blur-sm p-4 rounded-xl border border-slate-200  shadow-sm hover:shadow-lg transition-all">
+              <div className="relative bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center shadow-md">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center shadow-md">
                     <Briefcase className="w-5 h-5 text-white" />
                   </div>
                   <div className="flex-1">

@@ -89,7 +89,7 @@ export function SkillsLeft() {
         viewport={{ once: true }}
         className="text-3xl md:text-5xl font-bold mb-6 text-center font-serif relative z-10"
       >
-        <span className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent  ">
+        <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
           Compétences
         </span>
       </motion.h2>
@@ -136,11 +136,11 @@ export function SkillsRight() {
             className="group relative"
           >
             <div className="bg-white/80  backdrop-blur-sm p-4 rounded-xl border border-slate-200  shadow-sm hover:shadow-lg transition-all">
-              <h3 className="font-semibold text-[15px] md:text-base text-slate-950  mb-2 font-serif">{cat.title}</h3>
+              <h3 className="font-semibold text-[15px] md:text-base text-slate-950 mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-700 ">
-                    <span className="text-blue-500">{skill.icon}</span>
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-slate-900">
+                    <span className="text-slate-800">{skill.icon}</span>
                     <span className="truncate">{skill.name}</span>
                   </li>
                 ))}
@@ -154,9 +154,9 @@ export function SkillsRight() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-2 p-3 bg-blue-50/50  rounded-xl border border-blue-200  text-center"
+          className="mt-2 p-3 bg-slate-100/50 rounded-xl border border-slate-200 text-center"
         >
-          <p className="text-gray-700  italic font-serif text-[13px]">{personalNote}</p>
+          <p className="text-slate-900 italic font-serif text-[13px]">{personalNote}</p>
         </motion.div>
       </div>
     </section>

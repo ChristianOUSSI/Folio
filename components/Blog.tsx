@@ -89,7 +89,7 @@ export function BlogLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-3 text-center font-serif"
         >
-          <InkText className="bg-gradient-to-r from-purple-700 to-blue-500 bg-clip-text text-transparent  ">
+          <InkText className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
             Blog
           </InkText>
         </motion.h2>
@@ -98,39 +98,39 @@ export function BlogLeft() {
           {articlesLeft.map((article, index) => (
             <motion.div
               key={article.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -3 }}
+              whileHover={{ scale: 1.01 }}
               className="group cursor-default"
             >
-              <div className={`relative bg-white  rounded-xl border border-gray-100  hover:shadow-lg transition-all ${article.featured ? 'border-purple-200  shadow-md' : 'shadow-sm'}`}>
+              <div className={`relative bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 hover:shadow-lg transition-all ${article.featured ? 'border-slate-400 shadow-md' : 'shadow-sm'}`}>
                 <div className="p-3 md:p-4 flex flex-col items-center text-center">
                   <div className="flex items-center justify-center mb-1.5 w-full gap-2">
-                    <span className="px-2 py-0.5 bg-blue-50  text-blue-700  text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
+                    <span className="px-2 py-0.5 bg-slate-100 text-slate-800 text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
                       {article.category} {article.featured && '★'}
                     </span>
-                    <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold uppercase tracking-wider">
+                    <span className="text-[9px] md:text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
                       {article.readTime}
                     </span>
                   </div>
                   <div className="flex flex-col items-center gap-2 w-full">
-                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-purple-100 to-blue-100  flex items-center justify-center text-sm flex-shrink-0">
+                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-sm flex-shrink-0">
                       {article.icon}
                     </div>
                     <div>
-                      <h3 className="text-xs md:text-sm font-bold text-gray-900  mb-0.5 font-serif line-clamp-1">
+                      <h3 className="text-xs md:text-sm font-bold text-slate-900 mb-0.5 font-serif line-clamp-1">
                         {article.title}
                       </h3>
-                      <p className="text-gray-600  text-[9px] md:text-[10px] mb-1.5 line-clamp-2 font-serif">
+                      <p className="text-slate-700 text-[9px] md:text-[10px] mb-1.5 line-clamp-2 font-serif">
                         {article.excerpt}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-gray-50  w-full">
-                    <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold">{article.date}</span>
-                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-purple-600  font-bold uppercase tracking-wider hover:underline">
+                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-slate-200 w-full">
+                    <span className="text-[9px] md:text-[10px] text-slate-500 font-semibold">{article.date}</span>
+                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-slate-700 font-bold uppercase tracking-wider hover:underline">
                       Lire →
                     </a>
                   </div>
@@ -171,39 +171,39 @@ export function BlogRight() {
           {articlesRight.map((article, index) => (
             <motion.div
               key={article.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -3 }}
+              whileHover={{ scale: 1.01 }}
               className="group cursor-default"
             >
-              <div className="relative bg-white  rounded-xl border border-gray-100  shadow-sm hover:shadow-lg transition-all">
+              <div className="relative bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all">
                 <div className="p-3 md:p-4 flex flex-col">
                   <div className="flex items-center justify-between mb-1.5">
-                    <span className="px-2 py-0.5 bg-blue-50  text-blue-700  text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
+                    <span className="px-2 py-0.5 bg-slate-100 text-slate-800 text-[9px] md:text-[10px] font-medium rounded uppercase tracking-wider">
                       {article.category}
                     </span>
-                    <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold uppercase tracking-wider">
+                    <span className="text-[9px] md:text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
                       {article.readTime}
                     </span>
                   </div>
                   <div className="flex items-start gap-2">
-                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-purple-100 to-blue-100  flex items-center justify-center text-sm flex-shrink-0">
+                    <div className="w-7 h-7 rounded-md bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center text-sm flex-shrink-0">
                       {article.icon}
                     </div>
                     <div>
-                      <h3 className="text-xs md:text-sm font-bold text-gray-900  mb-0.5 font-serif line-clamp-1">
+                      <h3 className="text-xs md:text-sm font-bold text-slate-900 mb-0.5 font-serif line-clamp-1">
                         {article.title}
                       </h3>
-                      <p className="text-gray-600  text-[9px] md:text-[10px] mb-1.5 line-clamp-2 font-serif">
+                      <p className="text-slate-700 text-[9px] md:text-[10px] mb-1.5 line-clamp-2 font-serif">
                         {article.excerpt}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-gray-50 ">
-                    <span className="text-[9px] md:text-[10px] text-gray-500 font-semibold">{article.date}</span>
-                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-purple-600  font-bold uppercase tracking-wider hover:underline">
+                  <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-slate-200">
+                    <span className="text-[9px] md:text-[10px] text-slate-500 font-semibold">{article.date}</span>
+                    <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="text-[9px] md:text-[10px] text-slate-700 font-bold uppercase tracking-wider hover:underline">
                       Lire →
                     </a>
                   </div>
@@ -214,16 +214,16 @@ export function BlogRight() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          whileHover={{ scale: 1.02 }}
+          whileHover={{ scale: 1.01 }}
           className="text-center w-full cursor-default"
         >
-          <div className="p-3 md:p-4 bg-gradient-to-r from-purple-50 to-blue-50   rounded-xl border border-purple-200 ">
+          <div className="p-3 md:p-4 bg-slate-100 rounded-xl border border-slate-200">
             <div className="flex items-center justify-center gap-2 mb-2">
-              <BellRing className="w-4 h-4 text-purple-600 " />
-              <h3 className="text-xs md:text-sm font-bold text-gray-900  font-serif">
+              <BellRing className="w-4 h-4 text-slate-800" />
+              <h3 className="text-xs md:text-sm font-bold text-slate-900 font-serif">
                 Restez informé !
               </h3>
             </div>
@@ -234,14 +234,14 @@ export function BlogRight() {
                 onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder="Nom complet ou LinkedIn..."
                 disabled={newsletterStatus === 'loading'}
-                className="w-full px-3 py-1.5 rounded-md bg-white  border border-gray-200  focus:border-purple-500 focus:outline-none text-[10px]"
+                className="w-full px-3 py-1.5 rounded-md bg-white border border-slate-200 focus:border-slate-500 focus:outline-none text-[10px]"
               />
               <motion.button
                 type="submit"
                 disabled={newsletterStatus === 'loading'}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-1.5 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-bold rounded-md text-[10px] uppercase tracking-wider transition-all"
+                whileHover={{ scale: 1.01 }}
+                whileTap={{ scale: 0.99 }}
+                className="w-full py-1.5 bg-gradient-to-r from-slate-700 to-slate-600 hover:from-slate-800 hover:to-slate-700 text-white font-bold rounded-md text-[10px] uppercase tracking-wider transition-all"
               >
                 {newsletterStatus === 'loading' ? '⏳' : "S'abonner"}
               </motion.button>

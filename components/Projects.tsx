@@ -67,7 +67,7 @@ export function ProjectsLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-3 text-center font-serif"
         >
-          <InkText className="bg-gradient-to-r from-blue-700 to-blue-500 bg-clip-text text-transparent  ">
+          <InkText className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
             Mes Projets
           </InkText>
         </motion.h2>
@@ -77,38 +77,38 @@ export function ProjectsLeft() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
-          className="text-center text-gray-600  mb-4 max-w-sm mx-auto text-[11px] md:text-xs font-serif"
+          className="text-center text-slate-900 mb-4 max-w-sm mx-auto text-[11px] md:text-xs font-serif"
         >
           Des idées folles transformées en code concret. Chaque projet est une aventure !
         </motion.p>
 
         <div className="flex flex-col gap-3 w-full">
           {projectsLeft.map((project, index) => (
-            <motion.div
+              <motion.div
               key={project.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -3 }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.01 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white  rounded-2xl overflow-hidden border border-gray-100  shadow-sm flex flex-col">
+              <div className="relative bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
                 <div className="p-3 md:p-4 flex flex-col h-full items-center text-center">
                   <div className="flex items-center gap-2 mb-1 justify-center">
-                    <span className="text-2xl md:text-3xl text-blue-500">{project.icon}</span>
-                    <h3 className="text-sm md:text-base font-bold text-gray-900  font-serif">
+                    <span className="text-2xl md:text-3xl text-slate-800">{project.icon}</span>
+                    <h3 className="text-sm md:text-base font-bold text-slate-900 font-serif">
                       {project.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600  text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
+                  <p className="text-slate-900 text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-2 justify-center">
                     {project.stack.map((tech) => (
                       <span 
                         key={tech}
-                        className="px-1.5 py-0.5 bg-blue-50  text-blue-700  text-[9px] md:text-[10px] rounded-md font-medium"
+                        className="px-1.5 py-0.5 bg-slate-100 text-slate-800 text-[9px] md:text-[10px] rounded-md font-medium"
                       >
                         {tech}
                       </span>
@@ -119,7 +119,7 @@ export function ProjectsLeft() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-2 py-1 md:px-3 md:py-1.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-[9px] md:text-[10px] font-bold rounded-lg text-center hover:from-blue-700 hover:to-blue-800 transition-all uppercase tracking-wider"
+                      className="flex-1 px-2 py-1 md:px-3 md:py-1.5 bg-gradient-to-r from-slate-700 to-slate-600 text-white text-[9px] md:text-[10px] font-bold rounded-lg text-center hover:from-slate-800 hover:to-slate-700 transition-all uppercase tracking-wider"
                     >
                       Voir →
                     </a>
@@ -127,7 +127,7 @@ export function ProjectsLeft() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100  text-gray-700  text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200  transition-all uppercase tracking-wider"
+                      className="px-2 py-1 md:px-3 md:py-1.5 bg-slate-200 text-slate-800 text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-slate-300 transition-all uppercase tracking-wider"
                     >
                       GitHub
                     </a>
@@ -150,29 +150,29 @@ export function ProjectsRight() {
           {projectsRight.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -3 }}
+              transition={{ duration: 0.3 }}
+              whileHover={{ scale: 1.01 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white  rounded-2xl overflow-hidden border border-gray-100  shadow-sm flex flex-col">
+              <div className="relative bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm flex flex-col">
                 <div className="p-3 md:p-4 flex flex-col h-full">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-2xl md:text-3xl text-blue-500">{project.icon}</span>
-                    <h3 className="text-sm md:text-base font-bold text-gray-900  font-serif">
+                    <span className="text-2xl md:text-3xl text-slate-800">{project.icon}</span>
+                    <h3 className="text-sm md:text-base font-bold text-slate-900 font-serif">
                       {project.title}
                     </h3>
                   </div>
-                  <p className="text-gray-600  text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
+                  <p className="text-slate-900 text-[10px] md:text-xs mb-2 line-clamp-2 md:line-clamp-3 font-serif">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mb-2">
                     {project.stack.map((tech) => (
                       <span 
                         key={tech}
-                        className="px-1.5 py-0.5 bg-blue-50  text-blue-700  text-[9px] md:text-[10px] rounded-md font-medium"
+                        className="px-1.5 py-0.5 bg-slate-100 text-slate-800 text-[9px] md:text-[10px] rounded-md font-medium"
                       >
                         {tech}
                       </span>
@@ -183,7 +183,7 @@ export function ProjectsRight() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-2 py-1 md:px-3 md:py-1.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white text-[9px] md:text-[10px] font-bold rounded-lg text-center hover:from-blue-700 hover:to-blue-800 transition-all uppercase tracking-wider"
+                      className="flex-1 px-2 py-1 md:px-3 md:py-1.5 bg-gradient-to-r from-slate-700 to-slate-600 text-white text-[9px] md:text-[10px] font-bold rounded-lg text-center hover:from-slate-800 hover:to-slate-700 transition-all uppercase tracking-wider"
                     >
                       Voir →
                     </a>
@@ -191,7 +191,7 @@ export function ProjectsRight() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100  text-gray-700  text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200  transition-all uppercase tracking-wider"
+                      className="px-2 py-1 md:px-3 md:py-1.5 bg-slate-200 text-slate-800 text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-slate-300 transition-all uppercase tracking-wider"
                     >
                       GitHub
                     </a>
