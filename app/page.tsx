@@ -1,10 +1,12 @@
 'use client';
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Navbar from '../components/Navbar';
-import Launcher from '../components/Launcher';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 import BookContainer from '../components/BookContainer';
 import ScrollContainer from '../components/ScrollContainer';
+
+const Launcher = dynamic(() => import('../components/Launcher'), { ssr: false });
 
 // Import split components
 import { SommaireLeft, SommaireRight } from '../components/Sommaire';
