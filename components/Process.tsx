@@ -5,13 +5,13 @@ import { Search, PenTool, Code, Rocket } from 'lucide-react';
 const stepsLeft = [
   {
     num: '01',
-    icon: <Search className="w-5 h-5 text-slate-800 " />,
+    icon: <Search className="w-5 h-5 text-[#d4af37]" />,
     title: 'Découverte',
     desc: 'Discussion sur votre vision, vos objectifs et votre audience pour définir la direction du projet.',
   },
   {
     num: '02',
-    icon: <PenTool className="w-5 h-5 text-slate-800 " />,
+    icon: <PenTool className="w-5 h-5 text-[#d4af37]" />,
     title: 'Conception',
     desc: 'Création de maquettes et prototypes que vous validez avant le développement.',
   },
@@ -20,13 +20,13 @@ const stepsLeft = [
 const stepsRight = [
   {
     num: '03',
-    icon: <Code className="w-5 h-5 text-slate-800 " />,
+    icon: <Code className="w-5 h-5 text-[#d4af37]" />,
     title: 'Développement',
     desc: 'Code propre, performant et responsive avec des démos régulières pour suivre l\'avancement.',
   },
   {
     num: '04',
-    icon: <Rocket className="w-5 h-5 text-slate-800 " />,
+    icon: <Rocket className="w-5 h-5 text-[#d4af37]" />,
     title: 'Livraison',
     desc: 'Mise en ligne, tests finaux et formation. Support disponible pour le suivi post-lancement.',
   },
@@ -43,11 +43,11 @@ export function ProcessLeft() {
           className="text-center mb-4"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-2 font-serif">
-            <span className="bg-gradient-to-r from-slate-700 to-slate-500   bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] bg-clip-text text-transparent drop-shadow-sm">
               Mon Processus
             </span>
           </h2>
-          <p className="text-slate-900  max-w-sm mx-auto font-serif text-xs md:text-sm">
+          <p className="text-[#1a0a02] max-w-sm mx-auto font-serif text-xs md:text-sm">
             De votre idée à la livraison, une méthode claire et transparente
           </p>
         </motion.div>
@@ -61,19 +61,19 @@ export function ProcessLeft() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ scale: 1.02, y: -3 }}
-              className="relative p-4 md:p-5 rounded-2xl bg-white/80  backdrop-blur-sm border border-slate-200  hover:border-slate-300  hover:shadow-lg transition-all group flex items-start gap-4 cursor-default"
+              className="relative p-4 md:p-5 rounded-2xl bg-black/80 backdrop-blur-sm border border-[#d4af37]/30 hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] transition-all group flex items-start gap-4 cursor-default"
             >
-              <div className="text-4xl md:text-5xl font-bold text-slate-200  group-hover:text-slate-300  transition-colors">
+              <div className="text-4xl md:text-5xl font-bold text-[#8a6d1c]/30 group-hover:text-[#d4af37]/50 transition-colors">
                 {step.num}
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   {step.icon}
-                  <h3 className="text-base md:text-lg font-bold text-slate-950  font-serif">
+                  <h3 className="text-base md:text-lg font-bold text-[#d4af37] font-serif">
                     {step.title}
                   </h3>
                 </div>
-                <p className="text-xs md:text-sm text-slate-900  leading-relaxed font-serif">
+                <p className="text-xs md:text-sm text-gray-300 leading-relaxed font-serif group-hover:text-white transition-colors">
                   {step.desc}
                 </p>
               </div>
@@ -98,19 +98,19 @@ export function ProcessRight() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ scale: 1.02, y: -3 }}
-              className="relative p-4 md:p-5 rounded-2xl bg-white/80  backdrop-blur-sm border border-slate-200  hover:border-slate-300  hover:shadow-lg transition-all group flex items-start gap-4 cursor-default"
+              className="relative p-4 md:p-5 rounded-2xl bg-black/80 backdrop-blur-sm border border-[#d4af37]/30 hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] transition-all group flex items-start gap-4 cursor-default"
             >
-              <div className="text-4xl md:text-5xl font-bold text-slate-200  group-hover:text-slate-300  transition-colors">
+              <div className="text-4xl md:text-5xl font-bold text-[#8a6d1c]/30 group-hover:text-[#d4af37]/50 transition-colors">
                 {step.num}
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   {step.icon}
-                  <h3 className="text-base md:text-lg font-bold text-slate-950  font-serif">
+                  <h3 className="text-base md:text-lg font-bold text-[#d4af37] font-serif">
                     {step.title}
                   </h3>
                 </div>
-                <p className="text-xs md:text-sm text-slate-900  leading-relaxed font-serif">
+                <p className="text-xs md:text-sm text-gray-300 leading-relaxed font-serif group-hover:text-white transition-colors">
                   {step.desc}
                 </p>
               </div>

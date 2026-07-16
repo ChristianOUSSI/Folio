@@ -89,7 +89,7 @@ export function SkillsLeft() {
         viewport={{ once: true }}
         className="text-3xl md:text-5xl font-bold mb-6 text-center font-serif relative z-10"
       >
-        <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] bg-clip-text text-transparent drop-shadow-sm">
           Compétences
         </span>
       </motion.h2>
@@ -104,13 +104,13 @@ export function SkillsLeft() {
             transition={{ delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="bg-white/80  backdrop-blur-sm p-4 rounded-xl border border-slate-200  shadow-sm hover:shadow-lg transition-all">
-              <h3 className="font-semibold text-lg text-slate-950  mb-2 font-serif">{cat.title}</h3>
+            <div className="bg-black/80 backdrop-blur-sm p-4 rounded-xl border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] transition-all">
+              <h3 className="font-semibold text-lg text-[#d4af37] mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-slate-900 ">
-                    <span className="text-slate-800 ">{skill.icon}</span>
-                    <span className="truncate">{skill.name}</span>
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-200">
+                    <span className="text-[#8a6d1c] group-hover:text-[#d4af37] transition-colors">{skill.icon}</span>
+                    <span className="truncate group-hover:text-white transition-colors">{skill.name}</span>
                   </li>
                 ))}
               </ul>
@@ -135,13 +135,13 @@ export function SkillsRight() {
             transition={{ delay: idx * 0.1 }}
             className="group relative"
           >
-            <div className="bg-white/80  backdrop-blur-sm p-4 rounded-xl border border-slate-200  shadow-sm hover:shadow-lg transition-all">
-              <h3 className="font-semibold text-[15px] md:text-base text-slate-950 mb-2 font-serif">{cat.title}</h3>
+            <div className="bg-black/80 backdrop-blur-sm p-4 rounded-xl border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] transition-all">
+              <h3 className="font-semibold text-[15px] md:text-base text-[#d4af37] mb-2 font-serif">{cat.title}</h3>
               <ul className="grid grid-cols-2 gap-2">
                 {cat.items.map((skill, i) => (
-                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-slate-900">
-                    <span className="text-slate-800">{skill.icon}</span>
-                    <span className="truncate">{skill.name}</span>
+                  <li key={skill.name} className="flex items-center gap-2 text-[11px] md:text-xs text-gray-200">
+                    <span className="text-[#8a6d1c] group-hover:text-[#d4af37] transition-colors">{skill.icon}</span>
+                    <span className="truncate group-hover:text-white transition-colors">{skill.name}</span>
                   </li>
                 ))}
               </ul>
@@ -154,9 +154,9 @@ export function SkillsRight() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="mt-2 p-3 bg-slate-100/50 rounded-xl border border-slate-200 text-center"
+          className="mt-2 p-3 bg-black/60 backdrop-blur-md rounded-xl border border-[#d4af37]/20 text-center"
         >
-          <p className="text-slate-900 italic font-serif text-[13px]">{personalNote}</p>
+          <p className="text-[#d4af37] italic font-serif text-[13px]">{personalNote}</p>
         </motion.div>
       </div>
     </section>

@@ -13,11 +13,13 @@ export function SommaireLeft() {
         transition={{ duration: 0.6 }}
         className="text-center"
       >
-        <h2 className="text-4xl md:text-6xl font-serif text-slate-900 mb-6">
-          <InkText>Sommaire</InkText>
+        <h2 className="text-4xl md:text-6xl font-serif mb-6">
+          <span className="bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] bg-clip-text text-transparent drop-shadow-sm">
+            Sommaire
+          </span>
         </h2>
-        <div className="w-32 h-[3px] bg-slate-700 mx-auto mb-8"></div>
-        <p className="text-slate-800 font-serif italic max-w-sm mx-auto">
+        <div className="w-32 h-[3px] bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] mx-auto mb-8"></div>
+        <p className="text-[#1a0a02] font-serif italic max-w-sm mx-auto">
           "Un voyage à travers mes expériences, compétences et réalisations en développement web."
         </p>
       </motion.div>
@@ -62,11 +64,11 @@ export function SommaireRight() {
             className="flex items-end justify-between cursor-pointer group"
             onClick={(e) => handleNavClick(chapter.page, e)}
           >
-            <span className="text-lg md:text-xl font-serif text-slate-900 group-hover:text-slate-600 transition-colors bg-[#f4ecd8] pr-4 relative z-10">
+            <span className="text-lg md:text-xl font-serif text-[#1a0a02] group-hover:text-[#d4af37] transition-colors bg-[#f4ecd8] pr-4 relative z-10">
               {chapter.title}
             </span>
-            <div className="flex-1 border-b-2 border-dotted border-slate-400 mb-2 mx-2 group-hover:border-slate-600 transition-colors relative z-0"></div>
-            <span className="text-lg md:text-xl font-serif text-slate-800 bg-[#f4ecd8] pl-4 relative z-10 group-hover:text-slate-600 transition-colors">
+            <div className="flex-1 border-b-2 border-dotted border-[#8a6d1c]/50 mb-2 mx-2 group-hover:border-[#d4af37] transition-colors relative z-0"></div>
+            <span className="text-lg md:text-xl font-serif text-[#8a6d1c] bg-[#f4ecd8] pl-4 relative z-10 group-hover:text-[#d4af37] transition-colors">
               {chapter.page}
             </span>
           </motion.div>

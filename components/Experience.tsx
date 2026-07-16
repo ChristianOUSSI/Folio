@@ -36,7 +36,7 @@ export function ExperienceLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-4 text-center font-serif"
         >
-          <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] bg-clip-text text-transparent drop-shadow-sm">
             Expériences
           </span>
         </motion.h2>
@@ -52,18 +52,18 @@ export function ExperienceLeft() {
               whileHover={{ scale: 1.01 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all">
+              <div className="relative bg-black/80 backdrop-blur-sm p-4 rounded-xl border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center shadow-md">
-                    <Briefcase className="w-5 h-5 text-white" />
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#8a6d1c] to-[#2a1305] flex items-center justify-center shadow-md border border-[#d4af37]/50">
+                    <Briefcase className="w-5 h-5 text-[#d4af37]" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] text-slate-800  mb-1 uppercase tracking-wider font-semibold">
+                    <p className="text-[10px] text-[#8a6d1c] mb-1 uppercase tracking-wider font-semibold group-hover:text-[#d4af37] transition-colors">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-slate-950  mb-1 font-serif group-hover:text-slate-900  transition-colors">{exp.role}</h3>
-                    <p className="text-xs text-slate-800  mb-2">{exp.company}</p>
-                    <p className="text-xs text-slate-900  leading-relaxed font-serif">{exp.description}</p>
+                    <h3 className="font-bold text-base text-[#d4af37] mb-1 font-serif">{exp.role}</h3>
+                    <p className="text-xs text-gray-400 mb-2">{exp.company}</p>
+                    <p className="text-xs text-gray-200 leading-relaxed font-serif group-hover:text-white transition-colors">{exp.description}</p>
                   </div>
                 </div>
               </div>
@@ -90,18 +90,18 @@ export function ExperienceRight() {
               whileHover={{ scale: 1.01 }}
               className="group relative cursor-default"
             >
-              <div className="relative bg-white/80 backdrop-blur-sm p-4 rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all">
+              <div className="relative bg-black/80 backdrop-blur-sm p-4 rounded-xl border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] transition-all">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center shadow-md">
-                    <Briefcase className="w-5 h-5 text-white" />
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gradient-to-br from-[#8a6d1c] to-[#2a1305] flex items-center justify-center shadow-md border border-[#d4af37]/50">
+                    <Briefcase className="w-5 h-5 text-[#d4af37]" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-[10px] text-slate-800  mb-1 uppercase tracking-wider font-semibold">
+                    <p className="text-[10px] text-[#8a6d1c] mb-1 uppercase tracking-wider font-semibold group-hover:text-[#d4af37] transition-colors">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-slate-950  mb-1 font-serif group-hover:text-slate-900  transition-colors">{exp.role}</h3>
-                    <p className="text-xs text-slate-800  mb-2">{exp.company}</p>
-                    <p className="text-xs text-slate-900  leading-relaxed font-serif">{exp.description}</p>
+                    <h3 className="font-bold text-base text-[#d4af37] mb-1 font-serif">{exp.role}</h3>
+                    <p className="text-xs text-gray-400 mb-2">{exp.company}</p>
+                    <p className="text-xs text-gray-200 leading-relaxed font-serif group-hover:text-white transition-colors">{exp.description}</p>
                   </div>
                 </div>
               </div>

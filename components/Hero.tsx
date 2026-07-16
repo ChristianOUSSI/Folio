@@ -56,10 +56,10 @@ export function HeroRight() {
         transition={{ duration: 0.6 }}
         className="mb-6 flex flex-col items-center"
       >
-        <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent leading-tight text-center" style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>
+        <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] bg-clip-text text-transparent leading-tight text-center" style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>
           OJCJ
         </h1>
-        <div className="w-16 h-1 bg-slate-600 rounded-full"></div>
+        <div className="w-16 h-1 bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] rounded-full"></div>
       </motion.div>
 
       {/* Description */}
@@ -69,7 +69,7 @@ export function HeroRight() {
         transition={{ delay: 0.3 }}
         className="mb-8 text-center max-w-md"
       >
-        <p className="text-base md:text-lg text-slate-900 leading-relaxed font-serif">
+        <p className="text-base md:text-lg text-[#1a0a02] leading-relaxed font-serif">
           {t('hero.description')}
         </p>
       </motion.div>
@@ -83,7 +83,7 @@ export function HeroRight() {
       >
         <motion.a
           href="#projets"
-          className="w-full px-6 py-3 bg-gradient-to-r from-slate-700 to-slate-600 text-white font-bold rounded-full shadow-lg hover:shadow-xl transition-all text-center"
+          className="w-full px-6 py-3 bg-gradient-to-r from-[#1a0a02] to-[#2a1305] text-[#d4af37] border border-[#d4af37]/30 font-bold rounded-full shadow-lg hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all text-center"
           whileTap={{ scale: 0.98 }}
           onClick={(e) => {
             e.preventDefault();
@@ -94,7 +94,7 @@ export function HeroRight() {
         </motion.a>
         <motion.a
           href="#contact"
-          className="w-full px-6 py-3 border-2 border-slate-700 text-slate-800 font-bold rounded-full hover:bg-slate-200/50 transition-all text-center"
+          className="w-full px-6 py-3 border-2 border-[#8a6d1c] text-[#1a0a02] font-bold rounded-full hover:bg-[#d4af37]/20 transition-all text-center"
           whileTap={{ scale: 0.98 }}
           onClick={(e) => {
             e.preventDefault();

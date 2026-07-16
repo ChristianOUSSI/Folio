@@ -172,9 +172,18 @@ export default function ScrollPaper({
 
         {/* Scroll Content Area */}
         <div className="flex-1 w-full overflow-y-auto overflow-x-hidden custom-scrollbar pt-24 pb-24 px-0 relative z-0">
-          <div className="w-full min-h-full flex flex-col gap-0">
-            {children}
-          </div>
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={sectionTitle || 'content'}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="w-full min-h-full flex flex-col gap-0"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Bottom Dragon Motif */}

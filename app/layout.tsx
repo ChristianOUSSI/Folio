@@ -3,7 +3,6 @@ import { ReactNode } from 'react';
 import ThemeScript from './ThemeScript';
 import { I18nProvider } from '../lib/i18n';
 import LanguageSwitcher from '../components/LanguageSwitcher';
-import Cursor from '../components/Cursor';
 import { JetBrains_Mono, Space_Grotesk, Special_Elite, Courier_Prime } from 'next/font/google';
 
 const jetBrainsMono = JetBrains_Mono({ subsets: ['latin'] });
@@ -73,7 +72,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="bg-white dark:bg-darkbg text-gray-900 dark:text-white transition-colors duration-300 antialiased">
         <div className="fixed inset-0 -z-10 bg-gradient-animation" aria-hidden="true"></div>
-        <Cursor />
         <I18nProvider>
           <a href="#accueil" className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 p-4 bg-primary text-darkbg z-50">
             Skip to content

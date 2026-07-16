@@ -11,7 +11,7 @@ export function AboutLeft() {
           viewport={{ once: true }}
           className="text-3xl md:text-5xl font-bold mb-6 text-center font-serif"
         >
-          <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent  ">
+          <span className="bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] bg-clip-text text-transparent drop-shadow-sm">
             À propos de moi
           </span>
         </motion.h2>
@@ -22,14 +22,14 @@ export function AboutLeft() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-center leading-relaxed text-slate-900 text-lg font-serif"
+            className="text-center leading-relaxed text-[#1a0a02] text-lg font-serif"
           >
-            <span className="text-slate-900  font-semibold text-xl block mb-3">
+            <span className="text-[#1a0a02] font-semibold text-xl block mb-3">
               Développeur Fullstack passionné par les récits interactifs
             </span>
             Étudiant en cours d'obtention de ma Licence en Gestion des Systèmes
-            d'Informations à l'Université The Brains, je suis <span className="text-slate-900  font-semibold">motivé</span>, <span className="text-slate-800  font-semibold">créatif</span>,
-            <span className="text-slate-900  font-semibold"> innovant</span>, passionné par la technologie et <span className="text-slate-800  font-semibold">dynamique</span>. 
+            d'Informations à l'Université The Brains, je suis <span className="text-[#8a6d1c] font-semibold">motivé</span>, <span className="text-[#8a6d1c] font-semibold">créatif</span>,
+            <span className="text-[#8a6d1c] font-semibold"> innovant</span>, passionné par la technologie et <span className="text-[#8a6d1c] font-semibold">dynamique</span>. 
             Je mets mon expertise et mes compétences en constante évolution au service de vos projets et entreprises.
           </motion.p>
         </div>
@@ -48,11 +48,11 @@ export function AboutRight() {
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
         >
-          <h3 className="text-xl font-bold text-slate-900 mb-3 text-center font-serif">
+          <h3 className="text-xl font-bold text-[#1a0a02] mb-3 text-center font-serif">
             Passions & Centres d'intérêt
           </h3>
-          <p className="text-center leading-relaxed text-slate-900 font-serif text-[15px]">
-            Lecteur passionné de <span className="text-slate-900 font-semibold">mangas comme Dragon Ball, HxH et Naruto</span>, j'écris des histoires sur <span className="text-slate-900 font-semibold">Wattpad</span> pour explorer des mondes imaginaires. Gamer invétéré, j'ai passé des nuits blanches sur <span className="text-slate-900 font-semibold">NEOGEO, ZUMA et les GTA</span>, ce qui m'a appris la persévérance et la résolution de problèmes complexes. Ces hobbies nourrissent ma créativité en code.
+          <p className="text-center leading-relaxed text-[#1a0a02] font-serif text-[15px]">
+            Lecteur passionné de <span className="text-[#8a6d1c] font-semibold">mangas comme Dragon Ball, HxH et Naruto</span>, j'écris des histoires sur <span className="text-[#8a6d1c] font-semibold">Wattpad</span> pour explorer des mondes imaginaires. Gamer invétéré, j'ai passé des nuits blanches sur <span className="text-[#8a6d1c] font-semibold">NEOGEO, ZUMA et les GTA</span>, ce qui m'a appris la persévérance et la résolution de problèmes complexes. Ces hobbies nourrissent ma créativité en code.
           </p>
         </motion.div>
 
@@ -61,10 +61,10 @@ export function AboutRight() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="p-4 md:p-5 bg-white/80 backdrop-blur-sm rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all"
+          className="p-4 md:p-5 bg-black/80 backdrop-blur-sm rounded-xl border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] hover:border-[#d4af37] transition-all"
         >
-          <h3 className="text-lg font-bold text-slate-900 mb-2 text-center font-serif">Mon parcours personnel</h3>
-          <p className="text-slate-900 leading-relaxed font-serif text-sm text-center">
+          <h3 className="text-lg font-bold text-[#d4af37] mb-2 text-center font-serif">Mon parcours personnel</h3>
+          <p className="text-gray-200 leading-relaxed font-serif text-sm text-center">
             Tout a commencé avec un vieux Laptop HP sous Windows 7, où j'ai découvert les jeux vidéo. J'ai essayé de "cracker" un jeu PPSSPP en y ajoutant des savedatas pour avoir tous les personnages, et ça m'a fasciné. J'ai commencé à apprendre le HTML/CSS sur YouTube, puis le JavaScript. Cette curiosité m'a poussé vers l'université au Cameroun. Et oui, j'ai encore ce vieux PC en guise de rappel de mes débuts !
           </p>
         </motion.div>

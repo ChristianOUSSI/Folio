@@ -3,24 +3,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, ShieldCheck, Cpu, Code, Globe, BrainCircuit, TrendingUp, Shield, Wallet, UserCheck, Gamepad2, Database } from 'lucide-react';
 
-const certificationsLeft = [
-  { name: 'Architecting Scalable Python Apps', icon: <Cpu className="w-4 h-4 text-slate-800" /> },
-  { name: 'Mobile Software Basics', icon: <Globe className="w-4 h-4 text-slate-800" /> },
-  { name: 'PyQt Python', icon: <Code className="w-4 h-4 text-slate-800" /> },
-  { name: 'Python Programming', icon: <Code className="w-4 h-4 text-slate-800" /> },
-  { name: 'Social Network SaaS', icon: <Globe className="w-4 h-4 text-slate-800" /> },
-  { name: 'Web Design', icon: <TrendingUp className="w-4 h-4 text-slate-800" /> },
-];
-
-const certificationsRight = [
-  { name: 'Unreal Engine 5', icon: <Gamepad2 className="w-4 h-4 text-slate-800" /> },
-  { name: 'Data Acquisition with Python', icon: <Database className="w-4 h-4 text-slate-800" /> },
-  { name: 'Cyber Security (Edureka)', icon: <ShieldCheck className="w-4 h-4 text-slate-800" /> },
-  { name: 'MOOC SecNumacadémie', icon: <Shield className="w-4 h-4 text-slate-800" /> },
-  { name: 'Paypal Account Setup', icon: <Wallet className="w-4 h-4 text-slate-800" /> },
-  { name: 'Personal Brand 2025', icon: <UserCheck className="w-4 h-4 text-slate-800" /> },
-];
-
 export function CertificationsLeft() {
   return (
     <div className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
@@ -29,37 +11,53 @@ export function CertificationsLeft() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-5xl font-bold mb-4 text-center font-serif"
+          className="text-3xl md:text-5xl font-bold mb-6 text-center font-serif"
         >
-          <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] bg-clip-text text-transparent drop-shadow-sm">
             Certifications
           </span>
         </motion.h2>
 
-        <div className="grid grid-cols-2 gap-3 w-full">
-          {certificationsLeft.map((cert, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="group relative h-full cursor-default"
-            >
-              <div className="relative h-full bg-white/80 backdrop-blur-sm rounded-lg border border-slate-200 shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
-                <div className="mb-1.5 group-hover:scale-110 transition-transform">
-                  {cert.icon}
-                </motion.div>
-                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800  transition-colors leading-snug font-serif">
-                  {cert.name}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-2 gap-4 w-full">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Cpu className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Architecting Scalable Python Apps</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Globe className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Mobile Software Basics</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Code className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">PyQt Python</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Code className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Python Programming</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Globe className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Social Network SaaS</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <TrendingUp className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Web Design</p>
+            </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -67,29 +65,45 @@ export function CertificationsRight() {
   return (
     <div className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
-        <div className="grid grid-cols-2 gap-3 w-full">
-          {certificationsRight.map((cert, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              className="group relative h-full cursor-default"
-            >
-              <div className="relative h-full bg-white/80 backdrop-blur-sm rounded-lg border border-slate-200 shadow-md hover:shadow-lg p-3 flex flex-col items-center justify-center min-h-[80px] transition-all">
-                <div className="mb-1.5 group-hover:scale-110 transition-transform">
-                  {cert.icon}
-                </motion.div>
-                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800  transition-colors leading-snug font-serif">
-                  {cert.name}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+        <div className="grid grid-cols-2 gap-4 w-full mt-4 sm:mt-12">
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.1 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Gamepad2 className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Unreal Engine 5</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Database className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Data Acquisition with Python</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.3 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <ShieldCheck className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Cyber Security (Edureka)</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Shield className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">MOOC SecNumacadémie</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.5 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <Wallet className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Paypal Account Setup</p>
+            </div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }} whileHover={{ scale: 1.02 }} className="group relative h-full cursor-default">
+            <div className="relative h-full bg-black/80 backdrop-blur-sm rounded-lg border border-[#d4af37]/30 shadow-[0_4px_15px_rgba(0,0,0,0.5)] hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] p-4 flex flex-col items-center justify-center min-h-[100px] transition-all">
+              <UserCheck className="w-6 h-6 text-[#d4af37] mb-2 group-hover:scale-110 transition-transform drop-shadow-md" />
+              <p className="text-xs font-medium text-center text-gray-200 group-hover:text-white transition-colors leading-snug font-serif">Personal Brand 2025</p>
+            </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -62,9 +62,9 @@ export function StatsLeft() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-bold mb-6 font-serif text-slate-950"
+          className="text-4xl md:text-6xl font-bold mb-6 font-serif text-[#1a0a02]"
         >
-          En <span className="bg-gradient-to-r from-slate-700 to-slate-500 bg-clip-text text-transparent">Chiffres</span>
+          En <span className="bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] bg-clip-text text-transparent drop-shadow-sm">Chiffres</span>
         </motion.h2>
 
         <motion.div
@@ -72,7 +72,7 @@ export function StatsLeft() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="w-24 h-[2px] bg-slate-700 mx-auto mb-8"
+          className="w-24 h-[2px] bg-gradient-to-r from-[#d4af37] to-[#8a6d1c] mx-auto mb-8"
         />
 
         <motion.p
@@ -80,7 +80,7 @@ export function StatsLeft() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-lg text-slate-900 font-serif leading-relaxed"
+          className="text-lg text-[#1a0a02] font-serif leading-relaxed"
         >
           Un aperçu de mon parcours, mes accomplissements et l'énergie que je mets dans chaque projet. Des résultats concrets qui reflètent mon engagement.
         </motion.p>
@@ -106,15 +106,15 @@ export function StatsRight() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white/80 shadow-md border border-slate-300 hover:border-slate-500 transition-all group"
+              className="flex flex-col items-center justify-center p-6 rounded-2xl bg-black/80 backdrop-blur-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] border border-[#d4af37]/30 hover:border-[#d4af37] hover:shadow-[0_4px_20px_rgba(212,175,55,0.2)] transition-all group"
             >
-              <div className="mb-4 text-slate-800 group-hover:scale-110 transition-transform duration-300">
+              <div className="mb-4 text-[#d4af37] group-hover:scale-110 group-hover:text-[#f9e596] transition-all duration-300">
                 {stat.icon}
               </div>
-              <div className="text-3xl sm:text-4xl font-bold text-slate-950 mb-2">
+              <div className="text-3xl sm:text-4xl font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">
                 <AnimatedCounter target={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-xs sm:text-sm text-slate-900 font-medium font-serif text-center uppercase tracking-wider">
+              <div className="text-xs sm:text-sm text-gray-300 font-medium font-serif text-center uppercase tracking-wider group-hover:text-white transition-colors">
                 {stat.label}
               </div>
             </motion.div>

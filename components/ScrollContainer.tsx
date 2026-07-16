@@ -59,16 +59,16 @@ export default function ScrollContainer({ children, navItems, pairSections = tru
     if (isTransitioning || index === currentSectionIndex || index < 0 || index >= sections.length) return;
     
     setIsTransitioning(true);
-    setIsOpen(false); // Roll up current parchment
     
+    // Instead of closing the parchment, just wait slightly and swap index
+    // The ScrollPaper will handle the fade transition
     setTimeout(() => {
       setCurrentSectionIndex(index);
-      setIsOpen(true); // Unroll new section's parchment
       
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 1200);
-    }, 1000);
+      }, 500); // 500ms fade transition
+    }, 100); 
   };
 
   useEffect(() => {
@@ -106,7 +106,6 @@ export default function ScrollContainer({ children, navItems, pairSections = tru
 
       {/* One parchment per section — only current one mounts */}
       <ScrollPaper
-        key={`parchment-${currentSectionIndex}`}
         isOpen={isOpen}
         onSwipeLeft={() => navigateToSection(currentSectionIndex + 1)}
         onSwipeRight={() => navigateToSection(currentSectionIndex - 1)}
