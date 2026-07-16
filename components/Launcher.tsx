@@ -11,7 +11,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
     // Automatically transition after a few seconds or when user clicks
     const timer = setTimeout(() => {
       handleDiscover();
-    }, 4000);
+    }, 4500);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -25,6 +25,25 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
 
   const text = "cadc code axis digital cameroun";
   const words = text.split(" ");
+  const devSymbols = ["</>", "{ }", "[ ]", "()", ";", "#", "&&", "||", "=>"];
+
+  // Return a static placeholder during SSR to prevent any hydration mismatch
+  if (!mounted) {
+    return (
+      <div 
+        className="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #0f172a 0%, #020617 100%)' }}
+      >
+        <div className="flex flex-col items-center gap-4 relative z-10">
+          <div className="flex flex-wrap justify-center gap-x-4 max-w-4xl px-8 text-center opacity-0">
+             {words.map((word, i) => (
+                <span key={i} className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase">{word}</span>
+             ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <AnimatePresence>
@@ -39,42 +58,69 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
           }}
           onClick={handleDiscover}
         >
-          {/* Subtle golden particles */}
-          {mounted && [...Array(20)].map((_, i) => (
+          {/* Golden Stars */}
+          {[...Array(30)].map((_, i) => (
             <motion.div
-              key={i}
-              className="absolute w-1 h-1 rounded-full"
+              key={`star-${i}`}
+              className="absolute w-1 h-1 bg-[#d4af37]"
               style={{
-                background: 'rgba(212, 175, 55, 0.4)',
-                boxShadow: '0 0 10px rgba(212, 175, 55, 0.6)',
+                clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
+                boxShadow: '0 0 10px rgba(212, 175, 55, 0.8)',
               }}
               initial={{
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
+                scale: Math.random() * 0.5 + 0.5,
                 opacity: 0,
               }}
               animate={{
-                y: [null, -100 - Math.random() * 200],
                 opacity: [0, Math.random() * 0.8 + 0.2, 0],
+                scale: [0.5, 1.2, 0.5],
+                rotate: [0, 180]
               }}
               transition={{
-                duration: 5 + Math.random() * 5,
+                duration: 3 + Math.random() * 4,
                 repeat: Infinity,
-                delay: Math.random() * 5,
+                delay: Math.random() * 3,
                 ease: "easeInOut",
               }}
             />
           ))}
 
+          {/* Web Dev Symbols */}
+          {[...Array(15)].map((_, i) => (
+            <motion.div
+              key={`sym-${i}`}
+              className="absolute text-[#d4af37] opacity-20 font-mono text-xl md:text-3xl font-bold select-none"
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                rotate: Math.random() * 360,
+                opacity: 0,
+              }}
+              animate={{
+                y: [null, -100 - Math.random() * 200],
+                opacity: [0, 0.15, 0],
+                rotate: [null, Math.random() * 360]
+              }}
+              transition={{
+                duration: 8 + Math.random() * 10,
+                repeat: Infinity,
+                delay: Math.random() * 5,
+                ease: "linear",
+              }}
+            >
+              {devSymbols[Math.floor(Math.random() * devSymbols.length)]}
+            </motion.div>
+          ))}
+
           <motion.div 
-            className="flex flex-col items-center gap-4 relative z-10"
+            className="flex flex-col items-center gap-4 relative z-10 pointer-events-none"
             initial="hidden"
             animate="visible"
             variants={{
               visible: {
-                transition: {
-                  staggerChildren: 0.2
-                }
+                transition: { staggerChildren: 0.2 }
               }
             }}
           >
