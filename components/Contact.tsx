@@ -94,7 +94,7 @@ export function ContactLeft() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300 :border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
+                        className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
                         placeholder="Votre nom"
                       />
                     </div>
@@ -105,7 +105,7 @@ export function ContactLeft() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300 :border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
+                        className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-xs"
                         placeholder="votre@email.com"
                       />
                     </div>
@@ -118,7 +118,7 @@ export function ContactLeft() {
                       onChange={handleChange}
                       required
                       rows={3}
-                      className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300 :border-blue-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-xs"
+                      className="w-full px-3 py-2 rounded-lg bg-gray-50  border border-gray-200  text-gray-900  hover:border-blue-300  focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none text-xs"
                       placeholder="Votre message..."
                     />
                   </div>
@@ -159,13 +159,13 @@ export function ContactRight() {
           <div>
             <h4 className="font-bold text-gray-800  mb-1 font-serif text-sm md:text-base">Téléphones</h4>
             <div className="flex flex-col">
-              <a href="tel:+237691223916" className="text-blue-600  font-medium hover:text-blue-700 :text-blue-300 transition-colors text-[11px] md:text-xs">
+              <a href="tel:+237691223916" className="text-blue-600  font-medium hover:text-blue-700  transition-colors text-[11px] md:text-xs">
                 +237 691 223 916
               </a>
-              <a href="tel:+237670008202" className="text-blue-600  font-medium hover:text-blue-700 :text-blue-300 transition-colors text-[11px] md:text-xs">
+              <a href="tel:+237670008202" className="text-blue-600  font-medium hover:text-blue-700  transition-colors text-[11px] md:text-xs">
                 +237 670 008 202
               </a>
-              <a href="tel:+237659845024" className="text-blue-600  font-medium hover:text-blue-700 :text-blue-300 transition-colors text-[11px] md:text-xs">
+              <a href="tel:+237659845024" className="text-blue-600  font-medium hover:text-blue-700  transition-colors text-[11px] md:text-xs">
                 +237 659 845 024
               </a>
             </div>
@@ -183,10 +183,10 @@ export function ContactRight() {
           <div>
             <h4 className="font-bold text-gray-800  mb-1 font-serif text-sm md:text-base">Emails</h4>
             <div className="flex flex-col">
-              <a href="mailto:christian.oussi01@gmail.com" className="text-purple-600  font-medium hover:text-purple-700 :text-purple-300 transition-colors text-[11px] md:text-xs truncate max-w-[200px] md:max-w-[250px]">
+              <a href="mailto:christian.oussi01@gmail.com" className="text-purple-600  font-medium hover:text-purple-700  transition-colors text-[11px] md:text-xs truncate max-w-[200px] md:max-w-[250px]">
                 christian.oussi01@gmail.com
               </a>
-              <a href="mailto:wassatherese@gmail.com" className="text-purple-600  font-medium hover:text-purple-700 :text-purple-300 transition-colors text-[11px] md:text-xs truncate max-w-[200px] md:max-w-[250px]">
+              <a href="mailto:wassatherese@gmail.com" className="text-purple-600  font-medium hover:text-purple-700  transition-colors text-[11px] md:text-xs truncate max-w-[200px] md:max-w-[250px]">
                 wassatherese@gmail.com
               </a>
             </div>

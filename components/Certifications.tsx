@@ -54,7 +54,7 @@ export function CertificationsLeft() {
                 >
                   {cert.icon}
                 </motion.div>
-                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800 :text-white transition-colors leading-snug font-serif">
+                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800  transition-colors leading-snug font-serif">
                   {cert.name}
                 </p>
               </div>
@@ -89,7 +89,7 @@ export function CertificationsRight() {
                 >
                   {cert.icon}
                 </motion.div>
-                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800 :text-white transition-colors leading-snug font-serif">
+                <p className="text-[10px] md:text-xs font-medium text-center text-slate-900  group-hover:text-slate-800  transition-colors leading-snug font-serif">
                   {cert.name}
                 </p>
               </div>

@@ -61,9 +61,9 @@ export function ProcessLeft() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ scale: 1.02, y: -3 }}
-              className="relative p-4 md:p-5 rounded-2xl bg-white/80  backdrop-blur-sm border border-slate-200  hover:border-slate-300 :border-slate-600 hover:shadow-lg transition-all group flex items-start gap-4 cursor-default"
+              className="relative p-4 md:p-5 rounded-2xl bg-white/80  backdrop-blur-sm border border-slate-200  hover:border-slate-300  hover:shadow-lg transition-all group flex items-start gap-4 cursor-default"
             >
-              <div className="text-4xl md:text-5xl font-bold text-slate-200  group-hover:text-slate-300 :text-slate-900 transition-colors">
+              <div className="text-4xl md:text-5xl font-bold text-slate-200  group-hover:text-slate-300  transition-colors">
                 {step.num}
               </div>
               <div>
@@ -98,9 +98,9 @@ export function ProcessRight() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
               whileHover={{ scale: 1.02, y: -3 }}
-              className="relative p-4 md:p-5 rounded-2xl bg-white/80  backdrop-blur-sm border border-slate-200  hover:border-slate-300 :border-slate-600 hover:shadow-lg transition-all group flex items-start gap-4 cursor-default"
+              className="relative p-4 md:p-5 rounded-2xl bg-white/80  backdrop-blur-sm border border-slate-200  hover:border-slate-300  hover:shadow-lg transition-all group flex items-start gap-4 cursor-default"
             >
-              <div className="text-4xl md:text-5xl font-bold text-slate-200  group-hover:text-slate-300 :text-slate-900 transition-colors">
+              <div className="text-4xl md:text-5xl font-bold text-slate-200  group-hover:text-slate-300  transition-colors">
                 {step.num}
               </div>
               <div>

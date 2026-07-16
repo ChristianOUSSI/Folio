@@ -61,7 +61,7 @@ export function ExperienceLeft() {
                     <p className="text-[10px] text-slate-800  mb-1 uppercase tracking-wider font-semibold">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-slate-950  mb-1 font-serif group-hover:text-slate-900 :text-white transition-colors">{exp.role}</h3>
+                    <h3 className="font-bold text-base text-slate-950  mb-1 font-serif group-hover:text-slate-900  transition-colors">{exp.role}</h3>
                     <p className="text-xs text-slate-800  mb-2">{exp.company}</p>
                     <p className="text-xs text-slate-900  leading-relaxed font-serif">{exp.description}</p>
                   </div>
@@ -99,7 +99,7 @@ export function ExperienceRight() {
                     <p className="text-[10px] text-slate-800  mb-1 uppercase tracking-wider font-semibold">
                       {exp.period}
                     </p>
-                    <h3 className="font-bold text-base text-slate-950  mb-1 font-serif group-hover:text-slate-900 :text-white transition-colors">{exp.role}</h3>
+                    <h3 className="font-bold text-base text-slate-950  mb-1 font-serif group-hover:text-slate-900  transition-colors">{exp.role}</h3>
                     <p className="text-xs text-slate-800  mb-2">{exp.company}</p>
                     <p className="text-xs text-slate-900  leading-relaxed font-serif">{exp.description}</p>
                   </div>

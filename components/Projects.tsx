@@ -127,7 +127,7 @@ export function ProjectsLeft() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100  text-gray-700  text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200 :bg-slate-600 transition-all uppercase tracking-wider"
+                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100  text-gray-700  text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200  transition-all uppercase tracking-wider"
                     >
                       GitHub
                     </a>
@@ -191,7 +191,7 @@ export function ProjectsRight() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100  text-gray-700  text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200 :bg-slate-600 transition-all uppercase tracking-wider"
+                      className="px-2 py-1 md:px-3 md:py-1.5 bg-gray-100  text-gray-700  text-[9px] md:text-[10px] font-bold rounded-lg hover:bg-gray-200  transition-all uppercase tracking-wider"
                     >
                       GitHub
                     </a>

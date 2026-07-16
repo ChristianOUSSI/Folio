@@ -17,20 +17,20 @@ export default function BlogPostContent({ article }: { article: Article }) {
     <article className="max-w-3xl mx-auto px-4 py-12">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
         <div className="flex items-center gap-4 mb-4">
-          <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-sm font-medium">
+          <span className="px-3 py-1 bg-blue-100  text-blue-700  rounded-full text-sm font-medium">
             {article.category}
           </span>
-          <span className="text-gray-500 dark:text-gray-400 text-sm">
+          <span className="text-gray-500  text-sm">
             {new Date(article.date).toLocaleDateString('fr-FR')}
           </span>
-          <span className="text-gray-500 dark:text-gray-400 text-sm">
+          <span className="text-gray-500  text-sm">
             {article.readTime} min de lecture
           </span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 ">
           {article.title}
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+        <p className="text-lg text-gray-600  leading-relaxed">
           {article.excerpt}
         </p>
       </motion.div>
@@ -39,25 +39,25 @@ export default function BlogPostContent({ article }: { article: Article }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="prose dark:prose-invert max-w-none prose-lg mb-12"
+        className="prose  max-w-none prose-lg mb-12"
       >
         {article.content.split('\n\n').map((paragraph, index) => {
           if (paragraph.startsWith('#')) {
             const level = paragraph.match(/^#+/)?.[0].length || 1;
             const text = paragraph.replace(/^#+\s/, '');
             const HeadingTag = `h${level}` as 'h1' | 'h2' | 'h3';
-            return <HeadingTag key={index} className="text-gray-900 dark:text-white">{text}</HeadingTag>;
+            return <HeadingTag key={index} className="text-gray-900 ">{text}</HeadingTag>;
           }
           if (paragraph.startsWith('```')) {
             const code = paragraph.replace(/```[a-z]*\n?/g, '');
             return (
-              <pre key={index} className="bg-gray-900 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto">
+              <pre key={index} className="bg-gray-900  p-4 rounded-lg overflow-x-auto">
                 <code className="text-white font-mono text-sm">{code}</code>
               </pre>
             );
           }
           return (
-            <p key={index} className="text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p key={index} className="text-gray-700  leading-relaxed">
               {paragraph}
             </p>
           );

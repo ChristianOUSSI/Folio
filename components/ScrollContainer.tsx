@@ -99,7 +99,7 @@ export default function ScrollContainer({ children, navItems, pairSections = tru
   const { locale, setLocale } = useI18n();
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-[#020617] flex items-center justify-center font-sans touch-none">
+    <div className="fixed inset-0 overflow-hidden bg-[#020617] flex items-center justify-center font-sans">
       
       {/* Closed Cover View */}
       <ScrollCover isOpen={isOpen} onOpen={handleOpen} />

@@ -66,7 +66,7 @@ export default function Navbar() {
       <div className="absolute top-0 inset-x-0 h-4 bg-transparent z-[101]" />
       
       <nav 
-        className="w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800/30 shadow-[0_4px_30px_rgba(0,0,0,0.1)] -translate-y-full group-hover:translate-y-0 focus-within:translate-y-0 transition-transform duration-500 hidden md:block" 
+        className="w-full bg-white/95  backdrop-blur-md border-b border-slate-200  shadow-[0_4px_30px_rgba(0,0,0,0.1)] -translate-y-full group-hover:translate-y-0 focus-within:translate-y-0 transition-transform duration-500 hidden md:block" 
         aria-label="Main navigation"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
@@ -76,7 +76,7 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             whileHover={{ scale: 1.05 }}
           >
-            <Link href="/" className="flex items-center space-x-2 text-blue-700 dark:text-[#d4af37] font-bold text-lg tracking-wider" aria-label="Home - OJCJ">
+            <Link href="/" className="flex items-center space-x-2 text-blue-700  font-bold text-lg tracking-wider" aria-label="Home - OJCJ">
               <span style={{ fontFamily: "'Special Elite', 'Courier Prime', monospace" }}>OJCJ</span>
             </Link>
           </motion.div>
@@ -88,7 +88,7 @@ export default function Navbar() {
               return (
                 <motion.div key={item.key} whileHover={{ y: -2 }}>
                   <Link href={item.href} 
-                    className={`px-3 py-2 text-sm font-serif text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-[#d4af37] transition-colors relative group ${isActive ? 'font-medium' : ''}`}
+                    className={`px-3 py-2 text-sm font-serif text-gray-700  hover:text-blue-600  transition-colors relative group ${isActive ? 'font-medium' : ''}`}
                   >
                     {item.label}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#d4af37] to-yellow-600 group-hover:w-full transition-all duration-300" />
@@ -105,7 +105,7 @@ export default function Navbar() {
               onClick={() => { window.location.href = '/'; }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-full bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800/30 hover:border-red-400 dark:hover:border-red-500 hover:bg-red-100 dark:hover:bg-red-900/40 transition-all text-red-600 dark:text-red-400"
+              className="p-2 rounded-full bg-red-50  border border-red-200  hover:border-red-400  hover:bg-red-100  transition-all text-red-600 "
               aria-label="Go to Home"
               title="Accueil"
             >
@@ -116,7 +116,7 @@ export default function Navbar() {
               onClick={toggleTheme}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 rounded-full bg-blue-50 dark:bg-slate-800/50 border border-blue-200 dark:border-[#d4af37]/30 hover:border-blue-400 dark:hover:border-[#d4af37] transition-all"
+              className="p-2 rounded-full bg-blue-50  border border-blue-200  hover:border-blue-400  transition-all"
               aria-label="Toggle theme"
             >
               {theme === 'dark' ? (
@@ -132,7 +132,7 @@ export default function Navbar() {
 
             {/* Mobile menu */}
             <Menu as="div" className="relative md:hidden">
-              <Menu.Button className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-slate-800/50 border border-gray-300 dark:border-[#d4af37]/30 hover:border-blue-500 transition-all">
+              <Menu.Button className="p-2 rounded-md text-gray-700  hover:bg-blue-50  border border-gray-300  hover:border-blue-500 transition-all">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -149,7 +149,7 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
               >
-                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white/90 dark:bg-slate-900/95 border border-blue-100 dark:border-[#d4af37]/30 backdrop-blur-md">
+                <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white/90  border border-blue-100  backdrop-blur-md">
                   <div className="py-1">
                     {navItems.map((item) => {
                       const isActive = pathname === item.href;

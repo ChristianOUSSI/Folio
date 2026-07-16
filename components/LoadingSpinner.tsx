@@ -11,7 +11,7 @@ export function LoadingSpinner() {
       <motion.div
         animate={{ rotate: 360 }}
         transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
-        className="w-12 h-12 border-4 border-blue-200 dark:border-blue-900 border-t-blue-600 dark:border-t-blue-400 rounded-full"
+        className="w-12 h-12 border-4 border-blue-200  border-t-blue-600  rounded-full"
       />
     </motion.div>
   );
@@ -29,7 +29,7 @@ export function LoadingDots() {
             repeat: Infinity,
             delay: i * 0.1,
           }}
-          className="w-3 h-3 bg-blue-600 dark:bg-blue-400 rounded-full"
+          className="w-3 h-3 bg-blue-600  rounded-full"
         />
       ))}
     </div>

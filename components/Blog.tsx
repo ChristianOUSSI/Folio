@@ -81,7 +81,7 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/joseph-christian-josu%C3%A9-ou
 
 export function BlogLeft() {
   return (
-    <section className="w-full flex flex-col px-4 sm:px-8 pt-4 md:pt-12 pb-4 relative mt-0 mb-auto">
+    <section className="w-full mb-auto mt-0 md:mt-4 flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
