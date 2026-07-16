@@ -12,7 +12,16 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
     const timer = setTimeout(() => {
       handleDiscover();
     }, 4500);
-    return () => clearTimeout(timer);
+
+    // Ultimate fallback in case AnimatePresence gets stuck
+    const fallbackTimer = setTimeout(() => {
+      onComplete?.();
+    }, 6000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(fallbackTimer);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -35,9 +44,19 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
         style={{ background: 'linear-gradient(135deg, #0f172a 0%, #020617 100%)' }}
       >
         <div className="flex flex-col items-center gap-4 relative z-10">
-          <div className="flex flex-wrap justify-center gap-x-4 max-w-4xl px-8 text-center opacity-0">
+          <div className="flex flex-wrap justify-center gap-x-4 max-w-4xl px-8 text-center">
              {words.map((word, i) => (
-                <span key={i} className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase">{word}</span>
+                <span 
+                  key={i} 
+                  className="text-4xl md:text-6xl font-light tracking-[0.2em] uppercase"
+                  style={{
+                    color: i === 0 ? '#d4af37' : '#ffffff',
+                    textShadow: i === 0 ? '0 0 20px rgba(212, 175, 55, 0.4)' : '0 0 20px rgba(255, 255, 255, 0.2)',
+                    fontFamily: i === 0 ? 'serif' : 'sans-serif',
+                  }}
+                >
+                  {word}
+                </span>
              ))}
           </div>
         </div>
@@ -120,7 +139,9 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
             initial="hidden"
             animate="visible"
             variants={{
+              hidden: { opacity: 1 },
               visible: {
+                opacity: 1,
                 transition: { staggerChildren: 0.2 }
               }
             }}
