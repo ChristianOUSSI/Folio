@@ -49,6 +49,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
     <AnimatePresence>
       {isVisible && (
         <motion.div
+          key="launcher-screen"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, filter: 'blur(10px)' }}
           transition={{ duration: 1, ease: "easeInOut" }}

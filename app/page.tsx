@@ -77,9 +77,11 @@ export default function Home() {
 
   return (
     <>
-      <ErrorBoundary>
-        <Launcher onComplete={() => setShowContent(true)} />
-      </ErrorBoundary>
+      {!showContent && (
+        <ErrorBoundary>
+          <Launcher onComplete={() => setShowContent(true)} />
+        </ErrorBoundary>
+      )}
       {showContent && (
         <div className="relative w-full min-h-screen bg-[#020617]">
           {/* We keep the Navbar outside the book so it's always accessible */}
