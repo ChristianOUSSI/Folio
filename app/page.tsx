@@ -31,6 +31,15 @@ export default function Home() {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
+
+    const searchParams = new URLSearchParams(window.location.search);
+    const section = searchParams.get('section');
+    if (section) {
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent('book-navigate', { detail: { index: parseInt(section) } }));
+      }, 500);
+    }
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 

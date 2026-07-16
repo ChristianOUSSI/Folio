@@ -40,6 +40,17 @@ const nextConfig = {
       ],
     },
   ],
+  async redirects() {
+    return [
+      { source: '/about', destination: '/', permanent: true },
+      { source: '/skills', destination: '/', permanent: true },
+      { source: '/experience', destination: '/', permanent: true },
+      { source: '/certifications', destination: '/', permanent: true },
+      { source: '/projects', destination: '/', permanent: true },
+      { source: '/blog', destination: '/', permanent: true },
+      { source: '/contact', destination: '/', permanent: true },
+    ]
+  },
 };
 
 module.exports = { ...nextConfig, i18n: { locales: ["fr","en"], defaultLocale: "fr" } };
