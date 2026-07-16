@@ -4,8 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Launcher({ onComplete }: { onComplete?: () => void }) {
   const [isVisible, setIsVisible] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     // Automatically transition after a few seconds or when user clicks
     const timer = setTimeout(() => {
       handleDiscover();
@@ -38,7 +40,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
           onClick={handleDiscover}
         >
           {/* Subtle golden particles */}
-          {[...Array(20)].map((_, i) => (
+          {mounted && [...Array(20)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 rounded-full"
@@ -47,8 +49,8 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
                 boxShadow: '0 0 10px rgba(212, 175, 55, 0.6)',
               }}
               initial={{
-                x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-                y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
                 opacity: 0,
               }}
               animate={{
