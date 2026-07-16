@@ -127,11 +127,11 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
             key={`star-${star.id}`}
             className="absolute w-1 h-1 bg-[#d4af37]"
             style={{
-              left: \`\${star.x}%\`,
-              top: \`\${star.y}%\`,
+              left: `${star.x}%`,
+              top: `${star.y}%`,
               clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
               boxShadow: '0 0 10px rgba(212, 175, 55, 0.8)',
-              animation: \`twinkle \${star.duration}s ease-in-out \${star.delay}s infinite\`
+              animation: `twinkle ${star.duration}s ease-in-out ${star.delay}s infinite`
             }}
           />
         ))}
@@ -142,10 +142,10 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
             key={`sym-${sym.id}`}
             className="absolute text-[#d4af37] opacity-0 font-mono text-xl md:text-3xl font-bold select-none"
             style={{
-              left: \`\${sym.x}%\`,
-              top: \`\${sym.y}%\`,
-              transform: \`rotate(\${sym.rotate}deg)\`,
-              animation: \`floatUp \${sym.duration}s linear \${sym.delay}s infinite\`
+              left: `${sym.x}%`,
+              top: `${sym.y}%`,
+              transform: `rotate(${sym.rotate}deg)`,
+              animation: `floatUp ${sym.duration}s linear ${sym.delay}s infinite`
             }}
           >
             {sym.text}
@@ -164,7 +164,7 @@ export default function Launcher({ onComplete }: { onComplete?: () => void }) {
                   textShadow: i === 0 ? '0 0 20px rgba(212, 175, 55, 0.4)' : '0 0 20px rgba(255, 255, 255, 0.2)',
                   fontFamily: i === 0 ? 'serif' : 'sans-serif',
                   opacity: 0,
-                  animation: \`textReveal 1s ease-out \${i * 0.2}s forwards\`
+                  animation: `textReveal 1s ease-out ${i * 0.2}s forwards`
                 }}
               >
                 {word}
