@@ -1,4 +1,5 @@
 'use client';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, ShieldCheck, Cpu, Code, Globe, BrainCircuit, TrendingUp, Shield, Wallet, UserCheck, Gamepad2, Database } from 'lucide-react';
 
@@ -22,7 +23,7 @@ const certificationsRight = [
 
 export function CertificationsLeft() {
   return (
-    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
+    <div className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +65,7 @@ export function CertificationsLeft() {
 
 export function CertificationsRight() {
   return (
-    <section className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
+    <div className="w-full my-auto flex flex-col px-4 sm:px-8 py-4 relative">
       <div className="max-w-lg mx-auto w-full relative z-10 flex flex-col">
         <div className="grid grid-cols-2 gap-3 w-full">
           {certificationsRight.map((cert, idx) => (
